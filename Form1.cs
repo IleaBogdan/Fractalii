@@ -17,12 +17,6 @@ namespace Fractalii
 
         private void GainBox_MouseDown(object sender, MouseEventArgs e)
         {
-            using (Graphics g = pictureBox1.CreateGraphics())
-            {
-                // Draw next line and...
-                g.DrawLine(Pens.Red, new Point(10, 10), new Point(100, 200));
-            }
-
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
             {
                 // Remember the location where the button was pressed
