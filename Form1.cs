@@ -13,7 +13,7 @@ namespace Fractalii
         }
         // Variable that will hold the point from which to draw the next line
         Point latestPoint;
-        
+
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -45,6 +45,6 @@ namespace Fractalii
                 // Draw next line and...
                 g.DrawLine(Pens.Red, new Point(10, 10), new Point(100, 200));
             }
-        }
+        }     
     }
 }
