@@ -39,51 +39,55 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(-3, 47);
+            pictureBox1.Location = new Point(12, 39);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(802, 391);
+            pictureBox1.Size = new Size(803, 487);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
-            pictureBox1.MouseDown += GainBox_MouseDown;
-            pictureBox1.MouseMove += GainBox_MouseMove;
+            pictureBox1.MouseDown += pictureBox1_MouseDown;
+            pictureBox1.MouseMove += pictureBox1_MouseMove;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(137, 12);
+            textBox1.Location = new Point(120, 9);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
+            textBox1.Size = new Size(110, 23);
             textBox1.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(54, 15);
+            label1.Location = new Point(47, 11);
             label1.Name = "label1";
-            label1.Size = new Size(77, 20);
+            label1.Size = new Size(61, 15);
             label1.TabIndex = 3;
             label1.Text = "Angle left:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(344, 15);
+            label2.Location = new Point(301, 11);
             label2.Name = "label2";
-            label2.Size = new Size(86, 20);
+            label2.Size = new Size(69, 15);
             label2.TabIndex = 5;
             label2.Text = "Angle right:";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(436, 12);
+            textBox2.Location = new Point(382, 9);
+            textBox2.Margin = new Padding(3, 2, 3, 2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
+            textBox2.Size = new Size(110, 23);
             textBox2.TabIndex = 4;
             // 
             // button1
             // 
-            button1.Location = new Point(622, 17);
+            button1.Location = new Point(544, 13);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(82, 22);
             button1.TabIndex = 6;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
@@ -91,15 +95,16 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(829, 541);
             Controls.Add(button1);
             Controls.Add(label2);
             Controls.Add(textBox2);
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(pictureBox1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;

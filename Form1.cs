@@ -13,16 +13,10 @@ namespace Fractalii
         }
         // Variable that will hold the point from which to draw the next line
         Point latestPoint;
+        
 
-
-        private void GainBox_MouseDown(object sender, MouseEventArgs e)
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            using (Graphics g = pictureBox1.CreateGraphics())
-            {
-                // Draw next line and...
-                g.DrawLine(Pens.Red, new Point(10, 10), new Point(100, 200));
-            }
-
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
             {
                 // Remember the location where the button was pressed
@@ -30,7 +24,7 @@ namespace Fractalii
             }
         }
 
-        private void GainBox_MouseMove(object sender, MouseEventArgs e)
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
             {
