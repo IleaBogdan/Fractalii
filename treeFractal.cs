@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using static Fractalii.Form1;
 using System.Security.Policy;
+using System.Reflection.Metadata;
 
 namespace Fractalii
 {
@@ -33,19 +34,27 @@ namespace Fractalii
             }
         }
 
+        private (int, int, double, double) calculation(int start_x, int start_y, 
+            double size, double angle, 
+            double start_angle_right, double start_angle_left)
+        {
+            // calculating the angles
+            // calculating the coords for the next x and y
+            return ( (int)(start_x - (size * Math.Cos(Math.PI * angle / 180))),
+                (int)(start_y - size * (Math.Sin(Math.PI * angle / 180))),
+                angle + start_angle_left, (angle - start_angle_right));
+        }
         // recursive function
         public void Generate_fractal1(double size, PictureBox p, int start_x, int start_y, double angle, int level)
         {
-            // calculating the angles
-            double angleL = (angle + start_angle_left);
-            double angleR = (angle - start_angle_right);
-            // calculating the coords for the next x and y
-            int end_x = (int)((double)(start_x) - size * (Math.Cos(Math.PI*angle/180)));
-            int end_y = (int)((double)(start_y) - size * (Math.Sin(Math.PI*angle/180)));
-            
+            double angleL, angleR;
+            int end_x, end_y;
+            (end_x, end_y, angleL, angleR)=calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
             // line drawing
             draw(start_x, start_y, end_x, end_y, p);
-            if (level < 12)
+            // decoment for much beautiful designe
+            //if (start_size/10<=size) 
+            if (level<13)
             {
                 // recursive calls for left and right
                 System.Threading.Thread.Sleep(2);
