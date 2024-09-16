@@ -6,15 +6,22 @@ using System.Threading.Tasks;
 using System.Drawing;
 using static Fractalii.Form1;
 using System.Security.Policy;
+using System.Runtime.CompilerServices;
 
 namespace Fractalii
 {
     public class treeFractal
     {
-        Pen pen = new Pen(Color.Red, 1f);
         // private variables
         private double start_angle_left = -1.0, start_angle_right = -1.0;
         private int start_size = -1;
+        private float maxWidth = 5f;
+        private int maxLvl = 14;
+
+        private int[] RGB = new int[3];
+        private float[] RGBDif = new float[3];
+
+        Pen pen = new Pen(Color.Red, 1f);
 
         // initialaze the global variables
         public treeFractal(double saL, double saR, int s)
@@ -22,6 +29,12 @@ namespace Fractalii
             start_angle_left = saL;
             start_angle_right = saR;
             start_size = s;
+
+            //Hardcoode here
+            RGB[0] = pen.Color.R;
+            RGB[1] = pen.Color.G;
+            RGB[2] = pen.Color.B;
+            RGBDif[1] = 130;
         }
 
 
@@ -45,10 +58,14 @@ namespace Fractalii
             int end_y = (int)((double)(start_y) - (double)(size) * (Math.Sin(Math.PI*angle/180)));
 
             // line drawing
-            pen.Width = 7f - (float)level / 2f;
+            // make other way of having width decrease (maybe make it same as size decrease)
+            pen.Width = maxWidth - (float)level / 3f;
+            float fraction = (float)level / (float)maxLvl;
+            pen.Color = Color.FromArgb(RGB[0] + (int)(RGBDif[0] * fraction), RGB[1] + (int)(RGBDif[1] * fraction), 
+                RGB[2] + (int)(RGBDif[2] * fraction));
             draw(start_x, start_y, end_x, end_y, p);
             
-            if (level >= 13) return;
+            if (level >= maxLvl) return;
 
             // recursive calls for left and right
             //System.Threading.Thread.Sleep(2);
