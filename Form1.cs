@@ -35,10 +35,8 @@ namespace Fractalii
             // check if all variables have been assigned
             if (start_angle_left >= 0.0 && start_angle_right>=0.0 && size>0)
             {
-                treeFractal fractal = new treeFractal();
-                
                 // initialaze the global variables
-                fractal.global_init(start_angle_left, start_angle_right, size);
+                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size);
 
                 // first call of the recursive function
                 fractal.Generate_fractal1(size, pictureBox1, 

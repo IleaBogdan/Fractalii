@@ -16,10 +16,10 @@ namespace Fractalii
         private int start_size = -1;
 
         // initialaze the global variables
-        public void global_init(double saL, double saR, int s)
+        public treeFractal(double saL, double saR, int s)
         {
-            start_angle_left=saL; 
-            start_angle_right=saR; 
+            start_angle_left = saL;
+            start_angle_right = saR;
             start_size = s;
         }
 
