@@ -28,9 +28,7 @@ namespace Fractalii
             double.TryParse(textBox2.Text, null, out start_angle_right);
             Int32.TryParse(textBox3.Text, null, out size);
 
-
-            
-            // .Refresh erases anything on pictureBox1 if we want to redraw
+            // Refresh erases anything on pictureBox1 if we want to redraw
             pictureBox1.Refresh();
             // check if all variables have been assigned
             if (start_angle_left >= 0.0 && start_angle_right>=0.0 && size>0)
@@ -40,7 +38,7 @@ namespace Fractalii
 
                 // first call of the recursive function
                 fractal.Generate_fractal1(size, pictureBox1, 
-                    pictureBox1.Size.Width / 2, pictureBox1.Size.Height / 2, 90, 0);
+                    pictureBox1.Size.Width / 2, pictureBox1.Size.Height / 2 + 200, 90, 0);
             } 
             else
             {
