@@ -17,28 +17,36 @@ namespace Fractalii
             pictureBox1.BackColor = Color.Black;
         }
 
+        // private variables 
         private double start_angle_left = -1.0, start_angle_right = -1.0;
         private int size = -1;
+
+        // reading data only on click
         private void button1_Click(object sender, EventArgs e)
         {
             double.TryParse(textBox1.Text, null, out start_angle_left);
             double.TryParse(textBox2.Text, null, out start_angle_right);
             Int32.TryParse(textBox3.Text, null, out size);
 
-            // hardcodare la valori. NU UITA SA STERGI
-            //start_angle_left =25; start_angle_right=35; size = 50;
+
+            
+            // .Refresh erases anything on pictureBox1 if we want to redraw
             pictureBox1.Refresh();
+            // check if all variables have been assigned
             if (start_angle_left >= 0.0 && start_angle_right>=0.0 && size>0)
             {
                 treeFractal fractal = new treeFractal();
                 
+                // initialaze the global variables
                 fractal.global_init(start_angle_left, start_angle_right, size);
 
+                // first call of the recursive function
                 fractal.Generate_fractal1(size, pictureBox1, 
                     pictureBox1.Size.Width / 2, pictureBox1.Size.Height / 2, 90, 0);
             } 
             else
             {
+                // printing the invalide statemant
                 using (Graphics g=pictureBox1.CreateGraphics())
                 {
                     g.DrawString("Please enter all coordinates and size!", new System.Drawing.Font("Arial", 12), Brushes.Green, 
