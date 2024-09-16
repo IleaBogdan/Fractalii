@@ -17,7 +17,8 @@ namespace Fractalii
             pictureBox1.BackColor = Color.Black;
         }
 
-        private double start_angle_left = -1.0, start_angle_right = -1.0, size = -1.0;
+        private double start_angle_left = -1.0, start_angle_right = -1.0;
+        private int size = -1;
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             start_angle_left = Convert.ToDouble(textBox1.Text);
@@ -28,18 +29,18 @@ namespace Fractalii
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            size = Convert.ToDouble(textBox3.Text);
+            size = Convert.ToInt32(textBox3.Text);
         }
         private void button1_Click(object sender, EventArgs e)
         {
             pictureBox1.Refresh();
-            if (start_angle_left >= 0.0 && start_angle_right>=0.0 && size>0.0)
+            if (start_angle_left >= 0.0 && start_angle_right>=0.0 && size>0)
             {
                 lineFractal fractal = new lineFractal();
                 fractal.global_init(start_angle_left, start_angle_right, size);
                 fractal.Generate_fractal1(start_angle_left,
-                    start_angle_right, size,
-                    pictureBox1, 0, 0);
+                    start_angle_right, size, pictureBox1, 
+                    pictureBox1.Size.Width / 2, pictureBox1.Size.Height / 2);
             } 
             else
             {

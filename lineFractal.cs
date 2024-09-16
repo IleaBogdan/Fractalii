@@ -11,21 +11,22 @@ namespace Fractalii
 {
     public class lineFractal
     {
-        private double start_angle_left=-1.0, start_angle_right = -1.0, start_size = -1.0;
-        public void global_init(double saL, double saR, double s)
+        private double start_angle_left = -1.0, start_angle_right = -1.0;
+        private int start_size = -1;
+        public void global_init(double saL, double saR, int s)
         {
             start_angle_left=saL; 
             start_angle_right=saR; 
             start_size = s;
         }
-        public void Generate_fractal1(double L_angle, double R_angle, 
-            double size, PictureBox p, int coordonate_x, int coordonate_y)
+        public void Generate_fractal1(double L_angle, double R_angle,
+            int size, PictureBox p, int coordonate_x, int coordonate_y)
         {
             if (size >= start_size * 0.1)
             {
                 using (Graphics g = p.CreateGraphics())
                 {
-
+                    g.DrawLine(Pens.Red, new Point(coordonate_x, coordonate_y), new Point(coordonate_x , coordonate_y - size));
                 }
             }
         }
