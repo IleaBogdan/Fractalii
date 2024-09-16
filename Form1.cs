@@ -34,7 +34,7 @@ namespace Fractalii
             if (start_angle_left >= 0.0 && start_angle_right>=0.0 && size>0)
             {
                 // initialaze the global variables
-                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right);
+                treeFractal fractal = new treeFractal();
 
                 // first call of the recursive function
                 fractal.Generate_fractal1(size, width, pictureBox1, 

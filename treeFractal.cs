@@ -13,7 +13,6 @@ namespace Fractalii
     public class treeFractal
     {
         // private variables
-        private double start_angle_left = -1.0, start_angle_right = -1.0;
         private int maxLvl = 14;
 
         private int[] RGB = new int[3];
@@ -22,11 +21,8 @@ namespace Fractalii
         Pen pen = new Pen(Color.Red, 1f);
 
         // initialaze the global variables
-        public treeFractal(double saL, double saR)
+        public treeFractal()
         {
-            start_angle_left = saL;
-            start_angle_right = saR;
-
             //Hardcode here
             RGB[0] = pen.Color.R;
             RGB[1] = pen.Color.G;
