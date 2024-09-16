@@ -26,7 +26,7 @@ namespace Fractalii
             Int32.TryParse(textBox3.Text, null, out size);
 
             // hardcodare la valori. NU UITA SA STERGI
-            start_angle_left =25; start_angle_right=35; size = 50;
+            //start_angle_left =25; start_angle_right=35; size = 50;
             pictureBox1.Refresh();
             if (start_angle_left >= 0.0 && start_angle_right>=0.0 && size>0)
             {
