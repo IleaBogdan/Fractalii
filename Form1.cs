@@ -19,14 +19,14 @@ namespace Fractalii
 
         // private variables 
         private double start_angle_left = -1.0, start_angle_right = -1.0;
-        private int size = -1;
+        private double size = -1.0;
 
         // reading data only on click
         private void button1_Click(object sender, EventArgs e)
         {
             double.TryParse(textBox1.Text, null, out start_angle_left);
             double.TryParse(textBox2.Text, null, out start_angle_right);
-            Int32.TryParse(textBox3.Text, null, out size);
+            double.TryParse(textBox3.Text, null, out size);
 
 
             
@@ -42,7 +42,7 @@ namespace Fractalii
 
                 // first call of the recursive function
                 fractal.Generate_fractal1(size, pictureBox1, 
-                    pictureBox1.Size.Width / 2, pictureBox1.Size.Height / 2, 90, 0);
+                    pictureBox1.Size.Width / 2, pictureBox1.Size.Height / 2 +200, 90, 0);
             } 
             else
             {
