@@ -14,7 +14,7 @@ namespace Fractalii
     {
         // private variables
         private double start_angle_left = -1.0, start_angle_right = -1.0;
-        private int maxLvl = 14;
+        private int maxLvl = 13;
 
         private int[] RGB = new int[3];
         private float[] RGBDif = new float[3];
@@ -31,7 +31,8 @@ namespace Fractalii
             RGB[0] = pen.Color.R;
             RGB[1] = pen.Color.G;
             RGB[2] = pen.Color.B;
-            RGBDif[1] = 130;
+            RGBDif[2] = 255;
+            RGBDif[0] = -255;
         }
 
 
@@ -66,7 +67,7 @@ namespace Fractalii
             // recursive calls for left and right
             //System.Threading.Thread.Sleep(2);
             Generate_fractal1(size * .9f, width * .9f, p, end_x, end_y, angleL, level + 1);
-            Generate_fractal1(size * .7f, width * .7f, p, end_x, end_y, angleR, level + 1);
+            Generate_fractal1(size * .7f, width * .9f, p, end_x, end_y, angleR, level + 1);
         }
     }
 }
