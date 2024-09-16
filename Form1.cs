@@ -14,11 +14,10 @@ namespace Fractalii
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackColor = Color.Black;
         }
-        // Variable that will hold the point from which to draw the next line
-        
-        double start_angle_left = -1.0, start_angle_right = -1.0, size = -1.0;
+
+        private double start_angle_left = -1.0, start_angle_right = -1.0, size = -1.0;
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             start_angle_left = Convert.ToDouble(textBox1.Text);
@@ -37,6 +36,7 @@ namespace Fractalii
             if (start_angle_left >= 0.0 && start_angle_right>=0.0 && size>0.0)
             {
                 lineFractal fractal = new lineFractal();
+                fractal.global_init(start_angle_left, start_angle_right, size);
                 fractal.Generate_fractal1(start_angle_left,
                     start_angle_right, size,
                     pictureBox1, 0, 0);
