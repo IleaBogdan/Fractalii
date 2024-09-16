@@ -8,7 +8,7 @@ using static Fractalii.Form1;
 
 namespace Fractalii
 {
-    public class RecFunction
+    public class lineFractal
     {
         public void Generate_fractal1(double L_angle, double R_angle, 
             double size, PictureBox p, int coordonate_x, int coordonate_y)

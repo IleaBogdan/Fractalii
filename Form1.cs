@@ -1,5 +1,7 @@
 using System.Drawing;
-using static Fractalii.RecFunction;
+using System.Windows.Forms;
+using static Fractalii.lineFractal;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Fractalii
 {
@@ -15,33 +17,8 @@ namespace Fractalii
             pictureBox1.BackColor = Color.White;
         }
         // Variable that will hold the point from which to draw the next line
-        Point latestPoint;
-
-
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
-            {
-                // Remember the location where the button was pressed
-                latestPoint = e.Location;
-            }
-        }
-
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
-            {
-                using (Graphics g = pictureBox1.CreateGraphics())
-                {
-                    // Draw next line and...
-                    g.DrawLine(Pens.Red, latestPoint, e.Location);
-
-                    // ... Remember the location
-                    latestPoint = e.Location;
-                }
-            }
-        }
-        double start_angle_left = 0.0, start_angle_right = 0.0, size = 0.0;
+        
+        double start_angle_left = -1.0, start_angle_right = -1.0, size = -1.0;
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             start_angle_left = Convert.ToDouble(textBox1.Text);
@@ -56,10 +33,22 @@ namespace Fractalii
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            RecFunction obj1 = new RecFunction();
-            obj1.Generate_fractal1(start_angle_left, 
-                start_angle_right, size, 
-                pictureBox1, 0, 0);
+            pictureBox1.Refresh();
+            if (start_angle_left >= 0.0 && start_angle_right>=0.0 && size>0.0)
+            {
+                lineFractal fractal = new lineFractal();
+                fractal.Generate_fractal1(start_angle_left,
+                    start_angle_right, size,
+                    pictureBox1, 0, 0);
+            } 
+            else
+            {
+                using (Graphics g=pictureBox1.CreateGraphics())
+                {
+                    g.DrawString("Please enter all coordinates and size!", new System.Drawing.Font("Arial", 12), Brushes.Green, 
+                        new PointF((pictureBox1.Size.Width / 2) -150, (pictureBox1.Size.Height / 2)-20));
+                }
+            }
         }
     }
 }
