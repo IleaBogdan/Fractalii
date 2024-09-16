@@ -41,6 +41,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.Location = new Point(12, 39);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
@@ -55,7 +56,6 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(110, 23);
             textBox1.TabIndex = 2;
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
@@ -82,7 +82,6 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(110, 23);
             textBox2.TabIndex = 4;
-            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label3
             // 
@@ -100,7 +99,6 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(110, 23);
             textBox3.TabIndex = 7;
-            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // button1
             // 
