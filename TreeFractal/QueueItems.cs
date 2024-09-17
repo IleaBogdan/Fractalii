@@ -17,18 +17,6 @@ namespace Fractalii.TreeFractal
         // first constructor
         public QueueItems(int START_X, int START_Y, int END_X, int END_Y, double ANGLE, int LEVEL, double SIZE) 
         {
-            start_x =START_X;
-            start_y =START_Y;
-            end_x =END_X;
-            end_y =END_Y;
-            angle =ANGLE;
-            level =LEVEL;
-            size = SIZE;
-        }
-
-        // copy function
-        public void Copy(int START_X, int START_Y, int END_X, int END_Y, double SIZE, int LEVEL, double ANGLE)
-        {
             start_x = START_X;
             start_y = START_Y;
             end_x = END_X;
@@ -36,18 +24,6 @@ namespace Fractalii.TreeFractal
             angle = ANGLE;
             level = LEVEL;
             size = SIZE;
-        }
-
-        // second constructor
-        public QueueItems(QueueItems q)
-        {
-            start_x = q.start_x;
-            start_y = q.start_y;
-            end_x = q.end_x;
-            end_y = q.end_y;
-            angle = q.angle;
-            level = q.level;
-            size = q.size;
         }
 
         public QueueItems()
