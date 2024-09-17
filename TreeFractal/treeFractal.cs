@@ -87,14 +87,12 @@ namespace Fractalii.TreeFractal
             pen.Color = Color.FromArgb(RGB[0] + (int)(RGBDif[0] * fraction), RGB[1] + (int)(RGBDif[1] * fraction),
                 RGB[2] + (int)(RGBDif[2] * fraction));
             draw(start_x, start_y, end_x, end_y);
-            // decoment for much beautiful designe
-            //if (start_size/10<=size) 
             if (level<maxLevel)
             {
                 // recursive calls for left and right
-                //Thread.Sleep(2);
+                Thread.Sleep(1);
                 Generate_fractal1(size * 0.90, width*0.9, end_x, end_y, angleL, level+ 1, maxLevel);
-                Generate_fractal1(size * 0.70, width * 0.9, end_x, end_y, angleR, level+ 1, maxLevel);
+                Generate_fractal1(size * 0.75, width * 0.9, end_x, end_y, angleR, level+ 1, maxLevel);
             }
         }
 
