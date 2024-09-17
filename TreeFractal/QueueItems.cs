@@ -12,10 +12,11 @@ namespace Fractalii.TreeFractal
 
         // public variables
         public int start_x, end_x, start_y, end_y, level;
-        public double angle, size;
+        public double angle, size, width;
 
         // first constructor
-        public QueueItems(int START_X, int START_Y, int END_X, int END_Y, double ANGLE, int LEVEL, double SIZE) 
+        public QueueItems(int START_X, int START_Y, int END_X, int END_Y, double ANGLE, 
+            int LEVEL, double SIZE, double WIDTH) 
         {
             start_x = START_X;
             start_y = START_Y;
@@ -24,6 +25,7 @@ namespace Fractalii.TreeFractal
             angle = ANGLE;
             level = LEVEL;
             size = SIZE;
+            width = WIDTH;
         }
 
         public QueueItems()

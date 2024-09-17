@@ -64,6 +64,7 @@ namespace Fractalii.TreeFractal
         {
             QueueItems rez = new QueueItems();
 
+            rez.width = origin.width*reduction;
             rez.start_x = origin.end_x;
             rez.start_y = origin.end_y;
             double size = origin.size * reduction;
@@ -86,14 +87,12 @@ namespace Fractalii.TreeFractal
             pen.Color = Color.FromArgb(RGB[0] + (int)(RGBDif[0] * fraction), RGB[1] + (int)(RGBDif[1] * fraction),
                 RGB[2] + (int)(RGBDif[2] * fraction));
             draw(start_x, start_y, end_x, end_y);
-            // decoment for much beautiful designe
-            //if (start_size/10<=size) 
             if (level < maxLevel)
             {
                 // recursive calls for left and right
                 //Thread.Sleep(2);
                 Generate_fractal1(size * 0.9, width * 0.9, end_x, end_y, angleL, level + 1, maxLevel);
-                Generate_fractal1(size * 0.7, width * 0.9, end_x, end_y, angleR, level + 1, maxLevel);
+                Generate_fractal1(size * 0.75, width * 0.75, end_x, end_y, angleR, level + 1, maxLevel);
             }
         }
 
@@ -102,10 +101,10 @@ namespace Fractalii.TreeFractal
         // I hate this function more then me so fuck it 
         // if you understand put comments on it but if not just leave it
         // anyways I put some comments 
-        public void Generate_fractal2(double size, int start_x, int start_y, double angle, int maxLevel)
+        public void Generate_fractal2(double size, double width, int start_x, int start_y, double angle, int maxLevel)
         {
             // vairables initialization
-            QueueItems preStart=new QueueItems(0, 0, start_x, start_y, 0, 0, size);
+            QueueItems preStart=new QueueItems(0, 0, start_x, start_y, 0, 0, size, width);
             //(end_x, end_y, angleL, angleR) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
             // queue declaration and first item added
             QueueItems Start=calculate_end_point(preStart, angle, 1);
@@ -121,6 +120,11 @@ namespace Fractalii.TreeFractal
                 // first item getting poped out
                 QItem = queue.Dequeue();
                 // draw function
+                pen.Width = (float)(QItem.width);
+                float fraction = (float)QItem.level / (float)maxLevel;
+                pen.Color = Color.FromArgb(RGB[0] + (int)(RGBDif[0] * fraction), 
+                    RGB[1] + (int)(RGBDif[1] * fraction),
+                    RGB[2] + (int)(RGBDif[2] * fraction));
                 draw(QItem.start_x, QItem.start_y, QItem.end_x, QItem.end_y);
 
                 if (currentLevel == QItem.level)
