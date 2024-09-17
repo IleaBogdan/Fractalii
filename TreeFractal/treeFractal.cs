@@ -18,6 +18,7 @@ namespace Fractalii.TreeFractal
         private double start_angle_left = -1.0, start_angle_right = -1.0;
         private double start_size = -1;
         private PictureBox p;
+        private double width = 5;
 
 
         private int[] RGB = new int[3];
@@ -29,15 +30,15 @@ namespace Fractalii.TreeFractal
         {
             start_angle_left = saL;
             start_angle_right = saR;
-
             start_size = s;
+            p = pic;
+
             //Hardcode here
             RGB[0] = pen.Color.R;
             RGB[1] = pen.Color.G;
             RGB[2] = pen.Color.B;
             RGBDif[2] = 255;
             RGBDif[0] = -255;
-            p = pic;
         }
 
         // a compact and reusable draw function
@@ -45,7 +46,7 @@ namespace Fractalii.TreeFractal
         {
             using (Graphics g = p.CreateGraphics())
             {
-                g.DrawLine(Pens.Red, new Point(coordonate_x_1, coordonate_y_1), new Point(coordonate_x_2, coordonate_y_2));
+                g.DrawLine(pen, new Point(coordonate_x_1, coordonate_y_1), new Point(coordonate_x_2, coordonate_y_2));
             }
         }
 
