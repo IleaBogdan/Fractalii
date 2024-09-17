@@ -168,8 +168,10 @@
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(pictureBox1);
+            Cursor = Cursors.SizeAll;
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Fractal Page";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
