@@ -92,7 +92,7 @@ namespace Fractalii.TreeFractal
             if (level<maxLevel)
             {
                 // recursive calls for left and right
-                Thread.Sleep(2);
+                //Thread.Sleep(2);
                 Generate_fractal1(size * 0.90, width*0.9, end_x, end_y, angleL, level+ 1, maxLevel);
                 Generate_fractal1(size * 0.70, width * 0.9, end_x, end_y, angleR, level+ 1, maxLevel);
             }

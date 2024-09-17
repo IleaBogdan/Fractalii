@@ -135,7 +135,7 @@
             // 
             label5.AutoSize = true;
             label5.BackColor = SystemColors.ButtonHighlight;
-            label5.Location = new Point(585, 9);
+            label5.Location = new Point(576, 9);
             label5.Name = "label5";
             label5.Size = new Size(30, 15);
             label5.TabIndex = 11;
@@ -168,7 +168,6 @@
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(pictureBox1);
-            Cursor = Cursors.Arrow;
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
