@@ -49,5 +49,10 @@ namespace Fractalii.TreeFractal
             level = q.level;
             size = q.size;
         }
+
+        public QueueItems()
+        {
+
+        }
     }
 }

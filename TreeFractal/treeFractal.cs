@@ -48,6 +48,19 @@ namespace Fractalii.TreeFractal
                 (int)(start_y - size * Math.Sin(Math.PI * angle / 180)),
                 angle + start_angle_left, angle - start_angle_right);
         }
+        private QueueItems calculate_end_point(QueueItems origin, double angle, double reduction)
+        {
+            QueueItems rez=new QueueItems();
+
+            rez.start_x= origin.end_x;
+            rez.start_y= origin.end_y;
+            double size = origin.size * reduction;
+            rez.angle= angle+origin.angle;
+            rez.end_x= origin.end_x-(int)(size*Math.Cos(Math.PI*rez.angle/180));
+            rez.end_y = origin.end_y - (int)(size * Math.Sin(Math.PI * rez.angle/180));
+            rez.size= size;
+            return rez;
+        }
         // recursive function
         public void Generate_fractal1(double size, int start_x, int start_y, double angle, int maxLevel)
         {
@@ -75,13 +88,14 @@ namespace Fractalii.TreeFractal
         public void Generate_fractal2(double size, int start_x, int start_y, double angle, int maxLevel)
         {
             // vairables initialization
-            double angleL, angleR;
-            int end_x, end_y;
-            (end_x, end_y, angleL, angleR) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
+            QueueItems preStart=new QueueItems(0, 0, start_x, start_y, 0, 0, size);
+            //(end_x, end_y, angleL, angleR) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
             // queue declaration and first item added
+            QueueItems Start=calculate_end_point(preStart, angle, 1);
+            Start.level = 0;
             Queue<QueueItems> queue = new Queue<QueueItems>();
-            QueueItems QItem = new QueueItems(start_x, start_y, end_x, end_y, angle, 0, size);
-            queue.Enqueue(QItem);
+            QueueItems QItem; //= new QueueItems(start_x, start_y, end_x, end_y, angle, 0, size);
+            queue.Enqueue(Start);
 
             // level count
             int currentLevel = 0;
@@ -97,26 +111,35 @@ namespace Fractalii.TreeFractal
                     Thread.Sleep(2);
                     currentLevel=QItem.level;
                 }
-                if (QItem.level > maxLevel)
+                if (QItem.level >= maxLevel)
                 {
                     continue;
                 }
 
+                QueueItems LeftBranch = calculate_end_point(QItem, start_angle_left, 0.90);
+                QueueItems RightBranch = calculate_end_point(QItem, -start_angle_right, 0.75);
+                LeftBranch.level=QItem.level+1;
+                RightBranch.level=QItem.level+1;
+                queue.Enqueue(LeftBranch); 
+                queue.Enqueue(RightBranch);
+                
                 // variable overwriting
-                start_x = QItem.end_x;
-                start_y = QItem.end_y;
-                (end_x, end_y, angleL, angleR) = calculation(
-                    QItem.end_x, QItem.end_y, QItem.size, QItem.angle, 
-                    start_angle_right, start_angle_left);
 
-                size = QItem.size;
-                int tempLevel = QItem.level+1;
-                // adding new items into queue
-                QItem.Copy(start_x, start_y, end_x, end_y, size*0.90, tempLevel, angleL);
-                queue.Enqueue(new QueueItems(QItem));
 
-                QItem.Copy(start_x, start_y, end_x, end_y, size * 0.75, tempLevel, angleR);
-                queue.Enqueue(new QueueItems(QItem));
+                //start_x = QItem.end_x;
+                //start_y = QItem.end_y;
+                //(end_x, end_y, angleL, angleR) = calculation(
+                //    QItem.end_x, QItem.end_y, QItem.size, QItem.angle, 
+                //    start_angle_right, start_angle_left);
+
+                //size = QItem.size;
+                //int tempLevel = QItem.level+1;
+                //// adding new items into queue
+                //QItem.Copy(start_x, start_y, end_x, end_y, size*0.90, tempLevel, angleL);
+                //queue.Enqueue(new QueueItems(QItem));
+
+                //QItem.Copy(start_x, start_y, end_x, end_y, size * 0.75, tempLevel, angleR);
+                //queue.Enqueue(new QueueItems(QItem));
                 
             }
         }
