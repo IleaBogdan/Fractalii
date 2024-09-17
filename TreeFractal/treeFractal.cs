@@ -71,20 +71,27 @@ namespace Fractalii.TreeFractal
         // yeah I aint putting comments on this shit
         // I hate this function more then me so fuck it 
         // if you understand put comments on it but if not just leave it
+        // anyways I put some comments 
         public void Generate_fractal2(double size, int start_x, int start_y, double angle, int maxLevel)
         {
+            // vairables initialization
             double angleL, angleR;
             int end_x, end_y;
             (end_x, end_y, angleL, angleR) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
+            // queue declaration and first item added
             Queue<QueueItems> queue = new Queue<QueueItems>();
             QueueItems QItem = new QueueItems(start_x, start_y, end_x, end_y, angle, 0, size);
             queue.Enqueue(QItem);
 
+            // level count
             int currentLevel = 0;
             while (queue.Count()>0)
             {
+                // first item getting poped out
                 QItem = queue.Dequeue();
+                // draw function
                 draw(QItem.start_x, QItem.start_y, QItem.end_x, QItem.end_y);
+
                 if (currentLevel == QItem.level)
                 {
                     Thread.Sleep(2);
@@ -94,6 +101,8 @@ namespace Fractalii.TreeFractal
                 {
                     continue;
                 }
+
+                // variable overwriting
                 start_x = QItem.end_x;
                 start_y = QItem.end_y;
                 (end_x, end_y, angleL, angleR) = calculation(
@@ -102,6 +111,7 @@ namespace Fractalii.TreeFractal
 
                 size = QItem.size;
                 int tempLevel = QItem.level+1;
+                // adding new items into queue
                 QItem.Copy(start_x, start_y, end_x, end_y, size*0.90, tempLevel, angleL);
                 queue.Enqueue(new QueueItems(QItem));
 
