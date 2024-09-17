@@ -56,8 +56,8 @@ namespace Fractalii.TreeFractal
         {
             // calculating the angles
             // calculating the coords for the next x and y
-            return ((int)(start_x - size * Math.Cos(Math.PI * angle / 180)),
-                (int)(start_y - size * Math.Sin(Math.PI * angle / 180)),
+            return ((int)(start_x - size * Math.Cos(Math.PI * angle/180)),
+                (int)(start_y - size * Math.Sin(Math.PI * angle/180)),
                 angle + start_angle_left, angle - start_angle_right);
         }
         private QueueItems calculate_end_point(QueueItems origin, double angle, double reduction)
@@ -86,8 +86,7 @@ namespace Fractalii.TreeFractal
             pen.Color = Color.FromArgb(RGB[0] + (int)(RGBDif[0] * fraction), RGB[1] + (int)(RGBDif[1] * fraction),
                 RGB[2] + (int)(RGBDif[2] * fraction));
             draw(start_x, start_y, end_x, end_y);
-            // decoment for much beautiful designe
-            //if (start_size/10<=size) 
+            // decoment for much beautiful design
             if (level < maxLevel)
             {
                 // recursive calls for left and right

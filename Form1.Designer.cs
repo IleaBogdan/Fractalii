@@ -54,7 +54,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(90, 8);
+            textBox1.Location = new Point(91, 8);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(114, 27);
             textBox1.TabIndex = 2;
@@ -131,7 +131,7 @@
             // 
             label5.AutoSize = true;
             label5.BackColor = SystemColors.ButtonHighlight;
-            label5.Location = new Point(658, 12);
+            label5.Location = new Point(654, 12);
             label5.Name = "label5";
             label5.Size = new Size(39, 20);
             label5.TabIndex = 11;
