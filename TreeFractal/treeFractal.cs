@@ -67,8 +67,8 @@ namespace Fractalii.TreeFractal
             rez.start_x = origin.end_x;
             rez.start_y = origin.end_y;
             double size = origin.size * reduction;
-            rez.angle = angle+ origin.angle;
-            rez.end_x = origin.end_x - (int)(size*Math.Cos(Math.PI*rez.angle/180));
+            rez.angle = angle + origin.angle;
+            rez.end_x = origin.end_x - (int)(size * Math.Cos(Math.PI * rez.angle/180));
             rez.end_y = origin.end_y - (int)(size * Math.Sin(Math.PI * rez.angle/180));
             rez.size = size;
             return rez;
@@ -92,8 +92,8 @@ namespace Fractalii.TreeFractal
             {
                 // recursive calls for left and right
                 //Thread.Sleep(2);
-                Generate_fractal1(size * 0.9, width * 0.9, end_x, end_y, angleL, level+ 1, maxLevel);
-                Generate_fractal1(size * 0.7, width * 0.9, end_x, end_y, angleR, level+ 1, maxLevel);
+                Generate_fractal1(size * 0.9, width * 0.9, end_x, end_y, angleL, level + 1, maxLevel);
+                Generate_fractal1(size * 0.7, width * 0.9, end_x, end_y, angleR, level + 1, maxLevel);
             }
         }
 
@@ -116,7 +116,7 @@ namespace Fractalii.TreeFractal
 
             // level count
             int currentLevel = 0;
-            while (queue.Count()>0)
+            while (queue.Count() > 0)
             {
                 // first item getting poped out
                 QItem = queue.Dequeue();
@@ -126,7 +126,7 @@ namespace Fractalii.TreeFractal
                 if (currentLevel == QItem.level)
                 {
                     Thread.Sleep(2);
-                    currentLevel=QItem.level;
+                    currentLevel = QItem.level;
                 }
                 if (QItem.level >= maxLevel)
                 {
@@ -135,8 +135,8 @@ namespace Fractalii.TreeFractal
 
                 QueueItems LeftBranch = calculate_end_point(QItem, start_angle_left, 0.90);
                 QueueItems RightBranch = calculate_end_point(QItem, -start_angle_right, 0.75);
-                LeftBranch.level=QItem.level+1;
-                RightBranch.level=QItem.level+1;
+                LeftBranch.level = QItem.level+1;
+                RightBranch.level = QItem.level+1;
                 queue.Enqueue(LeftBranch); 
                 queue.Enqueue(RightBranch);
                 
