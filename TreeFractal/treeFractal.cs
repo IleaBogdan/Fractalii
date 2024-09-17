@@ -22,7 +22,7 @@ namespace Fractalii.TreeFractal
 
 
         private int[] RGB = new int[3];
-        private float[] RGBDif = new float[3];
+        private double[] RGBDif = new double[3];
         Pen pen = new Pen(Color.Red, 1f);
 
         // initialaze the global variables
@@ -82,7 +82,7 @@ namespace Fractalii.TreeFractal
 
             // line drawing
             pen.Width = (float)(width);
-            float fraction = (float)level / (float)maxLevel;
+            double fraction = (double)level / (double)maxLevel;
             pen.Color = Color.FromArgb(RGB[0] + (int)(RGBDif[0] * fraction), RGB[1] + (int)(RGBDif[1] * fraction),
                 RGB[2] + (int)(RGBDif[2] * fraction));
             draw(start_x, start_y, end_x, end_y);
