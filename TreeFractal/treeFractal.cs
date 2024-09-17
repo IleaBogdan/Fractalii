@@ -100,26 +100,13 @@ namespace Fractalii.TreeFractal
                     QItem.end_x, QItem.end_y, QItem.size, QItem.angle, 
                     start_angle_right, start_angle_left);
 
-                QItem.start_x = start_x;
-                QItem.start_y = start_y;
-                QItem.end_x = end_x; 
-                QItem.end_y = end_y;
-
                 size = QItem.size;
+                int tempLevel = QItem.level+1;
+                QItem.Copy(start_x, start_y, end_x, end_y, size*0.90, tempLevel, angleL);
+                queue.Enqueue(new QueueItems(QItem));
 
-
-                QItem.angle = angleL;
-                QItem.size = size * 0.90;
-                queue.Enqueue(new QueueItems(QItem.start_x, QItem.start_y,
-                    QItem.end_x, QItem.end_y,
-                    QItem.angle, QItem.level+1, QItem.size));
-
-
-                QItem.angle = angleR;
-                QItem.size = size * 0.75;
-                queue.Enqueue(new QueueItems(QItem.start_x, QItem.start_y,
-                    QItem.end_x, QItem.end_y,
-                    QItem.angle, QItem.level+1, QItem.size));
+                QItem.Copy(start_x, start_y, end_x, end_y, size * 0.75, tempLevel, angleR);
+                queue.Enqueue(new QueueItems(QItem));
                 
             }
         }

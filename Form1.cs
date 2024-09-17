@@ -37,7 +37,7 @@ namespace Fractalii
         }
         private bool condition()
         {
-            return start_angle_left >= 0.0 && start_angle_right >= 0.0 && size > 0 && levels != -1 && levels < 15;
+            return start_angle_left > 0.0 && start_angle_right > 0.0 && size > 0 && levels >0 && levels < 15;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -55,17 +55,19 @@ namespace Fractalii
 
                 // first call of the recursive function
                 fractal.Generate_fractal1(size, pictureBox1.Size.Width / 2, 
-                    pictureBox1.Size.Height / 2 + 100, 90, levels);
+                    pictureBox1.Size.Height / 2 + 150, 90, levels);
             }
             else
             {
-                // printing the invalide statemant
+                // invalide statemant popup
+                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size and levels correctly!");
+                /*// printing the invalide statemant
                 using (Graphics g = pictureBox1.CreateGraphics())
                 {
                     g.DrawString("Please enter all coordinates, size and levels correctly!", 
                         new System.Drawing.Font("Arial", 12), Brushes.Green,
                         new PointF((pictureBox1.Size.Width / 2) - 175, (pictureBox1.Size.Height / 2) - 20));
-                }
+                }*/
             }
         }
 
@@ -84,17 +86,19 @@ namespace Fractalii
 
                 // first call of the recursive function
                 fractal.Generate_fractal2(size, pictureBox1.Size.Width / 2, 
-                    pictureBox1.Size.Height / 2 + 100, 90, levels);
+                    pictureBox1.Size.Height / 2 + 150, 90, levels);
             }
             else
             {
-                // printing the invalide statemant
+                // invalide statemant popup
+                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size and levels correctly!");
+                /*// printing the invalide statemant
                 using (Graphics g = pictureBox1.CreateGraphics())
                 {
                     g.DrawString("Please enter all coordinates, size and levels correctly!", 
                         new System.Drawing.Font("Arial", 12), Brushes.Green,
                         new PointF((pictureBox1.Size.Width / 2) - 175, (pictureBox1.Size.Height / 2) - 20));
-                }
+                }*/
             }
         }
     }
