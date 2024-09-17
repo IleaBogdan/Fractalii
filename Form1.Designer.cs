@@ -168,7 +168,7 @@
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(pictureBox1);
-            Cursor = Cursors.SizeAll;
+            Cursor = Cursors.Arrow;
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
