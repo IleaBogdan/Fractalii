@@ -49,11 +49,11 @@ namespace Fractalii
             if (condition())
             {
                 // initialaze the global variables
-                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right);
+                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, pictureBox1);
 
                 // first call of the recursive function
-                fractal.Generate_fractal1(size, width, pictureBox1, 
-                    pictureBox1.Size.Width / 2, pictureBox1.Size.Height / 2 + 200, 90, 0);
+                fractal.Generate_fractal1(size, width, pictureBox1.Size.Width / 2, 
+                    pictureBox1.Size.Height / 2 + 200, 90, 0, levels);
             } 
             else
             {
@@ -77,10 +77,8 @@ namespace Fractalii
             // check if all variables have been assigned
             if (condition())
             {
-                treeFractal fractal = new treeFractal();
+                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, pictureBox1);
 
-                // initialaze the global variables
-                fractal.global_init(start_angle_left, start_angle_right, size, pictureBox1);
 
                 // first call of the recursive function
                 fractal.Generate_fractal2(size, pictureBox1.Size.Width / 2, 
