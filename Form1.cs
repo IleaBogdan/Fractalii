@@ -109,13 +109,13 @@ namespace Fractalii
 
         private void default_button_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "30";
-            textBox2.Text = "60";
+            textBox1.Text = "60";
+            textBox2.Text = "30";
             textBox3.Text = "60";
-            textBox4.Text = "13";
+            textBox4.Text = "12";
             textBox5.Text = "5";
-            textBox6.Text = "90";
-            textBox7.Text = "75";
+            textBox6.Text = "75";
+            textBox7.Text = "90";
         }
     }
 }
