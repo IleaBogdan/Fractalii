@@ -23,7 +23,7 @@ namespace Fractalii
         // private variables 
         private double start_angle_left = -1.0, start_angle_right = -1.0;
         private double size = -1.0, width = -1.0;
-        private int levels = -1, redL=0, redR=0;
+        private int levels = -1, redL = 0, redR = 0;
 
 
         private (double, double, double, int, double, int, int) get_data()
@@ -44,9 +44,9 @@ namespace Fractalii
         }
         private bool condition()
         {
-            return start_angle_left > 0.0 && start_angle_right > 0.0 
-                && size > 0 && levels > 0 && levels < 15 && width > 0 && width<7
-                && redL>0 && redR>0 && redR<100 && redL<100;
+            return start_angle_left > 0.0 && start_angle_right > 0.0
+                && size > 0 && levels > 0 && levels < 15 && width > 0 && width < 7
+                && redL > 0 && redR > 0 && redR < 100 && redL < 100;
         }
 
         private void button1_Click(object sender, EventArgs e)

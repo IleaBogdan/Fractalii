@@ -59,14 +59,14 @@ namespace Fractalii.TreeFractal
             // calculating the coords for the next x and y
             return ((int)(start_x - size * Math.Cos(rad)),
                 (int)(start_y - size * Math.Sin(rad)),
-                angle + start_angle_left, angle - start_angle_right);
+                angle + start_angle_right, angle - start_angle_left);
         }
 
         private QueueItems calculate_end_point(QueueItems origin, double angle, double reduction)
         {
             QueueItems rez = new QueueItems();
 
-            rez.width = origin.width*reduction;
+            rez.width = origin.width * reduction;
             rez.start_x = origin.end_x;
             rez.start_y = origin.end_y;
             double size = origin.size * reduction;
@@ -83,7 +83,7 @@ namespace Fractalii.TreeFractal
         {
             double angleL, angleR;
             int end_x, end_y;
-            (end_x, end_y, angleL, angleR) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
+            (end_x, end_y, angleR, angleL) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
 
             // line drawing
             pen.Width = (float)(width);
@@ -94,9 +94,8 @@ namespace Fractalii.TreeFractal
             if (level < maxLevel)
             {
                 // recursive calls for left and right
-                //Thread.Sleep(2);
-                Generate_fractal1(size * reductionL, width * reductionL, end_x, end_y, angleL, level + 1, maxLevel, reductionL, reductionR);
                 Generate_fractal1(size * reductionR, width * reductionR, end_x, end_y, angleR, level + 1, maxLevel, reductionL, reductionR);
+                Generate_fractal1(size * reductionL, width * reductionL, end_x, end_y, angleL, level + 1, maxLevel, reductionL, reductionR);
             }
         }
 
@@ -108,7 +107,7 @@ namespace Fractalii.TreeFractal
         public void Generate_fractal2(double size, double width, int start_x, int start_y, double angle, int maxLevel, double reductionL, double reductionR)
         {
             // vairables initialization
-            QueueItems preStart=new QueueItems(0, 0, start_x, start_y, 0, 0, size, width);
+            QueueItems preStart = new QueueItems(0, 0, start_x, start_y, 0, 0, size, width);
             //(end_x, end_y, angleL, angleR) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
             // queue declaration and first item added
             QueueItems Start = calculate_end_point(preStart, angle, 1);
