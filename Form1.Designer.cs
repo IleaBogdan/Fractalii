@@ -1,4 +1,8 @@
-﻿namespace Fractalii
+﻿using System;
+using System.Diagnostics;
+using System.Drawing.Text;
+
+namespace Fractalii
 {
     partial class Form1
     {
@@ -20,6 +24,24 @@
             base.Dispose(disposing);
         }
 
+        public void debbug()
+        {
+            if (Debugger.IsAttached)
+            {
+                Button button3 = new Button();
+                Controls.Add(button3);
+                // 
+                // button3
+                // 
+                button3.Location = new Point(540, 35);
+                button3.Name = "button3";
+                button3.Size = new Size(75, 23);
+                button3.TabIndex = 13;
+                button3.Text = "Default";
+                button3.UseVisualStyleBackColor = true;
+                button3.Click += button3_Click;
+            }
+        }
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -46,65 +68,70 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox1.Location = new Point(14, 79);
+            pictureBox1.Location = new Point(12, 59);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(918, 623);
+            pictureBox1.Size = new Size(803, 467);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(90, 8);
+            textBox1.Location = new Point(79, 6);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(114, 27);
+            textBox1.Size = new Size(100, 23);
             textBox1.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(14, 12);
+            label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(77, 20);
+            label1.Size = new Size(61, 15);
             label1.TabIndex = 3;
             label1.Text = "Angle left:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(211, 12);
+            label2.Location = new Point(185, 9);
             label2.Name = "label2";
-            label2.Size = new Size(86, 20);
+            label2.Size = new Size(69, 15);
             label2.TabIndex = 5;
             label2.Text = "Angle right:";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(297, 8);
+            textBox2.Location = new Point(260, 6);
+            textBox2.Margin = new Padding(3, 2, 3, 2);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(114, 27);
+            textBox2.Size = new Size(100, 23);
             textBox2.TabIndex = 4;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(418, 12);
+            label3.Location = new Point(366, 9);
             label3.Name = "label3";
-            label3.Size = new Size(39, 20);
+            label3.Size = new Size(30, 15);
             label3.TabIndex = 6;
             label3.Text = "Size:";
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(459, 8);
+            textBox3.Location = new Point(402, 6);
+            textBox3.Margin = new Padding(3, 2, 3, 2);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(113, 27);
+            textBox3.Size = new Size(99, 23);
             textBox3.TabIndex = 7;
             // 
             // button1
             // 
-            button1.Location = new Point(723, 8);
+            button1.Location = new Point(633, 6);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(91, 53);
+            button1.Size = new Size(80, 40);
             button1.TabIndex = 9;
             button1.Text = "Generate recursively";
             button1.UseVisualStyleBackColor = true;
@@ -113,46 +140,45 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(579, 12);
+            label4.Location = new Point(507, 9);
             label4.Name = "label4";
-            label4.Size = new Size(49, 20);
+            label4.Size = new Size(39, 15);
             label4.TabIndex = 9;
             label4.Text = "Levels";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(631, 8);
-            textBox4.Margin = new Padding(3, 4, 3, 4);
+            textBox4.Location = new Point(552, 6);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(71, 27);
+            textBox4.Size = new Size(63, 23);
             textBox4.TabIndex = 8;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.BackColor = SystemColors.ButtonHighlight;
-            label5.Location = new Point(658, 12);
+            label5.Location = new Point(576, 9);
             label5.Name = "label5";
-            label5.Size = new Size(39, 20);
+            label5.Size = new Size(30, 15);
             label5.TabIndex = 11;
             label5.Text = "<15 ";
             // 
             // button2
             // 
-            button2.Location = new Point(834, 8);
-            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Location = new Point(730, 6);
             button2.Name = "button2";
-            button2.Size = new Size(86, 53);
+            button2.Size = new Size(75, 40);
             button2.TabIndex = 12;
             button2.Text = "Generate iteratively";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
+            
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(947, 721);
+            ClientSize = new Size(829, 541);
             Controls.Add(button2);
             Controls.Add(label5);
             Controls.Add(textBox4);
@@ -165,6 +191,7 @@
             Controls.Add(label1);
             Controls.Add(textBox1);
             Controls.Add(pictureBox1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Fractal Page";

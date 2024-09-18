@@ -17,6 +17,7 @@ namespace Fractalii
         private void Form1_Load(object sender, EventArgs e)
         {
             pictureBox1.BackColor = Color.Black;
+            debbug();
         }
 
         // private variables 
@@ -37,7 +38,7 @@ namespace Fractalii
         }
         private bool condition()
         {
-            return start_angle_left > 0.0 && start_angle_right > 0.0 && size > 0 && levels >0 && levels < 15;
+            return start_angle_left > 0.0 && start_angle_right > 0.0 && size > 0 && levels > 0 && levels < 15;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -52,9 +53,9 @@ namespace Fractalii
                 treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, pictureBox1);
 
                 // first call of the recursive function
-                fractal.Generate_fractal1(size, width, pictureBox1.Size.Width / 2, 
-                    pictureBox1.Size.Height / 2 + 200, 90, 0, levels);
-            } 
+                fractal.Generate_fractal1(size, width, pictureBox1.Size.Width / 2,
+                    pictureBox1.Size.Height / 2 + 150, 90, 0, levels);
+            }
             else
             {
                 // invalide statemant popup
@@ -81,7 +82,7 @@ namespace Fractalii
 
 
                 // first call of the recursive function
-                fractal.Generate_fractal2(size, width, pictureBox1.Size.Width / 2, 
+                fractal.Generate_fractal2(size, width, pictureBox1.Size.Width / 2,
                     pictureBox1.Size.Height / 2 + 150, 90, levels);
             }
             else
@@ -96,6 +97,14 @@ namespace Fractalii
                         new PointF((pictureBox1.Size.Width / 2) - 175, (pictureBox1.Size.Height / 2) - 20));
                 }*/
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "30";
+            textBox2.Text = "60";
+            textBox3.Text = "60";
+            textBox4.Text = "13";
         }
     }
 }
