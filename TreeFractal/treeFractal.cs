@@ -20,9 +20,6 @@ namespace Fractalii.TreeFractal
         private PictureBox p;
         private double width = 5;
 
-        private double[] cos = new double[360];
-        private double[] sin = new double[360];
-
         private int[] RGB = new int[3];
         private double[] RGBDif = new double[3];
         Pen pen = new Pen(Color.Red, 1f);
@@ -34,12 +31,6 @@ namespace Fractalii.TreeFractal
             start_angle_right = saR;
             start_size = s;
             p = pic;
-
-            for(int i = 0; i < 360; i++)
-            {
-                sin[i] = Math.Sin(Math.PI * (double)i / 180);
-                cos[i] = Math.Cos(Math.PI * (double)i / 180);
-            }
 
             //Hardcode here
             RGB[0] = pen.Color.R;            
@@ -62,41 +53,13 @@ namespace Fractalii.TreeFractal
             double size, double angle,
             double start_angle_right, double start_angle_left)
         {
+
+            double rad = Math.PI * angle / 180;
             // calculating the angles
             // calculating the coords for the next x and y
-            double angle_right = (angle + start_angle_right) % 360, angle_left = (angle - start_angle_left) % 360;
-            if(angle < 0)
-            {
-                angle = -angle;
-                return ((int)(start_x - size * cos[(int)angle]),
-                    (int)(start_y - size * (-sin[(int)angle])),
-                    angle_right, angle_left);
-            }
-            return ((int)(start_x - size * cos[(int)angle]),
-                (int)(start_y - size * sin[(int)angle]),
-                angle_right, angle_left);
-        }
-        
-        // recursive function
-        public void Generate_fractal1(double size, double width, int start_x, int start_y, double angle, int level, int maxLevel)
-        {
-            double angleL, angleR;
-            int end_x, end_y;
-            (end_x, end_y, angleR, angleL) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
-
-            // line drawing
-            pen.Width = (float)(width);
-            double fraction = (double)level / (double)maxLevel;
-            pen.Color = Color.FromArgb(RGB[0] + (int)(RGBDif[0] * fraction), RGB[1] + (int)(RGBDif[1] * fraction),
-                RGB[2] + (int)(RGBDif[2] * fraction));
-            draw(start_x, start_y, end_x, end_y);
-            // decomment for much beautiful design
-            if (level < maxLevel)
-            {
-                // recursive calls for left and right
-                Generate_fractal1(size * 0.9, width * 0.9, end_x, end_y, angleR, level + 1, maxLevel);
-                Generate_fractal1(size * 0.7, width * 0.9, end_x, end_y, angleL, level + 1, maxLevel);
-            }
+            return ((int)(start_x - size * Math.Cos(rad)),
+                (int)(start_y - size * Math.Sin(rad)),
+                angle + start_angle_left, angle - start_angle_right);
         }
 
         private QueueItems calculate_end_point(QueueItems origin, double angle, double reduction)
@@ -116,7 +79,7 @@ namespace Fractalii.TreeFractal
         }
         // recursive function
         public void Generate_fractal1(double size, double width, int start_x, int start_y, double angle, 
-            int level, int maxLevel, double reductioL, double reductionR)
+            int level, int maxLevel, double reductionL, double reductionR)
         {
             double angleL, angleR;
             int end_x, end_y;
@@ -132,8 +95,8 @@ namespace Fractalii.TreeFractal
             {
                 // recursive calls for left and right
                 //Thread.Sleep(2);
-                Generate_fractal1(size * reductioL, width * reductioL, end_x, end_y, angleL, level + 1, maxLevel, reductioL, reductionR);
-                Generate_fractal1(size * reductionR, width * reductionR, end_x, end_y, angleR, level + 1, maxLevel, reductioL, reductionR);
+                Generate_fractal1(size * reductionL, width * reductionL, end_x, end_y, angleL, level + 1, maxLevel, reductionL, reductionR);
+                Generate_fractal1(size * reductionR, width * reductionR, end_x, end_y, angleR, level + 1, maxLevel, reductionL, reductionR);
             }
         }
 
@@ -142,8 +105,7 @@ namespace Fractalii.TreeFractal
         // I hate this function more then me so fuck it 
         // if you understand put comments on it but if not just leave it
         // anyways I put some comments 
-        public void Generate_fractal2(double size, double width, int start_x, int start_y, double angle,
-            int level, int maxLevel, double reductionL, double reductionR)
+        public void Generate_fractal2(double size, double width, int start_x, int start_y, double angle, int maxLevel, double reductionL, double reductionR)
         {
             // vairables initialization
             QueueItems preStart=new QueueItems(0, 0, start_x, start_y, 0, 0, size, width);

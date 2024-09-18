@@ -37,6 +37,9 @@ namespace Fractalii
             double.TryParse(textBox5.Text, null, out Width);
             Int32.TryParse(textBox6.Text, null, out rL);
             Int32.TryParse(textBox7.Text, null, out rR);
+
+
+
             return (angleL, angleR, Size, Level, Width, rL, rR);
         }
         private bool condition()
@@ -88,7 +91,7 @@ namespace Fractalii
 
                 // first call of the recursive function
                 fractal.Generate_fractal2(size, width, pictureBox1.Size.Width / 2,
-                    pictureBox1.Size.Height / 2 + 150, 90, 0, levels, (double)(redL) / 100, (double)(redR) / 100);
+                    pictureBox1.Size.Height / 2 + 150, 90, levels, (double)(redL) / 100, (double)(redR) / 100);
             }
             else
             {
