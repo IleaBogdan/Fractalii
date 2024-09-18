@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using static Fractalii.Form1;
-using System.Security.Policy;
-using System.Reflection.Metadata;
-using static Fractalii.TreeFractal.QueueItems;
-
-
-namespace Fractalii.TreeFractal
+﻿namespace Fractalii.TreeFractal
 {
     public class treeFractal
     {
@@ -19,25 +7,31 @@ namespace Fractalii.TreeFractal
         private double start_size = -1;
         private PictureBox p;
         private double width = 5;
+        private Color initialColor, finalColor;
 
         private int[] RGB = new int[3];
         private double[] RGBDif = new double[3];
         Pen pen = new Pen(Color.Red, 1f);
 
         // initialaze the global variables
-        public treeFractal(double saL, double saR, double s, PictureBox pic)
+        public treeFractal(double saL, double saR, double s, Color initial_color, Color final_color, PictureBox pic)
         {
+            // Setting parameters
             start_angle_left = saL;
             start_angle_right = saR;
             start_size = s;
+            initialColor = initial_color;
+            finalColor = final_color;
             p = pic;
 
-            //Hardcode here
+            // Managing
+            pen.Color = initialColor;
             RGB[0] = pen.Color.R;            
             RGB[1] = pen.Color.G;
             RGB[2] = pen.Color.B;
-            RGBDif[2] = 255;
-            RGBDif[0] = -255;
+            RGBDif[0] = finalColor.R - RGB[0];
+            RGBDif[1] = finalColor.G - RGB[1];
+            RGBDif[2] = finalColor.B - RGB[2];
         }
 
         // a compact and reusable draw function

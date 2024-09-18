@@ -25,6 +25,7 @@ namespace Fractalii
         private double size = -1.0, width = -1.0;
         private int levels = -1, redL = 0, redR = 0;
 
+        private Color initialColor = Color.Red, finalColor = Color.Red;
 
         private (double, double, double, int, double, int, int) get_data()
         {
@@ -58,11 +59,11 @@ namespace Fractalii
             if (condition())
             {
                 // initialaze the global variables
-                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, pictureBox1);
+                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, initialColor, finalColor, pictureBox1);
 
                 // first call of the recursive function
                 fractal.Generate_fractal1(size, width, pictureBox1.Size.Width / 2,
-                    pictureBox1.Size.Height / 2 + 150, 90, 0, levels, (double)(redL) / 100, (double)(redR)/ 100);
+                    pictureBox1.Size.Height / 2 + 150, 90, 0, levels, (double)(redL) / 100, (double)(redR) / 100);
             }
             else
             {
@@ -86,7 +87,7 @@ namespace Fractalii
             // check if all variables have been assigned
             if (condition())
             {
-                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, pictureBox1);
+                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, initialColor, finalColor, pictureBox1);
 
 
                 // first call of the recursive function
@@ -116,6 +117,28 @@ namespace Fractalii
             textBox5.Text = "5";
             textBox6.Text = "75";
             textBox7.Text = "90";
+        }
+
+        private void initialColorSelect_Click(object sender, EventArgs e)
+        {
+            Color_Selector colorSelector = new Color_Selector();
+            DialogResult result = colorSelector.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                initialColor = colorSelector.setColor;
+            }
+        }
+
+        private void finalColorSelect_Click(object sender, EventArgs e)
+        {
+            Color_Selector colorSelector = new Color_Selector();
+            DialogResult result = colorSelector.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                finalColor = colorSelector.setColor;
+            }
         }
     }
 }
