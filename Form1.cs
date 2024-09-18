@@ -45,7 +45,7 @@ namespace Fractalii
         private bool condition()
         {
             return start_angle_left > 0.0 && start_angle_right > 0.0 
-                && size > 0 && levels > 0 && levels < 15 && width > 0 
+                && size > 0 && levels > 0 && levels < 15 && width > 0 && width<7
                 && redL>0 && redR>0 && redR<100 && redL<100;
         }
 
