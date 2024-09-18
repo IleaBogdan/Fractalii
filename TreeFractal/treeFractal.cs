@@ -75,7 +75,8 @@ namespace Fractalii.TreeFractal
             return rez;
         }
         // recursive function
-        public void Generate_fractal1(double size, double width, int start_x, int start_y, double angle, int level, int maxLevel)
+        public void Generate_fractal1(double size, double width, int start_x, int start_y, double angle, 
+            int level, int maxLevel, double reductioL, double reductionR)
         {
             double angleL, angleR;
             int end_x, end_y;
@@ -91,8 +92,8 @@ namespace Fractalii.TreeFractal
             {
                 // recursive calls for left and right
                 //Thread.Sleep(2);
-                Generate_fractal1(size * 0.9, width * 0.9, end_x, end_y, angleL, level + 1, maxLevel);
-                Generate_fractal1(size * 0.75, width * 0.75, end_x, end_y, angleR, level + 1, maxLevel);
+                Generate_fractal1(size * reductioL, width * reductioL, end_x, end_y, angleL, level + 1, maxLevel, reductioL, reductionR);
+                Generate_fractal1(size * reductionR, width * reductionR, end_x, end_y, angleR, level + 1, maxLevel, reductioL, reductionR);
             }
         }
 
@@ -101,7 +102,8 @@ namespace Fractalii.TreeFractal
         // I hate this function more then me so fuck it 
         // if you understand put comments on it but if not just leave it
         // anyways I put some comments 
-        public void Generate_fractal2(double size, double width, int start_x, int start_y, double angle, int maxLevel)
+        public void Generate_fractal2(double size, double width, int start_x, int start_y, double angle,
+            int level, int maxLevel, double reductionL, double reductionR)
         {
             // vairables initialization
             QueueItems preStart=new QueueItems(0, 0, start_x, start_y, 0, 0, size, width);
@@ -137,8 +139,8 @@ namespace Fractalii.TreeFractal
                     continue;
                 }
 
-                QueueItems LeftBranch = calculate_end_point(QItem, start_angle_left, 0.90);
-                QueueItems RightBranch = calculate_end_point(QItem, -start_angle_right, 0.75);
+                QueueItems LeftBranch = calculate_end_point(QItem, start_angle_left, reductionL);
+                QueueItems RightBranch = calculate_end_point(QItem, -start_angle_right, reductionR);
                 LeftBranch.level = QItem.level+1;
                 RightBranch.level = QItem.level+1;
                 queue.Enqueue(LeftBranch); 

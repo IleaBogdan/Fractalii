@@ -39,7 +39,7 @@ namespace Fractalii
                 default_button.TabIndex = 13;
                 default_button.Text = "Default";
                 default_button.UseVisualStyleBackColor = true;
-                default_button.Click += button3_Click;
+                default_button.Click += default_button_Click;
             }
         }
         #region Windows Form Designer generated code
@@ -65,16 +65,22 @@ namespace Fractalii
             label6 = new Label();
             textBox5 = new TextBox();
             label7 = new Label();
+            label8 = new Label();
+            textBox6 = new TextBox();
+            label9 = new Label();
+            label10 = new Label();
+            textBox7 = new TextBox();
+            label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox1.Location = new Point(12, 59);
+            pictureBox1.Location = new Point(12, 67);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(803, 467);
+            pictureBox1.Size = new Size(803, 459);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
@@ -179,7 +185,7 @@ namespace Fractalii
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(31, 37);
+            label6.Location = new Point(366, 42);
             label6.Name = "label6";
             label6.Size = new Size(42, 15);
             label6.TabIndex = 13;
@@ -187,26 +193,84 @@ namespace Fractalii
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(79, 34);
+            textBox5.Location = new Point(414, 39);
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(100, 23);
+            textBox5.Size = new Size(87, 23);
             textBox5.TabIndex = 9;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.BackColor = SystemColors.ButtonHighlight;
-            label7.Location = new Point(149, 37);
+            label7.Location = new Point(466, 42);
             label7.Name = "label7";
             label7.Size = new Size(24, 15);
             label7.TabIndex = 31;
             label7.Text = "<7 ";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(12, 39);
+            label8.Name = "label8";
+            label8.Size = new Size(81, 15);
+            label8.TabIndex = 36;
+            label8.Text = "Left Redution:";
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(99, 36);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(80, 23);
+            textBox6.TabIndex = 37;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = SystemColors.ButtonHighlight;
+            label9.Location = new Point(155, 42);
+            label9.Name = "label9";
+            label9.Size = new Size(17, 15);
+            label9.TabIndex = 38;
+            label9.Text = "%";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = SystemColors.ButtonHighlight;
+            label10.Location = new Point(336, 42);
+            label10.Name = "label10";
+            label10.Size = new Size(17, 15);
+            label10.TabIndex = 41;
+            label10.Text = "%";
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(280, 36);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(80, 23);
+            textBox7.TabIndex = 40;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(185, 39);
+            label11.Name = "label11";
+            label11.Size = new Size(89, 15);
+            label11.TabIndex = 39;
+            label11.Text = "Right Redution:";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(829, 541);
+            Controls.Add(label10);
+            Controls.Add(textBox7);
+            Controls.Add(label11);
+            Controls.Add(label9);
+            Controls.Add(textBox6);
+            Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(textBox5);
             Controls.Add(label6);
@@ -248,5 +312,11 @@ namespace Fractalii
         private Label label6;
         private TextBox textBox5;
         private Label label7;
+        private Label label8;
+        private TextBox textBox6;
+        private Label label9;
+        private Label label10;
+        private TextBox textBox7;
+        private Label label11;
     }
 }
