@@ -22,28 +22,29 @@ namespace Fractalii
 
         // private variables 
         private double start_angle_left = -1.0, start_angle_right = -1.0;
-        private double size = -1.0, width = 5;
+        private double size = -1.0, width = -1.0;
         private int levels = -1;
 
 
-        private (double, double, double, int) get_data()
+        private (double, double, double, int, double) get_data()
         {
-            double angleL, angleR, Size;
+            double angleL, angleR, Size, Width;
             int Level;
             double.TryParse(textBox1.Text, null, out angleL);
             double.TryParse(textBox2.Text, null, out angleR);
             double.TryParse(textBox3.Text, null, out Size);
             Int32.TryParse(textBox4.Text, null, out Level);
-            return (angleL, angleR, Size, Level);
+            double.TryParse(textBox5.Text, null, out Width);
+            return (angleL, angleR, Size, Level, Width);
         }
         private bool condition()
         {
-            return start_angle_left > 0.0 && start_angle_right > 0.0 && size > 0 && levels > 0 && levels < 15;
+            return start_angle_left > 0.0 && start_angle_right > 0.0 && size > 0 && levels > 0 && levels < 15 && width>0;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            (start_angle_left, start_angle_right, size, levels) = get_data();
+            (start_angle_left, start_angle_right, size, levels, width) = get_data();
             // .Refresh erases anything on pictureBox1 if we want to redraw
             pictureBox1.Refresh();
             // check if all variables have been assigned
@@ -59,11 +60,11 @@ namespace Fractalii
             else
             {
                 // invalide statemant popup
-                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size and levels correctly!");
+                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size, width and levels correctly!");
                 /*// printing the invalide statemant
                 using (Graphics g = pictureBox1.CreateGraphics())
                 {
-                    g.DrawString("Please enter all coordinates, size and levels correctly!", 
+                    g.DrawString("Please enter all coordinates, size, width and levels correctly!", 
                         new System.Drawing.Font("Arial", 12), Brushes.Green,
                         new PointF((pictureBox1.Size.Width / 2) - 175, (pictureBox1.Size.Height / 2) - 20));
                 }*/
@@ -72,7 +73,7 @@ namespace Fractalii
 
         private void button2_Click(object sender, EventArgs e)
         {
-            (start_angle_left, start_angle_right, size, levels) = get_data();
+            (start_angle_left, start_angle_right, size, levels, width) = get_data();
             // .Refresh erases anything on pictureBox1 if we want to redraw
             pictureBox1.Refresh();
             // check if all variables have been assigned
@@ -82,17 +83,18 @@ namespace Fractalii
 
 
                 // first call of the recursive function
-                fractal.Generate_fractal2(size, width, pictureBox1.Size.Width / 2,
-                    pictureBox1.Size.Height / 2 + 150, 90, levels);
+                fractal.Generate_fractal2(size, width, 
+                    pictureBox1.Size.Width / 2, pictureBox1.Size.Height / 2 + 150, 
+                    90, levels);
             }
             else
             {
                 // invalide statemant popup
-                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size and levels correctly!");
+                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size, width and levels correctly!");
                 /*// printing the invalide statemant
                 using (Graphics g = pictureBox1.CreateGraphics())
                 {
-                    g.DrawString("Please enter all coordinates, size and levels correctly!", 
+                    g.DrawString("Please enter all coordinates, size, width and levels correctly!", 
                         new System.Drawing.Font("Arial", 12), Brushes.Green,
                         new PointF((pictureBox1.Size.Width / 2) - 175, (pictureBox1.Size.Height / 2) - 20));
                 }*/
@@ -105,6 +107,7 @@ namespace Fractalii
             textBox2.Text = "60";
             textBox3.Text = "60";
             textBox4.Text = "13";
+            textBox5.Text = "5";
         }
     }
 }

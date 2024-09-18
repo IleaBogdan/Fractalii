@@ -34,7 +34,7 @@ namespace Fractalii.TreeFractal
             p = pic;
 
             //Hardcode here
-            RGB[0] = pen.Color.R;
+            RGB[0] = pen.Color.R;            
             RGB[1] = pen.Color.G;
             RGB[2] = pen.Color.B;
             RGBDif[2] = 255;

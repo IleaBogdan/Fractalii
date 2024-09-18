@@ -28,18 +28,18 @@ namespace Fractalii
         {
             if (Debugger.IsAttached)
             {
-                Button button3 = new Button();
-                Controls.Add(button3);
+                Button default_button = new Button();
+                Controls.Add(default_button);
                 // 
                 // button3
                 // 
-                button3.Location = new Point(540, 35);
-                button3.Name = "button3";
-                button3.Size = new Size(75, 23);
-                button3.TabIndex = 13;
-                button3.Text = "Default";
-                button3.UseVisualStyleBackColor = true;
-                button3.Click += button3_Click;
+                default_button.Location = new Point(540, 35);
+                default_button.Name = "default_button";
+                default_button.Size = new Size(75, 23);
+                default_button.TabIndex = 13;
+                default_button.Text = "Default";
+                default_button.UseVisualStyleBackColor = true;
+                default_button.Click += button3_Click;
             }
         }
         #region Windows Form Designer generated code
@@ -62,6 +62,9 @@ namespace Fractalii
             textBox4 = new TextBox();
             label5 = new Label();
             button2 = new Button();
+            label6 = new Label();
+            textBox5 = new TextBox();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -89,7 +92,7 @@ namespace Fractalii
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
             label1.Size = new Size(61, 15);
-            label1.TabIndex = 3;
+            label1.TabIndex = 32;
             label1.Text = "Angle left:";
             // 
             // label2
@@ -98,7 +101,7 @@ namespace Fractalii
             label2.Location = new Point(185, 9);
             label2.Name = "label2";
             label2.Size = new Size(69, 15);
-            label2.TabIndex = 5;
+            label2.TabIndex = 34;
             label2.Text = "Angle right:";
             // 
             // textBox2
@@ -115,7 +118,7 @@ namespace Fractalii
             label3.Location = new Point(366, 9);
             label3.Name = "label3";
             label3.Size = new Size(30, 15);
-            label3.TabIndex = 6;
+            label3.TabIndex = 35;
             label3.Text = "Size:";
             // 
             // textBox3
@@ -132,7 +135,7 @@ namespace Fractalii
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(80, 40);
-            button1.TabIndex = 9;
+            button1.TabIndex = 10;
             button1.Text = "Generate recursively";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -143,7 +146,7 @@ namespace Fractalii
             label4.Location = new Point(507, 9);
             label4.Name = "label4";
             label4.Size = new Size(39, 15);
-            label4.TabIndex = 9;
+            label4.TabIndex = 34;
             label4.Text = "Levels";
             // 
             // textBox4
@@ -160,7 +163,7 @@ namespace Fractalii
             label5.Location = new Point(576, 9);
             label5.Name = "label5";
             label5.Size = new Size(30, 15);
-            label5.TabIndex = 11;
+            label5.TabIndex = 30;
             label5.Text = "<15 ";
             // 
             // button2
@@ -168,17 +171,45 @@ namespace Fractalii
             button2.Location = new Point(730, 6);
             button2.Name = "button2";
             button2.Size = new Size(75, 40);
-            button2.TabIndex = 12;
+            button2.TabIndex = 11;
             button2.Text = "Generate iteratively";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
-            
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(31, 37);
+            label6.Name = "label6";
+            label6.Size = new Size(42, 15);
+            label6.TabIndex = 13;
+            label6.Text = "Width:";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(79, 34);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(100, 23);
+            textBox5.TabIndex = 9;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = SystemColors.ButtonHighlight;
+            label7.Location = new Point(149, 37);
+            label7.Name = "label7";
+            label7.Size = new Size(24, 15);
+            label7.TabIndex = 31;
+            label7.Text = "<7 ";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(829, 541);
+            Controls.Add(label7);
+            Controls.Add(textBox5);
+            Controls.Add(label6);
             Controls.Add(button2);
             Controls.Add(label5);
             Controls.Add(textBox4);
@@ -214,5 +245,8 @@ namespace Fractalii
         private TextBox textBox4;
         private Label label5;
         private Button button2;
+        private Label label6;
+        private TextBox textBox5;
+        private Label label7;
     }
 }
