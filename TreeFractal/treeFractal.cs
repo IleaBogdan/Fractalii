@@ -39,7 +39,7 @@
         {
             using (Graphics g = p.CreateGraphics())
             {
-                g.DrawLine(pen, new Point(coordonate_x_1, coordonate_y_1), new Point(coordonate_x_2, coordonate_y_2));
+                g.DrawLine(pen, coordonate_x_1, coordonate_y_1, coordonate_x_2, coordonate_y_2);
             }
         }
 
