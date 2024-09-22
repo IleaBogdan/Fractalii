@@ -51,9 +51,9 @@
             double rad = Math.PI * angle / 180;
             // calculating the angles
             // calculating the coords for the next x and y
-            return ((int)(start_x - size * Math.Cos(rad)),
+            return ((int)(start_x + size * Math.Cos(rad)),
                 (int)(start_y - size * Math.Sin(rad)),
-                angle + start_angle_right, angle - start_angle_left);
+                angle - start_angle_right, angle + start_angle_left);
         }
 
         private QueueItems calculate_end_point(QueueItems origin, double angle, double reduction)
