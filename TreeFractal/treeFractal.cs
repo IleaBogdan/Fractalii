@@ -39,17 +39,15 @@ namespace Fractalii.TreeFractal
             Point p1 = new Point(coordonate_x_1, coordonate_y_1), p2 = new Point(coordonate_x_2, coordonate_y_2);
             using (Graphics g = p.CreateGraphics())
             {
-                g.DrawLine(pen, p1, p2);
+                g.DrawLine(pen, p1, p2); 
             }
         }
         private void predraw(int level, int maxLevel, double width)
         {
-            try { 
-                pen.Width = (float)(width); 
-            }
-            catch(Exception e) {
-                pen.Width = 2;
-            }
+            pen.Width = (float)(width);
+
+
+
             float fraction = (float)level / (float)maxLevel;
             int green = RGB[0] + (int)(RGBDif[0] * fraction), red = RGB[2] + (int)(RGBDif[2] * fraction), blue = RGB[1] + (int)(RGBDif[1] * fraction);
             pen.Color = Color.FromArgb(green>=0 && green<=255 ? green : 0, blue>=0 && blue<=255 ? blue : 0, red >= 0 && red <= 255 ? red : 0);
