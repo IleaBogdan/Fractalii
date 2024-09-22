@@ -1,12 +1,12 @@
-﻿namespace Fractalii.TreeFractal
+﻿using System.Xml;
+
+namespace Fractalii.TreeFractal
 {
     public class treeFractal
     {
         // private variables
         private double start_angle_left = -1.0, start_angle_right = -1.0;
-        private double start_size = -1;
         private PictureBox p;
-        private double width = 5;
         private Color initialColor, finalColor;
 
         private int[] RGB = new int[3];
@@ -19,7 +19,6 @@
             // Setting parameters
             start_angle_left = saL;
             start_angle_right = saR;
-            start_size = s;
             initialColor = initial_color;
             finalColor = final_color;
             p = pic;
@@ -37,18 +36,31 @@
         // a compact and reusable draw function
         private void draw(int coordonate_x_1, int coordonate_y_1, int coordonate_x_2, int coordonate_y_2)
         {
+            Point p1 = new Point(coordonate_x_1, coordonate_y_1), p2 = new Point(coordonate_x_2, coordonate_y_2);
             using (Graphics g = p.CreateGraphics())
             {
-                g.DrawLine(pen, new Point(coordonate_x_1, coordonate_y_1), new Point(coordonate_x_2, coordonate_y_2));
+                g.DrawLine(pen, p1, p2);
             }
         }
-
+        private void predraw(int level, int maxLevel, double width)
+        {
+            try { 
+                pen.Width = (float)(width); 
+            }
+            catch(Exception e) {
+                pen.Width = 2;
+            }
+            float fraction = (float)level / (float)maxLevel;
+            int green = RGB[0] + (int)(RGBDif[0] * fraction), red = RGB[2] + (int)(RGBDif[2] * fraction), blue = RGB[1] + (int)(RGBDif[1] * fraction);
+            pen.Color = Color.FromArgb(green>=0 && green<=255 ? green : 0, blue>=0 && blue<=255 ? blue : 0, red >= 0 && red <= 255 ? red : 0);
+        }
         private (int, int, double, double) calculation(int start_x, int start_y,
             double size, double angle,
             double start_angle_right, double start_angle_left)
         {
 
-            double rad = Math.PI * angle / 180;
+            double rad = Math.PI * angle / 180;	
+
             // calculating the angles
             // calculating the coords for the next x and y
             return ((int)(start_x - size * Math.Cos(rad)),
@@ -75,22 +87,34 @@
         public void Generate_fractal1(double size, double width, int start_x, int start_y, double angle, 
             int level, int maxLevel, double reductionL, double reductionR)
         {
-            double angleL, angleR;
+            /*double angleL, angleR;
             int end_x, end_y;
             (end_x, end_y, angleL, angleR) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
 
-            // line drawing
-            pen.Width = (float)(width);
-            float fraction = (float)level / (float)maxLevel;
-            pen.Color = Color.FromArgb(RGB[0] + (int)(RGBDif[0] * fraction), RGB[1] + (int)(RGBDif[1] * fraction),
-                RGB[2] + (int)(RGBDif[2] * fraction));
+            predraw(level, maxLevel, width);
             draw(start_x, start_y, end_x, end_y);
+
+            // line drawing
             if (level < maxLevel)
             {
                 // recursive calls for left and right
                 Generate_fractal1(size * reductionL, width * reductionL, end_x, end_y, angleL, level + 1, maxLevel, reductionL, reductionR);
                 Generate_fractal1(size * reductionR, width * reductionR, end_x, end_y, angleR, level + 1, maxLevel, reductionL, reductionR);
             }
+            */
+
+            // new code:
+
+
+            predraw(level, maxLevel, width);
+
+            QueueItems rez = calculate_end_point(new QueueItems(0, 0, start_x, start_y, angle, level, size, width), start_angle_left, reductionL);
+
+            draw(rez.start_x, rez.start_y, rez.end_x, rez.end_y);
+            Generate_fractal1(size*reductionL, width*reductionL, rez.end_x, rez.end_y, rez.angle, level+1, maxLevel, reductionL, reductionR);
+
+
+
         }
 
 
@@ -117,11 +141,8 @@
                 // first item getting poped out
                 QItem = queue.Dequeue();
                 // draw function
-                pen.Width = (float)(QItem.width);
-                float fraction = (float)QItem.level / (float)maxLevel;
-                pen.Color = Color.FromArgb(RGB[0] + (int)(RGBDif[0] * fraction), 
-                    RGB[1] + (int)(RGBDif[1] * fraction),
-                    RGB[2] + (int)(RGBDif[2] * fraction));
+
+                predraw(QItem.level, maxLevel, QItem.width);
                 draw(QItem.start_x, QItem.start_y, QItem.end_x, QItem.end_y);
 
                 if (currentLevel == QItem.level)
