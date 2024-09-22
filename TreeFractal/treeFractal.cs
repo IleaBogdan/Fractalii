@@ -46,11 +46,9 @@ namespace Fractalii.TreeFractal
         {
             pen.Width = (float)(width);
 
-
-
             float fraction = (float)level / (float)maxLevel;
-            int green = RGB[0] + (int)(RGBDif[0] * fraction), red = RGB[2] + (int)(RGBDif[2] * fraction), blue = RGB[1] + (int)(RGBDif[1] * fraction);
-            pen.Color = Color.FromArgb(green>=0 && green<=255 ? green : 0, blue>=0 && blue<=255 ? blue : 0, red >= 0 && red <= 255 ? red : 0);
+            int green = RGB[1] + (int)(RGBDif[1] * fraction), red = RGB[0] + (int)(RGBDif[0] * fraction), blue = RGB[2] + (int)(RGBDif[2] * fraction);
+            pen.Color = Color.FromArgb(red>=0 && red<=255 ? red : 0, green>=0 && green<=255 ? green : 0, blue >= 0 && blue <= 255 ? blue : 0);
         }
         private (int, int, double, double) calculation(int start_x, int start_y,
             double size, double angle,
