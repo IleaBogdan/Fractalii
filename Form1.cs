@@ -117,6 +117,8 @@ namespace Fractalii
             textBox5.Text = "5";
             textBox6.Text = "90";
             textBox7.Text = "75";
+            initialColor= Color.Green;
+            finalColor = Color.Blue;
         }
 
         private void initialColorSelect_Click(object sender, EventArgs e)
