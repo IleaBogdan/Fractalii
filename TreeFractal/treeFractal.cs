@@ -53,7 +53,7 @@
             // calculating the coords for the next x and y
             return ((int)(start_x - size * Math.Cos(rad)),
                 (int)(start_y - size * Math.Sin(rad)),
-                angle + start_angle_right, angle - start_angle_left);
+                angle + start_angle_left, angle - start_angle_right);
         }
 
         private QueueItems calculate_end_point(QueueItems origin, double angle, double reduction)
@@ -77,7 +77,7 @@
         {
             double angleL, angleR;
             int end_x, end_y;
-            (end_x, end_y, angleR, angleL) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
+            (end_x, end_y, angleL, angleR) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
 
             // line drawing
             pen.Width = (float)(width);
@@ -88,8 +88,8 @@
             if (level < maxLevel)
             {
                 // recursive calls for left and right
-                Generate_fractal1(size * reductionR, width * reductionR, end_x, end_y, angleR, level + 1, maxLevel, reductionL, reductionR);
                 Generate_fractal1(size * reductionL, width * reductionL, end_x, end_y, angleL, level + 1, maxLevel, reductionL, reductionR);
+                Generate_fractal1(size * reductionR, width * reductionR, end_x, end_y, angleR, level + 1, maxLevel, reductionL, reductionR);
             }
         }
 
