@@ -75,25 +75,18 @@ namespace Fractalii.TreeFractal
         public void Generate_fractal1(double size, double width, int start_x, int start_y, double angle, 
             int level, int maxLevel, double reductionL, double reductionR)
         {
-            
-            // new code:
-
-
-            predraw(level, maxLevel, width);
-            
-            // left
-            QueueItems rezL = calculate_end_point(new QueueItems(0, 0, start_x, start_y, angle, level, size, width), start_angle_left, reductionL);
-            draw(rezL.start_x, rezL.start_y, rezL.end_x, rezL.end_y);
-            if (level<maxLevel) Generate_fractal1(size * reductionL, width * reductionL, rezL.end_x, rezL.end_y, rezL.angle, level + 1, maxLevel, reductionL, reductionR);
-
-
             predraw(level, maxLevel, width);
             // right
-            QueueItems rezR = calculate_end_point(new QueueItems(0, 0, start_x, start_y, angle, level, size, width), -start_angle_right, reductionR);
+            QueueItems rezR = calculate_end_point(new QueueItems(0, 0, start_x, start_y, angle, level, size, width), -start_angle_right, reductionL);
             draw(rezR.start_x, rezR.start_y, rezR.end_x, rezR.end_y);
             if (level<maxLevel) Generate_fractal1(size * reductionR, width * reductionR, rezR.end_x, rezR.end_y, rezR.angle, level + 1, maxLevel, reductionL, reductionR);
 
 
+            predraw(level, maxLevel, width);
+            // left
+            QueueItems rezL = calculate_end_point(new QueueItems(0, 0, start_x, start_y, angle, level, size, width), start_angle_left, reductionR);
+            draw(rezL.start_x, rezL.start_y, rezL.end_x, rezL.end_y);
+            if (level<maxLevel) Generate_fractal1(size * reductionL, width * reductionL, rezL.end_x, rezL.end_y, rezL.angle, level + 1, maxLevel, reductionL, reductionR);
         }
 
 
