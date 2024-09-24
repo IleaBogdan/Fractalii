@@ -296,6 +296,7 @@ namespace Fractalii
             tabControl1.Controls.Add(tabPage2);
             tabControl1.HotTrack = true;
             tabControl1.Location = new Point(0, 1);
+            tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(999, 565);
@@ -342,7 +343,7 @@ namespace Fractalii
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(991, 537);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
+            tabPage2.Text = "Triangle Fractal";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // Form1

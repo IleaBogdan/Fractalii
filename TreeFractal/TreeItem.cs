@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Fractalii.TreeFractal
 {
-    internal class QueueItems
+    internal class TreeItem
     {
 
         // public variables
@@ -15,7 +15,7 @@ namespace Fractalii.TreeFractal
         public double angle, size, width;
 
         // first constructor
-        public QueueItems(int START_X, int START_Y, int END_X, int END_Y, double ANGLE, 
+        public TreeItem(int START_X, int START_Y, int END_X, int END_Y, double ANGLE, 
             int LEVEL, double SIZE, double WIDTH) 
         {
             start_x = START_X;
@@ -28,7 +28,7 @@ namespace Fractalii.TreeFractal
             width = WIDTH;
         }
 
-        public QueueItems()
+        public TreeItem()
         {
 
         }
