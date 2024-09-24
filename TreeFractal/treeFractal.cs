@@ -36,10 +36,9 @@ namespace Fractalii.TreeFractal
         // a compact and reusable draw function
         private void draw(int coordonate_x_1, int coordonate_y_1, int coordonate_x_2, int coordonate_y_2)
         {
-            Point p1 = new Point(coordonate_x_1, coordonate_y_1), p2 = new Point(coordonate_x_2, coordonate_y_2);
             using (Graphics g = p.CreateGraphics())
             {
-                g.DrawLine(pen, p1, p2); 
+                g.DrawLine(pen, coordonate_x_1, coordonate_y_1, coordonate_x_2, coordonate_y_2);
             }
         }
         private void predraw(int level, int maxLevel, double width)
@@ -59,7 +58,7 @@ namespace Fractalii.TreeFractal
 
             // calculating the angles
             // calculating the coords for the next x and y
-            return ((int)(start_x - size * Math.Cos(rad)),
+            return ((int)(start_x + size * Math.Cos(rad)),
                 (int)(start_y - size * Math.Sin(rad)),
                 angle + start_angle_left, angle - start_angle_right);
         }
