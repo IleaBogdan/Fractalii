@@ -49,20 +49,6 @@ namespace Fractalii.TreeFractal
             int green = RGB[1] + (int)(RGBDif[1] * fraction), red = RGB[0] + (int)(RGBDif[0] * fraction), blue = RGB[2] + (int)(RGBDif[2] * fraction);
             pen.Color = Color.FromArgb(red>=0 && red<=255 ? red : 0, green>=0 && green<=255 ? green : 0, blue >= 0 && blue <= 255 ? blue : 0);
         }
-        private (int, int, double, double) calculation(int start_x, int start_y,
-            double size, double angle,
-            double start_angle_right, double start_angle_left)
-        {
-
-            double rad = Math.PI * angle / 180;	
-
-            // calculating the angles
-            // calculating the coords for the next x and y
-            return ((int)(start_x + size * Math.Cos(rad)),
-                (int)(start_y - size * Math.Sin(rad)),
-                angle + start_angle_left, angle - start_angle_right);
-        }
-
         private QueueItems calculate_end_point(QueueItems origin, double angle, double reduction)
         {
             QueueItems rez = new QueueItems();
@@ -73,7 +59,7 @@ namespace Fractalii.TreeFractal
             double size = origin.size * reduction;
             rez.angle = angle + origin.angle;
             double rad = Math.PI * rez.angle / 180;
-            rez.end_x = origin.end_x - (int)(size * Math.Cos(rad));
+            rez.end_x = origin.end_x + (int)(size * Math.Cos(rad));
             rez.end_y = origin.end_y - (int)(size * Math.Sin(rad));
             rez.size = size;
             return rez;
@@ -89,22 +75,7 @@ namespace Fractalii.TreeFractal
         public void Generate_fractal1(double size, double width, int start_x, int start_y, double angle, 
             int level, int maxLevel, double reductionL, double reductionR)
         {
-            /*double angleL, angleR;
-            int end_x, end_y;
-            (end_x, end_y, angleL, angleR) = calculation(start_x, start_y, size, angle, start_angle_right, start_angle_left);
-
-            predraw(level, maxLevel, width);
-            draw(start_x, start_y, end_x, end_y);
-
-            // line drawing
-            if (level < maxLevel)
-            {
-                // recursive calls for left and right
-                Generate_fractal1(size * reductionL, width * reductionL, end_x, end_y, angleL, level + 1, maxLevel, reductionL, reductionR);
-                Generate_fractal1(size * reductionR, width * reductionR, end_x, end_y, angleR, level + 1, maxLevel, reductionL, reductionR);
-            }
-            */
-
+            
             // new code:
 
 
@@ -170,23 +141,6 @@ namespace Fractalii.TreeFractal
                 queue.Enqueue(LeftBranch); 
                 queue.Enqueue(RightBranch);
                 
-                // variable overwriting
-
-
-                //start_x = QItem.end_x;
-                //start_y = QItem.end_y;
-                //(end_x, end_y, angleL, angleR) = calculation(
-                //    QItem.end_x, QItem.end_y, QItem.size, QItem.angle, 
-                //    start_angle_right, start_angle_left);
-
-                //size = QItem.size;
-                //int tempLevel = QItem.level+1;
-                //// adding new items into queue
-                //QItem.Copy(start_x, start_y, end_x, end_y, size*0.90, tempLevel, angleL);
-                //queue.Enqueue(new QueueItems(QItem));
-
-                //QItem.Copy(start_x, start_y, end_x, end_y, size * 0.75, tempLevel, angleR);
-                //queue.Enqueue(new QueueItems(QItem));
                 
             }
         }
