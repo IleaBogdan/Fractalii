@@ -7,116 +7,54 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Fractalii
 {
-    public partial class Form1 : Form
+    public partial class HomePage : Form
     {
-        public Form1()
+        public HomePage()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            pictureBox1.BackColor = Color.Black;
+            pictureBox_treeFractal.BackColor = Color.Black;
             debbug();
         }
 
-        // private variables 
-        private double start_angle_left = -1.0, start_angle_right = -1.0;
-        private double size = -1.0, width = -1.0;
-        private int levels = -1, redL = 0, redR = 0;
 
         private Color initialColor = Color.Red, finalColor = Color.Red;
 
-        private (double, double, double, int, double, int, int) get_data()
+        private (double, double, double, int, double, int, int) get_data_treeFractal()
         {
             double angleL, angleR, Size, Width;
             int Level, rL, rR;
-            double.TryParse(textBox1.Text, null, out angleL);
-            double.TryParse(textBox2.Text, null, out angleR);
-            double.TryParse(textBox3.Text, null, out Size);
-            Int32.TryParse(textBox4.Text, null, out Level);
-            double.TryParse(textBox5.Text, null, out Width);
-            Int32.TryParse(textBox6.Text, null, out rL);
-            Int32.TryParse(textBox7.Text, null, out rR);
+            double.TryParse(textBox_angle_left_tab1.Text, null, out angleL);
+            double.TryParse(textBox_angle_right_tab1.Text, null, out angleR);
+            double.TryParse(textBox_size_tab1.Text, null, out Size);
+            Int32.TryParse(textBox_levels_tab1.Text, null, out Level);
+            double.TryParse(textBox_width_tab1.Text, null, out Width);
+            Int32.TryParse(textBox_reduction_left_tab1.Text, null, out rL);
+            Int32.TryParse(textBox_reduction_right_tab1.Text, null, out rR);
 
 
 
             return (angleL, angleR, Size, Level, Width, rL, rR);
         }
-        private bool condition()
+        private bool condition_treeFractal(double start_angle_left, double start_angle_right, double size, double width, int levels, int redL, int redR)
         {
-            return start_angle_left > 0.0 && start_angle_right > 0.0
-                && size > 0 && levels > 0 && levels < 15 && width > 0 && width < 7
-                && redL > 0 && redR > 0 && redR < 100 && redL < 100;
+            return (start_angle_left > 0.0 && start_angle_right > 0.0)
+                && size > 0 && (levels > 0 && levels < 15) && (width > 0 && width < 7)
+                && (redL > 0 && redR > 0) && (redR < 100 && redL < 100);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void default_button_Click_treeFractal(object sender, EventArgs e)
         {
-            (start_angle_left, start_angle_right, size, levels, width, redL, redR) = get_data();
-            // .Refresh erases anything on pictureBox1 if we want to redraw
-            pictureBox1.Refresh();
-            // check if all variables have been assigned
-            if (condition())
-            {
-                // initialaze the global variables
-                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, initialColor, finalColor, pictureBox1);
-
-                // first call of the recursive function
-                fractal.preGenerate(size, width, pictureBox1.Size.Width / 2,
-                    pictureBox1.Size.Height / 2 + 150, 90, 0, levels, (double)(redL) / 100, (double)(redR) / 100);
-            }
-            else
-            {
-                // invalide statemant popup
-                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size, width, reduction and levels correctly!");
-                /*// printing the invalide statemant
-                using (Graphics g = pictureBox1.CreateGraphics())
-                {
-                    g.DrawString("Please enter all coordinates, size, width, reduction and levels correctly!", 
-                        new System.Drawing.Font("Arial", 12), Brushes.Green,
-                        new PointF((pictureBox1.Size.Width / 2) - 175, (pictureBox1.Size.Height / 2) - 20));
-                }*/
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            (start_angle_left, start_angle_right, size, levels, width, redL, redR) = get_data();
-            // .Refresh erases anything on pictureBox1 if we want to redraw
-            pictureBox1.Refresh();
-            // check if all variables have been assigned
-            if (condition())
-            {
-                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, initialColor, finalColor, pictureBox1);
-
-
-                // first call of the recursive function
-                fractal.Generate_fractal2(size, width, pictureBox1.Size.Width / 2,
-                    pictureBox1.Size.Height / 2 + 150, 90, levels, (double)(redL) / 100, (double)(redR) / 100);
-            }
-            else
-            {
-                // invalide statemant popup
-                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size, width, reduction and levels correctly!");
-                /*// printing the invalide statemant
-                using (Graphics g = pictureBox1.CreateGraphics())
-                {
-                    g.DrawString("Please enter all coordinates, size, width, reduction and levels correctly!", 
-                        new System.Drawing.Font("Arial", 12), Brushes.Green,
-                        new PointF((pictureBox1.Size.Width / 2) - 175, (pictureBox1.Size.Height / 2) - 20));
-                }*/
-            }
-        }
-
-        private void default_button_Click(object sender, EventArgs e)
-        {
-            textBox1.Text = "60";
-            textBox2.Text = "30";
-            textBox3.Text = "60";
-            textBox4.Text = "12";
-            textBox5.Text = "5";
-            textBox6.Text = "75";
-            textBox7.Text = "90";
+            textBox_angle_left_tab1.Text = "60";
+            textBox_angle_right_tab1.Text = "30";
+            textBox_size_tab1.Text = "60";
+            textBox_levels_tab1.Text = "12";
+            textBox_width_tab1.Text = "5";
+            textBox_reduction_left_tab1.Text = "75";
+            textBox_reduction_right_tab1.Text = "90";
             initialColor = Color.Green;
             finalColor = Color.Blue;
         }
@@ -140,6 +78,74 @@ namespace Fractalii
             if (result == DialogResult.OK)
             {
                 finalColor = colorSelector.setColor;
+            }
+        }
+
+        private void genearte_treeFractal_recursive(object sender, EventArgs e)
+        {
+            double start_angle_left = -1.0, start_angle_right = -1.0;
+            double size = -1.0, width = -1.0;
+            int levels=-1, redL=0, redR=0;
+
+
+            (start_angle_left, start_angle_right, size, levels, width, redL, redR) = get_data_treeFractal();
+            // .Refresh erases anything on pictureBox1 if we want to redraw
+            pictureBox_treeFractal.Refresh();
+            // check if all variables have been assigned
+            if (condition_treeFractal(start_angle_left, start_angle_right, size, width, levels, redL, redR))
+            {
+                // initialaze the global variables
+                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, initialColor, finalColor, pictureBox_treeFractal);
+
+                // first call of the recursive function
+                fractal.preGenerate(size, width, pictureBox_treeFractal.Size.Width / 2,
+                    pictureBox_treeFractal.Size.Height / 2 + 150, 90, 0, levels, (double)(redL) / 100, (double)(redR) / 100);
+            }
+            else
+            {
+                // invalide statemant popup
+                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size, width, reduction and levels correctly!");
+                /*// printing the invalide statemant
+                using (Graphics g = pictureBox1.CreateGraphics())
+                {
+                    g.DrawString("Please enter all coordinates, size, width, reduction and levels correctly!", 
+                        new System.Drawing.Font("Arial", 12), Brushes.Green,
+                        new PointF((pictureBox1.Size.Width / 2) - 175, (pictureBox1.Size.Height / 2) - 20));
+                }*/
+            }
+        }
+
+        private void generate_treeFractal_iterative(object sender, EventArgs e)
+        {
+            double start_angle_left = -1.0, start_angle_right = -1.0;
+            double size = -1.0, width = -1.0;
+            int levels = -1, redL = 0, redR = 0;
+
+
+            (start_angle_left, start_angle_right, size, levels, width, redL, redR) = get_data_treeFractal();
+            // .Refresh erases anything on pictureBox1 if we want to redraw
+            pictureBox_treeFractal.Refresh();
+            // check if all variables have been assigned
+            if (condition_treeFractal(start_angle_left, start_angle_right, size, width, levels, redL, redR))
+            {
+                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, initialColor, finalColor, pictureBox_treeFractal);
+
+
+                // first call of the recursive function
+                fractal.Generate_fractal2(size, width, pictureBox_treeFractal.Size.Width / 2,
+                    pictureBox_treeFractal.Size.Height / 2 + 150, 90, levels, (double)(redL) / 100, (double)(redR) / 100);
+            }
+            else
+            {
+                // invalide statemant popup
+                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size, width, reduction and levels correctly!");
+                /*// printing the invalide statemant
+                using (Graphics g = pictureBox1.CreateGraphics())
+                {
+                    g.DrawString("Please enter all coordinates, size, width, reduction and levels correctly!", 
+                        new System.Drawing.Font("Arial", 12), Brushes.Green,
+                        new PointF((pictureBox1.Size.Width / 2) - 175, (pictureBox1.Size.Height / 2) - 20));
+                }*/
             }
         }
     }
