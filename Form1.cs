@@ -131,7 +131,7 @@ namespace Fractalii
                 treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, initialColor, finalColor, pictureBox_treeFractal);
 
 
-                // first call of the recursive function
+                // first call of the iterative function
                 fractal.Generate_fractal2(size, width, pictureBox_treeFractal.Size.Width / 2,
                     pictureBox_treeFractal.Size.Height / 2 + 150, 90, levels, (double)(redL) / 100, (double)(redR) / 100);
             }
