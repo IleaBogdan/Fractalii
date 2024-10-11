@@ -77,16 +77,18 @@ namespace Fractalii.TreeFractal
         {
             predraw(level, maxLevel, width);
             // right
-            TreeItem rezR = calculate_end_point(new TreeItem(0, 0, start_x, start_y, angle, level, size, width), -start_angle_right, reductionL);
+            TreeItem rezR = calculate_end_point(new TreeItem(0, 0, start_x, start_y, angle, level, size, width), -start_angle_right, reductionR);
             draw(rezR.start_x, rezR.start_y, rezR.end_x, rezR.end_y);
-            if (level<maxLevel) Generate_fractal1(size * reductionR, width * reductionR, rezR.end_x, rezR.end_y, rezR.angle, level + 1, maxLevel, reductionL, reductionR);
+            if (level<maxLevel) Generate_fractal1(size * reductionR, width * reductionR, rezR.end_x, rezR.end_y, 
+                rezR.angle, level + 1, maxLevel, reductionL, reductionR);
 
 
             predraw(level, maxLevel, width);
             // left
-            TreeItem rezL = calculate_end_point(new TreeItem(0, 0, start_x, start_y, angle, level, size, width), start_angle_left, reductionR);
+            TreeItem rezL = calculate_end_point(new TreeItem(0, 0, start_x, start_y, angle, level, size, width), start_angle_left, reductionL);
             draw(rezL.start_x, rezL.start_y, rezL.end_x, rezL.end_y);
-            if (level<maxLevel) Generate_fractal1(size * reductionL, width * reductionL, rezL.end_x, rezL.end_y, rezL.angle, level + 1, maxLevel, reductionL, reductionR);
+            if (level<maxLevel) Generate_fractal1(size * reductionL, width * reductionL, rezL.end_x, rezL.end_y, 
+                rezL.angle, level + 1, maxLevel, reductionL, reductionR);
         }
 
 
