@@ -1,4 +1,6 @@
-﻿namespace Fractalii.TreeFractal
+﻿using System.Diagnostics;
+
+namespace Fractalii.TreeFractal
 {
     partial class UserControlTree
     {
@@ -18,6 +20,27 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public void debug()
+        {
+            if (Debugger.IsAttached)
+            {
+
+                // tab1 (treeFractal) default button code:
+                Button default_button = new Button();
+                Controls.Add(default_button);
+                // 
+                // default_button
+                // 
+                default_button.Location = new Point(525, 50);
+                default_button.Name = "default_button";
+                default_button.Size = new Size(85, 23);
+                default_button.TabIndex = 13;
+                default_button.Text = "Default";
+                default_button.UseVisualStyleBackColor = true;
+                default_button.Click += default_button_Click_treeFractal;
+
+            }
         }
         #region Component Designer generated code
 

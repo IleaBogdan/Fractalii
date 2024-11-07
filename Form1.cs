@@ -18,7 +18,6 @@ namespace Fractalii
         {
             pictureBox_treeFractal.BackColor = Color.Black;
             picture_kochline.BackColor = Color.Black;
-            debbug();
             userControl11.set_pictureBox(pictureBox_treeFractal);
         }
 
