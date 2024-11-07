@@ -17,6 +17,7 @@ namespace Fractalii
         private void Form1_Load(object sender, EventArgs e)
         {
             pictureBox_treeFractal.BackColor = Color.Black;
+            picture_kochline.BackColor = Color.Black;
             debbug();
         }
 

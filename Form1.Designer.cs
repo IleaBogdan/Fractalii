@@ -82,9 +82,12 @@ namespace Fractalii
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
+            picture_kochline = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox_treeFractal).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picture_kochline).BeginInit();
             SuspendLayout();
             // 
             // pictureBox_treeFractal
@@ -301,6 +304,7 @@ namespace Fractalii
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.HotTrack = true;
+            tabControl1.ItemSize = new Size(120, 20);
             tabControl1.Location = new Point(0, 1);
             tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
@@ -344,13 +348,23 @@ namespace Fractalii
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(picture_kochline);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(991, 537);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Triangle Fractal";
+            tabPage2.Text = "Koch-Line Fractal";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // picture_kochline
+            // 
+            picture_kochline.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            picture_kochline.Location = new Point(6, 81);
+            picture_kochline.Name = "picture_kochline";
+            picture_kochline.Size = new Size(977, 473);
+            picture_kochline.TabIndex = 0;
+            picture_kochline.TabStop = false;
             // 
             // HomePage
             // 
@@ -367,6 +381,8 @@ namespace Fractalii
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picture_kochline).EndInit();
             ResumeLayout(false);
         }
 
@@ -397,5 +413,6 @@ namespace Fractalii
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
+        private PictureBox picture_kochline;
     }
 }
