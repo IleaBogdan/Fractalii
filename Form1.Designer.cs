@@ -32,13 +32,14 @@ namespace Fractalii
         private void InitializeComponent()
         {
             tabPage2 = new TabPage();
-            picture_kochline = new PictureBox();
+            ucKochLine = new KochLineFractal.UserControlKochLine();
+            pictureBox_kochline = new PictureBox();
             tabPage1 = new TabPage();
-            userControl11 = new TreeFractal.UserControlTree();
+            ucTree = new TreeFractal.UserControlTree();
             pictureBox_treeFractal = new PictureBox();
             tabControl1 = new TabControl();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picture_kochline).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_kochline).BeginInit();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_treeFractal).BeginInit();
             tabControl1.SuspendLayout();
@@ -46,7 +47,8 @@ namespace Fractalii
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(picture_kochline);
+            tabPage2.Controls.Add(ucKochLine);
+            tabPage2.Controls.Add(pictureBox_kochline);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -55,18 +57,25 @@ namespace Fractalii
             tabPage2.Text = "Koch-Line Fractal";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // picture_kochline
+            // ucKochLine
             // 
-            picture_kochline.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            picture_kochline.Location = new Point(6, 81);
-            picture_kochline.Name = "picture_kochline";
-            picture_kochline.Size = new Size(976, 451);
-            picture_kochline.TabIndex = 0;
-            picture_kochline.TabStop = false;
+            ucKochLine.Location = new Point(8, 6);
+            ucKochLine.Name = "ucKochLine";
+            ucKochLine.Size = new Size(974, 72);
+            ucKochLine.TabIndex = 1;
+            // 
+            // pictureBox_kochline
+            // 
+            pictureBox_kochline.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox_kochline.Location = new Point(8, 81);
+            pictureBox_kochline.Name = "pictureBox_kochline";
+            pictureBox_kochline.Size = new Size(974, 451);
+            pictureBox_kochline.TabIndex = 0;
+            pictureBox_kochline.TabStop = false;
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(userControl11);
+            tabPage1.Controls.Add(ucTree);
             tabPage1.Controls.Add(pictureBox_treeFractal);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
@@ -76,12 +85,12 @@ namespace Fractalii
             tabPage1.Text = "Tree Fractal";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // userControl11
+            // ucTree
             // 
-            userControl11.Location = new Point(3, 3);
-            userControl11.Name = "userControl11";
-            userControl11.Size = new Size(988, 90);
-            userControl11.TabIndex = 2;
+            ucTree.Location = new Point(3, 3);
+            ucTree.Name = "ucTree";
+            ucTree.Size = new Size(985, 90);
+            ucTree.TabIndex = 2;
             // 
             // pictureBox_treeFractal
             // 
@@ -89,7 +98,7 @@ namespace Fractalii
             pictureBox_treeFractal.Location = new Point(15, 98);
             pictureBox_treeFractal.Margin = new Padding(3, 2, 3, 2);
             pictureBox_treeFractal.Name = "pictureBox_treeFractal";
-            pictureBox_treeFractal.Size = new Size(976, 443);
+            pictureBox_treeFractal.Size = new Size(958, 443);
             pictureBox_treeFractal.TabIndex = 1;
             pictureBox_treeFractal.TabStop = false;
             // 
@@ -120,7 +129,7 @@ namespace Fractalii
             Text = "Fractal Page";
             Load += Form1_Load;
             tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)picture_kochline).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox_kochline).EndInit();
             tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox_treeFractal).EndInit();
             tabControl1.ResumeLayout(false);
@@ -128,10 +137,11 @@ namespace Fractalii
         }
         #endregion
         private TabPage tabPage2;
-        private PictureBox picture_kochline;
+        private PictureBox pictureBox_kochline;
         private TabPage tabPage1;
         private PictureBox pictureBox_treeFractal;
         private TabControl tabControl1;
-        private TreeFractal.UserControlTree userControl11;
+        private TreeFractal.UserControlTree ucTree;
+        private KochLineFractal.UserControlKochLine ucKochLine;
     }
 }

@@ -20,7 +20,7 @@ namespace Fractalii.TreeFractal
         }
 
 
-        PictureBox pictureBox_treeFractal;
+        private PictureBox pictureBox_treeFractal;
         public void set_pictureBox(PictureBox pictureBox)
         {
             pictureBox_treeFractal = pictureBox;
