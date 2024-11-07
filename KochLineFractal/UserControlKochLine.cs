@@ -28,12 +28,11 @@ namespace Fractalii.KochLineFractal
         {
             int level;
             Int32.TryParse(textBox1.Text, null, out level);
-            System.Windows.Forms.MessageBox.Show("levels: " + level);
-            Point start = new Point(100, 200), stop=new Point(150, 350);
-            using (Graphics g = pictureBox_kochline.CreateGraphics())
-            {
-                g.DrawLine(new Pen(Color.Red, 3), start, stop);
-            }
+            Point start_koch = new Point(100, 200), stop_koch=new Point(150, 350);
+            kochLineFractal.init(pictureBox_kochline, level
+                // more params to come
+                );
+            kochLineFractal.iterative_fractal(start_koch, stop_koch);
         }
     }
 }
