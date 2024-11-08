@@ -18,10 +18,10 @@ namespace Fractalii
             InitializeComponent();
             debug();
         }
-        private PictureBox pictureBox_treeFractal;
+        private PictureBox pb;
         public void set_pictureBox(PictureBox pictureBox)
         {
-            pictureBox_treeFractal = pictureBox;
+            pb = pictureBox;
         }
 
         private Color initialColor = Color.Blue, finalColor = Color.Red;
@@ -41,12 +41,6 @@ namespace Fractalii
 
 
             return (angleL, angleR, Size, Level, Width, rL, rR);
-        }
-        private bool condition_treeFractal(double start_angle_left, double start_angle_right, double size, double width, int levels, int redL, int redR)
-        {
-            return (start_angle_left > 0.0 && start_angle_right > 0.0)
-                && size > 0 && (levels > 0 && levels < 15) && (width > 0 && width < 7)
-                && (redL > 0 && redR > 0) && (redR < 100 && redL < 100);
         }
 
         private void default_button_Click_treeFractal(object sender, EventArgs e)
@@ -92,30 +86,7 @@ namespace Fractalii
 
 
             (start_angle_left, start_angle_right, size, levels, width, redL, redR) = get_data_treeFractal();
-            // .Refresh erases anything on pictureBox1 if we want to redraw
-            pictureBox_treeFractal.Refresh();
-            // check if all variables have been assigned
-            if (condition_treeFractal(start_angle_left, start_angle_right, size, width, levels, redL, redR))
-            {
-                // initialaze the global variables
-                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, initialColor, finalColor, pictureBox_treeFractal);
-
-                // first call of the recursive function
-                fractal.preGenerate(size, width, pictureBox_treeFractal.Size.Width / 2,
-                    pictureBox_treeFractal.Size.Height / 2 + 150, 90, 0, levels, (double)(redL) / 100, (double)(redR) / 100);
-            }
-            else
-            {
-                // invalide statemant popup
-                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size, width, reduction and levels correctly!");
-                /*// printing the invalide statemant
-                using (Graphics g = pictureBox1.CreateGraphics())
-                {
-                    g.DrawString("Please enter all coordinates, size, width, reduction and levels correctly!", 
-                        new System.Drawing.Font("Arial", 12), Brushes.Green,
-                        new PointF((pictureBox1.Size.Width / 2) - 175, (pictureBox1.Size.Height / 2) - 20));
-                }*/
-            }
+            SetupTree.genearte_treeFractal_recursive(pb, start_angle_left, start_angle_right, size, width, levels, redL, redR, initialColor, finalColor);
         }
 
         private void generate_treeFractal_iterative(object sender, EventArgs e)
@@ -126,30 +97,7 @@ namespace Fractalii
 
 
             (start_angle_left, start_angle_right, size, levels, width, redL, redR) = get_data_treeFractal();
-            // .Refresh erases anything on pictureBox1 if we want to redraw
-            pictureBox_treeFractal.Refresh();
-            // check if all variables have been assigned
-            if (condition_treeFractal(start_angle_left, start_angle_right, size, width, levels, redL, redR))
-            {
-                treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, initialColor, finalColor, pictureBox_treeFractal);
-
-
-                // first call of the iterative function
-                fractal.Generate_fractal2(size, width, pictureBox_treeFractal.Size.Width / 2,
-                    pictureBox_treeFractal.Size.Height / 2 + 150, 90, levels, (double)(redL) / 100, (double)(redR) / 100);
-            }
-            else
-            {
-                // invalide statemant popup
-                System.Windows.Forms.MessageBox.Show("Please enter all coordinates, size, width, reduction and levels correctly!");
-                /*// printing the invalide statemant
-                using (Graphics g = pictureBox1.CreateGraphics())
-                {
-                    g.DrawString("Please enter all coordinates, size, width, reduction and levels correctly!", 
-                        new System.Drawing.Font("Arial", 12), Brushes.Green,
-                        new PointF((pictureBox1.Size.Width / 2) - 175, (pictureBox1.Size.Height / 2) - 20));
-                }*/
-            }
+            SetupTree.generate_treeFractal_iterative(pb, start_angle_left, start_angle_right, size, width, levels, redL, redR, initialColor, finalColor);
         }
     }
 }

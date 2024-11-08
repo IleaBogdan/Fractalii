@@ -184,6 +184,7 @@ namespace Fractalii
             finalColorSelect_treeFractal_tab1.TabIndex = 165;
             finalColorSelect_treeFractal_tab1.Text = "Select final color";
             finalColorSelect_treeFractal_tab1.UseVisualStyleBackColor = true;
+            finalColorSelect_treeFractal_tab1.Click += finalColorSelect_Click;
             // 
             // initialColorSelect_treeFractal_tab1
             // 
@@ -194,6 +195,7 @@ namespace Fractalii
             initialColorSelect_treeFractal_tab1.TabIndex = 164;
             initialColorSelect_treeFractal_tab1.Text = "Select initial color";
             initialColorSelect_treeFractal_tab1.UseVisualStyleBackColor = true;
+            initialColorSelect_treeFractal_tab1.Click += initialColorSelect_Click;
             // 
             // label_angle_left_tab1
             // 
