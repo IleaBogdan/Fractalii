@@ -25,28 +25,7 @@ namespace Fractalii
         {
             pb = pictureBox;
         }
-        // color setting
-        private Color initialColor = Color.Blue, finalColor = Color.Red;
-        private void initialColorSelect_Click(object sender, EventArgs e)
-        {
-            Color_Selector colorSelector = new Color_Selector();
-            DialogResult result = colorSelector.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                initialColor = colorSelector.setColor;
-            }
-        }
-        private void finalColorSelect_Click(object sender, EventArgs e)
-        {
-            Color_Selector colorSelector = new Color_Selector();
-            DialogResult result = colorSelector.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                finalColor = colorSelector.setColor;
-            }
-        }
+        
 
         // Tree Fractal
         private void default_button_Click_treeFractal(object sender, EventArgs e)
@@ -58,8 +37,8 @@ namespace Fractalii
             textBox_width_tab1.Text = "5";
             textBox_reduction_left_tab1.Text = "75";
             textBox_reduction_right_tab1.Text = "90";
-            initialColor = Color.Green;
-            finalColor = Color.Blue;
+            HomePage.initialColor = Color.Green;
+            HomePage.finalColor = Color.Blue;
         }
         private void genearte_treeFractal_recursive(object sender, EventArgs e)
         {
@@ -74,7 +53,7 @@ namespace Fractalii
             double.TryParse(textBox_width_tab1.Text, null, out width);
             Int32.TryParse(textBox_reduction_left_tab1.Text, null, out redL);
             Int32.TryParse(textBox_reduction_right_tab1.Text, null, out redR);
-            SetupTree.genearte_treeFractal_recursive(pb, start_angle_left, start_angle_right, size, width, levels, redL, redR, initialColor, finalColor);
+            SetupTree.genearte_treeFractal_recursive(pb, start_angle_left, start_angle_right, size, width, levels, redL, redR, HomePage.initialColor, HomePage.finalColor);
         }
 
         private void generate_treeFractal_iterative(object sender, EventArgs e)
@@ -90,7 +69,7 @@ namespace Fractalii
             double.TryParse(textBox_width_tab1.Text, null, out width);
             Int32.TryParse(textBox_reduction_left_tab1.Text, null, out redL);
             Int32.TryParse(textBox_reduction_right_tab1.Text, null, out redR);
-            SetupTree.generate_treeFractal_iterative(pb, start_angle_left, start_angle_right, size, width, levels, redL, redR, initialColor, finalColor);
+            SetupTree.generate_treeFractal_iterative(pb, start_angle_left, start_angle_right, size, width, levels, redL, redR, HomePage.initialColor, HomePage.finalColor);
         }
 
 
@@ -107,7 +86,7 @@ namespace Fractalii
             Int32.TryParse(levels_KochLine.Text, null, out levels);
             Double.TryParse(width_KochLine.Text, null, out width);
             Point start_point = new Point(0, pb.Height - 125), stop_point = new Point(pb.Width, pb.Height - 125);
-            SetupKochLine.generate_kochLineFractal_iterative(pb, levels, width, start_point, stop_point, initialColor, finalColor);
+            SetupKochLine.generate_kochLineFractal_iterative(pb, levels, width, start_point, stop_point, HomePage.initialColor, HomePage.finalColor);
         }
     }
 }

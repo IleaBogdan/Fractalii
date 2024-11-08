@@ -75,8 +75,6 @@ namespace Fractalii
             textBox_reduction_left_tab1 = new TextBox();
             textBox_levels_tab1 = new TextBox();
             textBox_width_tab1 = new TextBox();
-            finalColorSelect_treeFractal_tab1 = new Button();
-            initialColorSelect_treeFractal_tab1 = new Button();
             label_angle_left_tab1 = new Label();
             label_procent_reduction_right_tab1 = new Label();
             label_angle_right_tab1 = new Label();
@@ -112,7 +110,7 @@ namespace Fractalii
             tabControl1.Name = "tabControl1";
             tabControl1.Padding = new Point(15, 4);
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(963, 98);
+            tabControl1.Size = new Size(736, 98);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -124,8 +122,6 @@ namespace Fractalii
             tabPage1.Controls.Add(textBox_reduction_left_tab1);
             tabPage1.Controls.Add(textBox_levels_tab1);
             tabPage1.Controls.Add(textBox_width_tab1);
-            tabPage1.Controls.Add(finalColorSelect_treeFractal_tab1);
-            tabPage1.Controls.Add(initialColorSelect_treeFractal_tab1);
             tabPage1.Controls.Add(label_angle_left_tab1);
             tabPage1.Controls.Add(label_procent_reduction_right_tab1);
             tabPage1.Controls.Add(label_angle_right_tab1);
@@ -142,7 +138,7 @@ namespace Fractalii
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(955, 70);
+            tabPage1.Size = new Size(728, 70);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Tree";
             tabPage1.UseVisualStyleBackColor = true;
@@ -198,28 +194,6 @@ namespace Fractalii
             textBox_width_tab1.Name = "textBox_width_tab1";
             textBox_width_tab1.Size = new Size(26, 23);
             textBox_width_tab1.TabIndex = 152;
-            // 
-            // finalColorSelect_treeFractal_tab1
-            // 
-            finalColorSelect_treeFractal_tab1.Location = new Point(649, 2);
-            finalColorSelect_treeFractal_tab1.Margin = new Padding(3, 2, 3, 2);
-            finalColorSelect_treeFractal_tab1.Name = "finalColorSelect_treeFractal_tab1";
-            finalColorSelect_treeFractal_tab1.Size = new Size(108, 61);
-            finalColorSelect_treeFractal_tab1.TabIndex = 165;
-            finalColorSelect_treeFractal_tab1.Text = "Select final color";
-            finalColorSelect_treeFractal_tab1.UseVisualStyleBackColor = true;
-            finalColorSelect_treeFractal_tab1.Click += finalColorSelect_Click;
-            // 
-            // initialColorSelect_treeFractal_tab1
-            // 
-            initialColorSelect_treeFractal_tab1.Location = new Point(536, 2);
-            initialColorSelect_treeFractal_tab1.Margin = new Padding(3, 2, 3, 2);
-            initialColorSelect_treeFractal_tab1.Name = "initialColorSelect_treeFractal_tab1";
-            initialColorSelect_treeFractal_tab1.Size = new Size(108, 61);
-            initialColorSelect_treeFractal_tab1.TabIndex = 164;
-            initialColorSelect_treeFractal_tab1.Text = "Select initial color";
-            initialColorSelect_treeFractal_tab1.UseVisualStyleBackColor = true;
-            initialColorSelect_treeFractal_tab1.Click += initialColorSelect_Click;
             // 
             // label_angle_left_tab1
             // 
@@ -279,7 +253,7 @@ namespace Fractalii
             // 
             // button1
             // 
-            button1.Location = new Point(763, 10);
+            button1.Location = new Point(536, 10);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(85, 46);
@@ -337,7 +311,7 @@ namespace Fractalii
             // 
             // button2
             // 
-            button2.Location = new Point(854, 10);
+            button2.Location = new Point(627, 10);
             button2.Name = "button2";
             button2.Size = new Size(90, 46);
             button2.TabIndex = 167;
@@ -356,7 +330,7 @@ namespace Fractalii
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(955, 70);
+            tabPage2.Size = new Size(728, 70);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Koch-Line";
             tabPage2.UseVisualStyleBackColor = true;
@@ -388,7 +362,7 @@ namespace Fractalii
             // 
             // button3
             // 
-            button3.Location = new Point(849, 6);
+            button3.Location = new Point(613, 9);
             button3.Name = "button3";
             button3.Size = new Size(100, 55);
             button3.TabIndex = 2;
@@ -418,7 +392,7 @@ namespace Fractalii
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tabControl1);
             Name = "UserControl1";
-            Size = new Size(973, 110);
+            Size = new Size(746, 110);
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -438,8 +412,6 @@ namespace Fractalii
         private TextBox textBox_reduction_left_tab1;
         private TextBox textBox_levels_tab1;
         private TextBox textBox_width_tab1;
-        private Button finalColorSelect_treeFractal_tab1;
-        private Button initialColorSelect_treeFractal_tab1;
         private Label label_angle_left_tab1;
         private Label label_procent_reduction_right_tab1;
         private Label label_angle_right_tab1;
