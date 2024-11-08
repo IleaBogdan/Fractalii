@@ -28,18 +28,33 @@ namespace Fractalii
             {
 
                 // tab1 (treeFractal) default button code:
-                Button default_button = new Button();
-                tabPage1.Controls.Add(default_button);
+                Button default_button1 = new Button();
+                tabPage1.Controls.Add(default_button1);
                 // 
                 // default_button
                 // 
-                default_button.Location = new Point(430, 40);
-                default_button.Name = "default_button";
-                default_button.Size = new Size(85, 23);
-                default_button.TabIndex = 13;
-                default_button.Text = "Default";
-                default_button.UseVisualStyleBackColor = true;
-                default_button.Click += default_button_Click_treeFractal;
+                default_button1.Location = new Point(430, 40);
+                default_button1.Name = "default_button";
+                default_button1.Size = new Size(85, 23);
+                default_button1.TabIndex = 13;
+                default_button1.Text = "Default";
+                default_button1.UseVisualStyleBackColor = true;
+                default_button1.Click += default_button_Click_treeFractal;
+
+
+                // tab1 (kochLineFractal) default button code:
+                Button default_button2 = new Button();
+                tabPage2.Controls.Add(default_button2);
+                // 
+                // default_button
+                // 
+                default_button2.Location = new Point(430, 40);
+                default_button2.Name = "default_button";
+                default_button2.Size = new Size(85, 23);
+                default_button2.TabIndex = 13;
+                default_button2.Text = "Default";
+                default_button2.UseVisualStyleBackColor = true;
+                default_button2.Click += default_button_Click_KochLine;
 
             }
         }
