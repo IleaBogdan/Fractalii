@@ -98,5 +98,10 @@ namespace Fractalii
         {
 
         }
+        private void generate_kochLineFractal(object sender, EventArgs e)
+        {
+            int levels=-1;
+            Int32.TryParse(levels_KochLine.Text, null, out levels);
+        }
     }
 }
