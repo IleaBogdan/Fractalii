@@ -20,6 +20,7 @@ namespace Fractalii.KochLineFractal
                 Point start_point, Point stop_end, Color initial_color, Color final_color
             )
         {
+            pb.Refresh();
             if (checker(levels, width))
             {
                 kochLineFractal.generate_iterative(pb, start_point, stop_end, levels, width);

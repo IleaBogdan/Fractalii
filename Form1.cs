@@ -18,5 +18,34 @@ namespace Fractalii
             pictureBox1.BackColor = Color.Black;
             userControl11.set_pictureBox(pictureBox1);
         }
+        public static void draw_line(PictureBox pb, Point begin_point, Point end_point, Pen pen)
+        {
+            using (Graphics g = pb.CreateGraphics())
+            {
+                g.DrawLine(pen, begin_point, end_point);
+            }
+        }
+        // color setting
+        public static Color initialColor = Color.Blue, finalColor = Color.Red;
+        private void initialColorSelect_Click(object sender, EventArgs e)
+        {
+            Color_Selector colorSelector = new Color_Selector();
+            DialogResult result = colorSelector.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                initialColor = colorSelector.setColor;
+            }
+        }
+        private void finalColorSelect_Click(object sender, EventArgs e)
+        {
+            Color_Selector colorSelector = new Color_Selector();
+            DialogResult result = colorSelector.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                finalColor = colorSelector.setColor;
+            }
+        }
     }
 }

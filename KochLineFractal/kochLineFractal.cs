@@ -10,13 +10,6 @@ namespace Fractalii.KochLineFractal
 {
     internal class kochLineFractal
     {
-        private static void draw(Point start_point, Point end_point, PictureBox pb, double width)
-        {
-            using (Graphics g = pb.CreateGraphics())
-            {
-                g.DrawLine(new Pen(Color.Red, (float)(width)), start_point, end_point);
-            }
-        }
         public static void generate_iterative(
                 PictureBox pb,
                 Point ipoint, Point epoint, 
@@ -24,7 +17,7 @@ namespace Fractalii.KochLineFractal
                 double width
             )
         {
-            draw(ipoint, epoint, pb, width);
+            HomePage.draw_line(pb, ipoint, epoint, new Pen(Color.Red, (float)width));
         }
     }
 }
