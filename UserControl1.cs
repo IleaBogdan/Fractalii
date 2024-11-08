@@ -1,25 +1,23 @@
-﻿using System;
+﻿using Fractalii.TreeFractal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Fractalii.TreeFractal
+namespace Fractalii
 {
-    public partial class UserControlTree : UserControl
+    public partial class UserControl1 : UserControl
     {
-        public UserControlTree()
+        public UserControl1()
         {
             InitializeComponent();
             debug();
         }
-
-
         private PictureBox pictureBox_treeFractal;
         public void set_pictureBox(PictureBox pictureBox)
         {

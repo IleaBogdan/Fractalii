@@ -15,10 +15,8 @@ namespace Fractalii
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            pictureBox_treeFractal.BackColor = Color.Black;
-            pictureBox_kochline.BackColor = Color.Black;
-            ucTree.set_pictureBox(pictureBox_treeFractal);
-            ucKochLine.set_pictureBox(pictureBox_kochline);
+            pictureBox1.BackColor = Color.Black;
+            userControl11.set_pictureBox(pictureBox1);
         }
     }
 }
