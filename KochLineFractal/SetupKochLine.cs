@@ -9,25 +9,24 @@ namespace Fractalii.KochLineFractal
     internal class SetupKochLine
     {
         private static bool checker(
-            int levels, double width, double size
+            int levels, double width
             )
         {
-            return levels > 0 && levels<15
-                && width>0.0 &&
-                size>0.0;
+            return levels > 0 && levels < 15
+                && width > 0.0;
         }
         public static void generate_kochLineFractal_iterative(
-                PictureBox pb, int levels, double width, double size,
+                PictureBox pb, int levels, double width, 
                 Point start_point, Point stop_end, Color initial_color, Color final_color
             )
         {
-            if (checker(levels, width, size))
+            if (checker(levels, width))
             {
-
+                kochLineFractal.generate_iterative(pb, start_point, stop_end, levels, width);
             } 
             else
             {
-                System.Windows.Forms.MessageBox.Show("Please enter levels, size and width correctly!");
+                System.Windows.Forms.MessageBox.Show("Please enter levels and width correctly!");
             }
         }
     }

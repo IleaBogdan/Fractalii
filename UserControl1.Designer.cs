@@ -97,8 +97,6 @@ namespace Fractalii
             button3 = new Button();
             levels_KochLine = new TextBox();
             label1 = new Label();
-            label4 = new Label();
-            size_KochLine = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -349,8 +347,6 @@ namespace Fractalii
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(size_KochLine);
-            tabPage2.Controls.Add(label4);
             tabPage2.Controls.Add(width_KochLine);
             tabPage2.Controls.Add(label3);
             tabPage2.Controls.Add(label2);
@@ -416,22 +412,6 @@ namespace Fractalii
             label1.TabIndex = 0;
             label1.Text = "Levels:";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(255, 12);
-            label4.Name = "label4";
-            label4.Size = new Size(30, 15);
-            label4.TabIndex = 6;
-            label4.Text = "Size:";
-            // 
-            // size_KochLine
-            // 
-            size_KochLine.Location = new Point(281, 9);
-            size_KochLine.Name = "size_KochLine";
-            size_KochLine.Size = new Size(36, 23);
-            size_KochLine.TabIndex = 7;
-            // 
             // UserControl1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -480,7 +460,5 @@ namespace Fractalii
         private Label label2;
         private TextBox width_KochLine;
         private Label label3;
-        private TextBox size_KochLine;
-        private Label label4;
     }
 }
