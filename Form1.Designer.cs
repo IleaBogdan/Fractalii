@@ -38,9 +38,9 @@ namespace Fractalii
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(12, 106);
+            pictureBox1.Location = new Point(12, 111);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(977, 449);
+            pictureBox1.Size = new Size(977, 444);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 

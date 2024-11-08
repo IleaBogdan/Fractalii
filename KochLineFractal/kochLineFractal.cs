@@ -9,6 +9,12 @@ namespace Fractalii.KochLineFractal
 {
     internal class kochLineFractal
     {
-        
+        private void draw(Point start_point, Point end_point, PictureBox pb)
+        {
+            using (Graphics g = pb.CreateGraphics())
+            {
+                g.DrawLine(new Pen(Color.Red, 3), start_point, end_point);
+            }
+        }
     }
 }

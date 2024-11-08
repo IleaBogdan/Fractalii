@@ -91,9 +91,14 @@ namespace Fractalii
             label_width_tab1 = new Label();
             button2 = new Button();
             tabPage2 = new TabPage();
+            width_KochLine = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
             button3 = new Button();
             levels_KochLine = new TextBox();
             label1 = new Label();
+            label4 = new Label();
+            size_KochLine = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -344,6 +349,11 @@ namespace Fractalii
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(size_KochLine);
+            tabPage2.Controls.Add(label4);
+            tabPage2.Controls.Add(width_KochLine);
+            tabPage2.Controls.Add(label3);
+            tabPage2.Controls.Add(label2);
             tabPage2.Controls.Add(button3);
             tabPage2.Controls.Add(levels_KochLine);
             tabPage2.Controls.Add(label1);
@@ -355,6 +365,31 @@ namespace Fractalii
             tabPage2.Text = "Koch-Line";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // width_KochLine
+            // 
+            width_KochLine.Location = new Point(190, 9);
+            width_KochLine.Name = "width_KochLine";
+            width_KochLine.Size = new Size(40, 23);
+            width_KochLine.TabIndex = 5;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(152, 12);
+            label3.Name = "label3";
+            label3.Size = new Size(42, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Width:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(101, 12);
+            label2.Name = "label2";
+            label2.Size = new Size(27, 15);
+            label2.TabIndex = 3;
+            label2.Text = "<15";
+            // 
             // button3
             // 
             button3.Location = new Point(849, 6);
@@ -363,6 +398,7 @@ namespace Fractalii
             button3.TabIndex = 2;
             button3.Text = "Generate";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += generate_kochLineFractal;
             // 
             // levels_KochLine
             // 
@@ -374,11 +410,27 @@ namespace Fractalii
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(18, 12);
+            label1.Location = new Point(28, 12);
             label1.Name = "label1";
             label1.Size = new Size(42, 15);
             label1.TabIndex = 0;
             label1.Text = "Levels:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(255, 12);
+            label4.Name = "label4";
+            label4.Size = new Size(30, 15);
+            label4.TabIndex = 6;
+            label4.Text = "Size:";
+            // 
+            // size_KochLine
+            // 
+            size_KochLine.Location = new Point(281, 9);
+            size_KochLine.Name = "size_KochLine";
+            size_KochLine.Size = new Size(36, 23);
+            size_KochLine.TabIndex = 7;
             // 
             // UserControl1
             // 
@@ -425,5 +477,10 @@ namespace Fractalii
         private Label label1;
         private TextBox levels_KochLine;
         private Button button3;
+        private Label label2;
+        private TextBox width_KochLine;
+        private Label label3;
+        private TextBox size_KochLine;
+        private Label label4;
     }
 }

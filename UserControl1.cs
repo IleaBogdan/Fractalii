@@ -1,4 +1,5 @@
-﻿using Fractalii.TreeFractal;
+﻿using Fractalii.KochLineFractal;
+using Fractalii.TreeFractal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -96,12 +97,19 @@ namespace Fractalii
         // Koch-Line
         private void default_button_Click_KochLine(object sender, EventArgs e)
         {
-
+            levels_KochLine.Text = "11";
+            width_KochLine.Text = "12";
+            size_KochLine.Text = "50";
         }
         private void generate_kochLineFractal(object sender, EventArgs e)
         {
-            int levels=-1;
+            int levels = -1;
+            double width = -0.1, size = -1.0;
             Int32.TryParse(levels_KochLine.Text, null, out levels);
+            Double.TryParse(width_KochLine.Text, null, out width);
+            Double.TryParse(size_KochLine.Text, null, out size);
+            Point start_point = new Point(0, pb.Height - 125), stop_point = new Point(pb.Width, pb.Height - 125);
+            SetupKochLine.generate_kochLineFractal_iterative(pb, levels, width, size, start_point, stop_point, initialColor, finalColor);
         }
     }
 }

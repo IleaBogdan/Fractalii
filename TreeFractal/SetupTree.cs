@@ -8,7 +8,8 @@ namespace Fractalii.TreeFractal
 {
     internal class SetupTree
     {
-        private static bool Condition_treeFractal(double start_angle_left, double start_angle_right, double size, double width, int levels, int redL, int redR)
+        private static bool Condition_treeFractal(double start_angle_left, double start_angle_right, 
+            double size, double width, int levels, int redL, int redR)
         {
             return (start_angle_left > 0.0 && start_angle_right > 0.0)
                 && size > 0 && (levels > 0 && levels < 15) && (width > 0 && width < 7)
