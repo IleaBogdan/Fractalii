@@ -13,9 +13,10 @@ namespace Fractalii
             InitializeComponent();
         }
 
+        public static Color bgC = Color.Black;
         private void Form1_Load(object sender, EventArgs e)
         {
-            pictureBox1.BackColor = Color.Black;
+            pictureBox1.BackColor = bgC;
             userControl11.set_pictureBox(pictureBox1);
         }
         // color setting

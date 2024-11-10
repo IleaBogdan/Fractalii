@@ -22,12 +22,13 @@ namespace Fractalii.KochLineFractal
             return new Point(begin.X+(int)(size*Math.Cos(ang)), 
                 begin.Y - (int)(size * Math.Sin(ang)));
         }
-        public static Point nextPoint(Point begin, Point end)
+        public static Point nextPoint(Point begin, Point end, double angle=Math.PI/2)
         {
             Point mid=new Point((end.X+begin.X)/2, (end.Y+begin.Y)/2);
             double dist = distance(end, begin);
-            // this bullshit only works if end.X==begin.X
-            mid.Y -= (int)(dist * (1.73205081)/2.0);
+            dist *= 0.866025405;
+            mid.X += (int)(dist * Math.Cos(angle));
+            mid.Y -= (int)(dist * Math.Sin(angle));
             return mid;
         }
         private static Pen pen = new Pen(Color.Red, 3);
@@ -57,8 +58,28 @@ namespace Fractalii.KochLineFractal
             //System.Windows.Forms.MessageBox.Show(string.Format("{0}", [ MidPoint.X, MidPoint.Y]));
             while (q.Count > 0)
             {
-                k = q.Dequeue();
-                Draw.draw_line(pb, k.begin_point, k.end_point, pen);
+                KochItem k1=q.Dequeue(), k2=q.Dequeue();
+                Draw.draw_line(pb, k1.begin_point, k2.end_point, new Pen(HomePage.bgC, pen.Width));
+                Draw.draw_line(pb, k1.begin_point, k1.end_point, pen);
+                Draw.draw_line(pb, k2.begin_point, k2.end_point, pen);
+                k1.level++;
+                k2.level++;
+                if (k1.level < levels)
+                {
+                    k1.angle += 1.0472;
+                    MidPoint = nextPoint(k1.begin_point,k1.end_point, k1.angle);
+                    q.Enqueue(KochItem.merge(new KochItem(k1), MidPoint, false));
+                    q.Enqueue(KochItem.merge(new KochItem(k1), MidPoint));
+                }
+                // scoate false cand ai reparat pe partea ailalta
+                // si vezi ca trebe sa recalculezi MidPoint
+                if (k2.level < levels && false)
+                {
+                    k2.angle += 1.0472;
+                    MidPoint = nextPoint(k2.begin_point, k2.end_point, k2.angle);
+                    q.Enqueue(KochItem.merge(new KochItem(k2), MidPoint, false));
+                    q.Enqueue(KochItem.merge(new KochItem(k2), MidPoint));
+                }
             }
         }
     }
