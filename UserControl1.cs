@@ -21,9 +21,9 @@ namespace Fractalii
             debug();
         }
         private PictureBox pb;
-        public void set_pictureBox(PictureBox pictureBox)
+        public void set_pictureBox(PictureBox p)
         {
-            pb = pictureBox;
+            pb = p;
         }
         
 
@@ -37,8 +37,6 @@ namespace Fractalii
             textBox_width_tab1.Text = "5";
             textBox_reduction_left_tab1.Text = "75";
             textBox_reduction_right_tab1.Text = "90";
-            HomePage.initialColor = Color.Green;
-            HomePage.finalColor = Color.Blue;
         }
         private void genearte_treeFractal_recursive(object sender, EventArgs e)
         {
@@ -86,7 +84,7 @@ namespace Fractalii
             Int32.TryParse(levels_KochLine.Text, null, out levels);
             Double.TryParse(width_KochLine.Text, null, out width);
             Point start_point = new Point(0, pb.Height - 125), stop_point = new Point(pb.Width, pb.Height - 125);
-            SetupKochLine.generate_kochLineFractal_iterative(pb, levels, width, start_point, stop_point, HomePage.initialColor, HomePage.finalColor);
+            SetupKochLine.generate_iterative(pb, start_point, stop_point, levels, width);
         }
     }
 }
