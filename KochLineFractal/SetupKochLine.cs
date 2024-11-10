@@ -15,9 +15,10 @@ namespace Fractalii.KochLineFractal
             return levels > 0 && levels < 15
                 && width > 0.0;
         }
-        public static void generate_kochLineFractal_iterative(
-                PictureBox pb, int levels, double width, 
-                Point start_point, Point stop_end, Color initial_color, Color final_color
+        public static void generate_iterative(
+                PictureBox pb,
+                Point start_point, Point stop_end, 
+                int levels, double width
             )
         {
             pb.Refresh();

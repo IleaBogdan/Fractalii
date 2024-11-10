@@ -167,7 +167,6 @@
             closeBtn.TabIndex = 5;
             closeBtn.Text = "Apply";
             closeBtn.UseVisualStyleBackColor = true;
-            closeBtn.Click += closeBtn_Click;
             // 
             // Color_Selector
             // 
