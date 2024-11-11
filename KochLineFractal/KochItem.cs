@@ -11,8 +11,8 @@ namespace Fractalii.KochLineFractal
         public Point begin_point, end_point;
         public double width, angle;
         public int level;
-        public KochItem() { }
-        public KochItem(Point BEGIN, Point END, int LEVEL, double WIDTH, double AMGLE= Math.PI / 2)
+        public KochItem() { angle = 0; }
+        public KochItem(Point BEGIN, Point END, int LEVEL, double WIDTH, double AMGLE= 0)
         {
             begin_point = BEGIN;
             end_point = END;
