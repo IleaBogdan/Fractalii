@@ -12,7 +12,7 @@ namespace Fractalii.KochLineFractal
             int levels, double width
             )
         {
-            return levels > 0 && levels < 15
+            return levels > 0 && levels < 8
                 && width > 0.0;
         }
         public static void generate_iterative(

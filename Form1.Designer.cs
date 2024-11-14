@@ -50,7 +50,7 @@ namespace Fractalii
             // 
             // userControl11
             // 
-            userControl11.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            userControl11.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             userControl11.Location = new Point(12, 1);
             userControl11.Name = "userControl11";
             userControl11.Size = new Size(741, 116);
@@ -58,7 +58,7 @@ namespace Fractalii
             // 
             // finalColorSelect
             // 
-            finalColorSelect.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            finalColorSelect.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             finalColorSelect.Location = new Point(872, 37);
             finalColorSelect.Margin = new Padding(3, 2, 3, 2);
             finalColorSelect.Name = "finalColorSelect";
@@ -70,7 +70,7 @@ namespace Fractalii
             // 
             // initialColorSelect
             // 
-            initialColorSelect.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            initialColorSelect.Anchor = AnchorStyles.Top | AnchorStyles.Left;//AnchorStyles.Bottom | | AnchorStyles.Right;
             initialColorSelect.Location = new Point(759, 37);
             initialColorSelect.Margin = new Padding(3, 2, 3, 2);
             initialColorSelect.Name = "initialColorSelect";

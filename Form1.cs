@@ -14,6 +14,8 @@ namespace Fractalii
         }
 
         public static Color bgC = Color.Black;
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
             pictureBox1.BackColor = bgC;
