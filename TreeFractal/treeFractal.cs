@@ -14,7 +14,8 @@ namespace Fractalii.TreeFractal
         Pen pen = new Pen(Color.Red, 1f);
 
         // initialaze the global variables
-        public treeFractal(double saL, double saR, double s, Color initial_color, Color final_color, PictureBox pic)
+        public treeFractal(double saL, double saR, double s, 
+            Color initial_color, Color final_color, PictureBox pic)
         {
             // Setting parameters
             start_angle_left = saL;
@@ -64,22 +65,29 @@ namespace Fractalii.TreeFractal
             Draw.draw_line(p, new Point(start_x, start_y), new Point(start_x, (int)(start_y - size)), pen);
             Generate_fractal1(size, width, start_x, (int)(start_y - size), angle, level+1, maxLevel, reductionL, reductionR);
         }
-        public void Generate_fractal1(double size, double width, int start_x, int start_y, double angle, 
+        public void Generate_fractal1(double size, double width, 
+            int start_x, int start_y, double angle, 
             int level, int maxLevel, double reductionL, double reductionR)
         {
             predraw(level, maxLevel, width);
             // right
-            TreeItem rezR = calculate_end_point(new TreeItem(0, 0, start_x, start_y, angle, level, size, width), -start_angle_right, reductionR);
-            Draw.draw_line(p, new Point(rezR.start_x, rezR.start_y), new Point(rezR.end_x, rezR.end_y), pen);
-            if (level<maxLevel) Generate_fractal1(size * reductionR, width * reductionR, rezR.end_x, rezR.end_y, 
+            TreeItem rezR = calculate_end_point(new TreeItem(0, 0, 
+                start_x, start_y, angle, level, size, width), -start_angle_right, reductionR);
+            Draw.draw_line(p, new Point(rezR.start_x, rezR.start_y), 
+                new Point(rezR.end_x, rezR.end_y), pen);
+            if (level<maxLevel) Generate_fractal1(size * reductionR, 
+                width * reductionR, rezR.end_x, rezR.end_y, 
                 rezR.angle, level + 1, maxLevel, reductionL, reductionR);
 
 
             predraw(level, maxLevel, width);
             // left
-            TreeItem rezL = calculate_end_point(new TreeItem(0, 0, start_x, start_y, angle, level, size, width), start_angle_left, reductionL);
-            Draw.draw_line(p, new Point(rezL.start_x, rezL.start_y), new Point(rezL.end_x, rezL.end_y), pen);
-            if (level<maxLevel) Generate_fractal1(size * reductionL, width * reductionL, rezL.end_x, rezL.end_y, 
+            TreeItem rezL = calculate_end_point(new TreeItem(0, 0, 
+                start_x, start_y, angle, level, size, width), start_angle_left, reductionL);
+            Draw.draw_line(p, new Point(rezL.start_x, rezL.start_y), 
+                new Point(rezL.end_x, rezL.end_y), pen);
+            if (level<maxLevel) Generate_fractal1(size * reductionL, 
+                width * reductionL, rezL.end_x, rezL.end_y, 
                 rezL.angle, level + 1, maxLevel, reductionL, reductionR);
         }
 
@@ -109,7 +117,8 @@ namespace Fractalii.TreeFractal
                 // draw function
 
                 predraw(QItem.level, maxLevel, QItem.width);
-                Draw.draw_line(p, new Point(QItem.start_x, QItem.start_y), new Point(QItem.end_x, QItem.end_y), pen);
+                Draw.draw_line(p, new Point(QItem.start_x, QItem.start_y), 
+                    new Point(QItem.end_x, QItem.end_y), pen);
 
                 if (currentLevel == QItem.level)
                 {

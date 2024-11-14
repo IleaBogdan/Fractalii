@@ -9,15 +9,16 @@ namespace Fractalii.KochLineFractal
     internal class KochItem
     {
         public Point begin_point, end_point;
-        public double width;
+        public double width, angle;
         public int level;
-        public KochItem() { }
-        public KochItem(Point BEGIN, Point END, int LEVEL, double WIDTH)
+        public KochItem() { angle = 90; }
+        public KochItem(Point BEGIN, Point END, int LEVEL, double WIDTH, double AMGLE= 90)
         {
             begin_point = BEGIN;
             end_point = END;
             level= LEVEL;
             width= WIDTH;
+            angle= AMGLE;
         }
         public static KochItem merge(KochItem k, Point next, bool ok=true)
         {
@@ -30,6 +31,7 @@ namespace Fractalii.KochLineFractal
             end_point = k.end_point;
             width= k.width;
             level = k.level;
+            angle= k.angle;
         }
     }
 }

@@ -356,9 +356,9 @@ namespace Fractalii
             label2.AutoSize = true;
             label2.Location = new Point(101, 12);
             label2.Name = "label2";
-            label2.Size = new Size(27, 15);
+            label2.Size = new Size(21, 15);
             label2.TabIndex = 3;
-            label2.Text = "<15";
+            label2.Text = "<8";
             // 
             // button3
             // 
