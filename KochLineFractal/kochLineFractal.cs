@@ -54,6 +54,10 @@ namespace Fractalii.KochLineFractal
             Point mid = kochNextPoint(k.begin_point, k.end_point, 90);
             q.Enqueue(KochItem.merge(new KochItem(k), mid));
             q.Enqueue(KochItem.merge(new KochItem(k), mid, false));
+            if (levels == 1)
+            {
+                q.Dequeue(); q.Dequeue();
+            }
             while (q.Count > 0)
             {
                 KochItem k2 = q.Dequeue(), k1 = q.Dequeue();
