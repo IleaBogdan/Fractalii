@@ -96,11 +96,11 @@ namespace Fractalii
             levels_KochLine = new TextBox();
             label1 = new Label();
             tabPage3 = new TabPage();
-            textBox1 = new TextBox();
+            KochSnowWidth = new TextBox();
             label4 = new Label();
             label6 = new Label();
             button4 = new Button();
-            textBox2 = new TextBox();
+            KochSnowLevels = new TextBox();
             label7 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -397,11 +397,11 @@ namespace Fractalii
             // 
             // tabPage3
             // 
-            tabPage3.Controls.Add(textBox1);
+            tabPage3.Controls.Add(KochSnowWidth);
             tabPage3.Controls.Add(label4);
             tabPage3.Controls.Add(label6);
             tabPage3.Controls.Add(button4);
-            tabPage3.Controls.Add(textBox2);
+            tabPage3.Controls.Add(KochSnowLevels);
             tabPage3.Controls.Add(label7);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
@@ -411,12 +411,12 @@ namespace Fractalii
             tabPage3.Text = "Koch-Snowflake";
             tabPage3.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // KochSnowWidth
             // 
-            textBox1.Location = new Point(184, 8);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(40, 23);
-            textBox1.TabIndex = 11;
+            KochSnowWidth.Location = new Point(184, 8);
+            KochSnowWidth.Name = "KochSnowWidth";
+            KochSnowWidth.Size = new Size(40, 23);
+            KochSnowWidth.TabIndex = 11;
             // 
             // label4
             // 
@@ -444,13 +444,14 @@ namespace Fractalii
             button4.TabIndex = 8;
             button4.Text = "Generate";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += generate_kochSnowFractal;
             // 
-            // textBox2
+            // KochSnowLevels
             // 
-            textBox2.Location = new Point(60, 8);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(38, 23);
-            textBox2.TabIndex = 7;
+            KochSnowLevels.Location = new Point(60, 8);
+            KochSnowLevels.Name = "KochSnowLevels";
+            KochSnowLevels.Size = new Size(38, 23);
+            KochSnowLevels.TabIndex = 7;
             // 
             // label7
             // 
@@ -510,11 +511,11 @@ namespace Fractalii
         private TextBox width_KochLine;
         private Label label3;
         private TabPage tabPage3;
-        private TextBox textBox1;
+        private TextBox KochSnowWidth;
         private Label label4;
         private Label label6;
         private Button button4;
-        private TextBox textBox2;
+        private TextBox KochSnowLevels;
         private Label label7;
     }
 }

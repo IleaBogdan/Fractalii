@@ -98,7 +98,12 @@ namespace Fractalii
         {
             int levels = -1;
             double width = -0.1;
-            // more code soon
+            Int32.TryParse(KochSnowLevels.Text, null, out levels);
+            Double.TryParse(KochSnowWidth.Text, null, out width);
+            SetupKoch.generate_kochSnowFractal(pb, 
+                new Point(), new Point(), new Point(), 
+                new Point(), new Point(), new Point(), 
+                levels, width);
         }
     }
 }
