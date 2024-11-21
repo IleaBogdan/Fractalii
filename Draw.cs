@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,13 @@ namespace Fractalii
             using (Graphics g = pb.CreateGraphics())
             {
                 g.DrawLine(pen, begin_point, end_point);
+            }
+        }
+        public static void delete_line(PictureBox pb, Point begin_point, Point end_point, double width)
+        {
+            using (Graphics g = pb.CreateGraphics())
+            {
+                g.DrawLine(new Pen(HomePage.bgC, (float)(width)), begin_point, end_point);
             }
         }
     }
