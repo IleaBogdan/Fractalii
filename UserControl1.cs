@@ -74,7 +74,7 @@ namespace Fractalii
         // Koch-Line
         private void default_button_Click_KochLine(object sender, EventArgs e)
         {
-            levels_KochLine.Text = "3";
+            levels_KochLine.Text = "5";
             width_KochLine.Text = "5";
         }
         private void generate_kochLineFractal(object sender, EventArgs e)
@@ -84,7 +84,21 @@ namespace Fractalii
             Int32.TryParse(levels_KochLine.Text, null, out levels);
             Double.TryParse(width_KochLine.Text, null, out width);
             Point start_point = new Point(0, pb.Height - 125), stop_point = new Point(pb.Width, pb.Height - 125);
-            SetupKochLine.generate_iterative(pb, start_point, stop_point, levels, width);
+            SetupKoch.generate_kochLineFractal(pb, start_point, stop_point, levels, width);
+        }
+
+
+
+        // Koch-Snowflake
+        private void default_button_Click_KochSnow(object sender, EventArgs e)
+        {
+            // bla bla bla default code soon
+        }
+        private void generate_kochSnowFractal(object sender, EventArgs e)
+        {
+            int levels = -1;
+            double width = -0.1;
+            // more code soon
         }
     }
 }

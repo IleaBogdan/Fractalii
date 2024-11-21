@@ -10,7 +10,7 @@ using Fractalii.KochLineFractal;
 
 namespace Fractalii.KochLineFractal
 {
-    internal class kochLineFractal
+    internal class kochFractal
     {
         public static double PointDistance(Point end, Point begin)
         {
@@ -31,7 +31,19 @@ namespace Fractalii.KochLineFractal
             return next;
         }
         private static Pen pen = new Pen(Color.Red, 3);
-        public static void generate_iterative(
+
+        public static void generate_snowflake(
+            PictureBox pb,
+            Point b1, Point e1,
+            Point b2, Point e2,
+            Point b3, Point e3,
+            int levels,
+            double width
+            )
+        {
+
+        }
+        public static void generate_line(
                 PictureBox pb,
                 Point ipoint, Point epoint, 
                 int levels,
