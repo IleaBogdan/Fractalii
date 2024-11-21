@@ -42,7 +42,7 @@ namespace Fractalii
                 default_button1.Click += default_button_Click_treeFractal;
 
 
-                // tab1 (kochLineFractal) default button code:
+                // tab2 (kochLineFractal) default button code:
                 Button default_button2 = new Button();
                 tabPage2.Controls.Add(default_button2);
                 // 
@@ -55,6 +55,21 @@ namespace Fractalii
                 default_button2.Text = "Default";
                 default_button2.UseVisualStyleBackColor = true;
                 default_button2.Click += default_button_Click_KochLine;
+
+
+                // tab3 default button code:
+                Button default_button3 = new Button();
+                tabPage3.Controls.Add(default_button3);
+                // 
+                // default_button
+                // 
+                default_button3.Location = new Point(430, 40);
+                default_button3.Name = "default_button";
+                default_button3.Size = new Size(85, 23);
+                default_button3.TabIndex = 13;
+                default_button3.Text = "Default";
+                default_button3.UseVisualStyleBackColor = true;
+                default_button3.Click += default_button_Click_KochSnow;
 
             }
         }
@@ -95,9 +110,17 @@ namespace Fractalii
             button3 = new Button();
             levels_KochLine = new TextBox();
             label1 = new Label();
+            tabPage3 = new TabPage();
+            KochSnowWidth = new TextBox();
+            label4 = new Label();
+            label6 = new Label();
+            button4 = new Button();
+            KochSnowLevels = new TextBox();
+            label7 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -105,6 +128,7 @@ namespace Fractalii
             tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
             tabControl1.ItemSize = new Size(90, 20);
             tabControl1.Location = new Point(3, 3);
             tabControl1.Name = "tabControl1";
@@ -386,6 +410,73 @@ namespace Fractalii
             label1.TabIndex = 0;
             label1.Text = "Levels:";
             // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(KochSnowWidth);
+            tabPage3.Controls.Add(label4);
+            tabPage3.Controls.Add(label6);
+            tabPage3.Controls.Add(button4);
+            tabPage3.Controls.Add(KochSnowLevels);
+            tabPage3.Controls.Add(label7);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(728, 70);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Koch-Snowflake";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // KochSnowWidth
+            // 
+            KochSnowWidth.Location = new Point(184, 8);
+            KochSnowWidth.Name = "KochSnowWidth";
+            KochSnowWidth.Size = new Size(40, 23);
+            KochSnowWidth.TabIndex = 11;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(146, 11);
+            label4.Name = "label4";
+            label4.Size = new Size(42, 15);
+            label4.TabIndex = 10;
+            label4.Text = "Width:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(95, 11);
+            label6.Name = "label6";
+            label6.Size = new Size(21, 15);
+            label6.TabIndex = 9;
+            label6.Text = "<8";
+            // 
+            // button4
+            // 
+            button4.Location = new Point(607, 8);
+            button4.Name = "button4";
+            button4.Size = new Size(100, 55);
+            button4.TabIndex = 8;
+            button4.Text = "Generate";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += generate_kochSnowFractal;
+            // 
+            // KochSnowLevels
+            // 
+            KochSnowLevels.Location = new Point(60, 8);
+            KochSnowLevels.Name = "KochSnowLevels";
+            KochSnowLevels.Size = new Size(38, 23);
+            KochSnowLevels.TabIndex = 7;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(22, 11);
+            label7.Name = "label7";
+            label7.Size = new Size(42, 15);
+            label7.TabIndex = 6;
+            label7.Text = "Levels:";
+            // 
             // UserControl1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -398,6 +489,8 @@ namespace Fractalii
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -432,5 +525,12 @@ namespace Fractalii
         private Label label2;
         private TextBox width_KochLine;
         private Label label3;
+        private TabPage tabPage3;
+        private TextBox KochSnowWidth;
+        private Label label4;
+        private Label label6;
+        private Button button4;
+        private TextBox KochSnowLevels;
+        private Label label7;
     }
 }

@@ -10,7 +10,7 @@ using Fractalii.KochLineFractal;
 
 namespace Fractalii.KochLineFractal
 {
-    internal class kochLineFractal
+    internal class kochFractal
     {
         public static double PointDistance(Point end, Point begin)
         {
@@ -31,7 +31,17 @@ namespace Fractalii.KochLineFractal
             return next;
         }
         private static Pen pen = new Pen(Color.Red, 3);
-        public static void generate_iterative(
+
+        public static void generate_snowflake(
+            PictureBox pb,
+            Point p1, Point p2, Point p3,
+            int levels,
+            double width
+            )
+        {
+
+        }
+        public static void generate_line(
                 PictureBox pb,
                 Point ipoint, Point epoint, 
                 int levels,
@@ -54,13 +64,18 @@ namespace Fractalii.KochLineFractal
             Point mid = kochNextPoint(k.begin_point, k.end_point, 90);
             q.Enqueue(KochItem.merge(new KochItem(k), mid));
             q.Enqueue(KochItem.merge(new KochItem(k), mid, false));
+            if (levels == 1)
+            {
+                q.Dequeue(); q.Dequeue();
+            }
+            int currLevel=0;
             while (q.Count > 0)
             {
                 KochItem k2 = q.Dequeue(), k1 = q.Dequeue();
-                //Thread.Sleep(500);
-                //it doesn't work but the rest is ok-ish
-                //Draw.draw_line(pb, k1.begin_point, k2.end_point, new Pen(HomePage.bgC, pen.Width));
-                //Thread.Sleep(500);
+                // ok LETS GOOOOOO it works
+                // get owned suckers
+                if (k1.level != currLevel) { Thread.Sleep(500); currLevel = k1.level; }
+                Draw.delete_line(pb, k1.begin_point, k2.end_point, width);
                 Draw.draw_line(pb, k1.begin_point, k1.end_point, pen);
                 Draw.draw_line(pb, k2.begin_point, k2.end_point, pen);
                 ++k1.level; ++k2.level;
