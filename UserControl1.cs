@@ -92,7 +92,8 @@ namespace Fractalii
         // Koch-Snowflake
         private void default_button_Click_KochSnow(object sender, EventArgs e)
         {
-            // bla bla bla default code soon
+            KochSnowLevels.Text = "5";
+            KochSnowWidth.Text = "5";
         }
         private void generate_kochSnowFractal(object sender, EventArgs e)
         {
@@ -100,9 +101,10 @@ namespace Fractalii
             double width = -0.1;
             Int32.TryParse(KochSnowLevels.Text, null, out levels);
             Double.TryParse(KochSnowWidth.Text, null, out width);
+            int constant = 400;
             SetupKoch.generate_kochSnowFractal(pb, 
-                new Point(), new Point(), new Point(), 
-                new Point(), new Point(), new Point(), 
+                new Point(constant, 100), new Point(pb.Width-constant, 100),
+                new Point(pb.Width/2, pb.Height-100), 
                 levels, width);
         }
     }

@@ -34,9 +34,7 @@ namespace Fractalii.KochLineFractal
 
         public static void generate_snowflake(
             PictureBox pb,
-            Point b1, Point e1,
-            Point b2, Point e2,
-            Point b3, Point e3,
+            Point p1, Point p2, Point p3,
             int levels,
             double width
             )

@@ -33,15 +33,16 @@ namespace Fractalii.KochLineFractal
         }
         public static void generate_kochSnowFractal(
             PictureBox pb,
-            Point b1, Point b2, Point b3,
-            Point e1, Point e2, Point e3,
+            Point p1, Point p2, Point p3,
                 int levels, double width
             )
         {
             pb.Refresh();
             if (checker(levels, width))
             {
-                // cod pt generare
+                Draw.draw_line(pb, p1, p2, new Pen(Color.Red, 3));
+                Draw.draw_line(pb, p1, p3, new Pen(Color.Red, 3));
+                Draw.draw_line(pb, p2, p3, new Pen(Color.Red, 3));
             }
             else
             {
