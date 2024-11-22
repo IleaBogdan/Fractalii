@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
@@ -31,6 +31,28 @@ namespace Fractalii.KochLineFractal
             return next;
         }
         private static Pen pen = new Pen(Color.Red, 3);
+        private static int[] RGB = new int[3];
+        private static double[] RGBDif = new double[3];
+        private static Color initialColor, finalColor;
+        private static void InitColor(Color initial_color, Color final_color)
+        {
+            initialColor = initial_color;
+            finalColor = final_color;
+
+            pen.Color = initialColor;
+            RGB[0] = pen.Color.R;
+            RGB[1] = pen.Color.G;
+            RGB[2] = pen.Color.B;
+            RGBDif[0] = finalColor.R - RGB[0];
+            RGBDif[1] = finalColor.G - RGB[1];
+            RGBDif[2] = finalColor.B - RGB[2];
+        }
+        private static void predraw(int level, int maxLevel)
+        {
+            float fraction = (float)level / (float)maxLevel;
+            int green = RGB[1] + (int)(RGBDif[1] * fraction), red = RGB[0] + (int)(RGBDif[0] * fraction), blue = RGB[2] + (int)(RGBDif[2] * fraction);
+            pen.Color = Color.FromArgb(red >= 0 && red <= 255 ? red : 0, green >= 0 && green <= 255 ? green : 0, blue >= 0 && blue <= 255 ? blue : 0);
+        }
 
         public static void generate_snowflake(
             PictureBox pb,
@@ -39,7 +61,7 @@ namespace Fractalii.KochLineFractal
             double width
             )
         {
-
+            // exista da nu face nimic (e prost)
         }
         public static void generate_line(
                 PictureBox pb,
@@ -48,7 +70,7 @@ namespace Fractalii.KochLineFractal
                 double width
             )
         {
-
+            InitColor(HomePage.initialColor, HomePage.finalColor);
 
             Queue<KochItem>q = new Queue<KochItem>();
             Draw.draw_line(pb, ipoint, epoint, pen);
@@ -75,6 +97,7 @@ namespace Fractalii.KochLineFractal
                 // ok LETS GOOOOOO it works
                 // get owned suckers
                 if (k1.level != currLevel) { Thread.Sleep(500); currLevel = k1.level; }
+                predraw(currLevel, levels);
                 Draw.delete_line(pb, k1.begin_point, k2.end_point, width);
                 Draw.draw_line(pb, k1.begin_point, k1.end_point, pen);
                 Draw.draw_line(pb, k2.begin_point, k2.end_point, pen);
