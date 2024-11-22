@@ -100,7 +100,7 @@ namespace Fractalii.KochLineFractal
                 // ok LETS GOOOOOO it works
                 // get owned suckers
                 if (k1.level != currLevel) { Thread.Sleep(500); currLevel = k1.level; }
-                Draw.delete_line(pb, k1.begin_point, k2.end_point, width);
+                Draw.delete_line(pb, k1.begin_point, k2.end_point, (float)width);
                 predraw(currLevel, levels, pen.Width * (float)reduction);
                 Draw.draw_line(pb, k1.begin_point, k1.end_point, pen);
                 Draw.draw_line(pb, k2.begin_point, k2.end_point, pen);
@@ -126,6 +126,7 @@ namespace Fractalii.KochLineFractal
                     q.Enqueue(KochItem.merge(new KochItem(k2), mid, false));
                 }
             }
+            pen.Width = (float)width;
         }
     }
 }
