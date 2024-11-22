@@ -47,8 +47,10 @@ namespace Fractalii.KochLineFractal
             RGBDif[1] = finalColor.G - RGB[1];
             RGBDif[2] = finalColor.B - RGB[2];
         }
-        private static void predraw(int level, int maxLevel)
+        private static void predraw(int level, int maxLevel, float width)
         {
+            pen.Width = width;
+
             float fraction = (float)level / (float)maxLevel;
             int green = RGB[1] + (int)(RGBDif[1] * fraction), red = RGB[0] + (int)(RGBDif[0] * fraction), blue = RGB[2] + (int)(RGBDif[2] * fraction);
             pen.Color = Color.FromArgb(red >= 0 && red <= 255 ? red : 0, green >= 0 && green <= 255 ? green : 0, blue >= 0 && blue <= 255 ? blue : 0);
@@ -70,6 +72,7 @@ namespace Fractalii.KochLineFractal
                 double width
             )
         {
+            double reduction = .9;
             InitColor(HomePage.initialColor, HomePage.finalColor);
 
             Queue<KochItem>q = new Queue<KochItem>();
@@ -97,8 +100,8 @@ namespace Fractalii.KochLineFractal
                 // ok LETS GOOOOOO it works
                 // get owned suckers
                 if (k1.level != currLevel) { Thread.Sleep(500); currLevel = k1.level; }
-                predraw(currLevel, levels);
                 Draw.delete_line(pb, k1.begin_point, k2.end_point, width);
+                predraw(currLevel, levels, pen.Width * (float)reduction);
                 Draw.draw_line(pb, k1.begin_point, k1.end_point, pen);
                 Draw.draw_line(pb, k2.begin_point, k2.end_point, pen);
                 ++k1.level; ++k2.level;
