@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Reflection;
@@ -69,7 +70,7 @@ namespace Fractalii.KochLineFractal
                 PictureBox pb,
                 Point ipoint, Point epoint, 
                 int levels,
-                double width
+                float width
             )
         {
             double reduction = .9;
@@ -82,7 +83,8 @@ namespace Fractalii.KochLineFractal
                 1, width);
 
 
-
+            pen.Width = width;
+            if (Debugger.IsAttached) Console.WriteLine(k.width.ToString());
             //Draw.draw_line(pb, ipoint, k.begin_point, new Pen(Color.Blue, 1));
             //Draw.draw_line(pb, epoint, k.end_point, new Pen(Color.Blue, 1));
             Draw.draw_line(pb, k.begin_point, k.end_point, pen);
@@ -99,12 +101,25 @@ namespace Fractalii.KochLineFractal
                 KochItem k2 = q.Dequeue(), k1 = q.Dequeue();
                 // ok LETS GOOOOOO it works
                 // get owned suckers
-                if (k1.level != currLevel) { Thread.Sleep(500); currLevel = k1.level; }
-                Draw.delete_line(pb, k1.begin_point, k2.end_point, (float)width);
-                predraw(currLevel, levels, pen.Width * (float)reduction);
+                pen.Width = (float)(k1.width * reduction);
+                int noDec=(int)(pen.Width*100);
+                pen.Width=noDec/100.0f;
+                if (k1.level != currLevel) { 
+                    //Thread.Sleep(500);
+                    currLevel = k1.level;
+                    if (Debugger.IsAttached)
+                    {
+                        Console.WriteLine(currLevel.ToString());
+                        Console.WriteLine("pen: " + pen.Width.ToString());
+                        Console.WriteLine("k1:  "+ k1.width.ToString());
+                    }
+                }
+                Draw.delete_line(pb, k1.begin_point, k2.end_point, (float)k1.width);
+                predraw(currLevel, levels, pen.Width);
                 Draw.draw_line(pb, k1.begin_point, k1.end_point, pen);
                 Draw.draw_line(pb, k2.begin_point, k2.end_point, pen);
                 ++k1.level; ++k2.level;
+                k1.width = pen.Width; k2.width = pen.Width;
                 if (levels > k1.level)
                 {
                     k1.angle += 60;

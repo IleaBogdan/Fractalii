@@ -24,7 +24,7 @@ namespace Fractalii.KochLineFractal
             pb.Refresh();
             if (checker(levels, width))
             {
-                kochFractal.generate_line(pb, start_point, stop_end, levels, width);
+                kochFractal.generate_line(pb, start_point, stop_end, levels, (float)width);
             } 
             else
             {

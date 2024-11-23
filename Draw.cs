@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ namespace Fractalii
         }
         public static void delete_line(PictureBox pb, Point begin_point, Point end_point, float width)
         {
+            //if (Debugger.IsAttached) Console.WriteLine("float:  " + width.ToString());
             using (Graphics g = pb.CreateGraphics())
             {
                 g.DrawLine(new Pen(HomePage.bgC, width), begin_point, end_point);
