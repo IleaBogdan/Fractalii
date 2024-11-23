@@ -101,10 +101,11 @@ namespace Fractalii
             double width = -0.1;
             Int32.TryParse(KochSnowLevels.Text, null, out levels);
             Double.TryParse(KochSnowWidth.Text, null, out width);
-            int constant = 400;
+            //const int constant = 400;
+            Point p1=new Point(pb.Width/3, pb.Height / 5), p2=new Point((pb.Width/3)*2, pb.Height / 5);
+            Point p3 = new Point(pb.Width / 2, (int)((double)(pb.Width/3.0)* 0.866025)+pb.Height/5);
             SetupKoch.generate_kochSnowFractal(pb, 
-                new Point(constant, 100), new Point(pb.Width-constant, 100),
-                new Point(pb.Width/2, pb.Height-100), 
+                p1, p2, p3, 
                 levels, width);
         }
     }
