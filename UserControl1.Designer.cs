@@ -124,7 +124,11 @@ namespace Fractalii
             // 
             // tabControl1
             // 
-            tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tabControl1.Anchor = AnchorStyles.Top 
+                //| AnchorStyles.Bottom
+                | AnchorStyles.Left 
+                //| AnchorStyles.Right
+                ;
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);

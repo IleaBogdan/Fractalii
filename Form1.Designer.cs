@@ -51,9 +51,9 @@ namespace Fractalii
             // userControl11
             // 
             userControl11.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            userControl11.Location = new Point(12, 1);
+            userControl11.Location = new Point(15, 4);
             userControl11.Name = "userControl11";
-            userControl11.Size = new Size(741, 116);
+            userControl11.Size = new Size(741, pictureBox1.Location.Y-10);
             userControl11.TabIndex = 1;
             // 
             // finalColorSelect

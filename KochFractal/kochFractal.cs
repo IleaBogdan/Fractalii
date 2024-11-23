@@ -48,9 +48,9 @@ namespace Fractalii.KochLineFractal
             RGBDif[1] = finalColor.G - RGB[1];
             RGBDif[2] = finalColor.B - RGB[2];
         }
-        private static void predraw(int level, int maxLevel, float width)
+        private static void predraw(int level, int maxLevel, double width)
         {
-            pen.Width = width;
+            pen.Width = (float)(width);
 
             float fraction = (float)level / (float)maxLevel;
             int green = RGB[1] + (int)(RGBDif[1] * fraction), red = RGB[0] + (int)(RGBDif[0] * fraction), blue = RGB[2] + (int)(RGBDif[2] * fraction);
@@ -70,24 +70,25 @@ namespace Fractalii.KochLineFractal
                 PictureBox pb,
                 Point ipoint, Point epoint, 
                 int levels,
-                float width
+                double width
             )
         {
-            double reduction = .9;
+            double reduction = .75;
             InitColor(HomePage.initialColor, HomePage.finalColor);
 
             Queue<KochItem>q = new Queue<KochItem>();
+            predraw(0, levels, width);
             Draw.draw_line(pb, ipoint, epoint, pen);
             KochItem k=new KochItem(getPointFormula(ipoint, epoint, 1.0 / 3.0), 
                 getPointFormula(ipoint, epoint, 2.0 / 3.0), 
                 1, width);
 
 
-            pen.Width = width;
+            pen.Width = (float)(width);
             if (Debugger.IsAttached) Console.WriteLine(k.width.ToString());
             //Draw.draw_line(pb, ipoint, k.begin_point, new Pen(Color.Blue, 1));
             //Draw.draw_line(pb, epoint, k.end_point, new Pen(Color.Blue, 1));
-            Draw.draw_line(pb, k.begin_point, k.end_point, pen);
+            //Draw.draw_line(pb, k.begin_point, k.end_point, pen);
             Point mid = kochNextPoint(k.begin_point, k.end_point, 90);
             q.Enqueue(KochItem.merge(new KochItem(k), mid));
             q.Enqueue(KochItem.merge(new KochItem(k), mid, false));
@@ -99,12 +100,11 @@ namespace Fractalii.KochLineFractal
             while (q.Count > 0)
             {
                 KochItem k2 = q.Dequeue(), k1 = q.Dequeue();
-                // ok LETS GOOOOOO it works
-                // get owned suckers
-                pen.Width = (float)(k1.width * reduction);
-                int noDec=(int)(pen.Width*100);
-                pen.Width=noDec/100.0f;
+                
+                // this shit is broken
+                pen.Width = (float)(k1.width);
                 if (k1.level != currLevel) { 
+                    // for better visuals:
                     //Thread.Sleep(500);
                     currLevel = k1.level;
                     if (Debugger.IsAttached)
@@ -114,8 +114,8 @@ namespace Fractalii.KochLineFractal
                         Console.WriteLine("k1:  "+ k1.width.ToString());
                     }
                 }
-                Draw.delete_line(pb, k1.begin_point, k2.end_point, (float)k1.width);
-                predraw(currLevel, levels, pen.Width);
+                Draw.delete_line(pb, k1.begin_point, k2.end_point, k1.width);
+                predraw(currLevel, levels, (k1.width * reduction));
                 Draw.draw_line(pb, k1.begin_point, k1.end_point, pen);
                 Draw.draw_line(pb, k2.begin_point, k2.end_point, pen);
                 ++k1.level; ++k2.level;
