@@ -26,7 +26,6 @@ namespace Fractalii
         {
             if (Debugger.IsAttached)
             {
-
                 // tab1 (treeFractal) default button code:
                 Button default_button1 = new Button();
                 tabPage1.Controls.Add(default_button1);

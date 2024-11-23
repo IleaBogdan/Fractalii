@@ -79,7 +79,7 @@ namespace Fractalii.KochLineFractal
             Draw.draw_line(pb, ipoint, epoint, pen);
             KochItem k=new KochItem(getPointFormula(ipoint, epoint, 1.0 / 3.0), 
                 getPointFormula(ipoint, epoint, 2.0 / 3.0), 
-                1, width);
+                1, (float)(width));
 
 
 
@@ -99,12 +99,14 @@ namespace Fractalii.KochLineFractal
                 KochItem k2 = q.Dequeue(), k1 = q.Dequeue();
                 // ok LETS GOOOOOO it works
                 // get owned suckers
+                pen.Width = k1.width;
                 if (k1.level != currLevel) { Thread.Sleep(500); currLevel = k1.level; }
-                Draw.delete_line(pb, k1.begin_point, k2.end_point, (float)width);
+                Draw.delete_line(pb, k1.begin_point, k2.end_point, (float)k1.width);
                 predraw(currLevel, levels, pen.Width * (float)reduction);
                 Draw.draw_line(pb, k1.begin_point, k1.end_point, pen);
                 Draw.draw_line(pb, k2.begin_point, k2.end_point, pen);
                 ++k1.level; ++k2.level;
+                k1.width = pen.Width; k2.width = pen.Width;
                 if (levels > k1.level)
                 {
                     k1.angle += 60;

@@ -9,10 +9,11 @@ namespace Fractalii.KochLineFractal
     internal class KochItem
     {
         public Point begin_point, end_point;
-        public double width, angle;
+        public double angle;
+        public float width;
         public int level;
         public KochItem() { angle = 90; }
-        public KochItem(Point BEGIN, Point END, int LEVEL, double WIDTH, double AMGLE= 90)
+        public KochItem(Point BEGIN, Point END, int LEVEL, float WIDTH, double AMGLE= 90)
         {
             begin_point = BEGIN;
             end_point = END;

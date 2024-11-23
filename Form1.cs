@@ -1,5 +1,7 @@
 using Fractalii.TreeFractal;
+using System.Diagnostics;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Security.Policy;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
@@ -11,8 +13,12 @@ namespace Fractalii
         public HomePage()
         {
             InitializeComponent();
+            if (Debugger.IsAttached) { AllocConsole(); }
         }
 
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
         public static Color bgC = Color.Black;
 
 
