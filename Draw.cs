@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,6 +27,15 @@ namespace Fractalii
             using (Graphics g = pb.CreateGraphics())
             {
                 g.DrawLine(new Pen(HomePage.bgC, (float)(width)), begin_point, end_point);
+            }
+        }
+        public static void draw_triangle(PictureBox pb, Point p1, Point p2, Point p3, Pen pen)
+        {
+            using (Graphics g = pb.CreateGraphics())
+            {
+                g.DrawLine(pen, p1, p2);
+                g.DrawLine(pen, p2, p3);
+                g.DrawLine(pen, p3, p1);
             }
         }
     }
