@@ -57,6 +57,52 @@ namespace Fractalii.KochLineFractal
             pen.Color = Color.FromArgb(red >= 0 && red <= 255 ? red : 0, green >= 0 && green <= 255 ? green : 0, blue >= 0 && blue <= 255 ? blue : 0);
         }
 
+        private static void inWhile(Queue<KochItem> q, int levels, double reduction, PictureBox pb, int currLevel=0)
+        {
+            Point mid;
+            KochItem k2 = q.Dequeue(), k1 = q.Dequeue();
+
+            // this shit is broken
+            pen.Width = (float)(k1.width);
+            if (k1.level != currLevel)
+            {
+                // for better visuals:
+                //Thread.Sleep(500);
+                currLevel = k1.level;
+                if (Debugger.IsAttached)
+                {
+                    Console.WriteLine(currLevel.ToString());
+                    Console.WriteLine("pen: " + pen.Width.ToString());
+                    Console.WriteLine("k1:  " + k1.width.ToString());
+                }
+            }
+            Draw.delete_line(pb, k1.begin_point, k2.end_point, k1.width);
+            predraw(currLevel, levels, (k1.width * reduction));
+            Draw.draw_line(pb, k1.begin_point, k1.end_point, pen);
+            Draw.draw_line(pb, k2.begin_point, k2.end_point, pen);
+            ++k1.level; ++k2.level;
+            k1.width = pen.Width; k2.width = pen.Width;
+            if (levels > k1.level)
+            {
+                k1.angle += 60;
+                Point p1 = k1.begin_point, p2 = k1.end_point;
+                k1.begin_point = getPointFormula(p1, p2, 1.0 / 3.0);
+                k1.end_point = getPointFormula(p1, p2, 2.0 / 3.0);
+                mid = kochNextPoint(k1.begin_point, k1.end_point, k1.angle);
+                q.Enqueue(KochItem.merge(new KochItem(k1), mid));
+                q.Enqueue(KochItem.merge(new KochItem(k1), mid, false));
+            }
+            if (levels > k2.level)
+            {
+                k2.angle -= 60;
+                Point p1 = k2.begin_point, p2 = k2.end_point;
+                k2.begin_point = getPointFormula(p1, p2, 1.0 / 3.0);
+                k2.end_point = getPointFormula(p1, p2, 2.0 / 3.0);
+                mid = kochNextPoint(k2.begin_point, k2.end_point, k2.angle);
+                q.Enqueue(KochItem.merge(new KochItem(k2), mid));
+                q.Enqueue(KochItem.merge(new KochItem(k2), mid, false));
+            }
+        }
         public static void generate_snowflake(
             PictureBox pb,
             Point p1, Point p2, Point p3,
@@ -96,50 +142,9 @@ namespace Fractalii.KochLineFractal
             {
                 q.Dequeue(); q.Dequeue();
             }
-            int currLevel=0;
             while (q.Count > 0)
             {
-                KochItem k2 = q.Dequeue(), k1 = q.Dequeue();
-                
-                // this shit is broken
-                pen.Width = (float)(k1.width);
-                if (k1.level != currLevel) { 
-                    // for better visuals:
-                    //Thread.Sleep(500);
-                    currLevel = k1.level;
-                    if (Debugger.IsAttached)
-                    {
-                        Console.WriteLine(currLevel.ToString());
-                        Console.WriteLine("pen: " + pen.Width.ToString());
-                        Console.WriteLine("k1:  "+ k1.width.ToString());
-                    }
-                }
-                Draw.delete_line(pb, k1.begin_point, k2.end_point, k1.width);
-                predraw(currLevel, levels, (k1.width * reduction));
-                Draw.draw_line(pb, k1.begin_point, k1.end_point, pen);
-                Draw.draw_line(pb, k2.begin_point, k2.end_point, pen);
-                ++k1.level; ++k2.level;
-                k1.width = pen.Width; k2.width = pen.Width;
-                if (levels > k1.level)
-                {
-                    k1.angle += 60;
-                    Point p1 = k1.begin_point, p2 = k1.end_point;
-                    k1.begin_point = getPointFormula(p1, p2, 1.0 / 3.0);
-                    k1.end_point = getPointFormula(p1, p2, 2.0 / 3.0);
-                    mid = kochNextPoint(k1.begin_point, k1.end_point, k1.angle);
-                    q.Enqueue(KochItem.merge(new KochItem(k1), mid));
-                    q.Enqueue(KochItem.merge(new KochItem(k1), mid, false));
-                }
-                if (levels > k2.level)
-                {
-                    k2.angle -= 60;
-                    Point p1 = k2.begin_point, p2 = k2.end_point;
-                    k2.begin_point = getPointFormula(p1, p2, 1.0 / 3.0);
-                    k2.end_point = getPointFormula(p1, p2, 2.0 / 3.0);
-                    mid = kochNextPoint(k2.begin_point, k2.end_point, k2.angle);
-                    q.Enqueue(KochItem.merge(new KochItem(k2), mid));
-                    q.Enqueue(KochItem.merge(new KochItem(k2), mid, false));
-                }
+                inWhile(q, levels, reduction, pb);
             }
             pen.Width = (float)width;
         }
