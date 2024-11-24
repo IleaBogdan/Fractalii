@@ -107,20 +107,20 @@ namespace Fractalii.KochLineFractal
             PictureBox pb,
             Point p1, Point p2, Point p3,
             int levels,
-            double width, double reduction = .75
+            double width, double reduction = 1.0
             )
         {
-            // exista da nu face nimic (e prost)
             InitColor(HomePage.initialColor, HomePage.finalColor);
             Queue<KochItem> q = new Queue<KochItem>();
             predraw(0, levels, width);
             Draw.draw_triangle(pb, p1, p2, p3, pen);
+
         }
         public static void generate_line(
                 PictureBox pb,
                 Point ipoint, Point epoint, 
                 int levels,
-                double width, double reduction = .75
+                double width, double reduction = 1.0
             )
         {
             InitColor(HomePage.initialColor, HomePage.finalColor);

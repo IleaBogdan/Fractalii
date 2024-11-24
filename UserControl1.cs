@@ -75,7 +75,7 @@ namespace Fractalii
         private void default_button_Click_KochLine(object sender, EventArgs e)
         {
             levels_KochLine.Text = "5";
-            width_KochLine.Text = "10";
+            width_KochLine.Text = "5";
         }
         private void generate_kochLineFractal(object sender, EventArgs e)
         {
