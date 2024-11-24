@@ -103,23 +103,33 @@ namespace Fractalii.KochLineFractal
                 q.Enqueue(KochItem.merge(new KochItem(k2), mid, false));
             }
         }
+        private static void tripleDraw(PictureBox pb, Point p1
+            , Point p2, Point p3)
+        {
+            Draw.draw_line(pb, p1, p2, pen);
+            Draw.draw_line(pb, p2, p3, pen);
+            Draw.draw_line(pb, p3, p1, pen);
+        }
         public static void generate_snowflake(
             PictureBox pb,
             Point p1, Point p2, Point p3,
             int levels,
-            double width
+            double width, double reduction = .75
             )
         {
             // exista da nu face nimic (e prost)
+            InitColor(HomePage.initialColor, HomePage.finalColor);
+            Queue<KochItem> q = new Queue<KochItem>();
+            predraw(0, levels, width);
+            tripleDraw(pb, p1,p2, p3);
         }
         public static void generate_line(
                 PictureBox pb,
                 Point ipoint, Point epoint, 
                 int levels,
-                double width
+                double width, double reduction = .75
             )
         {
-            double reduction = .75;
             InitColor(HomePage.initialColor, HomePage.finalColor);
 
             Queue<KochItem>q = new Queue<KochItem>();
