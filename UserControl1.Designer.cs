@@ -124,7 +124,6 @@ namespace Fractalii
             // 
             // tabControl1
             // 
-            tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
@@ -161,6 +160,7 @@ namespace Fractalii
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
+            tabPage1.RightToLeft = RightToLeft.No;
             tabPage1.Size = new Size(728, 70);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Tree";

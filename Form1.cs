@@ -49,5 +49,12 @@ namespace Fractalii
                 finalColor = colorSelector.setColor;
             }
         }
+
+        private void pictureBox1_2Click(object sender, EventArgs e)
+        {
+            //pictureBox1.Refresh();
+            UserControl1.default_pressed(sender, e, userControl11);
+            //Console.WriteLine("Boom");
+        }
     }
 }
