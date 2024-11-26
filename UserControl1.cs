@@ -18,7 +18,7 @@ namespace Fractalii
         public UserControl1()
         {
             InitializeComponent();
-            debug();
+            //debug();
         }
         private PictureBox pb;
         public void set_pictureBox(PictureBox p)
@@ -26,10 +26,10 @@ namespace Fractalii
             pb = p;
         }
         
-
         // Tree Fractal
         private void default_button_Click_treeFractal(object sender, EventArgs e)
         {
+            //Console.WriteLine("tree");
             textBox_angle_left_tab1.Text = "60";
             textBox_angle_right_tab1.Text = "30";
             textBox_size_tab1.Text = "60";
@@ -107,6 +107,22 @@ namespace Fractalii
             SetupKoch.generate_kochSnowFractal(pb, 
                 p1, p2, p3, 
                 levels, width);
+        }
+
+
+
+
+
+
+
+
+
+        public static void default_pressed(object sender, EventArgs e, UserControl1 u1)
+        {
+            if (u1.tabControl1.SelectedIndex == 0) u1.default_button_Click_treeFractal(sender, e);
+            if (u1.tabControl1.SelectedIndex == 1) u1.default_button_Click_KochLine(sender, e);
+            if (u1.tabControl1.SelectedIndex == 2) u1.default_button_Click_KochSnow(sender, e);
+            // any more defaults here pls
         }
     }
 }

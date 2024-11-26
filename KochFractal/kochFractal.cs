@@ -71,11 +71,18 @@ namespace Fractalii.KochLineFractal
                 currLevel = k1.level;
                 if (Debugger.IsAttached)
                 {
+                    /*
                     Console.WriteLine(currLevel.ToString());
                     Console.WriteLine("pen: " + pen.Width.ToString());
                     Console.WriteLine("k1:  " + k1.width.ToString());
+                    */
                 }
             }
+            /*
+            Console.WriteLine(k1.begin_point.ToString()+" "+k1.end_point.ToString());
+            Console.WriteLine(k2.begin_point.ToString() + " " + k2.end_point.ToString());
+            Console.WriteLine();
+            */
             Draw.delete_line(pb, k1.begin_point, k2.end_point, k1.width);
             predraw(currLevel, levels, (k1.width * reduction));
             Draw.draw_line(pb, k1.begin_point, k1.end_point, pen);
