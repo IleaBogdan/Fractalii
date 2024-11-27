@@ -18,13 +18,14 @@ namespace Fractalii.KochLineFractal
         public static void generate_kochLineFractal(
                 PictureBox pb,
                 Point start_point, Point stop_end, 
-                int levels, double width
+                int levels, double width,
+                double reduction=1.0
             )
         {
             pb.Refresh();
             if (checker(levels, width))
             {
-                kochFractal.generate_line(pb, start_point, stop_end, levels, (float)width);
+                kochFractal.generate_line(pb, start_point, stop_end, levels, width, reduction);
             } 
             else
             {
@@ -34,7 +35,8 @@ namespace Fractalii.KochLineFractal
         public static void generate_kochSnowFractal(
             PictureBox pb,
             Point p1, Point p2, Point p3,
-                int levels, double width
+                int levels, double width,
+                double reduction=1.0
             )
         {
             pb.Refresh();
@@ -44,7 +46,7 @@ namespace Fractalii.KochLineFractal
                 //Draw.draw_line(pb, p1, p3, new Pen(Color.Red, 3));
                 //Draw.draw_line(pb, p2, p3, new Pen(Color.Red, 3));
                 //width = 2.0;
-                kochFractal.generate_snowflake(pb, p1, p2, p3, levels, width);
+                kochFractal.generate_snowflake(pb, p1, p2, p3, levels, width, reduction);
             }
             else
             {

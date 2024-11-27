@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Fractalii
 {
@@ -22,7 +23,7 @@ namespace Fractalii
             }
             base.Dispose(disposing);
         }
-        public void debug()
+        /*public void debug()
         {
             if (Debugger.IsAttached)
             {
@@ -71,7 +72,7 @@ namespace Fractalii
                 default_button3.Click += default_button_Click_KochSnow;
 
             }
-        }
+        }*/
         #region Component Designer generated code
 
         /// <summary> 
@@ -82,40 +83,44 @@ namespace Fractalii
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            textBox_angle_left_tab1 = new TextBox();
-            textBox_angle_right_tab1 = new TextBox();
-            textBox_reduction_right_tab1 = new TextBox();
-            textBox_size_tab1 = new TextBox();
-            textBox_reduction_left_tab1 = new TextBox();
-            textBox_levels_tab1 = new TextBox();
-            textBox_width_tab1 = new TextBox();
+            textBox_angle_left_tab1 = new System.Windows.Forms.TextBox();
+            textBox_angle_right_tab1 = new System.Windows.Forms.TextBox();
+            textBox_reduction_right_tab1 = new System.Windows.Forms.TextBox();
+            textBox_size_tab1 = new System.Windows.Forms.TextBox();
+            textBox_reduction_left_tab1 = new System.Windows.Forms.TextBox();
+            textBox_levels_tab1 = new System.Windows.Forms.TextBox();
+            textBox_width_tab1 = new System.Windows.Forms.TextBox();
             label_angle_left_tab1 = new Label();
             label_procent_reduction_right_tab1 = new Label();
             label_angle_right_tab1 = new Label();
             label_reduction_right_tab1 = new Label();
             label_size_tab1 = new Label();
             label_procent_reduction_left_tab1 = new Label();
-            button1 = new Button();
+            button1 = new System.Windows.Forms.Button();
             label_reduction_left_tab1 = new Label();
             label_levels_tab1 = new Label();
             label_width_max_tab1 = new Label();
             label5 = new Label();
             label_width_tab1 = new Label();
-            button2 = new Button();
+            button2 = new System.Windows.Forms.Button();
             tabPage2 = new TabPage();
-            width_KochLine = new TextBox();
+            width_KochLine = new System.Windows.Forms.TextBox();
             label3 = new Label();
             label2 = new Label();
-            button3 = new Button();
-            levels_KochLine = new TextBox();
+            button3 = new System.Windows.Forms.Button();
+            levels_KochLine = new System.Windows.Forms.TextBox();
             label1 = new Label();
             tabPage3 = new TabPage();
-            KochSnowWidth = new TextBox();
+            KochSnowWidth = new System.Windows.Forms.TextBox();
             label4 = new Label();
             label6 = new Label();
-            button4 = new Button();
-            KochSnowLevels = new TextBox();
+            button4 = new System.Windows.Forms.Button();
+            KochSnowLevels = new System.Windows.Forms.TextBox();
             label7 = new Label();
+            textBox1 = new System.Windows.Forms.TextBox();
+            label8 = new Label();
+            textBox2= new System.Windows.Forms.TextBox();
+            label9=new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -344,6 +349,8 @@ namespace Fractalii
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(label8);
+            tabPage2.Controls.Add(textBox1);
             tabPage2.Controls.Add(width_KochLine);
             tabPage2.Controls.Add(label3);
             tabPage2.Controls.Add(label2);
@@ -417,6 +424,8 @@ namespace Fractalii
             tabPage3.Controls.Add(button4);
             tabPage3.Controls.Add(KochSnowLevels);
             tabPage3.Controls.Add(label7);
+            tabPage3.Controls.Add(label9);
+            tabPage3.Controls.Add(textBox2);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
@@ -476,6 +485,38 @@ namespace Fractalii
             label7.TabIndex = 6;
             label7.Text = "Levels:";
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(337, 9);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(43, 23);
+            textBox1.TabIndex = 6;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(272, 12);
+            label8.Name = "label8";
+            label8.Size = new Size(64, 15);
+            label8.TabIndex = 7;
+            label8.Text = "Reduction:";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(337, 9);
+            textBox2.Name = "textBox1";
+            textBox2.Size = new Size(43, 23);
+            textBox2.TabIndex = 6;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(272, 12);
+            label9.Name = "label8";
+            label9.Size = new Size(64, 15);
+            label9.TabIndex = 7;
+            label9.Text = "Reduction:";
+            // 
             // UserControl1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -497,39 +538,43 @@ namespace Fractalii
 
         private TabControl tabControl1;
         private TabPage tabPage1;
-        private TextBox textBox_angle_left_tab1;
-        private TextBox textBox_angle_right_tab1;
-        private TextBox textBox_reduction_right_tab1;
-        private TextBox textBox_size_tab1;
-        private TextBox textBox_reduction_left_tab1;
-        private TextBox textBox_levels_tab1;
-        private TextBox textBox_width_tab1;
+        private System.Windows.Forms.TextBox textBox_angle_left_tab1;
+        private System.Windows.Forms.TextBox textBox_angle_right_tab1;
+        private System.Windows.Forms.TextBox textBox_reduction_right_tab1;
+        private System.Windows.Forms.TextBox textBox_size_tab1;
+        private System.Windows.Forms.TextBox textBox_reduction_left_tab1;
+        private System.Windows.Forms.TextBox textBox_levels_tab1;
+        private System.Windows.Forms.TextBox textBox_width_tab1;
         private Label label_angle_left_tab1;
         private Label label_procent_reduction_right_tab1;
         private Label label_angle_right_tab1;
         private Label label_reduction_right_tab1;
         private Label label_size_tab1;
         private Label label_procent_reduction_left_tab1;
-        private Button button1;
+        private System.Windows.Forms.Button button1;
         private Label label_reduction_left_tab1;
         private Label label_levels_tab1;
         private Label label_width_max_tab1;
         private Label label5;
         private Label label_width_tab1;
-        private Button button2;
+        private System.Windows.Forms.Button button2;
         private TabPage tabPage2;
         private Label label1;
-        private TextBox levels_KochLine;
-        private Button button3;
+        private System.Windows.Forms.TextBox levels_KochLine;
+        private System.Windows.Forms.Button button3;
         private Label label2;
-        private TextBox width_KochLine;
+        private System.Windows.Forms.TextBox width_KochLine;
         private Label label3;
         private TabPage tabPage3;
-        private TextBox KochSnowWidth;
+        private System.Windows.Forms.TextBox KochSnowWidth;
         private Label label4;
         private Label label6;
-        private Button button4;
-        private TextBox KochSnowLevels;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox KochSnowLevels;
         private Label label7;
+        private Label label8;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private Label label9;
     }
 }

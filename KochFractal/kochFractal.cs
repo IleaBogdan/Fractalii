@@ -121,7 +121,10 @@ namespace Fractalii.KochLineFractal
             Queue<KochItem> q = new Queue<KochItem>();
             predraw(0, levels, width);
             Draw.draw_triangle(pb, p1, p2, p3, pen);
-
+            //Draw.draw_line(pb, new Point(10, 10), new Point(250, 200), new Pen(Color.Red, 5.0f));
+            //Thread.Sleep(1000);
+            //Draw.delete_line(pb, new Point(10, 10), new Point(250, 200), 5.0);
+            //Draw.draw_line(pb, new Point(10, 10), new Point(250, 200), new Pen(Color.Blue, 5.0f));
         }
         public static void generate_line(
                 PictureBox pb,
