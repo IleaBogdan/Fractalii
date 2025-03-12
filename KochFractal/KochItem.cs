@@ -12,13 +12,13 @@ namespace Fractalii.KochLineFractal
         public double angle, width;
         public int level;
         public KochItem() { angle = 90; }
-        public KochItem(Point BEGIN, Point END, int LEVEL, double WIDTH, double AMGLE= 90)
+        public KochItem(Point BEGIN, Point END, int LEVEL, double WIDTH, double ANGLE= 90)
         {
             begin_point = BEGIN;
             end_point = END;
             level= LEVEL;
             width= WIDTH;
-            angle= AMGLE;
+            angle= ANGLE;
         }
         public static KochItem merge(KochItem k, Point next, bool ok=true)
         {
