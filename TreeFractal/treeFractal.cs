@@ -136,8 +136,6 @@ namespace Fractalii.TreeFractal
                 RightBranch.level = QItem.level + 1;
                 queue.Enqueue(LeftBranch); 
                 queue.Enqueue(RightBranch);
-                
-                
             }
         }
     }

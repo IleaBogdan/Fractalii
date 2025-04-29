@@ -38,5 +38,12 @@ namespace Fractalii
                 g.DrawLine(pen, p3, p1);
             }
         }
+        public static void draw_lines(PictureBox pb, PointF[] points, Pen pen)
+        {
+            using (Graphics g = pb.CreateGraphics())
+            {
+                g.DrawLines(pen, points);
+            }
+        }
     }
 }
