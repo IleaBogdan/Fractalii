@@ -9,7 +9,7 @@ namespace Fractalii.KochLineFractal
     internal class SetupKoch
     {
         private static bool checker(
-            int levels, double width
+            int levels , double width
             )
         {
             return levels > 0 && levels < 8
@@ -25,7 +25,7 @@ namespace Fractalii.KochLineFractal
             pb.Refresh();
             if (checker(levels, width))
             {
-                kochFractal.generate_line(pb, start_point, stop_end, levels, width, reduction);
+                kochFractal.generate_line(pb, start_point, stop_end, levels, width);
             } 
             else
             {
@@ -42,11 +42,11 @@ namespace Fractalii.KochLineFractal
             pb.Refresh();
             if (checker(levels, width))
             {
-                //Draw.draw_line(pb, p1, p2, new Pen(Color.Red, 3));
-                //Draw.draw_line(pb, p1, p3, new Pen(Color.Red, 3));
-                //Draw.draw_line(pb, p2, p3, new Pen(Color.Red, 3));
-                //width = 2.0;
-                kochFractal.generate_snowflake(pb, p1, p2, p3, levels, width, reduction);
+                Draw.draw_line(pb, p1, p2, new Pen(Color.Red, 3));
+                Draw.draw_line(pb, p1, p3, new Pen(Color.Red, 3));
+                Draw.draw_line(pb, p2, p3, new Pen(Color.Red, 3));
+                
+                //kochFractal.generate_snowflake(pb, p1, p2, p3, levels, width);
             }
             else
             {

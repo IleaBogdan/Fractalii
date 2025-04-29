@@ -81,9 +81,9 @@ namespace Fractalii
         private void generate_kochLineFractal(object sender, EventArgs e)
         {
             int levels = -1;
-            double width = -0.1;
+            double width = 3.0;
             Int32.TryParse(levels_KochLine.Text, null, out levels);
-            Double.TryParse(width_KochLine.Text, null, out width);
+            //Double.TryParse(width_KochLine.Text, null, out width);
             Point start_point = new Point(0, pb.Height - 125), stop_point = new Point(pb.Width, pb.Height - 125);
             SetupKoch.generate_kochLineFractal(pb, start_point, stop_point, levels, width);
         }
@@ -100,10 +100,9 @@ namespace Fractalii
         private void generate_kochSnowFractal(object sender, EventArgs e)
         {
             int levels = -1;
-            double width = -0.1, red=1.0;
+            double width = 3.0;
             Int32.TryParse(KochSnowLevels.Text, null, out levels);
-            Double.TryParse(KochSnowWidth.Text, null, out width);
-            Double.TryParse(textBox2.Text, null, out red);
+            //Double.TryParse(KochSnowWidth.Text, null, out width);
             //const int constant = 400;
             Point p1=new Point(pb.Width/3, pb.Height / 5), p2=new Point((pb.Width/3)*2, pb.Height / 5);
             Point p3 = new Point(pb.Width / 2, (int)((double)(pb.Width/3.0)* 0.866025)+pb.Height/5);
