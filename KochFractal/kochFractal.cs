@@ -32,7 +32,11 @@ namespace Fractalii.KochLineFractal
             KochItem last=que.Dequeue();
             Draw.draw_line(pb, last.begin_point, last.end_point, pen);
             last.delete(pb);
-            Console.WriteLine(last.begin_point.ToString()+" "+last.end_point.ToString()+"\n");
+            String printf="";
+            if (last.ismid != 0) printf = "it is: ";
+            printf += last.begin_point.ToString() + " " + last.end_point.ToString();
+            Console.WriteLine(printf+"  ---   "+que.Count().ToString());
+            last.ismid = 0;
             if (last.level == levels) return;
             // trebuie splituit in 3 linia
             // si bagat partea 1 -> dist/3
@@ -49,6 +53,10 @@ namespace Fractalii.KochLineFractal
             KochItem line1=k1o3, line2=k2o3;
             line1.begin_point = line1.end_point; line1.end_point = mid;
             line2.end_point = line2.begin_point; line2.begin_point = mid;
+            line1.angle += 60;
+            line2.angle -= 60;
+            line1.ismid = 1;
+            line2.ismid = 1;
 
             que.Enqueue(k1o3);
             que.Enqueue(line1+new Pair<Point, Point>(k1o3.end_point, k2o3.begin_point));

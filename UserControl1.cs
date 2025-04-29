@@ -85,6 +85,7 @@ namespace Fractalii
             Int32.TryParse(levels_KochLine.Text, null, out levels);
             //Double.TryParse(width_KochLine.Text, null, out width);
             Point start_point = new Point(0, pb.Height - 125), stop_point = new Point(pb.Width, pb.Height - 125);
+            Console.WriteLine(start_point.ToString() + " " + stop_point.ToString() + "\n");
             SetupKoch.generate_kochLineFractal(pb, start_point, stop_point, levels, width);
         }
 
@@ -108,7 +109,7 @@ namespace Fractalii
             Point p3 = new Point(pb.Width / 2, (int)((double)(pb.Width/3.0)* 0.866025)+pb.Height/5);
             SetupKoch.generate_kochSnowFractal(pb, 
                 p1, p2, p3, 
-                levels, width, red);
+                levels, width);
         }
 
 

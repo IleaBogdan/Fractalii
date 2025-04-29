@@ -10,7 +10,7 @@ namespace Fractalii.KochLineFractal
     {
         public Point begin_point, end_point;
         public double angle, width;
-        public int level;
+        public int level, ismid;
         private Point delp1, delp2;
         public void set_del(Point p1, Point p2)
         {
@@ -25,6 +25,7 @@ namespace Fractalii.KochLineFractal
             level = LEVEL;
             width = WIDTH;
             angle = ANGLE;
+            ismid = 0;
         }
         public static KochItem merge(KochItem k, Point next, bool ok = true)
         {
@@ -38,6 +39,7 @@ namespace Fractalii.KochLineFractal
             width = k.width;
             level = k.level;
             angle = k.angle;
+            ismid = k.ismid;
         }
         public void delete(PictureBox pb)
         {
