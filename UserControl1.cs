@@ -105,7 +105,7 @@ namespace Fractalii
             double width = -1;
             Int32.TryParse(KochSnowLevels.Text, null, out levels);
             Double.TryParse(KochSnowWidth.Text, null, out width);
-            const int offset = 60;
+            int offset = pb.Height / 10 -15;
             Point p1 = new Point(pb.Width / 3, offset+pb.Height / 5);
             Point p2 = new Point((pb.Width / 3) * 2, offset+pb.Height / 5);
             Point p3 = new Point(pb.Width / 2, offset+(int)((double)(pb.Width / 3.0) * 0.866025) + pb.Height / 5);
