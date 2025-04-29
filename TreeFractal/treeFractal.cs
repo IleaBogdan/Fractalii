@@ -13,6 +13,7 @@ namespace Fractalii.TreeFractal
         private double[] RGBDif = new double[3];
         Pen pen = new Pen(Color.Red, 1f);
 
+        private static int currLevel = 0;
         // initialaze the global variables
         public treeFractal(double saL, double saR, double s, 
             Color initial_color, Color final_color, PictureBox pic)
@@ -32,6 +33,9 @@ namespace Fractalii.TreeFractal
             RGBDif[0] = finalColor.R - RGB[0];
             RGBDif[1] = finalColor.G - RGB[1];
             RGBDif[2] = finalColor.B - RGB[2];
+
+
+            currLevel = 0;
         }
 
         private void predraw(int level, int maxLevel, double width)
@@ -61,6 +65,7 @@ namespace Fractalii.TreeFractal
         public void preGenerate(double size, double width, int start_x, int start_y, double angle,
             int level, int maxLevel, double reductionL, double reductionR)
         {
+            currLevel = 0;
             predraw(level, maxLevel, width);
             Draw.draw_line(p, new Point(start_x, start_y), new Point(start_x, (int)(start_y - size)), pen);
             Generate_fractal1(size, width, start_x, (int)(start_y - size), angle, level+1, maxLevel, reductionL, reductionR);
@@ -70,6 +75,7 @@ namespace Fractalii.TreeFractal
             int level, int maxLevel, double reductionL, double reductionR)
         {
             predraw(level, maxLevel, width);
+
             // right
             TreeItem rezR = calculate_end_point(new TreeItem(0, 0, 
                 start_x, start_y, angle, level, size, width), -start_angle_right, reductionR);
@@ -107,9 +113,7 @@ namespace Fractalii.TreeFractal
             Queue<TreeItem> queue = new Queue<TreeItem>();
             TreeItem QItem; //= new QueueItems(start_x, start_y, end_x, end_y, angle, 0, size);
             queue.Enqueue(Start);
-
-            // level count
-            int currentLevel = 0;
+            currLevel = 0;
             while (queue.Count() > 0)
             {
                 // first item getting poped out
@@ -120,10 +124,10 @@ namespace Fractalii.TreeFractal
                 Draw.draw_line(p, new Point(QItem.start_x, QItem.start_y), 
                     new Point(QItem.end_x, QItem.end_y), pen);
 
-                if (currentLevel == QItem.level)
+                if (currLevel > QItem.level)
                 {
-                    //Thread.Sleep(2);
-                    currentLevel = QItem.level;
+                    if (maxLevel<=8)Thread.Sleep(512);
+                    currLevel = QItem.level;
                 }
                 if (QItem.level >= maxLevel)
                 {

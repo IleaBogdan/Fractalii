@@ -86,6 +86,7 @@ namespace Fractalii.KochLineFractal
 
         public static void generate_line(PictureBox pb, Point start, Point end, int levels, double width)
         {
+            currLevel = 0;
             --levels;
             pen.Width = (float)width;
             Queue<KochItem> queue = new Queue<KochItem>();
@@ -96,6 +97,7 @@ namespace Fractalii.KochLineFractal
 
         public static void generate_snowflake(PictureBox pb, Point p1, Point p2, Point p3, int levels, double width)
         {
+            currLevel = 0;
             --levels;
             pen.Width = (float)width;
             Queue<KochItem> queue = new Queue<KochItem>();
