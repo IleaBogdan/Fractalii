@@ -14,67 +14,83 @@ namespace Fractalii.KochLineFractal
     internal class kochFractal
     {
         private static Pen pen = new Pen(Color.Red, 3);
-        private static Point getPointFormula(Point p1, Point p2, double d)
-        {
-            return new Point((int)((p2.X - p1.X) * d + p1.X), (int)((p2.Y - p1.Y) * d + p1.Y));
-        }
-        private static Point kochNextPoint(Point p1, Point p2, double angle = 0)
-        {
-            Point mid = getPointFormula(p1, p2, 1.0 / 2.0);
-            double dist = MathForms.Point_Distance(p1, p2) * 0.866025, rad = Math.PI * angle / 180;
-            Point next = new Point(0, 0);
-            next.X = mid.X + (int)(dist * Math.Cos(rad));
-            next.Y = mid.Y - (int)(dist * Math.Sin(rad));
-            return next;
-        }
-        private static void makefractal(PictureBox pb, Queue<KochItem> que, int levels)
-        {
-            KochItem last=que.Dequeue();
-            Draw.draw_line(pb, last.begin_point, last.end_point, pen);
-            last.delete(pb);
-            String printf="";
-            if (last.ismid != 0) printf = "it is: ";
-            printf += last.begin_point.ToString() + " " + last.end_point.ToString();
-            Console.WriteLine(printf+"  ---   "+que.Count().ToString());
-            last.ismid = 0;
-            if (last.level == levels) return;
-            // trebuie splituit in 3 linia
-            // si bagat partea 1 -> dist/3
-            //    partea dist*2/3 -> dist
-            // si dupa trebe calculat punctul in sus
-            KochItem k1o3=last, k2o3=last; // 1/3 dist point and 2/3 dist point
-            k1o3.end_point = new Point(last.end_point.X/3, last.end_point.Y/3);
-            k2o3.begin_point = new Point(2*last.end_point.X/3, 2*last.end_point.Y/3);
-            k1o3++;
-            k2o3++;
-            // aici facem chestia cu mijlocul
-            Point begin= k1o3.end_point, end= k2o3.begin_point;
-            Point mid=kochNextPoint(begin, end, k1o3.angle);
-            KochItem line1=k1o3, line2=k2o3;
-            line1.begin_point = line1.end_point; line1.end_point = mid;
-            line2.end_point = line2.begin_point; line2.begin_point = mid;
-            line1.angle += 60;
-            line2.angle -= 60;
-            line1.ismid = 1;
-            line2.ismid = 1;
 
-            que.Enqueue(k1o3);
-            que.Enqueue(line1+new Pair<Point, Point>(k1o3.end_point, k2o3.begin_point));
-            que.Enqueue(line2);
-            que.Enqueue(k2o3);
-        }
-        public static void generate_line(PictureBox pb, 
-            Point START, Point END,
-            int levels,
-            double width
-            )
+        private static Point GetMidPoint(Point p1, Point p2, double fraction)
         {
-            Queue<KochItem> que = new Queue<KochItem>();
-            que.Enqueue(new KochItem(START, END, 1, width));
-            while (que.Count > 0)
+            return new Point(
+                (int)(p1.X + (p2.X - p1.X) * fraction),
+                (int)(p1.Y + (p2.Y - p1.Y) * fraction)
+            );
+        }
+
+        private static Point NextKochPoint(Point p1, Point p2)
+        {
+            double dx = -(p2.X - p1.X);
+            double dy = -(p2.Y - p1.Y);
+            double length = Math.Sqrt(dx * dx + dy * dy);
+
+            double height = length * Math.Sqrt(3) / 2;
+
+            Point mid = new Point((p1.X + p2.X) / 2, (p1.Y + p2.Y) / 2);
+
+            double angle = Math.Atan2(dy, dx) + Math.PI / 2;
+
+            return new Point(
+                mid.X + (int)(height * Math.Cos(angle)),
+                mid.Y + (int)(height * Math.Sin(angle))
+            );
+        }
+
+        private static int currLevel=0;
+        private static void KochSegment(PictureBox pb, Queue<KochItem> queue, int maxLevel)
+        {
+            if (queue.Count <= 0) return;
+
+            KochItem current = queue.Dequeue();
+
+            if (currLevel < current.Level)
             {
-                makefractal(pb, que, levels);
+                currLevel= current.Level;
+                Thread.Sleep(150);
             }
+            if (current.Level > maxLevel)
+            {
+                Draw.draw_line(pb, current.BeginPoint, current.EndPoint, pen);
+                return;
+            }
+
+            Point oStart = current.BeginPoint;
+            Point oEnd = current.EndPoint;
+
+            Point p1 = current.BeginPoint;
+            Point p5 = current.EndPoint;
+            Point p2 = GetMidPoint(p1, p5, 1.0 / 3.0);
+            Point p4 = GetMidPoint(p1, p5, 2.0 / 3.0);
+            Point p3 = NextKochPoint(p2, p4);
+
+            Draw.delete_line(pb, oStart, oEnd, pen.Width);
+
+            Draw.draw_line(pb, p1, p2, pen);
+            Draw.draw_line(pb, p2, p3, pen);
+            Draw.draw_line(pb, p3, p4, pen);
+            Draw.draw_line(pb, p4, p5, pen);
+
+            if (current.Level < maxLevel)
+            {
+                queue.Enqueue(new KochItem(p1, p2, current.Level + 1));
+                queue.Enqueue(new KochItem(p2, p3, current.Level + 1));
+                queue.Enqueue(new KochItem(p3, p4, current.Level + 1));
+                queue.Enqueue(new KochItem(p4, p5, current.Level + 1));
+            }
+        }
+
+        public static void generate_line(PictureBox pb, Point start, Point end, int levels, double width)
+        {
+            pen.Width = (float)width;
+            Queue<KochItem> queue = new Queue<KochItem>();
+            queue.Enqueue(new KochItem(start, end, 1));
+
+            while (queue.Count > 0){KochSegment(pb, queue, levels);}
         }
     }
 }
