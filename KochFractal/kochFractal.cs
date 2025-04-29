@@ -51,7 +51,7 @@ namespace Fractalii.KochLineFractal
             if (currLevel < current.Level)
             {
                 currLevel= current.Level;
-                Thread.Sleep(150);
+                Thread.Sleep(500);
             }
             if (current.Level > maxLevel)
             {

@@ -74,7 +74,7 @@ namespace Fractalii
         // Koch-Line
         private void default_button_Click_KochLine(object sender, EventArgs e)
         {
-            levels_KochLine.Text = "5";
+            levels_KochLine.Text = "6";
             width_KochLine.Text = "5";
             textBox1.Text = "1.0";
         }
@@ -95,7 +95,7 @@ namespace Fractalii
         // Koch-Snowflake
         private void default_button_Click_KochSnow(object sender, EventArgs e)
         {
-            KochSnowLevels.Text = "5";
+            KochSnowLevels.Text = "6";
             KochSnowWidth.Text = "5";
             textBox2.Text = "1.0";
         }
