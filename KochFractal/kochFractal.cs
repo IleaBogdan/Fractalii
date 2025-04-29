@@ -16,19 +16,19 @@ namespace Fractalii.KochLineFractal
         public static double PointDistance(Point end, Point begin)
         {
             double t1 = (end.X - begin.X), t2 = (end.Y - begin.Y);
-            return Math.Sqrt(t1*t1+t2*t2);
+            return Math.Sqrt(t1 * t1 + t2 * t2);
         }
         private static Point getPointFormula(Point p1, Point p2, double d)
         {
-            return new Point((int)((p2.X - p1.X) * d +p1.X), (int)((p2.Y - p1.Y) * d + p1.Y));
+            return new Point((int)((p2.X - p1.X) * d + p1.X), (int)((p2.Y - p1.Y) * d + p1.Y));
         }
         private static Point kochNextPoint(Point p1, Point p2, double angle=0)
         {
-            Point mid=getPointFormula(p1, p2, 1.0/2.0);
-            double dist=PointDistance(p1, p2)*0.866025, rad=Math.PI*angle/180;
-            Point next=new Point(0, 0);
-            next.X= mid.X+(int)(dist*Math.Cos(rad));
-            next.Y=mid.Y-(int)(dist*Math.Sin(rad));
+            Point mid = getPointFormula(p1, p2, 1.0 / 2.0);
+            double dist = PointDistance(p1, p2) * 0.866025, rad = Math.PI * angle / 180;
+            Point next = new Point(0, 0);
+            next.X = mid.X + (int)(dist * Math.Cos(rad));
+            next.Y = mid.Y - (int)(dist * Math.Sin(rad));
             return next;
         }
         private static Pen pen = new Pen(Color.Red, 3);

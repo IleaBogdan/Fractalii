@@ -38,7 +38,7 @@ namespace Fractalii
             textBox_reduction_left_tab1.Text = "75";
             textBox_reduction_right_tab1.Text = "90";
         }
-        private void genearte_treeFractal_recursive(object sender, EventArgs e)
+        private void generate_treeFractal_recursive(object sender, EventArgs e)
         {
             double start_angle_left = -1.0, start_angle_right = -1.0;
             double size = -1.0, width = -1.0;
@@ -51,7 +51,7 @@ namespace Fractalii
             double.TryParse(textBox_width_tab1.Text, null, out width);
             Int32.TryParse(textBox_reduction_left_tab1.Text, null, out redL);
             Int32.TryParse(textBox_reduction_right_tab1.Text, null, out redR);
-            SetupTree.genearte_treeFractal_recursive(pb, start_angle_left, start_angle_right, size, width, levels, redL, redR, HomePage.initialColor, HomePage.finalColor);
+            SetupTree.generate_treeFractal_recursive(pb, start_angle_left, start_angle_right, size, width, levels, redL, redR, HomePage.initialColor, HomePage.finalColor);
         }
 
         private void generate_treeFractal_iterative(object sender, EventArgs e)

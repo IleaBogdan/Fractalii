@@ -283,7 +283,7 @@ namespace Fractalii
             button1.TabIndex = 166;
             button1.Text = "Generate recursively";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += genearte_treeFractal_recursive;
+            button1.Click += generate_treeFractal_recursive;
             // 
             // label_reduction_left_tab1
             // 
