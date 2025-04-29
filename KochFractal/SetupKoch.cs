@@ -22,9 +22,9 @@ namespace Fractalii.KochLineFractal
                 double reduction=1.0
             )
         {
-            pb.Refresh();
             if (checker(levels, width))
             {
+                pb.Refresh();
                 kochFractal.generate_line(pb, start_point, stop_end, levels, width);
             } 
             else
@@ -39,14 +39,14 @@ namespace Fractalii.KochLineFractal
                 double reduction=1.0
             )
         {
-            pb.Refresh();
             if (checker(levels, width))
             {
                 Draw.draw_line(pb, p1, p2, new Pen(Color.Red, 3));
                 Draw.draw_line(pb, p1, p3, new Pen(Color.Red, 3));
                 Draw.draw_line(pb, p2, p3, new Pen(Color.Red, 3));
-                
-                //kochFractal.generate_snowflake(pb, p1, p2, p3, levels, width);
+
+                pb.Refresh();
+                kochFractal.generate_snowflake(pb, p1, p2, p3, levels, width);
             }
             else
             {

@@ -86,11 +86,24 @@ namespace Fractalii.KochLineFractal
 
         public static void generate_line(PictureBox pb, Point start, Point end, int levels, double width)
         {
+            --levels;
             pen.Width = (float)width;
             Queue<KochItem> queue = new Queue<KochItem>();
             queue.Enqueue(new KochItem(start, end, 1));
 
-            while (queue.Count > 0){KochSegment(pb, queue, levels);}
+            while (queue.Count > 0){ KochSegment(pb, queue, levels); }
+        }
+
+        public static void generate_snowflake(PictureBox pb, Point p1, Point p2, Point p3, int levels, double width)
+        {
+            --levels;
+            pen.Width = (float)width;
+            Queue<KochItem> queue = new Queue<KochItem>();
+            queue.Enqueue(new KochItem(p1, p2, 1));
+            queue.Enqueue(new KochItem(p2, p3, 1));
+            queue.Enqueue(new KochItem(p3, p1, 1));
+
+            while (queue.Count > 0) { KochSegment(pb, queue, levels); }
         }
     }
 }
