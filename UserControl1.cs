@@ -1,4 +1,6 @@
 ﻿using Fractalii.KochLineFractal;
+using Fractalii.Sierpinski;
+using Fractalii.Weierstrass_Function;
 using Fractalii.TreeFractal;
 using Fractalii.Weierstrass_Function;
 using System;
@@ -87,7 +89,6 @@ namespace Fractalii
             Double.TryParse(width_KochLine.Text, null, out width);
             const int minus = 125;
             Point start_point = new Point(0, pb.Height - minus), stop_point = new Point(pb.Width, pb.Height - minus);
-            //Console.WriteLine(start_point.ToString() + " " + stop_point.ToString() + "\n");
             SetupKoch.generate_kochLineFractal(pb, start_point, stop_point, levels, width);
         }
 
@@ -106,7 +107,7 @@ namespace Fractalii
             double width = -1;
             Int32.TryParse(KochSnowLevels.Text, null, out levels);
             Double.TryParse(KochSnowWidth.Text, null, out width);
-            int offset = pb.Height / 10 -15;
+            int offset = pb.Height / 10 - 15;
             Point p1 = new Point(pb.Width / 3, offset + pb.Height / 5);
             Point p2 = new Point((pb.Width / 3) * 2, offset + pb.Height / 5);
             Point p3 = new Point(pb.Width / 2, offset + (int)((double)(pb.Width / 3.0) * 0.866025) + pb.Height / 5);
@@ -122,14 +123,79 @@ namespace Fractalii
             Weierstrass.CheckWeierstrassFunction(precision);
         }
 
+        private void default_button_Click_Sierpinski(object sender, EventArgs e)
+        {
+            SierpinskiLevels.Text = "11";
+        }
+        private void generate_sierpinski(object sender, EventArgs e)
+        {
+            int levels = -1;
+            const double width = 3;
+            Int32.TryParse(SierpinskiLevels.Text, null, out levels);
+            int offset = pb.Height / 2;
+            Point p1 = default(Point), p2 = default(Point), p3 = default(Point);
+            if (FlipSierpinski.Checked)
+            {
+                p1 = new Point(pb.Width / 3, pb.Height / 5);
+                p2 = new Point((pb.Width / 3) * 2, pb.Height / 5);
+                p3 = new Point(pb.Width / 2, (int)((double)(pb.Width / 3.0) * 0.866025) + pb.Height / 5);
+            }
+            else
+            {
+                p1 = new Point(pb.Width / 3, pb.Height / 5 + (int)((double)(pb.Width / 3.0) * 0.866025));
+                p2 = new Point((pb.Width / 3) * 2, pb.Height / 5 + (int)((double)(pb.Width / 3.0) * 0.866025));
+                p3 = new Point(pb.Width / 2, pb.Height / 5);
+            }
+            SetupSierpinski.generate_sierpinski(pb, p1, p2, p3, levels, width);
+        }
+
         // default press for anything
-        // please do it in the same way and dont make it in other way
+        // for new tabs add them at the end please
         public static void default_pressed(object sender, EventArgs e, UserControl1 u1)
         {
-            if (u1.tabControl1.SelectedIndex == 0) { u1.default_button_Click_treeFractal(sender, e); return; }
-            else if (u1.tabControl1.SelectedIndex == 1) { u1.default_button_Click_KochLine(sender, e); return; }
-            else if (u1.tabControl1.SelectedIndex == 2) { u1.default_button_Click_KochSnow(sender, e); return; }
-            // any more defaults here pls
+            int val = u1.tabControl1.SelectedIndex;
+            switch (val)
+            {
+                case 0:
+                    u1.default_button_Click_treeFractal(sender, e);
+                    break;
+                case 1:
+                    u1.default_button_Click_KochLine(sender, e);
+                    break;
+                case 2:
+                    u1.default_button_Click_KochSnow(sender, e);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    u1.default_button_Click_Sierpinski(sender, e);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public static void Generate(object sender, EventArgs e, UserControl1 u1)
+        {
+            int val = u1.tabControl1.SelectedIndex;
+            switch (val)
+            {
+                case 0:
+                    u1.generate_treeFractal_iterative(sender, e);
+                    break;
+                case 1:
+                    u1.generate_kochLineFractal(sender, e);
+                    break;
+                case 2:
+                    u1.generate_kochSnowFractal(sender, e);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    u1.generate_sierpinski(sender, e);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
