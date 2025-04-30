@@ -591,12 +591,6 @@ namespace Fractalii
             label11.Size = new Size(35, 20);
             label11.TabIndex = 4;
             label11.Text = "<15";
-            // WeierstrassPrecision
-            // 
-            WeierstrassPrecision.Location = new Point(74, 11);
-            WeierstrassPrecision.Name = "WeierstrassPrecision";
-            WeierstrassPrecision.Size = new Size(50, 23);
-            WeierstrassPrecision.TabIndex = 1;
             // 
             // label10
             // 
