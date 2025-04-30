@@ -136,12 +136,10 @@ namespace Fractalii.TreeFractal
 
                 TreeItem LeftBranch = calculate_end_point(QItem, start_angle_left, reductionL);
                 TreeItem RightBranch = calculate_end_point(QItem, -start_angle_right, reductionR);
-                LeftBranch.level = QItem.level+1;
-                RightBranch.level = QItem.level+1;
+                LeftBranch.level = QItem.level + 1;
+                RightBranch.level = QItem.level + 1;
                 queue.Enqueue(LeftBranch); 
                 queue.Enqueue(RightBranch);
-                
-                
             }
         }
     }

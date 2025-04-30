@@ -15,7 +15,7 @@ namespace Fractalii.TreeFractal
                 && size > 0 && (levels > 0 && levels < 15) && (width > 0 && width < 7)
                 && (redL > 0 && redR > 0) && (redR < 100 && redL < 100);
         }
-        static public void genearte_treeFractal_recursive(PictureBox pictureBox_treeFractal,
+        static public void generate_treeFractal_recursive(PictureBox pictureBox_treeFractal,
             double start_angle_left = -1.0, double start_angle_right = -1.0,
             double size = -1.0, double width = -1.0,
             int levels = -1, int redL = 0, int redR = 0, Color initialColor=default(Color), Color finalColor=default(Color))
