@@ -55,6 +55,7 @@ namespace Fractalii.Sierpinski
             pen =new Pen(Color.Red, (float)width);
 
             int currLevel = 0;
+            Color befor=Color.Red;
             Queue<Item> que = new Queue<Item>();
             que.Enqueue(new Item(p1, p2, p3));
             while (que.Count > 0)
@@ -66,20 +67,26 @@ namespace Fractalii.Sierpinski
                 }
                 else
                 {
-                    curr = new Item[1];
-                    curr[0] = que.Dequeue();
+                    curr = [que.Dequeue()];
                 }
                 if (curr[0].level > currLevel)
                 {
+                    befor = pen.Color;
                     currLevel = curr[0].level;
                     Thread.Sleep(500);
                 }
+                preDraw(currLevel, levels, width);
+                Console.WriteLine(befor.ToString()+" - "+pen.Color.ToString());
                 for (int i = 0; i < Math.Min(curr.Length, 3); ++i)
                 {
-                    preDraw(currLevel, levels, width);
-                    if (currLevel !=0) Draw.draw_line(pb, curr[i].ToDraw(i), pen);
-                    else {
-                        Draw.draw_lines(pb, curr[0].ToVec(), pen); 
+                    if (currLevel != 0)
+                    {
+                        Draw.draw_line(pb, curr[i].ToDraw(i), pen);
+                        Draw.draw_points(pb, curr[i].ToVec(), new Pen(befor, pen.Width));
+                    }
+                    else
+                    {
+                        Draw.draw_lines(pb, curr[0].ToVec(), pen);
                     }
 
                     if (curr[i].level >= levels) { continue; }
@@ -118,51 +125,5 @@ namespace Fractalii.Sierpinski
             level = _level;
         }
         public Point[] ToVec(){return [p1, p2, p3, p1];}
-        public Point[] DrawVec(PictureBox pb) {
-            Point[] ps = [p1, p2, p3];
-            for (int i = 0; i < 3; ++i)
-            {
-                Bitmap b = new Bitmap(pb.ClientSize.Width, pb.Height);
-                pb.DrawToBitmap(b, pb.ClientRectangle);
-                Color colour = b.GetPixel((ps[i].X + ps[(i+1)%3].X)/2,
-                                            (ps[i].Y + ps[(i + 1) % 3].Y) / 2);
-                b.Dispose();
-                if (colour == HomePage.bgC)
-                {
-                    return [];
-                }
-            }
-            return [p1, p2, p3, p1];
-        }
-        public void AddInHashSet(ref HashSet<PointPair> hset)
-        {
-            hset.Add(new PointPair(p1, p2));
-            hset.Add(new PointPair(p2, p1));
-            hset.Add(new PointPair(p1, p3));
-            hset.Add(new PointPair(p3, p1));
-            hset.Add(new PointPair(p2, p3));
-            hset.Add(new PointPair(p3, p2));
-        }
     };
-    internal class PointPair
-    {
-        public Point p1 { get; set; }
-        public Point p2 { get; set; }
-
-        public PointPair(Point _p1, Point _p2)
-        {
-            p1= _p1;
-            p2= _p2;
-        }
-        public override bool Equals(object? obj)
-        {
-            PointPair i = obj as PointPair;
-            return i != null && i.p1 == this.p1 && i.p2 == this.p2;
-        }
-
-        public override int GetHashCode()
-        {
-            return this.p1.GetHashCode() ^ this.p2.GetHashCode();
-        }
-    }
 }

@@ -6,11 +6,27 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Fractalii
 {
     internal class Draw
     {
+        public static void draw_points(PictureBox pb, Point[] points, Pen pen)
+        {
+            foreach (Point p in points)
+            {
+                draw_point(pb, p, pen);
+            }
+        }
+        public static void draw_point(PictureBox pb, Point point, Pen pen)
+        {
+            Graphics g = Graphics.FromHwnd(pb.Handle);
+            SolidBrush brush = new SolidBrush(pen.Color);
+            Rectangle rect = new Rectangle(point, new Size((int)pen.Width, (int)pen.Width));
+            g.FillRectangle(brush, rect);
+            g.Dispose();
+        }
         public static void draw_line(PictureBox pb, Point begin_point, Point end_point, Pen pen)
         {
             using (Graphics g = pb.CreateGraphics())
