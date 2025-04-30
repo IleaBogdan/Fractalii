@@ -2,6 +2,7 @@
 using Fractalii.Sierpinski;
 using Fractalii.Weierstrass_Function;
 using Fractalii.TreeFractal;
+using Fractalii.Weierstrass_Function;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -115,7 +116,12 @@ namespace Fractalii
                 levels, width);
         }
 
-
+        private void CallWeierstrass(object sender, EventArgs e)
+        {
+            int precision = -1;
+            Int32.TryParse(WeierstrassPrecision.Text, null, out precision);
+            Weierstrass.CheckWeierstrassFunction(precision);
+        }
 
         private void default_button_Click_Sierpinski(object sender, EventArgs e)
         {

@@ -122,6 +122,7 @@ namespace Fractalii
             label9 = new Label();
             textBox2 = new System.Windows.Forms.TextBox();
             tabPage4 = new TabPage();
+          
             tabPage5 = new TabPage();
             FlipSierpinski = new CheckBox();
             label11 = new Label();
@@ -132,6 +133,7 @@ namespace Fractalii
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
+            tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
             SuspendLayout();
             // 
@@ -417,6 +419,7 @@ namespace Fractalii
             // 
             label2.AutoSize = true;
             label2.Location = new Point(126, 16);
+            label2.Location = new Point(99, 12);
             label2.Name = "label2";
             label2.Size = new Size(27, 20);
             label2.TabIndex = 3;
@@ -490,6 +493,7 @@ namespace Fractalii
             // 
             label6.AutoSize = true;
             label6.Location = new Point(119, 15);
+            label6.Location = new Point(99, 12);
             label6.Name = "label6";
             label6.Size = new Size(27, 20);
             label6.TabIndex = 9;
@@ -542,6 +546,8 @@ namespace Fractalii
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(WeierstrassPrecision);
+            tabPage4.Controls.Add(label10);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Margin = new Padding(3, 4, 3, 4);
             tabPage4.Name = "tabPage4";
@@ -585,6 +591,12 @@ namespace Fractalii
             label11.Size = new Size(35, 20);
             label11.TabIndex = 4;
             label11.Text = "<15";
+            // WeierstrassPrecision
+            // 
+            WeierstrassPrecision.Location = new Point(74, 11);
+            WeierstrassPrecision.Name = "WeierstrassPrecision";
+            WeierstrassPrecision.Size = new Size(50, 23);
+            WeierstrassPrecision.TabIndex = 1;
             // 
             // label10
             // 
@@ -627,6 +639,8 @@ namespace Fractalii
             tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
             ResumeLayout(false);
@@ -681,5 +695,6 @@ namespace Fractalii
         private Label label10;
         private Label label11;
         private CheckBox FlipSierpinski;
+        private System.Windows.Forms.TextBox WeierstrassPrecision;
     }
 }
