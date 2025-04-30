@@ -122,6 +122,7 @@ namespace Fractalii
             label9 = new Label();
             textBox2 = new System.Windows.Forms.TextBox();
             tabPage4 = new TabPage();
+            tabPage5 = new TabPage();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -134,6 +135,7 @@ namespace Fractalii
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
+            tabControl1.Controls.Add(tabPage5);
             tabControl1.ItemSize = new Size(90, 20);
             tabControl1.Location = new Point(3, 3);
             tabControl1.Name = "tabControl1";
@@ -402,7 +404,7 @@ namespace Fractalii
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(101, 12);
+            label2.Location = new Point(110, 12);
             label2.Name = "label2";
             label2.Size = new Size(21, 15);
             label2.TabIndex = 3;
@@ -471,7 +473,7 @@ namespace Fractalii
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(95, 11);
+            label6.Location = new Point(104, 11);
             label6.Name = "label6";
             label6.Size = new Size(21, 15);
             label6.TabIndex = 9;
@@ -528,6 +530,16 @@ namespace Fractalii
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Weierstrass";
             tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(728, 70);
+            tabPage5.TabIndex = 4;
+            tabPage5.Text = "Sierpinski";
+            tabPage5.UseVisualStyleBackColor = true;
             // 
             // UserControl1
             // 
@@ -589,5 +601,6 @@ namespace Fractalii
         private System.Windows.Forms.TextBox textBox2;
         private Label label9;
         private TabPage tabPage4;
+        private TabPage tabPage5;
     }
 }

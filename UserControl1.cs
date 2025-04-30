@@ -1,4 +1,6 @@
 ﻿using Fractalii.KochLineFractal;
+using Fractalii.Sierpinski;
+using Fractalii.Weierstrass_Function;
 using Fractalii.TreeFractal;
 using System;
 using System.Collections.Generic;
@@ -86,7 +88,6 @@ namespace Fractalii
             Double.TryParse(width_KochLine.Text, null, out width);
             const int minus = 125;
             Point start_point = new Point(0, pb.Height - minus), stop_point = new Point(pb.Width, pb.Height - minus);
-            //Console.WriteLine(start_point.ToString() + " " + stop_point.ToString() + "\n");
             SetupKoch.generate_kochLineFractal(pb, start_point, stop_point, levels, width);
         }
 
@@ -115,6 +116,18 @@ namespace Fractalii
         }
 
 
+
+
+
+
+        private void generate_sierpinski(object sender, EventArgs e)
+        {
+            int levels= -1;
+            double width = -1;
+
+            Point p1=new Point(0,0), p2= new Point(0, 0), p3= new Point(0, 0);
+            SetupSierpinski.generate_sierpinski(pb, p1, p2, p3, levels, width);
+        }
 
         // default press for anything
         // please do it in the same way and dont make it in other way
