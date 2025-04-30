@@ -174,5 +174,28 @@ namespace Fractalii
                     break;
             }
         }
+        public static void Generate(object sender, EventArgs e, UserControl1 u1)
+        {
+            int val = u1.tabControl1.SelectedIndex;
+            switch (val)
+            {
+                case 0:
+                    u1.generate_treeFractal_iterative(sender, e);
+                    break;
+                case 1:
+                    u1.generate_kochLineFractal(sender, e);
+                    break;
+                case 2:
+                    u1.generate_kochSnowFractal(sender, e);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    u1.generate_sierpinski(sender, e);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

@@ -398,7 +398,7 @@ namespace Fractalii
             // 
             // width_KochLine
             // 
-            width_KochLine.Location = new Point(217, 12);
+            width_KochLine.Location = new Point(232, 13);
             width_KochLine.Margin = new Padding(3, 4, 3, 4);
             width_KochLine.Name = "width_KochLine";
             width_KochLine.Size = new Size(45, 27);
@@ -416,7 +416,7 @@ namespace Fractalii
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(99, 12);
+            label2.Location = new Point(139, 16);
             label2.Name = "label2";
             label2.Size = new Size(27, 20);
             label2.TabIndex = 3;
@@ -435,7 +435,7 @@ namespace Fractalii
             // 
             // levels_KochLine
             // 
-            levels_KochLine.Location = new Point(75, 12);
+            levels_KochLine.Location = new Point(90, 13);
             levels_KochLine.Margin = new Padding(3, 4, 3, 4);
             levels_KochLine.Name = "levels_KochLine";
             levels_KochLine.Size = new Size(43, 27);
@@ -471,7 +471,7 @@ namespace Fractalii
             // 
             // KochSnowWidth
             // 
-            KochSnowWidth.Location = new Point(210, 11);
+            KochSnowWidth.Location = new Point(225, 11);
             KochSnowWidth.Margin = new Padding(3, 4, 3, 4);
             KochSnowWidth.Name = "KochSnowWidth";
             KochSnowWidth.Size = new Size(45, 27);
@@ -489,7 +489,7 @@ namespace Fractalii
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(99, 12);
+            label6.Location = new Point(132, 16);
             label6.Name = "label6";
             label6.Size = new Size(27, 20);
             label6.TabIndex = 9;
@@ -508,7 +508,7 @@ namespace Fractalii
             // 
             // KochSnowLevels
             // 
-            KochSnowLevels.Location = new Point(69, 11);
+            KochSnowLevels.Location = new Point(83, 13);
             KochSnowLevels.Margin = new Padding(3, 4, 3, 4);
             KochSnowLevels.Name = "KochSnowLevels";
             KochSnowLevels.Size = new Size(43, 27);

@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 using System.Security.Policy;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using System;
+using System.Windows.Forms;
 
 namespace Fractalii
 {
@@ -14,6 +16,10 @@ namespace Fractalii
         {
             InitializeComponent();
             if (Debugger.IsAttached) { AllocConsole(); }
+            this.Text = "Fullscreen on F11 Example";
+            this.KeyPreview = true; // Important to capture key events
+
+            this.KeyDown += new KeyEventHandler(Form_KeyDown);
         }
 
         [DllImport("kernel32.dll", SetLastError = true)]
@@ -55,6 +61,33 @@ namespace Fractalii
             //pictureBox1.Refresh();
             UserControl1.default_pressed(sender, e, userControl11);
             //Console.WriteLine("Boom");
+        }
+
+        private void Form_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F11){ToggleFullscreen();}
+            if (e.KeyCode == Keys.F5)
+            {
+                // generate fractal
+                UserControl1.Generate(sender, e, userControl11);
+            }
+            if (e.KeyCode == Keys.D) { UserControl1.default_pressed(sender, e, userControl11); }
+        }
+
+        private void ToggleFullscreen()
+        {
+            if (this.FormBorderStyle == FormBorderStyle.None)
+            {
+                this.FormBorderStyle = FormBorderStyle.Sizable;
+                this.WindowState = FormWindowState.Normal;
+                this.TopMost = false;
+            }
+            else
+            {
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.WindowState = FormWindowState.Maximized;
+                this.TopMost = true;
+            }
         }
     }
 }

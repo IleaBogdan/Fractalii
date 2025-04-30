@@ -76,7 +76,6 @@ namespace Fractalii.Sierpinski
                     Thread.Sleep(500);
                 }
                 preDraw(currLevel, levels, width);
-                Console.WriteLine(befor.ToString()+" - "+pen.Color.ToString());
                 for (int i = 0; i < Math.Min(curr.Length, 3); ++i)
                 {
                     if (currLevel != 0)
