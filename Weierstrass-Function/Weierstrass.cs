@@ -15,6 +15,14 @@ namespace Fractalii.Weierstrass_Function
         {
             pictureBox = pb;
         }
+        public static void CheckWeierstrassFunction(int precision)
+        {
+            if (precision > 0) DrawWeierstrassFunction(precision);
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Please enter levels and width correctly!");
+            }
+        }
         private static double Calculate(double x, double a, int b, int maxN)
         {
             double sum = 0.0;
@@ -39,11 +47,11 @@ namespace Fractalii.Weierstrass_Function
             return points;
         }
 
-        private static void DrawWeierstrassFunction(double a, int b, int maxN)
+        private static void DrawWeierstrassFunction(int maxN)
         {
             // Hardcoded parameters for the Weierstrass function; can be changed
-            a = 0.5; // 0 < a < 1
-            b = 3;      // b is a positive odd integer
+            double a = 0.5;    // 0 < a < 1
+            int b = 3;      // b is a positive odd integer
             maxN = 50;  // Number of terms in the series
             PointF[] points = GenerateWeierstrassPoints(pictureBox.Width, pictureBox.Height, a, b, maxN);
             Draw.draw_lines(pictureBox, points, pen);

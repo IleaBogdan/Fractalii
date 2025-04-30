@@ -1,5 +1,6 @@
 ﻿using Fractalii.KochLineFractal;
 using Fractalii.TreeFractal;
+using Fractalii.Weierstrass_Function;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -106,15 +107,20 @@ namespace Fractalii
             Int32.TryParse(KochSnowLevels.Text, null, out levels);
             Double.TryParse(KochSnowWidth.Text, null, out width);
             int offset = pb.Height / 10 -15;
-            Point p1 = new Point(pb.Width / 3, offset+pb.Height / 5);
-            Point p2 = new Point((pb.Width / 3) * 2, offset+pb.Height / 5);
-            Point p3 = new Point(pb.Width / 2, offset+(int)((double)(pb.Width / 3.0) * 0.866025) + pb.Height / 5);
+            Point p1 = new Point(pb.Width / 3, offset + pb.Height / 5);
+            Point p2 = new Point((pb.Width / 3) * 2, offset + pb.Height / 5);
+            Point p3 = new Point(pb.Width / 2, offset + (int)((double)(pb.Width / 3.0) * 0.866025) + pb.Height / 5);
             SetupKoch.generate_kochSnowFractal(pb,
                 p1, p2, p3,
                 levels, width);
         }
 
-
+        private void CallWeierstrass(object sender, EventArgs e)
+        {
+            int precision = -1;
+            Int32.TryParse(WeierstrassPrecision.Text, null, out precision);
+            Weierstrass.CheckWeierstrassFunction(precision);
+        }
 
         // default press for anything
         // please do it in the same way and dont make it in other way
