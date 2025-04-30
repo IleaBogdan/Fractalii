@@ -107,7 +107,7 @@ namespace Fractalii
             double width = -1;
             Int32.TryParse(KochSnowLevels.Text, null, out levels);
             Double.TryParse(KochSnowWidth.Text, null, out width);
-            int offset = pb.Height / 10 -15;
+            int offset = pb.Height / 10 - 15;
             Point p1 = new Point(pb.Width / 3, offset + pb.Height / 5);
             Point p2 = new Point((pb.Width / 3) * 2, offset + pb.Height / 5);
             Point p3 = new Point(pb.Width / 2, offset + (int)((double)(pb.Width / 3.0) * 0.866025) + pb.Height / 5);
@@ -129,11 +129,11 @@ namespace Fractalii
         }
         private void generate_sierpinski(object sender, EventArgs e)
         {
-            int levels= -1;
+            int levels = -1;
             const double width = 3;
             Int32.TryParse(SierpinskiLevels.Text, null, out levels);
             int offset = pb.Height / 2;
-            Point p1=default(Point), p2= default(Point), p3= default(Point);
+            Point p1 = default(Point), p2 = default(Point), p3 = default(Point);
             if (FlipSierpinski.Checked)
             {
                 p1 = new Point(pb.Width / 3, pb.Height / 5);
@@ -142,9 +142,9 @@ namespace Fractalii
             }
             else
             {
-                p1 = new Point(pb.Width/ 3, pb.Height/5+ (int)((double)(pb.Width / 3.0) * 0.866025));
-                p2 = new Point((pb.Width / 3) * 2, pb.Height/5+ (int)((double)(pb.Width / 3.0) * 0.866025));
-                p3 = new Point(pb.Width / 2, pb.Height/ 5);
+                p1 = new Point(pb.Width / 3, pb.Height / 5 + (int)((double)(pb.Width / 3.0) * 0.866025));
+                p2 = new Point((pb.Width / 3) * 2, pb.Height / 5 + (int)((double)(pb.Width / 3.0) * 0.866025));
+                p3 = new Point(pb.Width / 2, pb.Height / 5);
             }
             SetupSierpinski.generate_sierpinski(pb, p1, p2, p3, levels, width);
         }
@@ -172,7 +172,7 @@ namespace Fractalii
                     break;
                 default:
                     break;
-            } 
+            }
         }
     }
 }

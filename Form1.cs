@@ -28,7 +28,7 @@ namespace Fractalii
             userControl11.set_pictureBox(pictureBox1);
         }
         // color setting
-        public static Color initialColor = Color.Blue, finalColor = Color.Red;
+        public static Color initialColor = Color.Blue, finalColor = Color.Green;
         private void initialColorSelect_Click(object sender, EventArgs e)
         {
             Color_Selector colorSelector = new Color_Selector();

@@ -18,6 +18,14 @@ namespace Fractalii
                 g.DrawLine(pen, begin_point, end_point);
             }
         }
+        public static void draw_line(PictureBox pb, Pair<Point, Point> ps, Pen pen)
+        {
+            Point begin_point=ps.First, end_point = ps.Second;
+            using (Graphics g = pb.CreateGraphics())
+            {
+                g.DrawLine(pen, begin_point, end_point);
+            }
+        }
         public static void delete_line(PictureBox pb, Point begin_point, Point end_point, double width)
         {
             using (Graphics g = pb.CreateGraphics())
@@ -35,6 +43,7 @@ namespace Fractalii
 
         public static void draw_lines(PictureBox pb, Point[] points, Pen pen)
         {
+            if (points == null) return;
             using (Graphics g = pb.CreateGraphics())
             {
                 g.DrawLines(pen, points);
