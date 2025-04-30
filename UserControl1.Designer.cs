@@ -104,6 +104,8 @@ namespace Fractalii
             label_width_tab1 = new Label();
             button2 = new System.Windows.Forms.Button();
             tabPage2 = new TabPage();
+            label8 = new Label();
+            textBox1 = new System.Windows.Forms.TextBox();
             width_KochLine = new System.Windows.Forms.TextBox();
             label3 = new Label();
             label2 = new Label();
@@ -117,10 +119,9 @@ namespace Fractalii
             button4 = new System.Windows.Forms.Button();
             KochSnowLevels = new System.Windows.Forms.TextBox();
             label7 = new Label();
-            textBox1 = new System.Windows.Forms.TextBox();
-            label8 = new Label();
-            textBox2= new System.Windows.Forms.TextBox();
-            label9=new Label();
+            label9 = new Label();
+            textBox2 = new System.Windows.Forms.TextBox();
+            tabPage4 = new TabPage();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -132,6 +133,7 @@ namespace Fractalii
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(tabPage4);
             tabControl1.ItemSize = new Size(90, 20);
             tabControl1.Location = new Point(3, 3);
             tabControl1.Name = "tabControl1";
@@ -365,6 +367,22 @@ namespace Fractalii
             tabPage2.Text = "Koch-Line";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(272, 12);
+            label8.Name = "label8";
+            label8.Size = new Size(64, 15);
+            label8.TabIndex = 7;
+            label8.Text = "Reduction:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(337, 9);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(43, 23);
+            textBox1.TabIndex = 6;
+            // 
             // width_KochLine
             // 
             width_KochLine.Location = new Point(190, 9);
@@ -485,37 +503,31 @@ namespace Fractalii
             label7.TabIndex = 6;
             label7.Text = "Levels:";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(337, 9);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(43, 23);
-            textBox1.TabIndex = 6;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(272, 12);
-            label8.Name = "label8";
-            label8.Size = new Size(64, 15);
-            label8.TabIndex = 7;
-            label8.Text = "Reduction:";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(337, 9);
-            textBox2.Name = "textBox1";
-            textBox2.Size = new Size(43, 23);
-            textBox2.TabIndex = 6;
-            // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Location = new Point(272, 12);
-            label9.Name = "label8";
+            label9.Name = "label9";
             label9.Size = new Size(64, 15);
             label9.TabIndex = 7;
             label9.Text = "Reduction:";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(337, 9);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(43, 23);
+            textBox2.TabIndex = 6;
+            // 
+            // tabPage4
+            // 
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(728, 70);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "Weierstrass";
+            tabPage4.UseVisualStyleBackColor = true;
             // 
             // UserControl1
             // 
@@ -576,5 +588,6 @@ namespace Fractalii
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private Label label9;
+        private TabPage tabPage4;
     }
 }
