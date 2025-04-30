@@ -123,6 +123,7 @@ namespace Fractalii
             textBox2 = new System.Windows.Forms.TextBox();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
+            FlipSierpinski = new CheckBox();
             label11 = new Label();
             label10 = new Label();
             SierpinskiLevels = new System.Windows.Forms.TextBox();
@@ -552,6 +553,7 @@ namespace Fractalii
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(FlipSierpinski);
             tabPage5.Controls.Add(label11);
             tabPage5.Controls.Add(label10);
             tabPage5.Controls.Add(SierpinskiLevels);
@@ -564,6 +566,16 @@ namespace Fractalii
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Sierpinski";
             tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // FlipSierpinski
+            // 
+            FlipSierpinski.AutoSize = true;
+            FlipSierpinski.Location = new Point(487, 18);
+            FlipSierpinski.Name = "FlipSierpinski";
+            FlipSierpinski.Size = new Size(55, 24);
+            FlipSierpinski.TabIndex = 5;
+            FlipSierpinski.Text = "Flip";
+            FlipSierpinski.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -668,5 +680,6 @@ namespace Fractalii
         private System.Windows.Forms.TextBox SierpinskiLevels;
         private Label label10;
         private Label label11;
+        private CheckBox FlipSierpinski;
     }
 }
