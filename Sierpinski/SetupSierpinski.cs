@@ -10,20 +10,18 @@ namespace Fractalii.Sierpinski
     {
         private static bool checker(int level, double width)
         {
-            return level > 0 && width > 0.9;
+            return level > 0 && level < 15;
         }
         public static void generate_sierpinski(PictureBox pb, Point p1, Point p2, Point p3, int levels, double width)
         {
             if (checker(levels, width))
             {
-                Draw.draw_line(pb, p1, p2, new Pen(Color.Red, 3));
-                Draw.draw_line(pb, p2, p3, new Pen(Color.Red, 3));
-                Draw.draw_line(pb, p3, p1, new Pen(Color.Red, 3));
-                //SierpinskiFractal.generate(pb, p1, p2, p3, levels, width);
+                pb.Refresh();
+                SierpinskiFractal.generate(pb, p1, p2, p3, levels, width);
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Please enter levels and width correctly!");
+                System.Windows.Forms.MessageBox.Show("Please enter levels number correctly!");
             }
         }
     }

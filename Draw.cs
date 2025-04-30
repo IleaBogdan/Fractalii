@@ -18,12 +18,8 @@ namespace Fractalii
                 g.DrawLine(pen, begin_point, end_point);
             }
         }
-        public static void delete_line(PictureBox pb, Point begin_point, Point end_point, 
-            // don't fucking change this shit ok?
-            // it worked and since you changed it is all fucked LUCA
-            double width)
+        public static void delete_line(PictureBox pb, Point begin_point, Point end_point, double width)
         {
-            //if (Debugger.IsAttached) Console.WriteLine("float:  " + width.ToString());
             using (Graphics g = pb.CreateGraphics())
             {
                 g.DrawLine(new Pen(HomePage.bgC, (float)(width)), begin_point, end_point);
@@ -31,10 +27,17 @@ namespace Fractalii
         }
         public static void delete_line(PictureBox pb, Point begin_point, Point end_point, float width)
         {
-            //if (Debugger.IsAttached) Console.WriteLine("float:  " + width.ToString());
             using (Graphics g = pb.CreateGraphics())
             {
                 g.DrawLine(new Pen(HomePage.bgC, width), begin_point, end_point);
+            }
+        }
+
+        public static void draw_lines(PictureBox pb, Point[] points, Pen pen)
+        {
+            using (Graphics g = pb.CreateGraphics())
+            {
+                g.DrawLines(pen, points);
             }
         }
         public static void draw_lines(PictureBox pb, PointF[] points, Pen pen)

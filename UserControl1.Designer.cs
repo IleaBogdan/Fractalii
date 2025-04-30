@@ -123,11 +123,10 @@ namespace Fractalii
             textBox2 = new System.Windows.Forms.TextBox();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
-            SierpinskiWidth = new System.Windows.Forms.TextBox();
+            label11 = new Label();
+            label10 = new Label();
             SierpinskiLevels = new System.Windows.Forms.TextBox();
             button5 = new System.Windows.Forms.Button();
-            label10 = new Label();
-            label11 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -555,7 +554,6 @@ namespace Fractalii
             // 
             tabPage5.Controls.Add(label11);
             tabPage5.Controls.Add(label10);
-            tabPage5.Controls.Add(SierpinskiWidth);
             tabPage5.Controls.Add(SierpinskiLevels);
             tabPage5.Controls.Add(button5);
             tabPage5.Location = new Point(4, 24);
@@ -567,12 +565,23 @@ namespace Fractalii
             tabPage5.Text = "Sierpinski";
             tabPage5.UseVisualStyleBackColor = true;
             // 
-            // SierpinskiWidth
+            // label11
             // 
-            SierpinskiWidth.Location = new Point(137, 52);
-            SierpinskiWidth.Name = "SierpinskiWidth";
-            SierpinskiWidth.Size = new Size(125, 27);
-            SierpinskiWidth.TabIndex = 2;
+            label11.AutoSize = true;
+            label11.Location = new Point(268, 22);
+            label11.Name = "label11";
+            label11.Size = new Size(35, 20);
+            label11.TabIndex = 4;
+            label11.Text = "<15";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(61, 22);
+            label10.Name = "label10";
+            label10.Size = new Size(52, 20);
+            label10.TabIndex = 3;
+            label10.Text = "Levels:";
             // 
             // SierpinskiLevels
             // 
@@ -590,24 +599,6 @@ namespace Fractalii
             button5.Text = "Generate";
             button5.UseVisualStyleBackColor = true;
             button5.Click += generate_sierpinski;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(61, 22);
-            label10.Name = "label10";
-            label10.Size = new Size(52, 20);
-            label10.TabIndex = 3;
-            label10.Text = "Levels:";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(55, 55);
-            label11.Name = "label11";
-            label11.Size = new Size(52, 20);
-            label11.TabIndex = 4;
-            label11.Text = "Width:";
             // 
             // UserControl1
             // 
@@ -675,8 +666,7 @@ namespace Fractalii
         private TabPage tabPage5;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox SierpinskiLevels;
-        private System.Windows.Forms.TextBox SierpinskiWidth;
-        private Label label11;
         private Label label10;
+        private Label label11;
     }
 }

@@ -122,14 +122,12 @@ namespace Fractalii
         private void default_button_Click_Sierpinski(object sender, EventArgs e)
         {
             SierpinskiLevels.Text = "11";
-            SierpinskiWidth.Text = "3";
         }
         private void generate_sierpinski(object sender, EventArgs e)
         {
             int levels= -1;
-            double width = -1;
+            const double width = 3;
             Int32.TryParse(SierpinskiLevels.Text, null, out levels);
-            Double.TryParse(SierpinskiWidth.Text, null, out width);
             int offset = pb.Height / 10 - 15;
             Point p1 = new Point(pb.Width / 3, offset + pb.Height / 5);
             Point p2 = new Point((pb.Width / 3) * 2, offset + pb.Height / 5);
@@ -138,14 +136,29 @@ namespace Fractalii
         }
 
         // default press for anything
-        // please do it in the same way and dont make it in other way
+        // for new tabs add them at the end please
         public static void default_pressed(object sender, EventArgs e, UserControl1 u1)
         {
-            if (u1.tabControl1.SelectedIndex == 0) { u1.default_button_Click_treeFractal(sender, e); return; }
-            else if (u1.tabControl1.SelectedIndex == 1) { u1.default_button_Click_KochLine(sender, e); return; }
-            else if (u1.tabControl1.SelectedIndex == 2) { u1.default_button_Click_KochSnow(sender, e); return; }
-            else if (u1.tabControl1.SelectedIndex == 4) { u1.default_button_Click_Sierpinski(sender, e); return;  }
-            // any more defaults here pls
+            int val = u1.tabControl1.SelectedIndex;
+            switch (val)
+            {
+                case 0:
+                    u1.default_button_Click_treeFractal(sender, e);
+                    break;
+                case 1:
+                    u1.default_button_Click_KochLine(sender, e);
+                    break;
+                case 2:
+                    u1.default_button_Click_KochSnow(sender, e);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    u1.default_button_Click_Sierpinski(sender, e);
+                    break;
+                default:
+                    break;
+            } 
         }
     }
 }
