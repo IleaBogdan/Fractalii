@@ -16,7 +16,10 @@ namespace Fractalii.Sierpinski
         {
             if (checker(levels, width))
             {
-
+                Draw.draw_line(pb, p1, p2, new Pen(Color.Red, 3));
+                Draw.draw_line(pb, p2, p3, new Pen(Color.Red, 3));
+                Draw.draw_line(pb, p3, p1, new Pen(Color.Red, 3));
+                //SierpinskiFractal.generate(pb, p1, p2, p3, levels, width);
             }
             else
             {

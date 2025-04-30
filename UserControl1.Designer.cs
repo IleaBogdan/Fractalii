@@ -123,10 +123,16 @@ namespace Fractalii
             textBox2 = new System.Windows.Forms.TextBox();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
+            SierpinskiWidth = new System.Windows.Forms.TextBox();
+            SierpinskiLevels = new System.Windows.Forms.TextBox();
+            button5 = new System.Windows.Forms.Button();
+            label10 = new Label();
+            label11 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
+            tabPage5.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -137,11 +143,12 @@ namespace Fractalii
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
             tabControl1.ItemSize = new Size(90, 20);
-            tabControl1.Location = new Point(3, 3);
+            tabControl1.Location = new Point(3, 4);
+            tabControl1.Margin = new Padding(3, 4, 3, 4);
             tabControl1.Name = "tabControl1";
             tabControl1.Padding = new Point(15, 4);
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(736, 98);
+            tabControl1.Size = new Size(841, 131);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -167,72 +174,74 @@ namespace Fractalii
             tabPage1.Controls.Add(label_width_tab1);
             tabPage1.Controls.Add(button2);
             tabPage1.Location = new Point(4, 24);
+            tabPage1.Margin = new Padding(3, 4, 3, 4);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
+            tabPage1.Padding = new Padding(3, 4, 3, 4);
             tabPage1.RightToLeft = RightToLeft.No;
-            tabPage1.Size = new Size(728, 70);
+            tabPage1.Size = new Size(833, 103);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Tree";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // textBox_angle_left_tab1
             // 
-            textBox_angle_left_tab1.Location = new Point(73, 10);
-            textBox_angle_left_tab1.Margin = new Padding(3, 2, 3, 2);
+            textBox_angle_left_tab1.Location = new Point(83, 13);
             textBox_angle_left_tab1.Name = "textBox_angle_left_tab1";
-            textBox_angle_left_tab1.Size = new Size(69, 23);
+            textBox_angle_left_tab1.Size = new Size(78, 27);
             textBox_angle_left_tab1.TabIndex = 146;
             // 
             // textBox_angle_right_tab1
             // 
-            textBox_angle_right_tab1.Location = new Point(226, 10);
-            textBox_angle_right_tab1.Margin = new Padding(3, 2, 3, 2);
+            textBox_angle_right_tab1.Location = new Point(258, 13);
             textBox_angle_right_tab1.Name = "textBox_angle_right_tab1";
-            textBox_angle_right_tab1.Size = new Size(69, 23);
+            textBox_angle_right_tab1.Size = new Size(78, 27);
             textBox_angle_right_tab1.TabIndex = 147;
             // 
             // textBox_reduction_right_tab1
             // 
-            textBox_reduction_right_tab1.Location = new Point(246, 40);
+            textBox_reduction_right_tab1.Location = new Point(281, 53);
+            textBox_reduction_right_tab1.Margin = new Padding(3, 4, 3, 4);
             textBox_reduction_right_tab1.Name = "textBox_reduction_right_tab1";
-            textBox_reduction_right_tab1.Size = new Size(21, 23);
+            textBox_reduction_right_tab1.Size = new Size(23, 27);
             textBox_reduction_right_tab1.TabIndex = 151;
             // 
             // textBox_size_tab1
             // 
-            textBox_size_tab1.Location = new Point(337, 10);
-            textBox_size_tab1.Margin = new Padding(3, 2, 3, 2);
+            textBox_size_tab1.Location = new Point(385, 13);
             textBox_size_tab1.Name = "textBox_size_tab1";
-            textBox_size_tab1.Size = new Size(68, 23);
+            textBox_size_tab1.Size = new Size(77, 27);
             textBox_size_tab1.TabIndex = 148;
             // 
             // textBox_reduction_left_tab1
             // 
-            textBox_reduction_left_tab1.Location = new Point(93, 40);
+            textBox_reduction_left_tab1.Location = new Point(106, 53);
+            textBox_reduction_left_tab1.Margin = new Padding(3, 4, 3, 4);
             textBox_reduction_left_tab1.Name = "textBox_reduction_left_tab1";
-            textBox_reduction_left_tab1.Size = new Size(26, 23);
+            textBox_reduction_left_tab1.Size = new Size(29, 27);
             textBox_reduction_left_tab1.TabIndex = 150;
             // 
             // textBox_levels_tab1
             // 
-            textBox_levels_tab1.Location = new Point(456, 10);
+            textBox_levels_tab1.Location = new Point(521, 13);
+            textBox_levels_tab1.Margin = new Padding(3, 4, 3, 4);
             textBox_levels_tab1.Name = "textBox_levels_tab1";
-            textBox_levels_tab1.Size = new Size(38, 23);
+            textBox_levels_tab1.Size = new Size(43, 27);
             textBox_levels_tab1.TabIndex = 149;
             // 
             // textBox_width_tab1
             // 
-            textBox_width_tab1.Location = new Point(363, 40);
+            textBox_width_tab1.Location = new Point(415, 53);
+            textBox_width_tab1.Margin = new Padding(3, 4, 3, 4);
             textBox_width_tab1.Name = "textBox_width_tab1";
-            textBox_width_tab1.Size = new Size(26, 23);
+            textBox_width_tab1.Size = new Size(29, 27);
             textBox_width_tab1.TabIndex = 152;
             // 
             // label_angle_left_tab1
             // 
             label_angle_left_tab1.AutoSize = true;
-            label_angle_left_tab1.Location = new Point(6, 13);
+            label_angle_left_tab1.Location = new Point(7, 17);
             label_angle_left_tab1.Name = "label_angle_left_tab1";
-            label_angle_left_tab1.Size = new Size(61, 15);
+            label_angle_left_tab1.Size = new Size(77, 20);
             label_angle_left_tab1.TabIndex = 156;
             label_angle_left_tab1.Text = "Angle left:";
             // 
@@ -240,36 +249,36 @@ namespace Fractalii
             // 
             label_procent_reduction_right_tab1.AutoSize = true;
             label_procent_reduction_right_tab1.BackColor = SystemColors.ButtonHighlight;
-            label_procent_reduction_right_tab1.Location = new Point(278, 43);
+            label_procent_reduction_right_tab1.Location = new Point(318, 57);
             label_procent_reduction_right_tab1.Name = "label_procent_reduction_right_tab1";
-            label_procent_reduction_right_tab1.Size = new Size(17, 15);
+            label_procent_reduction_right_tab1.Size = new Size(21, 20);
             label_procent_reduction_right_tab1.TabIndex = 163;
             label_procent_reduction_right_tab1.Text = "%";
             // 
             // label_angle_right_tab1
             // 
             label_angle_right_tab1.AutoSize = true;
-            label_angle_right_tab1.Location = new Point(151, 13);
+            label_angle_right_tab1.Location = new Point(173, 17);
             label_angle_right_tab1.Name = "label_angle_right_tab1";
-            label_angle_right_tab1.Size = new Size(69, 15);
+            label_angle_right_tab1.Size = new Size(86, 20);
             label_angle_right_tab1.TabIndex = 158;
             label_angle_right_tab1.Text = "Angle right:";
             // 
             // label_reduction_right_tab1
             // 
             label_reduction_right_tab1.AutoSize = true;
-            label_reduction_right_tab1.Location = new Point(151, 43);
+            label_reduction_right_tab1.Location = new Point(173, 57);
             label_reduction_right_tab1.Name = "label_reduction_right_tab1";
-            label_reduction_right_tab1.Size = new Size(89, 15);
+            label_reduction_right_tab1.Size = new Size(111, 20);
             label_reduction_right_tab1.TabIndex = 162;
             label_reduction_right_tab1.Text = "Right Redution:";
             // 
             // label_size_tab1
             // 
             label_size_tab1.AutoSize = true;
-            label_size_tab1.Location = new Point(301, 13);
+            label_size_tab1.Location = new Point(344, 17);
             label_size_tab1.Name = "label_size_tab1";
-            label_size_tab1.Size = new Size(30, 15);
+            label_size_tab1.Size = new Size(39, 20);
             label_size_tab1.TabIndex = 159;
             label_size_tab1.Text = "Size:";
             // 
@@ -277,18 +286,17 @@ namespace Fractalii
             // 
             label_procent_reduction_left_tab1.AutoSize = true;
             label_procent_reduction_left_tab1.BackColor = SystemColors.ButtonHighlight;
-            label_procent_reduction_left_tab1.Location = new Point(125, 43);
+            label_procent_reduction_left_tab1.Location = new Point(143, 57);
             label_procent_reduction_left_tab1.Name = "label_procent_reduction_left_tab1";
-            label_procent_reduction_left_tab1.Size = new Size(17, 15);
+            label_procent_reduction_left_tab1.Size = new Size(21, 20);
             label_procent_reduction_left_tab1.TabIndex = 161;
             label_procent_reduction_left_tab1.Text = "%";
             // 
             // button1
             // 
-            button1.Location = new Point(536, 10);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Location = new Point(613, 13);
             button1.Name = "button1";
-            button1.Size = new Size(85, 46);
+            button1.Size = new Size(97, 61);
             button1.TabIndex = 166;
             button1.Text = "Generate recursively";
             button1.UseVisualStyleBackColor = true;
@@ -297,18 +305,18 @@ namespace Fractalii
             // label_reduction_left_tab1
             // 
             label_reduction_left_tab1.AutoSize = true;
-            label_reduction_left_tab1.Location = new Point(6, 43);
+            label_reduction_left_tab1.Location = new Point(7, 57);
             label_reduction_left_tab1.Name = "label_reduction_left_tab1";
-            label_reduction_left_tab1.Size = new Size(81, 15);
+            label_reduction_left_tab1.Size = new Size(101, 20);
             label_reduction_left_tab1.TabIndex = 160;
             label_reduction_left_tab1.Text = "Left Redution:";
             // 
             // label_levels_tab1
             // 
             label_levels_tab1.AutoSize = true;
-            label_levels_tab1.Location = new Point(411, 13);
+            label_levels_tab1.Location = new Point(470, 17);
             label_levels_tab1.Name = "label_levels_tab1";
-            label_levels_tab1.Size = new Size(39, 15);
+            label_levels_tab1.Size = new Size(49, 20);
             label_levels_tab1.TabIndex = 157;
             label_levels_tab1.Text = "Levels";
             // 
@@ -316,9 +324,9 @@ namespace Fractalii
             // 
             label_width_max_tab1.AutoSize = true;
             label_width_max_tab1.BackColor = SystemColors.ButtonHighlight;
-            label_width_max_tab1.Location = new Point(395, 43);
+            label_width_max_tab1.Location = new Point(451, 57);
             label_width_max_tab1.Name = "label_width_max_tab1";
-            label_width_max_tab1.Size = new Size(24, 15);
+            label_width_max_tab1.Size = new Size(31, 20);
             label_width_max_tab1.TabIndex = 155;
             label_width_max_tab1.Text = "<7 ";
             // 
@@ -326,26 +334,27 @@ namespace Fractalii
             // 
             label5.AutoSize = true;
             label5.BackColor = SystemColors.ButtonHighlight;
-            label5.Location = new Point(500, 13);
+            label5.Location = new Point(571, 17);
             label5.Name = "label5";
-            label5.Size = new Size(30, 15);
+            label5.Size = new Size(39, 20);
             label5.TabIndex = 154;
             label5.Text = "<15 ";
             // 
             // label_width_tab1
             // 
             label_width_tab1.AutoSize = true;
-            label_width_tab1.Location = new Point(315, 43);
+            label_width_tab1.Location = new Point(360, 57);
             label_width_tab1.Name = "label_width_tab1";
-            label_width_tab1.Size = new Size(42, 15);
+            label_width_tab1.Size = new Size(52, 20);
             label_width_tab1.TabIndex = 153;
             label_width_tab1.Text = "Width:";
             // 
             // button2
             // 
-            button2.Location = new Point(627, 10);
+            button2.Location = new Point(717, 13);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(90, 46);
+            button2.Size = new Size(103, 61);
             button2.TabIndex = 167;
             button2.Text = "Generate iteratively";
             button2.UseVisualStyleBackColor = true;
@@ -362,9 +371,10 @@ namespace Fractalii
             tabPage2.Controls.Add(levels_KochLine);
             tabPage2.Controls.Add(label1);
             tabPage2.Location = new Point(4, 24);
+            tabPage2.Margin = new Padding(3, 4, 3, 4);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(728, 70);
+            tabPage2.Padding = new Padding(3, 4, 3, 4);
+            tabPage2.Size = new Size(833, 103);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Koch-Line";
             tabPage2.UseVisualStyleBackColor = true;
@@ -372,49 +382,52 @@ namespace Fractalii
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(272, 12);
+            label8.Location = new Point(311, 16);
             label8.Name = "label8";
-            label8.Size = new Size(64, 15);
+            label8.Size = new Size(79, 20);
             label8.TabIndex = 7;
             label8.Text = "Reduction:";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(337, 9);
+            textBox1.Location = new Point(385, 12);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(43, 23);
+            textBox1.Size = new Size(49, 27);
             textBox1.TabIndex = 6;
             // 
             // width_KochLine
             // 
-            width_KochLine.Location = new Point(190, 9);
+            width_KochLine.Location = new Point(217, 12);
+            width_KochLine.Margin = new Padding(3, 4, 3, 4);
             width_KochLine.Name = "width_KochLine";
-            width_KochLine.Size = new Size(40, 23);
+            width_KochLine.Size = new Size(45, 27);
             width_KochLine.TabIndex = 5;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(152, 12);
+            label3.Location = new Point(174, 16);
             label3.Name = "label3";
-            label3.Size = new Size(42, 15);
+            label3.Size = new Size(52, 20);
             label3.TabIndex = 4;
             label3.Text = "Width:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(110, 12);
+            label2.Location = new Point(126, 16);
             label2.Name = "label2";
-            label2.Size = new Size(21, 15);
+            label2.Size = new Size(27, 20);
             label2.TabIndex = 3;
             label2.Text = "<8";
             // 
             // button3
             // 
-            button3.Location = new Point(613, 9);
+            button3.Location = new Point(701, 12);
+            button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
-            button3.Size = new Size(100, 55);
+            button3.Size = new Size(114, 73);
             button3.TabIndex = 2;
             button3.Text = "Generate";
             button3.UseVisualStyleBackColor = true;
@@ -422,17 +435,18 @@ namespace Fractalii
             // 
             // levels_KochLine
             // 
-            levels_KochLine.Location = new Point(66, 9);
+            levels_KochLine.Location = new Point(75, 12);
+            levels_KochLine.Margin = new Padding(3, 4, 3, 4);
             levels_KochLine.Name = "levels_KochLine";
-            levels_KochLine.Size = new Size(38, 23);
+            levels_KochLine.Size = new Size(43, 27);
             levels_KochLine.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(28, 12);
+            label1.Location = new Point(32, 16);
             label1.Name = "label1";
-            label1.Size = new Size(42, 15);
+            label1.Size = new Size(52, 20);
             label1.TabIndex = 0;
             label1.Text = "Levels:";
             // 
@@ -447,43 +461,46 @@ namespace Fractalii
             tabPage3.Controls.Add(label9);
             tabPage3.Controls.Add(textBox2);
             tabPage3.Location = new Point(4, 24);
+            tabPage3.Margin = new Padding(3, 4, 3, 4);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(728, 70);
+            tabPage3.Padding = new Padding(3, 4, 3, 4);
+            tabPage3.Size = new Size(833, 103);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Koch-Snowflake";
             tabPage3.UseVisualStyleBackColor = true;
             // 
             // KochSnowWidth
             // 
-            KochSnowWidth.Location = new Point(184, 8);
+            KochSnowWidth.Location = new Point(210, 11);
+            KochSnowWidth.Margin = new Padding(3, 4, 3, 4);
             KochSnowWidth.Name = "KochSnowWidth";
-            KochSnowWidth.Size = new Size(40, 23);
+            KochSnowWidth.Size = new Size(45, 27);
             KochSnowWidth.TabIndex = 11;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(146, 11);
+            label4.Location = new Point(167, 15);
             label4.Name = "label4";
-            label4.Size = new Size(42, 15);
+            label4.Size = new Size(52, 20);
             label4.TabIndex = 10;
             label4.Text = "Width:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(104, 11);
+            label6.Location = new Point(119, 15);
             label6.Name = "label6";
-            label6.Size = new Size(21, 15);
+            label6.Size = new Size(27, 20);
             label6.TabIndex = 9;
             label6.Text = "<8";
             // 
             // button4
             // 
-            button4.Location = new Point(607, 8);
+            button4.Location = new Point(694, 11);
+            button4.Margin = new Padding(3, 4, 3, 4);
             button4.Name = "button4";
-            button4.Size = new Size(100, 55);
+            button4.Size = new Size(114, 73);
             button4.TabIndex = 8;
             button4.Text = "Generate";
             button4.UseVisualStyleBackColor = true;
@@ -491,63 +508,115 @@ namespace Fractalii
             // 
             // KochSnowLevels
             // 
-            KochSnowLevels.Location = new Point(60, 8);
+            KochSnowLevels.Location = new Point(69, 11);
+            KochSnowLevels.Margin = new Padding(3, 4, 3, 4);
             KochSnowLevels.Name = "KochSnowLevels";
-            KochSnowLevels.Size = new Size(38, 23);
+            KochSnowLevels.Size = new Size(43, 27);
             KochSnowLevels.TabIndex = 7;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(22, 11);
+            label7.Location = new Point(25, 15);
             label7.Name = "label7";
-            label7.Size = new Size(42, 15);
+            label7.Size = new Size(52, 20);
             label7.TabIndex = 6;
             label7.Text = "Levels:";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(272, 12);
+            label9.Location = new Point(311, 16);
             label9.Name = "label9";
-            label9.Size = new Size(64, 15);
+            label9.Size = new Size(79, 20);
             label9.TabIndex = 7;
             label9.Text = "Reduction:";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(337, 9);
+            textBox2.Location = new Point(385, 12);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(43, 23);
+            textBox2.Size = new Size(49, 27);
             textBox2.TabIndex = 6;
             // 
             // tabPage4
             // 
             tabPage4.Location = new Point(4, 24);
+            tabPage4.Margin = new Padding(3, 4, 3, 4);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(728, 70);
+            tabPage4.Padding = new Padding(3, 4, 3, 4);
+            tabPage4.Size = new Size(833, 103);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Weierstrass";
             tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(label11);
+            tabPage5.Controls.Add(label10);
+            tabPage5.Controls.Add(SierpinskiWidth);
+            tabPage5.Controls.Add(SierpinskiLevels);
+            tabPage5.Controls.Add(button5);
             tabPage5.Location = new Point(4, 24);
+            tabPage5.Margin = new Padding(3, 4, 3, 4);
             tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(728, 70);
+            tabPage5.Padding = new Padding(3, 4, 3, 4);
+            tabPage5.Size = new Size(833, 103);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Sierpinski";
             tabPage5.UseVisualStyleBackColor = true;
             // 
+            // SierpinskiWidth
+            // 
+            SierpinskiWidth.Location = new Point(137, 52);
+            SierpinskiWidth.Name = "SierpinskiWidth";
+            SierpinskiWidth.Size = new Size(125, 27);
+            SierpinskiWidth.TabIndex = 2;
+            // 
+            // SierpinskiLevels
+            // 
+            SierpinskiLevels.Location = new Point(137, 19);
+            SierpinskiLevels.Name = "SierpinskiLevels";
+            SierpinskiLevels.Size = new Size(125, 27);
+            SierpinskiLevels.TabIndex = 1;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(653, 19);
+            button5.Name = "button5";
+            button5.Size = new Size(149, 62);
+            button5.TabIndex = 0;
+            button5.Text = "Generate";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += generate_sierpinski;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(61, 22);
+            label10.Name = "label10";
+            label10.Size = new Size(52, 20);
+            label10.TabIndex = 3;
+            label10.Text = "Levels:";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(55, 55);
+            label11.Name = "label11";
+            label11.Size = new Size(52, 20);
+            label11.TabIndex = 4;
+            label11.Text = "Width:";
+            // 
             // UserControl1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tabControl1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "UserControl1";
-            Size = new Size(746, 110);
+            Size = new Size(853, 147);
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -555,6 +624,8 @@ namespace Fractalii
             tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            tabPage5.ResumeLayout(false);
+            tabPage5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -602,5 +673,10 @@ namespace Fractalii
         private Label label9;
         private TabPage tabPage4;
         private TabPage tabPage5;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox SierpinskiLevels;
+        private System.Windows.Forms.TextBox SierpinskiWidth;
+        private Label label11;
+        private Label label10;
     }
 }

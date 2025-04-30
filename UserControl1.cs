@@ -119,13 +119,21 @@ namespace Fractalii
 
 
 
-
+        private void default_button_Click_Sierpinski(object sender, EventArgs e)
+        {
+            SierpinskiLevels.Text = "11";
+            SierpinskiWidth.Text = "3";
+        }
         private void generate_sierpinski(object sender, EventArgs e)
         {
             int levels= -1;
             double width = -1;
-
-            Point p1=new Point(0,0), p2= new Point(0, 0), p3= new Point(0, 0);
+            Int32.TryParse(SierpinskiLevels.Text, null, out levels);
+            Double.TryParse(SierpinskiWidth.Text, null, out width);
+            int offset = pb.Height / 10 - 15;
+            Point p1 = new Point(pb.Width / 3, offset + pb.Height / 5);
+            Point p2 = new Point((pb.Width / 3) * 2, offset + pb.Height / 5);
+            Point p3 = new Point(pb.Width / 2, offset + (int)((double)(pb.Width / 3.0) * 0.866025) + pb.Height / 5);
             SetupSierpinski.generate_sierpinski(pb, p1, p2, p3, levels, width);
         }
 
@@ -136,6 +144,7 @@ namespace Fractalii
             if (u1.tabControl1.SelectedIndex == 0) { u1.default_button_Click_treeFractal(sender, e); return; }
             else if (u1.tabControl1.SelectedIndex == 1) { u1.default_button_Click_KochLine(sender, e); return; }
             else if (u1.tabControl1.SelectedIndex == 2) { u1.default_button_Click_KochSnow(sender, e); return; }
+            else if (u1.tabControl1.SelectedIndex == 4) { u1.default_button_Click_Sierpinski(sender, e); return;  }
             // any more defaults here pls
         }
     }
