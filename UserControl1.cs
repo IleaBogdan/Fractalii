@@ -25,7 +25,7 @@ namespace Fractalii
         {
             pb = p;
         }
-        
+
         // Tree Fractal
         private void default_button_Click_treeFractal(object sender, EventArgs e)
         {
@@ -74,16 +74,19 @@ namespace Fractalii
         // Koch-Line
         private void default_button_Click_KochLine(object sender, EventArgs e)
         {
-            levels_KochLine.Text = "5";
+            levels_KochLine.Text = "6";
             width_KochLine.Text = "5";
+            textBox1.Text = "1.0";
         }
         private void generate_kochLineFractal(object sender, EventArgs e)
         {
             int levels = -1;
-            double width = -0.1;
+            double width = -1;
             Int32.TryParse(levels_KochLine.Text, null, out levels);
             Double.TryParse(width_KochLine.Text, null, out width);
-            Point start_point = new Point(0, pb.Height - 125), stop_point = new Point(pb.Width, pb.Height - 125);
+            const int minus = 125;
+            Point start_point = new Point(0, pb.Height - minus), stop_point = new Point(pb.Width, pb.Height - minus);
+            //Console.WriteLine(start_point.ToString() + " " + stop_point.ToString() + "\n");
             SetupKoch.generate_kochLineFractal(pb, start_point, stop_point, levels, width);
         }
 
@@ -92,36 +95,34 @@ namespace Fractalii
         // Koch-Snowflake
         private void default_button_Click_KochSnow(object sender, EventArgs e)
         {
-            KochSnowLevels.Text = "5";
+            KochSnowLevels.Text = "6";
             KochSnowWidth.Text = "5";
+            textBox2.Text = "1.0";
         }
         private void generate_kochSnowFractal(object sender, EventArgs e)
         {
             int levels = -1;
-            double width = -0.1;
+            double width = -1;
             Int32.TryParse(KochSnowLevels.Text, null, out levels);
             Double.TryParse(KochSnowWidth.Text, null, out width);
-            //const int constant = 400;
-            Point p1=new Point(pb.Width/3, pb.Height / 5), p2=new Point((pb.Width/3)*2, pb.Height / 5);
-            Point p3 = new Point(pb.Width / 2, (int)((double)(pb.Width/3.0)* 0.866025)+pb.Height/5);
-            SetupKoch.generate_kochSnowFractal(pb, 
-                p1, p2, p3, 
+            int offset = pb.Height / 10 -15;
+            Point p1 = new Point(pb.Width / 3, offset+pb.Height / 5);
+            Point p2 = new Point((pb.Width / 3) * 2, offset+pb.Height / 5);
+            Point p3 = new Point(pb.Width / 2, offset+(int)((double)(pb.Width / 3.0) * 0.866025) + pb.Height / 5);
+            SetupKoch.generate_kochSnowFractal(pb,
+                p1, p2, p3,
                 levels, width);
         }
 
 
 
-
-
-
-
-
-
+        // default press for anything
+        // please do it in the same way and dont make it in other way
         public static void default_pressed(object sender, EventArgs e, UserControl1 u1)
         {
-            if (u1.tabControl1.SelectedIndex == 0) u1.default_button_Click_treeFractal(sender, e);
-            if (u1.tabControl1.SelectedIndex == 1) u1.default_button_Click_KochLine(sender, e);
-            if (u1.tabControl1.SelectedIndex == 2) u1.default_button_Click_KochSnow(sender, e);
+            if (u1.tabControl1.SelectedIndex == 0) { u1.default_button_Click_treeFractal(sender, e); return; }
+            else if (u1.tabControl1.SelectedIndex == 1) { u1.default_button_Click_KochLine(sender, e); return; }
+            else if (u1.tabControl1.SelectedIndex == 2) { u1.default_button_Click_KochSnow(sender, e); return; }
             // any more defaults here pls
         }
     }
