@@ -16,7 +16,7 @@ namespace Fractalii
         {
             InitializeComponent();
             if (Debugger.IsAttached) { AllocConsole(); }
-            this.Text = "Fullscreen on F11 Example";
+            this.Text = "Fractalii";
             this.KeyPreview = true; // Important to capture key events
 
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
@@ -31,13 +31,24 @@ namespace Fractalii
         private void Form1_Load(object sender, EventArgs e)
         {
             pictureBox1.BackColor = bgC;
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle; 
             userControl11.set_pictureBox(pictureBox1);
             add_color(initialColor, initialColorSelect, "Select initial color");
             add_color(finalColor, finalColorSelect, "Select final color");
+
+            pictureBox1.Paint += (s, args) =>
+            {
+                ControlPaint.DrawBorder(args.Graphics, pictureBox1.ClientRectangle,
+                    Color.Green, 3, ButtonBorderStyle.Solid, // Left
+                    Color.Green, 3, ButtonBorderStyle.Solid, // Top
+                    Color.Green, 3, ButtonBorderStyle.Solid, // Right
+                    Color.Green, 3, ButtonBorderStyle.Solid  // Bottom
+                );
+            };
         }
         // color setting
         public static Color initialColor = Color.Blue, finalColor = Color.Green;
-        
+
 
         private static void add_color(Color color, Button b1, String text)
         {
@@ -59,7 +70,7 @@ namespace Fractalii
         {
             Color_Selector colorSelector = new Color_Selector();
             DialogResult result = colorSelector.ShowDialog();
-            
+
             if (result == DialogResult.OK)
             {
                 initialColor = colorSelector.setColor;
@@ -87,7 +98,7 @@ namespace Fractalii
 
         private void Form_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F11){ToggleFullscreen();}
+            if (e.KeyCode == Keys.F11) { ToggleFullscreen(); }
             if (e.KeyCode == Keys.F5)
             {
                 // generate fractal
@@ -109,6 +120,36 @@ namespace Fractalii
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
                 this.TopMost = true;
+            }
+        }
+        private void DarkMode_CheckStateChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+
+            if (checkBox != null && checkBox.Checked)
+            {
+                ApplyTheme(this, Color.Black, Color.White);
+            }
+            else
+            {
+                ApplyTheme(this, Color.White, Color.Black);
+            }
+        }
+        private void ApplyTheme(Control parent, Color backColor, Color foreColor)
+        {
+            if (parent is PictureBox)return;
+
+            parent.BackColor = backColor;
+            parent.ForeColor = foreColor;
+
+            foreach (Control control in parent.Controls)
+            {
+                ApplyTheme(control, backColor, foreColor);
+                if (control is TextBox || control is Label || control is Button)
+                {
+                    control.ForeColor = foreColor;
+                    control.BackColor = backColor;
+                }
             }
         }
     }
