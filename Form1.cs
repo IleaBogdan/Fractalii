@@ -18,7 +18,7 @@ namespace Fractalii
             if (Debugger.IsAttached) { AllocConsole(); }
             this.Text = "Fractalii";
             this.KeyPreview = true; // Important to capture key events
-
+            this.TopMost=false;
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
         }
 
@@ -68,6 +68,7 @@ namespace Fractalii
         }
         private void initialColorSelect_Click(object sender, EventArgs e)
         {
+            this.TopMost = false;
             Color_Selector colorSelector = new Color_Selector();
             DialogResult result = colorSelector.ShowDialog();
 
@@ -79,6 +80,7 @@ namespace Fractalii
         }
         private void finalColorSelect_Click(object sender, EventArgs e)
         {
+            this.TopMost = false;
             Color_Selector colorSelector = new Color_Selector();
             DialogResult result = colorSelector.ShowDialog();
 
@@ -127,7 +129,7 @@ namespace Fractalii
             {
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.WindowState = FormWindowState.Maximized;
-                this.TopMost = true;
+                this.TopMost = false;
             }
         }
         private void DarkMode_CheckStateChanged(object sender, EventArgs e)
