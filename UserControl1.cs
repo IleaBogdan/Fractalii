@@ -24,6 +24,22 @@ namespace Fractalii
             //debug();
         }
         private PictureBox pb;
+        public void SetSelectedTab(int index)
+        {
+            if (index >= 0 && index < tabControl1.TabPages.Count)
+            {
+                tabControl1.SelectedIndex = index;
+            }
+        }
+        public void SetSelectedTab(int index, HomePage home, UserControl1 u1)
+        {
+            if (index >= 0 && index < tabControl1.TabPages.Count)
+            {
+                tabControl1.SelectedIndex = index;
+                home.SetText(HomePage.def + u1.tabControl1.Text);
+            }
+        }
+
         public void set_pictureBox(PictureBox p)
         {
             pb = p;
