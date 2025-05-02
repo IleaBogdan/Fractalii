@@ -17,6 +17,7 @@ namespace Fractalii.DragonCurve
         {
             if (checker(levels, width))
             {
+                pb.Refresh();
                 dragoncurveFractal.generate(pb, levels, width, Start);
             } else
             {
