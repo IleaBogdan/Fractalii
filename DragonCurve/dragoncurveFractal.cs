@@ -10,14 +10,14 @@ namespace Fractalii.DragonCurve
     {
         private static Pen pen = new Pen(Color.Red, 1f);
         private static Pair<int, int>[] rout = [
-            new Pair<int, int>(-5, 0), 
-            new Pair<int, int>(0, 5),
-            new Pair<int, int>(5, 0),
-            new Pair<int, int>(0, 5),
-            new Pair<int, int>(5, 0),
-            new Pair<int, int>(0, -5),
-            new Pair<int, int>(5, 0),
-            new Pair<int, int>(0, 5)
+            new Pair<int, int>(-25, 0), 
+            new Pair<int, int>(0, 25),
+            new Pair<int, int>(25, 0),
+            new Pair<int, int>(0, 25),
+            new Pair<int, int>(25, 0),
+            new Pair<int, int>(0, -25),
+            new Pair<int, int>(25, 0),
+            new Pair<int, int>(0, 25)
         ];
         // you get the orientation like this:
         // x:- y:0 --- North
@@ -27,7 +27,22 @@ namespace Fractalii.DragonCurve
         public static void generate(PictureBox pb, int levels, double width, Point p)
         {
             pen.Width = (float)width;
-            
+            int currLevel = 0;
+            while (currLevel < levels)
+            {
+                Point nextp = p;
+                List<Point> todraw=new();
+                todraw.Add(p);
+                for (int i=0; i<8; ++i)
+                {
+                    nextp.X += rout[i].First;
+                    nextp.Y += rout[i].Second;
+                    todraw.Add(nextp);
+                    p = nextp;
+                }
+                Draw.draw_lines(pb, todraw.ToArray(), pen);
+                ++currLevel;
+            }
         }
     }
 }

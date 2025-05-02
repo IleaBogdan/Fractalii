@@ -590,6 +590,7 @@ namespace Fractalii
             button6.TabIndex = 2;
             button6.Text = "Generate";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += generate_dragoncurve;
             // 
             // dragoncurvetextbox
             // 

@@ -180,7 +180,7 @@ namespace Fractalii
             width = 3;
             Console.WriteLine("remove hardcoded width");
             dragoncurveSetup.generate_dragoncurve(pb, levels, width,
-                new Point (pb.Width-60, pb.Height-150);
+                new Point (30, 70));
         }
 
         // default press for anything
