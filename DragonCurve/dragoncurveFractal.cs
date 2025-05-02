@@ -10,14 +10,14 @@ namespace Fractalii.DragonCurve
     {
         private static Pen pen = new Pen(Color.Red, 1f);
         private static Pair<int, int>[] rout = [
-            new Pair<int, int>(-25, 0), 
-            new Pair<int, int>(0, 25),
+            new Pair<int, int>(0, -25), 
             new Pair<int, int>(25, 0),
             new Pair<int, int>(0, 25),
             new Pair<int, int>(25, 0),
-            new Pair<int, int>(0, -25),
-            new Pair<int, int>(25, 0),
-            new Pair<int, int>(0, 25)
+            new Pair<int, int>(0, 25),
+            new Pair<int, int>(-25, 0),
+            new Pair<int, int>(0, 25),
+            new Pair<int, int>(25, 0)
         ];
         // you get the orientation like this:
         // x:- y:0 --- North
@@ -35,12 +35,14 @@ namespace Fractalii.DragonCurve
                 todraw.Add(p);
                 for (int i=0; i<8; ++i)
                 {
-                    nextp.X += rout[i].First;
-                    nextp.Y += rout[i].Second;
+                    int index = (currLevel%2==0 ? i : 8-i-1);
+                    nextp.X += rout[index].First;
+                    nextp.Y += rout[index].Second;
                     todraw.Add(nextp);
                     p = nextp;
                 }
                 Draw.draw_lines(pb, todraw.ToArray(), pen);
+                Thread.Sleep(500);
                 ++currLevel;
             }
         }
