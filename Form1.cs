@@ -21,12 +21,16 @@ namespace Fractalii
             this.TopMost=false;
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
         }
+        public void SetText(string text)
+        {
+            this.Text = text;
+        }
 
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
         public static Color bgC = Color.Black;
-
+        public static String def = "Fractalii";
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -36,13 +40,15 @@ namespace Fractalii
             add_color(initialColor, initialColorSelect, "Select initial color");
             add_color(finalColor, finalColorSelect, "Select final color");
 
+            //userControl11.SetSelectedTab(0, this, userControl11);
+
             pictureBox1.Paint += (s, args) =>
             {
                 ControlPaint.DrawBorder(args.Graphics, pictureBox1.ClientRectangle,
-                    Color.Green, 3, ButtonBorderStyle.Solid, // Left
-                    Color.Green, 3, ButtonBorderStyle.Solid, // Top
-                    Color.Green, 3, ButtonBorderStyle.Solid, // Right
-                    Color.Green, 3, ButtonBorderStyle.Solid  // Bottom
+                    Color.Green, 1, ButtonBorderStyle.Solid, // Left
+                    Color.Green, 1, ButtonBorderStyle.Solid, // Top
+                    Color.Green, 1, ButtonBorderStyle.Solid, // Right
+                    Color.Green, 1, ButtonBorderStyle.Solid  // Bottom
                 );
             };
         }
