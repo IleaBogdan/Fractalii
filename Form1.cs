@@ -105,6 +105,14 @@ namespace Fractalii
                 UserControl1.Generate(sender, e, userControl11);
             }
             if (e.KeyCode == Keys.D) { UserControl1.default_pressed(sender, e, userControl11); }
+            if (e.Control && e.KeyCode>=Keys.D0 && e.KeyCode <= Keys.D9)
+            {
+                // switch to specific tab
+                int tab = (int)(e.KeyCode-'0')-1;
+                if (tab == -1) { tab += 10; }
+                //Console.WriteLine(tab.ToString());
+                userControl11.SetSelectedTab(tab);
+            }
         }
 
         private void ToggleFullscreen()
