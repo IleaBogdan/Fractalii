@@ -13,6 +13,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.CompilerServices;
 
 namespace Fractalii
 {
@@ -165,6 +166,16 @@ namespace Fractalii
             SetupSierpinski.generate_sierpinski(pb, p1, p2, p3, levels, width);
         }
 
+
+        private void default_button_Click_DragonCurve(object sender, EventArgs e) 
+        {
+            dragoncurvetextbox.Text = "6";
+        }
+        private void generate_dragoncurve(object sender, EventArgs e)
+        {
+
+        }
+
         // default press for anything
         // for new tabs add them at the end please
         public static void default_pressed(object sender, EventArgs e, UserControl1 u1)
@@ -186,6 +197,8 @@ namespace Fractalii
                 case 4:
                     u1.default_button_Click_Sierpinski(sender, e);
                     break;
+                case 5:
+                    u1.default_button_Click_DragonCurve(sender, e);
                 default:
                     break;
             }
@@ -208,6 +221,9 @@ namespace Fractalii
                     break;
                 case 4:
                     u1.generate_sierpinski(sender, e);
+                    break;
+                case 5:
+                    u1.generate_dragoncurve(sender, e);
                     break;
                 default:
                     break;
