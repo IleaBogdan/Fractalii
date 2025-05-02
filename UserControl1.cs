@@ -3,6 +3,7 @@ using Fractalii.Sierpinski;
 using Fractalii.Weierstrass_Function;
 using Fractalii.TreeFractal;
 using Fractalii.Weierstrass_Function;
+using Fractalii.DragonCurve;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -173,7 +174,12 @@ namespace Fractalii
         }
         private void generate_dragoncurve(object sender, EventArgs e)
         {
-
+            int levels = -1;
+            double width = -1.0;
+            Int32.TryParse(dragoncurvetextbox.Text, out levels);
+            width = 3;
+            Console.WriteLine("remove hardcoded width");
+            //dragoncurveSetup.generate_dragoncurve(pb, levels, width);
         }
 
         // default press for anything
@@ -199,6 +205,7 @@ namespace Fractalii
                     break;
                 case 5:
                     u1.default_button_Click_DragonCurve(sender, e);
+                    break;
                 default:
                     break;
             }
