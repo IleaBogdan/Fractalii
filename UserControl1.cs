@@ -179,7 +179,8 @@ namespace Fractalii
             Int32.TryParse(dragoncurvetextbox.Text, out levels);
             width = 3;
             Console.WriteLine("remove hardcoded width");
-            //dragoncurveSetup.generate_dragoncurve(pb, levels, width);
+            dragoncurveSetup.generate_dragoncurve(pb, levels, width,
+                new Point (pb.Width-60, pb.Height-150);
         }
 
         // default press for anything
