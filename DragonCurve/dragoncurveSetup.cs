@@ -18,7 +18,7 @@ namespace Fractalii.DragonCurve
             if (checker(levels, width))
             {
                 pb.Refresh();
-                dragoncurveFractal.generate(pb, levels, width, Start);
+                dragoncurveFractal.Generate(pb, levels, width, Start);
             } else
             {
                 System.Windows.Forms.MessageBox.Show("Please enter levels number correctly!");

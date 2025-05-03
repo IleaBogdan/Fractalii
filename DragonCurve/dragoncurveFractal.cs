@@ -1,46 +1,88 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Fractalii.DragonCurve
 {
     internal class dragoncurveFractal
     {
         private static Pen pen = new Pen(Color.Red, 1f);
-        private static int[] angles = [90, -90, -90, 90, -90, -90, 90, 90];
-        
-        private static Point fromTo(Point p, int angle, int dist)
+
+        private static Point FromTo(Point p, int angle, int dist)
         {
-            double rad = Math.PI * (double)angle / 180.0d;
-            return new Point(p.X - (int)(dist * Math.Cos(rad)),
-                             p.Y - (int)(dist * Math.Sin(rad)));
+            double rad = Math.PI * angle / 180.0;
+            return new Point(
+                p.X + (int)(dist * Math.Cos(rad)),
+                p.Y + (int)(dist * Math.Sin(rad))
+            );
         }
-        public static void generate(PictureBox pb, int levels, double width, Point p)
+
+        public static void Generate(PictureBox pb, int iterations, 
+                                    double width, Point startPoint)
         {
             pen.Width = (float)width;
-            int currLevel = 0;
-            while (currLevel < levels)
+
+            string sequence = "F";
+
+            for (int i = 0; i < iterations; i++)
             {
-                Point nextp = p;
-                List<Point> todraw=new();
-                todraw.Add(p);
-                int startangle = (currLevel%2==1 ? 0 : 90);
-                if (currLevel % 4 > 2) startangle = -startangle;
-                for (int i=0; i<8; ++i)
-                {
-                    int index = (currLevel%2==0 ? i : 8-i-1);
-                    startangle-=angles[index];
-                    nextp =fromTo(p, startangle, 25);
-                    todraw.Add(nextp);
-                    p = nextp;
-                }
-                Draw.draw_lines(pb, todraw.ToArray(), pen);
-                Thread.Sleep(500);
-                ++currLevel;
-                Console.WriteLine(currLevel);
+                sequence = ApplyRules(sequence);
             }
+
+            DrawSequence(pb, sequence, startPoint, 10);
+        }
+
+        private static string ApplyRules(string sequence)
+        {
+            // Rules:
+            // F → F+G
+            // G → F-G
+            var result = new System.Text.StringBuilder();
+
+            foreach (char c in sequence)
+            {
+                switch (c)
+                {
+                    case 'F':
+                        result.Append("F+G");
+                        break;
+                    case 'G':
+                        result.Append("F-G");
+                        break;
+                    default:
+                        result.Append(c);
+                        break;
+                }
+            }
+            return result.ToString();
+        }
+
+        private static void DrawSequence(PictureBox pb, string sequence, 
+                                        Point startPoint, int stepLength)
+        {
+            var points = new List<Point> { startPoint };
+            Point current = startPoint;
+            int angle = 0; 
+
+            foreach (char c in sequence)
+            {
+                switch (c)
+                {
+                    case 'F':
+                    case 'G':
+                        current = FromTo(current, angle, stepLength);
+                        points.Add(current);
+                        break;
+                    case '+':
+                        angle += 90; 
+                        break;
+                    case '-':
+                        angle -= 90; 
+                        break;
+                }
+            }
+
+            Draw.draw_lines(pb, points.ToArray(), pen);
         }
     }
 }
