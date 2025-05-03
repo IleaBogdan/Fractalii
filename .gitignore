@@ -7,3 +7,6 @@ Fractalii.csproj
 System
 Properties
 Fractalii.sln
+*.resx
+*.sln
+*.csproj
