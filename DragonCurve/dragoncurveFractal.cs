@@ -56,7 +56,7 @@ namespace Fractalii.DragonCurve
             }
 
             int level = 0;
-            foreach (var seq in sequences)
+            foreach (string seq in sequences)
             {
                 preDraw(level++, iterations, width);
                 DrawSequence(pb, seq, startPoint, size);
@@ -92,7 +92,7 @@ namespace Fractalii.DragonCurve
         private static void DrawSequence(PictureBox pb, string sequence,
                                       Point startPoint, int stepLength)
         {
-            var points = new List<Point> { startPoint };
+            List<Point> points = new() { startPoint };
             Point current = startPoint;
             int angle = 90;
 
