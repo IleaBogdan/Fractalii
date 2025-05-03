@@ -80,6 +80,10 @@ namespace Fractalii
             SierpinskiLevels = new System.Windows.Forms.TextBox();
             button5 = new System.Windows.Forms.Button();
             tabPage6 = new TabPage();
+            label15 = new Label();
+            dragonSize = new System.Windows.Forms.TextBox();
+            label14 = new Label();
+            label13 = new Label();
             button6 = new System.Windows.Forms.Button();
             dragoncurvetextbox = new System.Windows.Forms.TextBox();
             label12 = new Label();
@@ -571,6 +575,10 @@ namespace Fractalii
             // 
             // tabPage6
             // 
+            tabPage6.Controls.Add(label15);
+            tabPage6.Controls.Add(dragonSize);
+            tabPage6.Controls.Add(label14);
+            tabPage6.Controls.Add(label13);
             tabPage6.Controls.Add(button6);
             tabPage6.Controls.Add(dragoncurvetextbox);
             tabPage6.Controls.Add(label12);
@@ -581,6 +589,40 @@ namespace Fractalii
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Dragon Curve";
             tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(587, 31);
+            label15.Name = "label15";
+            label15.Size = new Size(35, 20);
+            label15.TabIndex = 6;
+            label15.Text = "<20";
+            // 
+            // dragonSize
+            // 
+            dragonSize.Location = new Point(460, 28);
+            dragonSize.Name = "dragonSize";
+            dragonSize.Size = new Size(108, 27);
+            dragonSize.TabIndex = 5;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(415, 28);
+            label14.Name = "label14";
+            label14.Size = new Size(39, 20);
+            label14.TabIndex = 4;
+            label14.Text = "Size:";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(296, 28);
+            label13.Name = "label13";
+            label13.Size = new Size(35, 20);
+            label13.TabIndex = 3;
+            label13.Text = "<16";
             // 
             // button6
             // 
@@ -684,5 +726,9 @@ namespace Fractalii
         private System.Windows.Forms.TextBox dragoncurvetextbox;
         private Label label12;
         private System.Windows.Forms.Button button6;
+        private Label label15;
+        private System.Windows.Forms.TextBox dragonSize;
+        private Label label14;
+        private Label label13;
     }
 }

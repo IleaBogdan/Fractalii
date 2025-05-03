@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms; 
 
 namespace Fractalii.DragonCurve
 {
@@ -17,19 +18,27 @@ namespace Fractalii.DragonCurve
             );
         }
 
-        public static void Generate(PictureBox pb, int iterations, 
-                                    double width, Point startPoint)
+        public static void Generate(PictureBox pb, int iterations,
+                                  double width, int size, Point startPoint)
         {
             pen.Width = (float)width;
 
+            List<string> sequences = new List<string>();
             string sequence = "F";
+            sequences.Add(sequence); // Add initial state
 
             for (int i = 0; i < iterations; i++)
             {
                 sequence = ApplyRules(sequence);
+                sequences.Add(sequence);
             }
 
-            DrawSequence(pb, sequence, startPoint, 10);
+            // Draw each sequence separately
+            foreach (var seq in sequences)
+            {
+                DrawSequence(pb, seq, startPoint, size);
+                Thread.Sleep(500); 
+            }
         }
 
         private static string ApplyRules(string sequence)
@@ -57,12 +66,12 @@ namespace Fractalii.DragonCurve
             return result.ToString();
         }
 
-        private static void DrawSequence(PictureBox pb, string sequence, 
-                                        Point startPoint, int stepLength)
+        private static void DrawSequence(PictureBox pb, string sequence,
+                                      Point startPoint, int stepLength)
         {
             var points = new List<Point> { startPoint };
             Point current = startPoint;
-            int angle = 0; 
+            int angle = 90;
 
             foreach (char c in sequence)
             {
@@ -74,15 +83,18 @@ namespace Fractalii.DragonCurve
                         points.Add(current);
                         break;
                     case '+':
-                        angle += 90; 
+                        angle += 90;
                         break;
                     case '-':
-                        angle -= 90; 
+                        angle -= 90;
                         break;
                 }
             }
 
-            Draw.draw_lines(pb, points.ToArray(), pen);
+            if (points.Count > 1)
+            {
+                Draw.draw_lines(pb, points.ToArray(), pen);
+            }
         }
     }
 }

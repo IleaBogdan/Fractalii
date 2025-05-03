@@ -171,15 +171,17 @@ namespace Fractalii
         private void default_button_Click_DragonCurve(object sender, EventArgs e) 
         {
             dragoncurvetextbox.Text = "6";
+            dragonSize.Text = "5";
         }
         private void generate_dragoncurve(object sender, EventArgs e)
         {
-            int levels = -1;
+            int levels = -1, size=-1;
             double width = -1.0;
             Int32.TryParse(dragoncurvetextbox.Text, out levels);
+            Int32.TryParse(dragonSize.Text, out size);
             width = 3;
             Console.WriteLine("remove hardcoded width");
-            dragoncurveSetup.generate_dragoncurve(pb, levels, width,
+            dragoncurveSetup.generate_dragoncurve(pb, levels, width, size,
                 new Point (pb.Width/2, pb.Height/2));
         }
 
