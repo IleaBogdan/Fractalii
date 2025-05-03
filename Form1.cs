@@ -112,7 +112,7 @@ namespace Fractalii
                 // generate fractal
                 UserControl1.Generate(sender, e, userControl11);
             }
-            if (e.KeyCode == Keys.D) { UserControl1.default_pressed(sender, e, userControl11); }
+            if (e.KeyCode == Keys.F1) { UserControl1.default_pressed(sender, e, userControl11); }
             if (e.Control && e.KeyCode>=Keys.D0 && e.KeyCode <= Keys.D9)
             {
                 // switch to specific tab

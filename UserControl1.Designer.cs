@@ -23,56 +23,7 @@ namespace Fractalii
             }
             base.Dispose(disposing);
         }
-        /*public void debug()
-        {
-            if (Debugger.IsAttached)
-            {
-                // tab1 (treeFractal) default button code:
-                Button default_button1 = new Button();
-                tabPage1.Controls.Add(default_button1);
-                // 
-                // default_button
-                // 
-                default_button1.Location = new Point(430, 40);
-                default_button1.Name = "default_button";
-                default_button1.Size = new Size(85, 23);
-                default_button1.TabIndex = 13;
-                default_button1.Text = "Default";
-                default_button1.UseVisualStyleBackColor = true;
-                default_button1.Click += default_button_Click_treeFractal;
 
-
-                // tab2 (kochLineFractal) default button code:
-                Button default_button2 = new Button();
-                tabPage2.Controls.Add(default_button2);
-                // 
-                // default_button
-                // 
-                default_button2.Location = new Point(430, 40);
-                default_button2.Name = "default_button";
-                default_button2.Size = new Size(85, 23);
-                default_button2.TabIndex = 13;
-                default_button2.Text = "Default";
-                default_button2.UseVisualStyleBackColor = true;
-                default_button2.Click += default_button_Click_KochLine;
-
-
-                // tab3 default button code:
-                Button default_button3 = new Button();
-                tabPage3.Controls.Add(default_button3);
-                // 
-                // default_button
-                // 
-                default_button3.Location = new Point(430, 40);
-                default_button3.Name = "default_button";
-                default_button3.Size = new Size(85, 23);
-                default_button3.TabIndex = 13;
-                default_button3.Text = "Default";
-                default_button3.UseVisualStyleBackColor = true;
-                default_button3.Click += default_button_Click_KochSnow;
-
-            }
-        }*/
         #region Component Designer generated code
 
         /// <summary> 
@@ -128,11 +79,20 @@ namespace Fractalii
             label10 = new Label();
             SierpinskiLevels = new System.Windows.Forms.TextBox();
             button5 = new System.Windows.Forms.Button();
+            tabPage6 = new TabPage();
+            label15 = new Label();
+            dragonSize = new System.Windows.Forms.TextBox();
+            label14 = new Label();
+            label13 = new Label();
+            button6 = new System.Windows.Forms.Button();
+            dragoncurvetextbox = new System.Windows.Forms.TextBox();
+            label12 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             tabPage5.SuspendLayout();
+            tabPage6.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -142,6 +102,7 @@ namespace Fractalii
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
+            tabControl1.Controls.Add(tabPage6);
             tabControl1.ItemSize = new Size(90, 20);
             tabControl1.Location = new Point(3, 4);
             tabControl1.Margin = new Padding(3, 4, 3, 4);
@@ -612,6 +573,83 @@ namespace Fractalii
             button5.UseVisualStyleBackColor = true;
             button5.Click += generate_sierpinski;
             // 
+            // tabPage6
+            // 
+            tabPage6.Controls.Add(label15);
+            tabPage6.Controls.Add(dragonSize);
+            tabPage6.Controls.Add(label14);
+            tabPage6.Controls.Add(label13);
+            tabPage6.Controls.Add(button6);
+            tabPage6.Controls.Add(dragoncurvetextbox);
+            tabPage6.Controls.Add(label12);
+            tabPage6.Location = new Point(4, 24);
+            tabPage6.Name = "tabPage6";
+            tabPage6.Padding = new Padding(3);
+            tabPage6.Size = new Size(833, 103);
+            tabPage6.TabIndex = 5;
+            tabPage6.Text = "Dragon Curve";
+            tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(587, 31);
+            label15.Name = "label15";
+            label15.Size = new Size(35, 20);
+            label15.TabIndex = 6;
+            label15.Text = "<20";
+            // 
+            // dragonSize
+            // 
+            dragonSize.Location = new Point(460, 28);
+            dragonSize.Name = "dragonSize";
+            dragonSize.Size = new Size(108, 27);
+            dragonSize.TabIndex = 5;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(415, 28);
+            label14.Name = "label14";
+            label14.Size = new Size(39, 20);
+            label14.TabIndex = 4;
+            label14.Text = "Size:";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(296, 28);
+            label13.Name = "label13";
+            label13.Size = new Size(35, 20);
+            label13.TabIndex = 3;
+            label13.Text = "<16";
+            // 
+            // button6
+            // 
+            button6.Location = new Point(695, 20);
+            button6.Name = "button6";
+            button6.Size = new Size(114, 66);
+            button6.TabIndex = 2;
+            button6.Text = "Generate";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += generate_dragoncurve;
+            // 
+            // dragoncurvetextbox
+            // 
+            dragoncurvetextbox.Location = new Point(154, 28);
+            dragoncurvetextbox.Name = "dragoncurvetextbox";
+            dragoncurvetextbox.Size = new Size(125, 27);
+            dragoncurvetextbox.TabIndex = 1;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(92, 28);
+            label12.Name = "label12";
+            label12.Size = new Size(56, 20);
+            label12.TabIndex = 0;
+            label12.Text = "Levels: ";
+            // 
             // UserControl1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -629,6 +667,8 @@ namespace Fractalii
             tabPage3.PerformLayout();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
+            tabPage6.ResumeLayout(false);
+            tabPage6.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -682,5 +722,13 @@ namespace Fractalii
         private Label label11;
         private CheckBox FlipSierpinski;
         private System.Windows.Forms.TextBox WeierstrassPrecision;
+        private TabPage tabPage6;
+        private System.Windows.Forms.TextBox dragoncurvetextbox;
+        private Label label12;
+        private System.Windows.Forms.Button button6;
+        private Label label15;
+        private System.Windows.Forms.TextBox dragonSize;
+        private Label label14;
+        private Label label13;
     }
 }

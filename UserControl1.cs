@@ -3,6 +3,7 @@ using Fractalii.Sierpinski;
 using Fractalii.Weierstrass_Function;
 using Fractalii.TreeFractal;
 using Fractalii.Weierstrass_Function;
+using Fractalii.DragonCurve;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.CompilerServices;
 
 namespace Fractalii
 {
@@ -165,6 +167,24 @@ namespace Fractalii
             SetupSierpinski.generate_sierpinski(pb, p1, p2, p3, levels, width);
         }
 
+
+        private void default_button_Click_DragonCurve(object sender, EventArgs e) 
+        {
+            dragoncurvetextbox.Text = "14";
+            dragonSize.Text = "5";
+        }
+        private void generate_dragoncurve(object sender, EventArgs e)
+        {
+            int levels = -1, size=-1;
+            double width = -1.0;
+            Int32.TryParse(dragoncurvetextbox.Text, out levels);
+            Int32.TryParse(dragonSize.Text, out size);
+            width = 3;
+            Console.WriteLine("remove hardcoded width");
+            dragoncurveSetup.generate_dragoncurve(pb, levels, width, size,
+                new Point (pb.Width/2, pb.Height/2));
+        }
+
         // default press for anything
         // for new tabs add them at the end please
         public static void default_pressed(object sender, EventArgs e, UserControl1 u1)
@@ -185,6 +205,9 @@ namespace Fractalii
                     break;
                 case 4:
                     u1.default_button_Click_Sierpinski(sender, e);
+                    break;
+                case 5:
+                    u1.default_button_Click_DragonCurve(sender, e);
                     break;
                 default:
                     break;
@@ -208,6 +231,9 @@ namespace Fractalii
                     break;
                 case 4:
                     u1.generate_sierpinski(sender, e);
+                    break;
+                case 5:
+                    u1.generate_dragoncurve(sender, e);
                     break;
                 default:
                     break;
