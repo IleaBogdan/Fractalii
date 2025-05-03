@@ -170,7 +170,7 @@ namespace Fractalii
 
         private void default_button_Click_DragonCurve(object sender, EventArgs e) 
         {
-            dragoncurvetextbox.Text = "6";
+            dragoncurvetextbox.Text = "14";
             dragonSize.Text = "5";
         }
         private void generate_dragoncurve(object sender, EventArgs e)
