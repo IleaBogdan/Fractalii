@@ -73,6 +73,9 @@ namespace Fractalii
             label9 = new Label();
             textBox2 = new System.Windows.Forms.TextBox();
             tabPage4 = new TabPage();
+            WeierstrassGenerate = new System.Windows.Forms.Button();
+            WeierstrassPrecision = new System.Windows.Forms.TextBox();
+            label16 = new Label();
             tabPage5 = new TabPage();
             FlipSierpinski = new CheckBox();
             label11 = new Label();
@@ -87,9 +90,10 @@ namespace Fractalii
             button6 = new System.Windows.Forms.Button();
             dragoncurvetextbox = new System.Windows.Forms.TextBox();
             label12 = new Label();
-            label16 = new Label();
-            WeierstrassPrecision = new System.Windows.Forms.TextBox();
-            WeierstrassGenerate = new System.Windows.Forms.Button();
+            label17 = new Label();
+            label18 = new Label();
+            WeierstrassA = new System.Windows.Forms.TextBox();
+            WeierstrassB = new System.Windows.Forms.TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -139,7 +143,7 @@ namespace Fractalii
             tabPage1.Controls.Add(button2);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Padding = new Padding(3);
             tabPage1.RightToLeft = RightToLeft.No;
             tabPage1.Size = new Size(728, 70);
             tabPage1.TabIndex = 0;
@@ -334,7 +338,7 @@ namespace Fractalii
             tabPage2.Controls.Add(label1);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 3, 3, 3);
+            tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(728, 70);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Koch-Line";
@@ -419,7 +423,7 @@ namespace Fractalii
             tabPage3.Controls.Add(textBox2);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3, 3, 3, 3);
+            tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(728, 70);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Koch-Snowflake";
@@ -494,16 +498,46 @@ namespace Fractalii
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(WeierstrassB);
+            tabPage4.Controls.Add(WeierstrassA);
+            tabPage4.Controls.Add(label18);
+            tabPage4.Controls.Add(label17);
             tabPage4.Controls.Add(WeierstrassGenerate);
             tabPage4.Controls.Add(WeierstrassPrecision);
             tabPage4.Controls.Add(label16);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3, 3, 3, 3);
+            tabPage4.Padding = new Padding(3);
             tabPage4.Size = new Size(728, 70);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Weierstrass";
             tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // WeierstrassGenerate
+            // 
+            WeierstrassGenerate.Location = new Point(607, 8);
+            WeierstrassGenerate.Name = "WeierstrassGenerate";
+            WeierstrassGenerate.Size = new Size(100, 55);
+            WeierstrassGenerate.TabIndex = 2;
+            WeierstrassGenerate.Text = "Generate";
+            WeierstrassGenerate.UseVisualStyleBackColor = true;
+            WeierstrassGenerate.Click += CallWeierstrass;
+            // 
+            // WeierstrassPrecision
+            // 
+            WeierstrassPrecision.Location = new Point(86, 8);
+            WeierstrassPrecision.Name = "WeierstrassPrecision";
+            WeierstrassPrecision.Size = new Size(100, 23);
+            WeierstrassPrecision.TabIndex = 1;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(22, 11);
+            label16.Name = "label16";
+            label16.Size = new Size(58, 15);
+            label16.TabIndex = 0;
+            label16.Text = "Precision:";
             // 
             // tabPage5
             // 
@@ -514,7 +548,7 @@ namespace Fractalii
             tabPage5.Controls.Add(button5);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3, 3, 3, 3);
+            tabPage5.Padding = new Padding(3);
             tabPage5.Size = new Size(728, 70);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Sierpinski";
@@ -649,31 +683,37 @@ namespace Fractalii
             label12.TabIndex = 0;
             label12.Text = "Levels: ";
             // 
-            // label16
+            // label17
             // 
-            label16.AutoSize = true;
-            label16.Location = new Point(22, 11);
-            label16.Name = "label16";
-            label16.Size = new Size(58, 15);
-            label16.TabIndex = 0;
-            label16.Text = "Precision:";
+            label17.AutoSize = true;
+            label17.Location = new Point(211, 11);
+            label17.Name = "label17";
+            label17.Size = new Size(73, 15);
+            label17.TabIndex = 3;
+            label17.Text = "Parameter 1:";
             // 
-            // WeierstrassPrecision
+            // label18
             // 
-            WeierstrassPrecision.Location = new Point(86, 8);
-            WeierstrassPrecision.Name = "WeierstrassPrecision";
-            WeierstrassPrecision.Size = new Size(100, 23);
-            WeierstrassPrecision.TabIndex = 1;
+            label18.AutoSize = true;
+            label18.Location = new Point(417, 11);
+            label18.Name = "label18";
+            label18.Size = new Size(73, 15);
+            label18.TabIndex = 4;
+            label18.Text = "Parameter 2:";
             // 
-            // WeierstrassGenerate
+            // WeierstrassA
             // 
-            WeierstrassGenerate.Location = new Point(607, 8);
-            WeierstrassGenerate.Name = "WeierstrassGenerate";
-            WeierstrassGenerate.Size = new Size(100, 55);
-            WeierstrassGenerate.TabIndex = 2;
-            WeierstrassGenerate.Text = "Generate";
-            WeierstrassGenerate.UseVisualStyleBackColor = true;
-            WeierstrassGenerate.Click += CallWeierstrass;
+            WeierstrassA.Location = new Point(290, 8);
+            WeierstrassA.Name = "WeierstrassA";
+            WeierstrassA.Size = new Size(100, 23);
+            WeierstrassA.TabIndex = 5;
+            // 
+            // WeierstrassB
+            // 
+            WeierstrassB.Location = new Point(496, 8);
+            WeierstrassB.Name = "WeierstrassB";
+            WeierstrassB.Size = new Size(100, 23);
+            WeierstrassB.TabIndex = 6;
             // 
             // UserControl1
             // 
@@ -758,5 +798,9 @@ namespace Fractalii
         private System.Windows.Forms.Button WeierstrassGenerate;
         private System.Windows.Forms.TextBox WeierstrassPrecision;
         private Label label16;
+        private System.Windows.Forms.TextBox WeierstrassB;
+        private System.Windows.Forms.TextBox WeierstrassA;
+        private Label label18;
+        private Label label17;
     }
 }

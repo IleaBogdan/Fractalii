@@ -133,12 +133,23 @@ namespace Fractalii
                 p1, p2, p3,
                 levels, width);
         }
+        
+        private void default_button_Click_Weierstrass(object Sender, EventArgs e)
+        {
+            WeierstrassPrecision.Text = "10";
+            WeierstrassA.Text = "0.5";
+            WeierstrassB.Text = "3";
+        }
 
         private void CallWeierstrass(object sender, EventArgs e)
         {
             int precision = -1;
+            double a = -1;
+            int b = -1;
             Int32.TryParse(WeierstrassPrecision.Text, null, out precision);
-            Weierstrass.CheckWeierstrassFunction(pb, precision);
+            Double.TryParse(WeierstrassA.Text, null, out a);
+            Int32.TryParse(WeierstrassB.Text, null, out b);
+            Weierstrass.CheckWeierstrassFunction(pb, precision, a, b);
         }
 
         private void default_button_Click_Sierpinski(object sender, EventArgs e)
@@ -202,6 +213,7 @@ namespace Fractalii
                     u1.default_button_Click_KochSnow(sender, e);
                     break;
                 case 3:
+                    u1.default_button_Click_Weierstrass(sender, e);
                     break;
                 case 4:
                     u1.default_button_Click_Sierpinski(sender, e);
@@ -228,6 +240,7 @@ namespace Fractalii
                     u1.generate_kochSnowFractal(sender, e);
                     break;
                 case 3:
+                    u1.CallWeierstrass(sender, e);
                     break;
                 case 4:
                     u1.generate_sierpinski(sender, e);

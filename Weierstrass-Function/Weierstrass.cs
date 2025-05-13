@@ -11,13 +11,13 @@ namespace Fractalii.Weierstrass_Function
     {
         private static PictureBox pictureBox = default(PictureBox);
         private static Pen pen = new Pen(Color.Red, 1f);
-        public static void CheckWeierstrassFunction(PictureBox pb, int precision)
+        public static void CheckWeierstrassFunction(PictureBox pb, int precision, double a, int b)
         {
             if (precision > 0)
             {
                 pb.Refresh();
                 pictureBox = pb;
-                DrawWeierstrassFunction(precision);
+                DrawWeierstrassFunction(precision, a, b);
             }
             else
             {
@@ -50,10 +50,6 @@ namespace Fractalii.Weierstrass_Function
 
         private static void DrawWeierstrassFunction(int maxN, double a, int b)
         {
-            // Hardcoded parameters for the Weierstrass function; can be changed
-            a = 0.5;    // 0 < a < 1
-            b = 11;      // b is a positive odd integer
-            //maxN = 50;  // Number of terms in the series
             PointF[] points = GenerateWeierstrassPoints(pictureBox.Width, pictureBox.Height, a, b, maxN);
             Draw.draw_lines(pictureBox, points, pen);
         }
