@@ -11,13 +11,14 @@ namespace Fractalii.Weierstrass_Function
     {
         private static PictureBox pictureBox = default(PictureBox);
         private static Pen pen = new Pen(Color.Red, 1f);
-        public Weierstrass(PictureBox pb)
+        public static void CheckWeierstrassFunction(PictureBox pb, int precision)
         {
-            pictureBox = pb;
-        }
-        public static void CheckWeierstrassFunction(int precision)
-        {
-            if (precision > 0) DrawWeierstrassFunction(precision);
+            if (precision > 0)
+            {
+                pb.Refresh();
+                pictureBox = pb;
+                DrawWeierstrassFunction(precision);
+            }
             else
             {
                 System.Windows.Forms.MessageBox.Show("Please enter levels and width correctly!");
@@ -35,8 +36,8 @@ namespace Fractalii.Weierstrass_Function
 
         private static PointF[] GenerateWeierstrassPoints(int width, int height, double a, int b, int maxN)
         {
-            double scaleX = 10.0; // Scale for x-axis
-            double scaleY = 10.0; // Scale for y-axis
+            double scaleX = 100.0; // Scale for x-axis
+            double scaleY = 100.0; // Scale for y-axis
             PointF[] points = new PointF[pictureBox.Width];
             for (int px = 0; px < pictureBox.Width; px++)
             {
@@ -47,12 +48,12 @@ namespace Fractalii.Weierstrass_Function
             return points;
         }
 
-        private static void DrawWeierstrassFunction(int maxN)
+        private static void DrawWeierstrassFunction(int maxN, double a, int b)
         {
             // Hardcoded parameters for the Weierstrass function; can be changed
-            double a = 0.5;    // 0 < a < 1
-            int b = 3;      // b is a positive odd integer
-            maxN = 50;  // Number of terms in the series
+            a = 0.5;    // 0 < a < 1
+            b = 11;      // b is a positive odd integer
+            //maxN = 50;  // Number of terms in the series
             PointF[] points = GenerateWeierstrassPoints(pictureBox.Width, pictureBox.Height, a, b, maxN);
             Draw.draw_lines(pictureBox, points, pen);
         }

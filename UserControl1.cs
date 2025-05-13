@@ -138,7 +138,7 @@ namespace Fractalii
         {
             int precision = -1;
             Int32.TryParse(WeierstrassPrecision.Text, null, out precision);
-            Weierstrass.CheckWeierstrassFunction(precision);
+            Weierstrass.CheckWeierstrassFunction(pb, precision);
         }
 
         private void default_button_Click_Sierpinski(object sender, EventArgs e)
