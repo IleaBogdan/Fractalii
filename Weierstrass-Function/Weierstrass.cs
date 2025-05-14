@@ -11,9 +11,14 @@ namespace Fractalii.Weierstrass_Function
     {
         private static PictureBox pictureBox = default(PictureBox);
         private static Pen pen = new Pen(Color.Red, 1f);
+        public static bool ValidWeierstrass(int precision, double a, int b)
+        {
+            if (precision < 0 || a < 0 || a > 1 || b < 2) return false;
+            return true;
+        }
         public static void CheckWeierstrassFunction(PictureBox pb, int precision, double a, int b)
         {
-            if (precision > 0)
+            if (ValidWeierstrass(precision, a, b))
             {
                 pb.Refresh();
                 pictureBox = pb;

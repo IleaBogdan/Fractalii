@@ -36,7 +36,7 @@ namespace Fractalii
         }
         public static void draw_line(PictureBox pb, Pair<Point, Point> ps, Pen pen)
         {
-            Point begin_point=ps.First, end_point = ps.Second;
+            Point begin_point = ps.First, end_point = ps.Second;
             using (Graphics g = pb.CreateGraphics())
             {
                 g.DrawLine(pen, begin_point, end_point);
