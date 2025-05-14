@@ -97,7 +97,7 @@ namespace Fractalii
         {
             levels_KochLine.Text = "6";
             width_KochLine.Text = "5";
-            textBox1.Text = "1.0";
+            //textBox1.Text = "1.0";
         }
         private void generate_kochLineFractal(object sender, EventArgs e)
         {
@@ -117,7 +117,7 @@ namespace Fractalii
         {
             KochSnowLevels.Text = "6";
             KochSnowWidth.Text = "5";
-            textBox2.Text = "1.0";
+            //textBox2.Text = "1.0";
         }
         private void generate_kochSnowFractal(object sender, EventArgs e)
         {
