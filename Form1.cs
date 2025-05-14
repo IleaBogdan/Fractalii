@@ -35,8 +35,7 @@ namespace Fractalii
         private void Form1_Load(object sender, EventArgs e)
         {
             pictureBox1.BackColor = bgC;
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle; 
-            userControl11.set_pictureBox(pictureBox1);
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             add_color(initialColor, initialColorSelect, "Select initial color");
             add_color(finalColor, finalColorSelect, "Select final color");
 

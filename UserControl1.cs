@@ -20,9 +20,10 @@ namespace Fractalii
 {
     public partial class UserControl1 : UserControl
     {
-        public UserControl1()
+        public UserControl1(PictureBox p)
         {
             InitializeComponent();
+            pb = p;
             //debug();
         }
         private PictureBox pb;
@@ -40,11 +41,6 @@ namespace Fractalii
                 tabControl1.SelectedIndex = index;
                 home.SetText(HomePage.def + u1.tabControl1.Text);
             }
-        }
-
-        public void set_pictureBox(PictureBox p)
-        {
-            pb = p;
         }
 
         // Tree Fractal

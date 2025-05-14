@@ -33,7 +33,7 @@ namespace Fractalii
         private void InitializeComponent()
         {
             pictureBox1 = new PictureBox();
-            userControl11 = new UserControl1();
+            userControl11 = new UserControl1(pictureBox1);
             finalColorSelect = new Button();
             initialColorSelect = new Button();
             DarkMode = new CheckBox();
