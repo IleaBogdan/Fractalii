@@ -1,12 +1,5 @@
-using Fractalii.TreeFractal;
 using System.Diagnostics;
-using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Security.Policy;
-using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using System;
-using System.Windows.Forms;
 
 namespace Fractalii
 {

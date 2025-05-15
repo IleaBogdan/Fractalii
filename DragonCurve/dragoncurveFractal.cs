@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms; 
-
-namespace Fractalii.DragonCurve
+﻿namespace Fractalii.DragonCurve
 {
     internal class dragoncurveFractal
     {

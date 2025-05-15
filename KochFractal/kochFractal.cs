@@ -1,14 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.DirectoryServices.ActiveDirectory;
-using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using Fractalii.KochLineFractal;
-
 namespace Fractalii.KochLineFractal
 {
     internal class kochFractal

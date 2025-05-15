@@ -1,6 +1,4 @@
-﻿using System.Xml;
-
-namespace Fractalii.TreeFractal
+﻿namespace Fractalii.TreeFractal
 {
     public class treeFractal
     {
