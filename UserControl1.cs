@@ -2,7 +2,6 @@
 using Fractalii.Sierpinski;
 using Fractalii.Weierstrass_Function;
 using Fractalii.TreeFractal;
-using Fractalii.Weierstrass_Function;
 using Fractalii.DragonCurve;
 using System;
 using System.Collections.Generic;
@@ -150,6 +149,34 @@ namespace Fractalii
             Double.TryParse(WeierstrassA.Text, null, out a);
             Int32.TryParse(WeierstrassB.Text, null, out b);
             Weierstrass.CheckWeierstrassFunction(pb, precision, a, b);
+        }
+        private void CallNOscillate(object sender, EventArgs e)
+        {
+            double a = -1;
+            int b = -1;
+            Double.TryParse(WeierstrassA.Text, null, out a);
+            Int32.TryParse(WeierstrassB.Text, null, out b);
+            Weierstrass.NOscillate(pb, a, b);
+        }
+        private void CallAOscillate(Object sender, EventArgs e)
+        {
+            int precision = -1;
+            double a = -1;
+            int b = -1;
+            Int32.TryParse(WeierstrassPrecision.Text, null, out precision);
+            Double.TryParse(WeierstrassA.Text, null, out a);
+            Int32.TryParse(WeierstrassB.Text, null, out b);
+            Weierstrass.AOscillate(pb, precision, a, b);
+        }
+        private void CallBOscillate(object sender, EventArgs e)
+        {
+            int precision = -1;
+            double a = -1;
+            int b = -1;
+            Int32.TryParse(WeierstrassPrecision.Text, null, out precision);
+            Double.TryParse(WeierstrassA.Text, null, out a);
+            Int32.TryParse(WeierstrassB.Text, null, out b);
+            Weierstrass.BOscillate(pb, precision, a, b);
         }
 
         private void default_button_Click_Sierpinski(object sender, EventArgs e)

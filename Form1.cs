@@ -168,5 +168,11 @@ namespace Fractalii
                 }
             }
         }
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            int x = e.X;
+            int y = e.Y;
+
+        }
     }
 }
