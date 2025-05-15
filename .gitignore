@@ -6,4 +6,5 @@ Fractalii.csproj.user
 Fractalii.csproj
 System
 Properties
-Fractalii.sln
+*.resx
+*.csproj

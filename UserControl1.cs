@@ -20,9 +20,10 @@ namespace Fractalii
 {
     public partial class UserControl1 : UserControl
     {
-        public UserControl1()
+        public UserControl1(PictureBox p)
         {
             InitializeComponent();
+            pb = p;
             //debug();
         }
         private PictureBox pb;
@@ -40,11 +41,6 @@ namespace Fractalii
                 tabControl1.SelectedIndex = index;
                 home.SetText(HomePage.def + u1.tabControl1.Text);
             }
-        }
-
-        public void set_pictureBox(PictureBox p)
-        {
-            pb = p;
         }
 
         // Tree Fractal
@@ -97,7 +93,7 @@ namespace Fractalii
         {
             levels_KochLine.Text = "6";
             width_KochLine.Text = "5";
-            textBox1.Text = "1.0";
+            //textBox1.Text = "1.0";
         }
         private void generate_kochLineFractal(object sender, EventArgs e)
         {
@@ -117,7 +113,7 @@ namespace Fractalii
         {
             KochSnowLevels.Text = "6";
             KochSnowWidth.Text = "5";
-            textBox2.Text = "1.0";
+            //textBox2.Text = "1.0";
         }
         private void generate_kochSnowFractal(object sender, EventArgs e)
         {

@@ -9,6 +9,7 @@ This project was created for our **physics class** using `C#` and **Windows Form
 - **Koch Line & Snowflake Fractals**
 - **Weierstrass Function Fractal**
 - **Sierpinski Triangle Fractal**
+- **Dragon Curve Fractal**
 
 ---
 
