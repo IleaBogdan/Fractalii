@@ -38,34 +38,26 @@ namespace Fractalii
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             add_color(initialColor, initialColorSelect, "Select initial color");
             add_color(finalColor, finalColorSelect, "Select final color");
-            this.ResizeBegin += new EventHandler(Form1_ResizeBegin);
-            this.ResizeEnd += new EventHandler(Form1_ResizeEnd);
-
+            
             //userControl11.SetSelectedTab(0, this, userControl11);
 
-            /*
             pictureBox1.Paint += (s, args) =>
             {
+                //args.Graphics.Clear(pictureBox1.BackColor);
                 ControlPaint.DrawBorder(args.Graphics, pictureBox1.ClientRectangle,
-                    Color.Green, 1, ButtonBorderStyle.Solid, // Left
-                    Color.Green, 1, ButtonBorderStyle.Solid, // Top
-                    Color.Green, 1, ButtonBorderStyle.Solid, // Right
-                    Color.Green, 1, ButtonBorderStyle.Solid  // Bottom
+                    Color.Green, 3, ButtonBorderStyle.Solid, // Left
+                    Color.Green, 3, ButtonBorderStyle.Solid, // Top
+                    Color.Green, 3, ButtonBorderStyle.Solid, // Right
+                    Color.Green, 3, ButtonBorderStyle.Solid  // Bottom
                 );
             };
-            */
-            pictureBox1.Padding = new Padding(3);
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-        }
-        private void Form1_ResizeBegin(object sender, EventArgs e)
-        {
-            Console.WriteLine("start resizing");
-            pictureBox1.Padding = new Padding(0);
-        }
-        private void Form1_ResizeEnd(object sender, EventArgs e)
-        {
-            Console.WriteLine("done resizeing");
-            pictureBox1.Padding = new Padding(3);
+            this.Resize += (s, e) =>
+            {
+                //var rect = pictureBox1.Bounds;
+                //rect.Inflate(2, 2); 
+                //this.Invalidate(rect);
+                pictureBox1.Invalidate();
+            };
         }
 
 
