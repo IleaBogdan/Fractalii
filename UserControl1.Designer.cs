@@ -85,6 +85,8 @@ namespace Fractalii
             label12 = new Label();
             SierpinskiCarpet = new TabPage();
             SierpinskiCarpetTextBox = new System.Windows.Forms.TextBox();
+            label8 = new Label();
+            button7 = new System.Windows.Forms.Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -608,6 +610,8 @@ namespace Fractalii
             // 
             // SierpinskiCarpet
             // 
+            SierpinskiCarpet.Controls.Add(button7);
+            SierpinskiCarpet.Controls.Add(label8);
             SierpinskiCarpet.Controls.Add(SierpinskiCarpetTextBox);
             SierpinskiCarpet.Location = new Point(4, 24);
             SierpinskiCarpet.Name = "SierpinskiCarpet";
@@ -619,10 +623,29 @@ namespace Fractalii
             // 
             // SierpinskiCarpetTextBox
             // 
-            SierpinskiCarpetTextBox.Location = new Point(64, 29);
+            SierpinskiCarpetTextBox.Location = new Point(73, 28);
             SierpinskiCarpetTextBox.Name = "SierpinskiCarpetTextBox";
             SierpinskiCarpetTextBox.Size = new Size(100, 23);
             SierpinskiCarpetTextBox.TabIndex = 0;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(29, 31);
+            label8.Name = "label8";
+            label8.Size = new Size(42, 15);
+            label8.TabIndex = 1;
+            label8.Text = "Levels:";
+            // 
+            // button7
+            // 
+            button7.Location = new Point(595, 12);
+            button7.Name = "button7";
+            button7.Size = new Size(107, 53);
+            button7.TabIndex = 2;
+            button7.Text = "Generate";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += generate_sierpinskicarpet;
             // 
             // UserControl1
             // 
@@ -703,5 +726,7 @@ namespace Fractalii
         private Label label13;
         private TabPage SierpinskiCarpet;
         private System.Windows.Forms.TextBox SierpinskiCarpetTextBox;
+        private System.Windows.Forms.Button button7;
+        private Label label8;
     }
 }

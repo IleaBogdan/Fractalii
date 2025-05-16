@@ -1,4 +1,7 @@
-﻿namespace Fractalii.Sierpinski
+﻿using System.Runtime.CompilerServices;
+using System.Security.Cryptography.Pkcs;
+
+namespace Fractalii.Sierpinski
 {
     internal class SierpinskiFractal
     {
@@ -88,6 +91,77 @@
                     for (int j = 0; j < 3; ++j) { que.Enqueue(ncurrs[j]); }
                 }
             }
+        }
+
+
+        public static void generateCarpet(PictureBox pb, Point p1, Point p2, Point p3, Point p4, int levels, double width)
+        {
+            initialColor = HomePage.initialColor;
+            finalColor = HomePage.finalColor;
+            pen.Color = initialColor;
+            RGB[0] = pen.Color.R;
+            RGB[1] = pen.Color.G;
+            RGB[2] = pen.Color.B;
+            RGBDif[0] = finalColor.R - RGB[0];
+            RGBDif[1] = finalColor.G - RGB[1];
+            RGBDif[2] = finalColor.B - RGB[2];
+            pen = new Pen(Color.Red, (float)width);
+
+            int currLevel = 0;
+            Color befor = Color.Red;
+            Queue<CarpetItem> que = new();
+            que.Enqueue(new CarpetItem(p1, p2, p3, p4, currLevel++));
+            while (que.Count > 0)
+            {
+                List<CarpetItem> toEnque = new();
+                var curr = que.Dequeue();
+                curr.draw(pb, pen);
+                if (curr.level > levels) continue;
+                int sideLenght = curr.p1.X - curr.p2.X;
+                sideLenght = sideLenght >= 0 ? sideLenght : -sideLenght;
+                Point[] ps = [curr.p1, new Point(curr.p1.X, curr.p1.Y - sideLenght / 3),
+                            new Point(curr.p1.X, curr.p1.Y-2*sideLenght/3),
+                            new Point(curr.p1.X-sideLenght/3, curr.p1.Y),
+                            new Point(curr.p1.X-2*sideLenght/3, curr.p1.Y),
+                            new Point(curr.p1.X-2*sideLenght/3, curr.p1.Y-sideLenght/3),
+                            new Point(curr.p1.X-sideLenght/3, curr.p1.Y-2*sideLenght/3),
+                            new Point(curr.p1.X-2*sideLenght/3, curr.p1.Y-2*sideLenght/3)
+                ];
+                foreach(var pt in ps){
+                    que.Enqueue(
+                        new CarpetItem(pt, 
+                                       new Point(pt.X, pt.Y - sideLenght / 3),
+                                       new Point(pt.X - sideLenght / 3, pt.Y - sideLenght / 3),
+                                       new Point(pt.X - sideLenght / 3, pt.Y), 
+                        currLevel
+                    ));
+                }
+
+
+
+                ++currLevel;
+            }
+        }
+    }
+    internal class CarpetItem
+    {
+        public Point p1 { get; set; }
+        public Point p2 { get; set; }
+        public Point p3 { get; set; }
+        public Point p4 { get; set; }
+        public int level { get; set; }
+        public CarpetItem(Point p1, Point p2, Point p3, Point p4, int level)
+        {
+            this.p1 = p1;
+            this.p2 = p2;
+            this.p3 = p3;
+            this.p4 = p4;
+            this.level = level;
+        }
+        public void draw(PictureBox pb, Pen pen)
+        {
+            Point[] ps = [this.p1, this.p2, this.p3, this.p4, this.p1];
+            Draw.draw_lines(pb, ps, pen);
         }
     }
     internal class Item
