@@ -169,6 +169,20 @@ namespace Fractalii
                 new Point (pb.Width/2, pb.Height/2));
         }
 
+
+        private void default_button_Click_SierpinskiCarpet(object sender, EventArgs e)
+        {
+
+        }
+        private void generate_sierpinskicarpet(object sender, EventArgs e)
+        {
+            int levels = -1;
+            double width = -.1;
+            Int32.TryParse(SierpinskiCarpetTextBox.Text, out levels);
+
+        }
+
+
         // default press for anything
         // for new tabs add them at the end please
         public static void default_pressed(object sender, EventArgs e, UserControl1 u1)
@@ -192,6 +206,9 @@ namespace Fractalii
                     break;
                 case 5:
                     u1.default_button_Click_DragonCurve(sender, e);
+                    break;
+                case 6:
+                    u1.default_button_Click_SierpinskiCarpet(sender, e);
                     break;
                 default:
                     break;
@@ -218,6 +235,9 @@ namespace Fractalii
                     break;
                 case 5:
                     u1.generate_dragoncurve(sender, e);
+                    break;
+                case 6:
+                    u1.generate_sierpinskicarpet(sender, e);
                     break;
                 default:
                     break;
