@@ -31,11 +31,11 @@ namespace Fractalii
         
         public static Color bgC = Color.Black;
         public static String def = "Fractalii";
+        private static int TitleColor=0x000000;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            int color = 0xFF0000; 
-            DwmSetWindowAttribute(this.Handle, DWMWA_CAPTION_COLOR, ref color, sizeof(int));
+            DwmSetWindowAttribute(this.Handle, DWMWA_CAPTION_COLOR, ref TitleColor, sizeof(int));
             pictureBox1.BackColor = bgC;
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             add_color(initialColor, initialColorSelect, "Select initial color");
