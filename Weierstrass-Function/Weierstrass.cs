@@ -11,7 +11,23 @@ namespace Fractalii.Weierstrass_Function
     {
         private static PictureBox pictureBox = default(PictureBox);
         private static Pen pen = new Pen(Color.Red, 1f);
-        const int sleepTime = 100;
+        private static double A = -1;
+        private static int Precision = -1, B = -1;
+        private const int sleepTime = 100;
+        private const int zoom = 5;
+        private static Point Origin = new Point(0, 0);
+        private static int MouseRX = 0, MouseRY = 0;
+        public static void getPictureBox(PictureBox pb)
+        {
+            pictureBox = pb;
+            Origin = new Point(pb.Width, pb.Height);
+        }
+        public static void getMouseRClick(int x, int y)
+        {
+            MouseRX = x;
+            MouseRY = y;
+            Zoom();
+        }
         private static bool ValidWeierstrass(int precision, double a, int b)
         {
             if (precision < 0 || a < 0 || a > 1 || b < 2) return false;
@@ -32,8 +48,8 @@ namespace Fractalii.Weierstrass_Function
             if (ValidWeierstrass(precision, a, b))
             {
                 pb.Refresh();
-                pictureBox = pb;
-                DrawWeierstrassFunction(precision, a, b);
+                Precision = precision; A = a; B = b;
+                DrawWeierstrassFunction(Origin, precision, a, b);
             }
             else
             {
@@ -45,18 +61,17 @@ namespace Fractalii.Weierstrass_Function
             if(ValidWeierstrass(a, b))
             {
                 pb.Refresh();
-                pictureBox = pb;
                 int maxP = 7;
                 for (int precision = 1; precision <= maxP; precision++)
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(precision, a, b);
+                    DrawWeierstrassFunction(Origin, precision, a, b);
                     Thread.Sleep(sleepTime);
                 }
                 for (int precision = maxP - 1; precision > 0; precision--) 
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(precision, a, b);
+                    DrawWeierstrassFunction(Origin, precision, a, b);
                     Thread.Sleep(sleepTime);
                 }
             }
@@ -70,19 +85,18 @@ namespace Fractalii.Weierstrass_Function
             if(ValidWeierstrass(precision, b))
             {
                 pb.Refresh();
-                pictureBox = pb;
                 double minA = 0;
                 double maxA = 1;
                 for (double tA = minA; tA <= maxA; tA += .1)
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(precision, tA, b);
+                    DrawWeierstrassFunction(Origin, precision, tA, b);
                     Thread.Sleep(sleepTime);
                 }
                 for (double tA = maxA - .1 ; tA >= minA; tA -= .1) 
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(precision, tA, b);
+                    DrawWeierstrassFunction(Origin, precision, tA, b);
                     Thread.Sleep(sleepTime);
                 }
             }
@@ -96,19 +110,18 @@ namespace Fractalii.Weierstrass_Function
             if (ValidWeierstrass(precision, a, b))
             {
                 pb.Refresh();
-                pictureBox = pb;
                 int minB = Math.Max(b - 5, 3);
                 int maxB = minB + 10;
                 for (int tB = minB; tB <= maxB; tB++)
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(precision, a, tB);
+                    DrawWeierstrassFunction(Origin, precision, a, tB);
                     Thread.Sleep(sleepTime);
                 }
                 for (int tB = maxB - 1; tB >= minB; tB--) 
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(precision, a, tB);
+                    DrawWeierstrassFunction(Origin, precision, a, tB);
                     Thread.Sleep(sleepTime);
                 }
             }
@@ -129,22 +142,31 @@ namespace Fractalii.Weierstrass_Function
 
         private static PointF[] GenerateWeierstrassPoints(int width, int height, double a, int b, int maxN)
         {
-            double scaleX = 150.0; // Scale for x-axis
-            double scaleY = 150.0; // Scale for y-axis
-            PointF[] points = new PointF[pictureBox.Width];
+            double scaleX = 100.0; // Scale for x-axis
+            double scaleY = 100.0; // Scale for y-axis
+            PointF[] points = new PointF[width];
             for (int px = 0; px < pictureBox.Width; px++)
             {
-                double x = (px - pictureBox.Width / 2) / scaleX;
+                double x = (px - width / 2) / scaleX;
                 double y = Calculate(x, a, b, maxN);
-                points[px] = new PointF(px, (float)(pictureBox.Height / 2 - y * scaleY));
+                points[px] = new PointF(px, (float)(height / 2 - y * scaleY));
             }
             return points;
         }
 
-        private static void DrawWeierstrassFunction(int maxN, double a, int b)
+        private static void DrawWeierstrassFunction(Point origin, int maxN, double a, int b)
         {
-            PointF[] points = GenerateWeierstrassPoints(pictureBox.Width, pictureBox.Height, a, b, maxN);
+            PointF[] points = GenerateWeierstrassPoints(origin.X, origin.Y, a, b, maxN);
             Draw.draw_lines(pictureBox, points, pen);
+        }
+
+        private static void Zoom()
+        {
+            int newHeightDimension = pictureBox.Height / zoom, newWidthDimension = pictureBox.Width / zoom;
+            Point newOrigin = new Point(MouseRX - newWidthDimension / 2, MouseRY - newHeightDimension / 2);
+            pictureBox.Refresh();
+            TODO/// REMEMBER TO USE ZOOM CORRECTLY
+            DrawWeierstrassFunction(newOrigin, Precision, A, B);
         }
     }
 }

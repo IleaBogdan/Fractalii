@@ -25,6 +25,7 @@ namespace Fractalii
             //debug();
         }
         private PictureBox pb;
+        private int MouseLX = 0, MouseRX = 0, MouseLY = 0, MouseRY = 0;
         public void SetSelectedTab(int index)
         {
             if (index >= 0 && index < tabControl1.TabPages.Count)
@@ -44,8 +45,20 @@ namespace Fractalii
         public void set_pictureBox(PictureBox p)
         {
             pb = p;
+            Weierstrass.getPictureBox(p);
         }
 
+        public void getMouseLClick(int x, int y)
+        {
+            MouseLX = x;
+            MouseLY = y;
+        }
+        public void getMouseRClick(int x, int y)
+        {
+            MouseRX = x;
+            MouseRY = y;
+            Weierstrass.getMouseRClick(x, y);
+        }
         // Tree Fractal
         private void default_button_Click_treeFractal(object sender, EventArgs e)
         {

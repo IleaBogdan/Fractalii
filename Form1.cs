@@ -18,7 +18,7 @@ namespace Fractalii
             if (Debugger.IsAttached) { AllocConsole(); }
             this.Text = "Fractalii";
             this.KeyPreview = true; // Important to capture key events
-            this.TopMost=false;
+            this.TopMost = false;
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
         }
         public void SetText(string text)
@@ -35,7 +35,7 @@ namespace Fractalii
         private void Form1_Load(object sender, EventArgs e)
         {
             pictureBox1.BackColor = bgC;
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle; 
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             userControl11.set_pictureBox(pictureBox1);
             add_color(initialColor, initialColorSelect, "Select initial color");
             add_color(finalColor, finalColorSelect, "Select final color");
@@ -113,10 +113,10 @@ namespace Fractalii
                 UserControl1.Generate(sender, e, userControl11);
             }
             if (e.KeyCode == Keys.F1) { UserControl1.default_pressed(sender, e, userControl11); }
-            if (e.Control && e.KeyCode>=Keys.D0 && e.KeyCode <= Keys.D9)
+            if (e.Control && e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9)
             {
                 // switch to specific tab
-                int tab = (int)(e.KeyCode-'0')-1;
+                int tab = (int)(e.KeyCode - '0') - 1;
                 if (tab == -1) { tab += 10; }
                 //Console.WriteLine(tab.ToString());
                 userControl11.SetSelectedTab(tab);
@@ -153,7 +153,7 @@ namespace Fractalii
         }
         private void ApplyTheme(Control parent, Color backColor, Color foreColor)
         {
-            if (parent is PictureBox)return;
+            if (parent is PictureBox) return;
 
             parent.BackColor = backColor;
             parent.ForeColor = foreColor;
@@ -170,9 +170,11 @@ namespace Fractalii
         }
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            int x = e.X;
-            int y = e.Y;
-
+            if (e.Button == MouseButtons.Right)
+            {
+                userControl11.getMouseRClick(e.X, e.Y);
+            }
+            else userControl11.getMouseLClick(e.X, e.Y);
         }
     }
 }
