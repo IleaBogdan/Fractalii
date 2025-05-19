@@ -169,6 +169,28 @@ namespace Fractalii
                 new Point (pb.Width/2, pb.Height/2));
         }
 
+
+        private void default_button_Click_SierpinskiCarpet(object sender, EventArgs e)
+        {
+            SierpinskiCarpetTextBox.Text = "2";
+        }
+        private void generate_sierpinskicarpet(object sender, EventArgs e)
+        {
+            int levels = -1;
+            double width = 3;
+            Point p1, p2, p3, p4;
+            Int32.TryParse(SierpinskiCarpetTextBox.Text, out levels);
+
+            p1 = new Point(Math.Min(pb.Width, pb.Height)-15, Math.Min(pb.Width, pb.Height)-15);
+            p2 = new Point(15, Math.Min(pb.Width, pb.Height) - 15);
+            p3 = new Point(15, 15);
+            p4 = new Point(Math.Min(pb.Width, pb.Height) - 15, 15);
+            SetupSierpinski.generate_sierpinskicarpet(pb, 
+                p1, p2, p3, p4, 
+                levels, width);
+        }
+
+
         // default press for anything
         // for new tabs add them at the end please
         public static void default_pressed(object sender, EventArgs e, UserControl1 u1)
@@ -192,6 +214,9 @@ namespace Fractalii
                     break;
                 case 5:
                     u1.default_button_Click_DragonCurve(sender, e);
+                    break;
+                case 6:
+                    u1.default_button_Click_SierpinskiCarpet(sender, e);
                     break;
                 default:
                     break;
@@ -218,6 +243,9 @@ namespace Fractalii
                     break;
                 case 5:
                     u1.generate_dragoncurve(sender, e);
+                    break;
+                case 6:
+                    u1.generate_sierpinskicarpet(sender, e);
                     break;
                 default:
                     break;

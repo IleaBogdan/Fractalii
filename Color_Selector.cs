@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Fractalii
+﻿namespace Fractalii
 {
     public partial class Color_Selector : Form
     {
-        public Color setColor { get; private set; }
+        public Color setColor { get; set; }
         public Color_Selector()
         {
             InitializeComponent();
