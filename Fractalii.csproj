@@ -7,7 +7,6 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>fractal.ico</ApplicationIcon>
-    <Version>1.0.$([System.DateTime]::Now.ToString("yyMMdd"))</Version>
   </PropertyGroup>
 
   <ItemGroup>
