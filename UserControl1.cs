@@ -172,7 +172,7 @@ namespace Fractalii
 
         private void default_button_Click_SierpinskiCarpet(object sender, EventArgs e)
         {
-            SierpinskiCarpetTextBox.Text = "6";
+            SierpinskiCarpetTextBox.Text = "2";
         }
         private void generate_sierpinskicarpet(object sender, EventArgs e)
         {

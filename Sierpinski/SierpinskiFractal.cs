@@ -107,39 +107,41 @@ namespace Fractalii.Sierpinski
             RGBDif[2] = finalColor.B - RGB[2];
             pen = new Pen(Color.Red, (float)width);
 
-            int currLevel = 0;
             Color befor = Color.Red;
             Queue<CarpetItem> que = new();
-            que.Enqueue(new CarpetItem(p1, p2, p3, p4, currLevel++));
+            que.Enqueue(new CarpetItem(p1, p2, p3, p4, 0));
             while (que.Count > 0)
             {
                 List<CarpetItem> toEnque = new();
                 var curr = que.Dequeue();
                 curr.draw(pb, pen);
-                if (curr.level > levels) continue;
                 int sideLenght = curr.p1.X - curr.p2.X;
                 sideLenght = sideLenght >= 0 ? sideLenght : -sideLenght;
-                Point[] ps = [curr.p1, new Point(curr.p1.X, curr.p1.Y - sideLenght / 3),
-                            new Point(curr.p1.X, curr.p1.Y-2*sideLenght/3),
-                            new Point(curr.p1.X-sideLenght/3, curr.p1.Y),
-                            new Point(curr.p1.X-2*sideLenght/3, curr.p1.Y),
-                            new Point(curr.p1.X-2*sideLenght/3, curr.p1.Y-sideLenght/3),
-                            new Point(curr.p1.X-sideLenght/3, curr.p1.Y-2*sideLenght/3),
-                            new Point(curr.p1.X-2*sideLenght/3, curr.p1.Y-2*sideLenght/3)
+                Draw.draw_rectangle(pb, new Point(curr.p1.X-2*sideLenght/3, curr.p1.Y-2*sideLenght/3), sideLenght/3, pen);
+
+                Console.WriteLine(curr.level);
+                if (curr.level > levels) continue;
+                Point[] ps = [
+                    curr.p1, 
+                    new Point(curr.p1.X, curr.p1.Y - sideLenght / 3),
+                    new Point(curr.p1.X, curr.p1.Y-2*sideLenght/3),
+                    new Point(curr.p1.X-sideLenght/3, curr.p1.Y),
+                    new Point(curr.p1.X-2*sideLenght/3, curr.p1.Y),
+                    new Point(curr.p1.X-2*sideLenght/3, curr.p1.Y-sideLenght/3),
+                    new Point(curr.p1.X-sideLenght/3, curr.p1.Y-2*sideLenght/3),
+                    new Point(curr.p1.X-2*sideLenght/3, curr.p1.Y-2*sideLenght/3)
                 ];
                 foreach(var pt in ps){
                     que.Enqueue(
-                        new CarpetItem(pt, 
-                                       new Point(pt.X, pt.Y - sideLenght / 3),
-                                       new Point(pt.X - sideLenght / 3, pt.Y - sideLenght / 3),
-                                       new Point(pt.X - sideLenght / 3, pt.Y), 
-                        currLevel
-                    ));
+                        new CarpetItem(
+                            pt,
+                            new Point(pt.X, pt.Y - sideLenght / 3),
+                            new Point(pt.X - sideLenght / 3, pt.Y - sideLenght / 3),
+                            new Point(pt.X - sideLenght / 3, pt.Y),
+                            curr.level + 1
+                        )
+                    );
                 }
-
-
-
-                ++currLevel;
             }
         }
     }

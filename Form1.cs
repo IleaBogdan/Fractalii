@@ -42,7 +42,7 @@ namespace Fractalii
             //System.Drawing.Rectangle ScreenR = Screen.PrimaryScreen.WorkingArea;
             //this.Size = new System.Drawing.Size(Convert.ToInt32(.55 * ScreenR.Width), Convert.ToInt32(.7 * ScreenR.Height));
             initialSize=new Pair<int, int>(this.Size.Width, this.Size.Height);
-            this.Location = new System.Drawing.Point(45, 60);
+            this.Location = new System.Drawing.Point(145, 160);
 
             DwmSetWindowAttribute(this.Handle, DWMWA_CAPTION_COLOR, ref TitleColor, sizeof(int));
             pictureBox1.BackColor = bgC;
