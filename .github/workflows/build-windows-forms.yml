@@ -7,6 +7,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -29,14 +32,7 @@ jobs:
     - name: Publish
       run: dotnet publish --configuration Release --output ./publish
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: FractaliiApp
-        path: ./publish
-
-    - name: Create GitHub Release
-      id: create_release
+    - name: Create and Publish GitHub Release
       uses: softprops/action-gh-release@v2
       with:
         tag_name: v1.0.${{ github.run_number }}
@@ -44,13 +40,4 @@ jobs:
         body: |
           Automated release of the Fractalii Windows Forms app.
           Download the files below to run the app on Windows.
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Upload published app to Release
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: v1.0.${{ github.run_number }}
         files: ./publish/**
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
