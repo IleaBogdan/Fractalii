@@ -14,6 +14,8 @@ namespace Fractalii
             this.TopMost=false;
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
             this.Load += Form1_Load;
+            //this.WindowState = FormWindowState.Maximized;
+            this.DoubleBuffered = true;
         }
         public void SetText(string text)
         {
@@ -35,6 +37,10 @@ namespace Fractalii
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //System.Drawing.Rectangle ScreenR = Screen.PrimaryScreen.WorkingArea;
+            //this.Size = new System.Drawing.Size(Convert.ToInt32(.55 * ScreenR.Width), Convert.ToInt32(.7 * ScreenR.Height));
+            this.Location = new System.Drawing.Point(45, 60);
+
             DwmSetWindowAttribute(this.Handle, DWMWA_CAPTION_COLOR, ref TitleColor, sizeof(int));
             pictureBox1.BackColor = bgC;
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
