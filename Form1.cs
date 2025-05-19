@@ -16,6 +16,7 @@ namespace Fractalii
             this.Load += Form1_Load;
             //this.WindowState = FormWindowState.Maximized;
             this.DoubleBuffered = true;
+            this.Icon = new Icon("../../../fractal.ico");
         }
         public void SetText(string text)
         {
@@ -34,11 +35,13 @@ namespace Fractalii
         public static Color bgC = Color.Black;
         public static String def = "Fractalii";
         private static int TitleColor=0x000000;
+        private Pair<int, int> initialSize;
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //System.Drawing.Rectangle ScreenR = Screen.PrimaryScreen.WorkingArea;
             //this.Size = new System.Drawing.Size(Convert.ToInt32(.55 * ScreenR.Width), Convert.ToInt32(.7 * ScreenR.Height));
+            initialSize=new Pair<int, int>(this.Size.Width, this.Size.Height);
             this.Location = new System.Drawing.Point(45, 60);
 
             DwmSetWindowAttribute(this.Handle, DWMWA_CAPTION_COLOR, ref TitleColor, sizeof(int));

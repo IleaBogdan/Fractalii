@@ -37,6 +37,7 @@ namespace Fractalii
             initialColorSelect = new Button();
             DarkMode = new CheckBox();
             userControl11 = new UserControl1(pictureBox1);
+
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -87,7 +88,6 @@ namespace Fractalii
             // 
             // userControl11
             // 
-            userControl11.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             userControl11.Location = new Point(15, 4);
             userControl11.Margin = new Padding(3, 4, 3, 4);
             userControl11.Name = "userControl11";
