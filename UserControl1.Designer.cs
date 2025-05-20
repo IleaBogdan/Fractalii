@@ -476,6 +476,7 @@ namespace Fractalii
             label9.Size = new Size(95, 25);
             label9.TabIndex = 7;
             label9.Text = "Reduction:";
+            /*
             // 
             // textBox2
             // 
@@ -484,6 +485,7 @@ namespace Fractalii
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(60, 31);
             textBox2.TabIndex = 6;
+            */
             // 
             // tabPage4
             // 
@@ -853,7 +855,7 @@ namespace Fractalii
         private System.Windows.Forms.TextBox WeierstrassA;
         private Label label18;
         private Label label17;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button buttonSierpinskiCarpet;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
     }
