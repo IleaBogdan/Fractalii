@@ -107,26 +107,28 @@ namespace Fractalii.Sierpinski
             RGBDif[2] = finalColor.B - RGB[2];
             pen = new Pen(Color.Red, (float)width);
 
-            int currLevel = 1; --levels;
+            int currLevel = 0; --levels;
             Color befor = Color.Red;
             Queue<CarpetItem> que = new();
-            que.Enqueue(new CarpetItem(p1, p2, p3, p4, 1));
+            var curr = new CarpetItem(p1, p2, p3, p4, 1);
+            que.Enqueue(curr);
+            curr.draw(pb, pen);
             while (que.Count > 0)
             {
                 List<CarpetItem> toEnque = new();
-                var curr = que.Dequeue();
+                curr = que.Dequeue();
                 if (currLevel < curr.level)
                 {
                     Thread.Sleep(500);
                     currLevel = curr.level;
                 }
                 preDraw(currLevel, levels, width);
-                curr.draw(pb, pen);
+                //curr.draw(pb, pen);
                 int sideLenght = Math.Max(curr.p1.X - curr.p2.X,
                     Math.Max(curr.p2.X - curr.p3.X,
                     Math.Max(curr.p3.X - curr.p4.X, curr.p4.X - curr.p1.X)));
                 sideLenght = sideLenght >= 0 ? sideLenght : -sideLenght;
-                Draw.draw_rectangle(pb, new Point(curr.p1.X - 2 * sideLenght / 3, curr.p1.Y - 2 * sideLenght / 3), sideLenght / 3, pen);
+                Draw.draw_rectangle(pb, new Point((int)(width)+curr.p1.X - 2 * sideLenght / 3, (int)(width)+curr.p1.Y - 2 * sideLenght / 3), sideLenght / 3, pen);
 
                 //Console.WriteLine(sideLenght);
                 if (curr.level > levels) continue;
