@@ -69,6 +69,13 @@ namespace Fractalii
             KochSnowLevels = new System.Windows.Forms.TextBox();
             label7 = new Label();
             tabPage4 = new TabPage();
+            WeierstrassB = new System.Windows.Forms.TextBox();
+            WeierstrassA = new System.Windows.Forms.TextBox();
+            label18 = new Label();
+            label17 = new Label();
+            WeierstrassGenerate = new System.Windows.Forms.Button();
+            WeierstrassPrecision = new System.Windows.Forms.TextBox();
+            label16 = new Label();
             tabPage5 = new TabPage();
             FlipSierpinski = new CheckBox();
             label11 = new Label();
@@ -84,14 +91,18 @@ namespace Fractalii
             dragoncurvetextbox = new System.Windows.Forms.TextBox();
             label12 = new Label();
             SierpinskiCarpet = new TabPage();
-            button7 = new System.Windows.Forms.Button();
+            buttonSierpinskiCarpet = new System.Windows.Forms.Button();
             label8 = new Label();
             SierpinskiCarpetTextBox = new System.Windows.Forms.TextBox();
             label9 = new Label();
+            button7 = new System.Windows.Forms.Button();
+            button8 = new System.Windows.Forms.Button();
+            button9 = new System.Windows.Forms.Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
+            tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
             tabPage6.SuspendLayout();
             SierpinskiCarpet.SuspendLayout();
@@ -449,14 +460,43 @@ namespace Fractalii
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(22, 11);
+            label7.Location = new Point(31, 18);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(42, 15);
+            label7.Size = new Size(63, 25);
             label7.TabIndex = 6;
             label7.Text = "Levels:";
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(389, 20);
+            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(95, 25);
+            label9.TabIndex = 7;
+            label9.Text = "Reduction:";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(494, 15);
+            textBox2.Margin = new Padding(4, 5, 4, 5);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(60, 31);
+            textBox2.TabIndex = 6;
+            // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(button9);
+            tabPage4.Controls.Add(button8);
+            tabPage4.Controls.Add(button7);
+            tabPage4.Controls.Add(WeierstrassB);
+            tabPage4.Controls.Add(WeierstrassA);
+            tabPage4.Controls.Add(label18);
+            tabPage4.Controls.Add(label17);
+            tabPage4.Controls.Add(WeierstrassGenerate);
+            tabPage4.Controls.Add(WeierstrassPrecision);
+            tabPage4.Controls.Add(label16);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
@@ -464,6 +504,71 @@ namespace Fractalii
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Weierstrass";
             tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // WeierstrassB
+            // 
+            WeierstrassB.Location = new Point(709, 13);
+            WeierstrassB.Margin = new Padding(4, 5, 4, 5);
+            WeierstrassB.Name = "WeierstrassB";
+            WeierstrassB.Size = new Size(141, 31);
+            WeierstrassB.TabIndex = 6;
+            // 
+            // WeierstrassA
+            // 
+            WeierstrassA.Location = new Point(414, 13);
+            WeierstrassA.Margin = new Padding(4, 5, 4, 5);
+            WeierstrassA.Name = "WeierstrassA";
+            WeierstrassA.Size = new Size(141, 31);
+            WeierstrassA.TabIndex = 5;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(596, 18);
+            label18.Margin = new Padding(4, 0, 4, 0);
+            label18.Name = "label18";
+            label18.Size = new Size(110, 25);
+            label18.TabIndex = 4;
+            label18.Text = "Parameter 2:";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(301, 18);
+            label17.Margin = new Padding(4, 0, 4, 0);
+            label17.Name = "label17";
+            label17.Size = new Size(110, 25);
+            label17.TabIndex = 3;
+            label17.Text = "Parameter 1:";
+            // 
+            // WeierstrassGenerate
+            // 
+            WeierstrassGenerate.Location = new Point(867, 13);
+            WeierstrassGenerate.Margin = new Padding(4, 5, 4, 5);
+            WeierstrassGenerate.Name = "WeierstrassGenerate";
+            WeierstrassGenerate.Size = new Size(143, 92);
+            WeierstrassGenerate.TabIndex = 2;
+            WeierstrassGenerate.Text = "Generate";
+            WeierstrassGenerate.UseVisualStyleBackColor = true;
+            WeierstrassGenerate.Click += CallWeierstrass;
+            // 
+            // WeierstrassPrecision
+            // 
+            WeierstrassPrecision.Location = new Point(123, 13);
+            WeierstrassPrecision.Margin = new Padding(4, 5, 4, 5);
+            WeierstrassPrecision.Name = "WeierstrassPrecision";
+            WeierstrassPrecision.Size = new Size(141, 31);
+            WeierstrassPrecision.TabIndex = 1;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(31, 18);
+            label16.Margin = new Padding(4, 0, 4, 0);
+            label16.Name = "label16";
+            label16.Size = new Size(86, 25);
+            label16.TabIndex = 0;
+            label16.Text = "Precision:";
             // 
             // tabPage5
             // 
@@ -672,6 +777,8 @@ namespace Fractalii
             tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
             tabPage6.ResumeLayout(false);
@@ -726,7 +833,6 @@ namespace Fractalii
         private Label label10;
         private Label label11;
         private CheckBox FlipSierpinski;
-        private System.Windows.Forms.TextBox WeierstrassPrecision;
         private TabPage tabPage6;
         private System.Windows.Forms.TextBox dragoncurvetextbox;
         private Label label12;
@@ -740,5 +846,15 @@ namespace Fractalii
         private System.Windows.Forms.Button button7;
         private Label label8;
         private Label label9;
+        private System.Windows.Forms.Button WeierstrassGenerate;
+        private System.Windows.Forms.TextBox WeierstrassPrecision;
+        private Label label16;
+        private System.Windows.Forms.TextBox WeierstrassB;
+        private System.Windows.Forms.TextBox WeierstrassA;
+        private Label label18;
+        private Label label17;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button8;
     }
 }

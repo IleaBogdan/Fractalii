@@ -15,6 +15,7 @@ namespace Fractalii
             //debug();
         }
         private PictureBox pb;
+        private int MouseLX = 0, MouseRX = 0, MouseLY = 0, MouseRY = 0;
         public void SetSelectedTab(int index)
         {
             if (index >= 0 && index < tabControl1.TabPages.Count)
@@ -31,6 +32,23 @@ namespace Fractalii
             }
         }
 
+        public void set_pictureBox(PictureBox p)
+        {
+            pb = p;
+            Weierstrass.getPictureBox(p);
+        }
+
+        public void getMouseLClick(int x, int y)
+        {
+            MouseLX = x;
+            MouseLY = y;
+        }
+        public void getMouseRClick(int x, int y)
+        {
+            MouseRX = x;
+            MouseRY = y;
+            Weierstrass.getMouseRClick(x, y);
+        }
         // Tree Fractal
         private void default_button_Click_treeFractal(object sender, EventArgs e)
         {
@@ -117,12 +135,51 @@ namespace Fractalii
                 p1, p2, p3,
                 levels, width);
         }
+        
+        private void default_button_Click_Weierstrass(object Sender, EventArgs e)
+        {
+            WeierstrassPrecision.Text = "10";
+            WeierstrassA.Text = "0.5";
+            WeierstrassB.Text = "3";
+        }
 
         private void CallWeierstrass(object sender, EventArgs e)
         {
             int precision = -1;
+            double a = -1;
+            int b = -1;
             Int32.TryParse(WeierstrassPrecision.Text, null, out precision);
-            Weierstrass.CheckWeierstrassFunction(precision);
+            Double.TryParse(WeierstrassA.Text, null, out a);
+            Int32.TryParse(WeierstrassB.Text, null, out b);
+            Weierstrass.CheckWeierstrassFunction(pb, precision, a, b);
+        }
+        private void CallNOscillate(object sender, EventArgs e)
+        {
+            double a = -1;
+            int b = -1;
+            Double.TryParse(WeierstrassA.Text, null, out a);
+            Int32.TryParse(WeierstrassB.Text, null, out b);
+            Weierstrass.NOscillate(pb, a, b);
+        }
+        private void CallAOscillate(Object sender, EventArgs e)
+        {
+            int precision = -1;
+            double a = -1;
+            int b = -1;
+            Int32.TryParse(WeierstrassPrecision.Text, null, out precision);
+            Double.TryParse(WeierstrassA.Text, null, out a);
+            Int32.TryParse(WeierstrassB.Text, null, out b);
+            Weierstrass.AOscillate(pb, precision, a, b);
+        }
+        private void CallBOscillate(object sender, EventArgs e)
+        {
+            int precision = -1;
+            double a = -1;
+            int b = -1;
+            Int32.TryParse(WeierstrassPrecision.Text, null, out precision);
+            Double.TryParse(WeierstrassA.Text, null, out a);
+            Int32.TryParse(WeierstrassB.Text, null, out b);
+            Weierstrass.BOscillate(pb, precision, a, b);
         }
 
         private void default_button_Click_Sierpinski(object sender, EventArgs e)
@@ -213,6 +270,7 @@ namespace Fractalii
                     u1.default_button_Click_KochSnow(sender, e);
                     break;
                 case 3:
+                    u1.default_button_Click_Weierstrass(sender, e);
                     break;
                 case 4:
                     u1.default_button_Click_Sierpinski(sender, e);
@@ -242,6 +300,7 @@ namespace Fractalii
                     u1.generate_kochSnowFractal(sender, e);
                     break;
                 case 3:
+                    u1.CallWeierstrass(sender, e);
                     break;
                 case 4:
                     u1.generate_sierpinski(sender, e);
