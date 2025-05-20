@@ -112,6 +112,7 @@ namespace Fractalii.Sierpinski
             Queue<CarpetItem> que = new();
             var curr = new CarpetItem(p1, p2, p3, p4, 1);
             que.Enqueue(curr);
+            preDraw(currLevel, levels, width);
             curr.draw(pb, pen);
             while (que.Count > 0)
             {
@@ -128,7 +129,12 @@ namespace Fractalii.Sierpinski
                     Math.Max(curr.p2.X - curr.p3.X,
                     Math.Max(curr.p3.X - curr.p4.X, curr.p4.X - curr.p1.X)));
                 sideLenght = sideLenght >= 0 ? sideLenght : -sideLenght;
-                Draw.draw_rectangle(pb, new Point((int)(width)+curr.p1.X - 2 * sideLenght / 3, (int)(width)+curr.p1.Y - 2 * sideLenght / 3), sideLenght / 3, pen);
+                //curr.draw(pb, new Pen(Color.Black, pen.Width));
+                Draw.draw_rectangle(pb, 
+                    new Point(
+                        curr.p1.X - 2 * sideLenght / 3, 
+                        curr.p1.Y - 2 * sideLenght / 3
+                    ), sideLenght / 3, pen);
 
                 //Console.WriteLine(sideLenght);
                 if (curr.level > levels) continue;
