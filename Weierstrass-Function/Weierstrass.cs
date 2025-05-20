@@ -14,22 +14,43 @@ namespace Fractalii.Weierstrass_Function
         private static Pen pen = new Pen(Color.Red, 1f);
         private static double A = -1;
         private static int Precision = -1, B = -1;
+        private static double scaleX = 100.0, scaleY = 100.0;
+        private static double worldCenterX = 0.0;
+        private static double worldCenterY = 0.0;
         private const int sleepTime = 100;
         private const int zoom = 5;
         private static double zoomFactor = 1;
-        private static Point Origin = new Point(0, 0), oldOrigin = new Point(0, 0);
         private static int MouseRX = 0, MouseRY = 0;
         public static void getPictureBox(PictureBox pb)
         {
             pictureBox = pb;
-            Origin = new Point(pb.Width, pb.Height);
-            oldOrigin = new Point(pb.Width / 2, pb.Height / 2);
+
+            zoomFactor = 1.0;
+            worldCenterX = 0.0;
+            worldCenterY = 0.0;
         }
         public static void getMouseRClick(int x, int y)
         {
             MouseRX = x;
             MouseRY = y;
-            Zoom();
+
+            // 1) Inverse‐map this click to world coords *relative* to the current center:
+            //    ΔworldX = (screenX - pictureBox.Width/2) / (scaleX * zoomFactor)
+            double deltaWorldX = (MouseRX - pictureBox.Width / 2.0)
+                                 / (scaleX * zoomFactor);
+            double deltaWorldY = ((pictureBox.Height / 2.0) - MouseRY)
+                                 / (scaleY * zoomFactor);
+
+            // 2) Accumulate it onto the *existing* center:
+            worldCenterX += deltaWorldX;
+            worldCenterY += deltaWorldY;
+
+            // 3) Only now bump the zoom
+            zoomFactor *= zoom;
+
+            // 4) Redraw
+            pictureBox.Refresh();
+            DrawZoomFunction(300, A, B);
         }
         private static bool ValidWeierstrass(int precision, double a, int b)
         {
@@ -50,9 +71,14 @@ namespace Fractalii.Weierstrass_Function
         {
             if (ValidWeierstrass(precision, a, b))
             {
+                zoomFactor = 1.0;
+                worldCenterX = 0.0;
+                worldCenterY = 0.0;
+                MouseRX = pictureBox.Width / 2;
+                MouseRY = pictureBox.Height / 2;
                 pb.Refresh();
                 Precision = precision; A = a; B = b;
-                DrawWeierstrassFunction(Origin, precision, a, b);
+                DrawWeierstrassFunction(precision, a, b);
             }
             else
             {
@@ -68,13 +94,13 @@ namespace Fractalii.Weierstrass_Function
                 for (int precision = 1; precision <= maxP; precision++)
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(Origin, precision, a, b);
+                    DrawWeierstrassFunction(precision, a, b);
                     Thread.Sleep(sleepTime);
                 }
                 for (int precision = maxP - 1; precision > 0; precision--)
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(Origin, precision, a, b);
+                    DrawWeierstrassFunction(precision, a, b);
                     Thread.Sleep(sleepTime);
                 }
             }
@@ -93,13 +119,13 @@ namespace Fractalii.Weierstrass_Function
                 for (double tA = minA; tA <= maxA; tA += .1)
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(Origin, precision, tA, b);
+                    DrawWeierstrassFunction(precision, tA, b);
                     Thread.Sleep(sleepTime);
                 }
                 for (double tA = maxA - .1; tA >= minA; tA -= .1)
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(Origin, precision, tA, b);
+                    DrawWeierstrassFunction(precision, tA, b);
                     Thread.Sleep(sleepTime);
                 }
             }
@@ -118,13 +144,13 @@ namespace Fractalii.Weierstrass_Function
                 for (int tB = minB; tB <= maxB; tB++)
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(Origin, precision, a, tB);
+                    DrawWeierstrassFunction(precision, a, tB);
                     Thread.Sleep(sleepTime);
                 }
                 for (int tB = maxB - 1; tB >= minB; tB--)
                 {
                     pictureBox.Refresh();
-                    DrawWeierstrassFunction(Origin, precision, a, tB);
+                    DrawWeierstrassFunction(precision, a, tB);
                     Thread.Sleep(sleepTime);
                 }
             }
@@ -143,12 +169,11 @@ namespace Fractalii.Weierstrass_Function
             return sum;
         }
 
-        private static PointF[] GenerateWeierstrassPoints(int width, int height, double a, int b, int maxN)
+        private static PointF[] GenerateWeierstrassPoints(double a, int b, int maxN)
         {
+            int width = pictureBox.Width;
+            int height = pictureBox.Height;
             zoomFactor = 1;
-            oldOrigin = new Point(Origin.X/2, Origin.Y/2);
-            double scaleX = 100.0; // Scale for x-axis
-            double scaleY = 100.0; // Scale for y-axis
             PointF[] points = new PointF[pictureBox.Width];
             for (int px = 0; px < pictureBox.Width; px++)
             {
@@ -159,39 +184,37 @@ namespace Fractalii.Weierstrass_Function
             return points;
         }
 
-        private static void DrawWeierstrassFunction(Point origin, int maxN, double a, int b)
+        private static void DrawWeierstrassFunction(int maxN, double a, int b)
         {
-            PointF[] points = GenerateWeierstrassPoints(origin.X, origin.Y, a, b, maxN);
+            PointF[] points = GenerateWeierstrassPoints(a, b, maxN);
             Draw.draw_lines(pictureBox, points, pen);
         }
-
-        private static void Zoom()
+        private static void DrawZoomFunction(int maxN, double a, int b)
         {
-            Point newOrigin = new Point(MouseRX, MouseRY);
-            pictureBox.Refresh();
-            /// REMEMBER TO USE ZOOM VARIABLE CORRECTLY
-            DrawZoomFunction(newOrigin, Precision, A, B);
-        }
-        private static void DrawZoomFunction(Point origin, int maxN, double a, int b)
-        {
-            PointF[] points = GenerateZoomPoints(origin.X, origin.Y, a, b, maxN);
+            var points = GenerateZoomPoints(a, b, maxN);
             Draw.draw_lines(pictureBox, points, pen);
-            Draw.draw_line(pictureBox, new Point(pictureBox.Width/2, 0), new Point(pictureBox.Width/2, pictureBox.Height), pen);
         }
-        private static PointF[] GenerateZoomPoints(int width, int height, double a, int b, int maxN)
+        private static PointF[] GenerateZoomPoints(double a, int b, int maxN)
         {
-            double scaleX = 100.0; // Scale for x-axis
-            double scaleY = 100.0; // Scale for y-axis
-            zoomFactor *= zoom;
-            PointF[] points = new PointF[pictureBox.Width];
-            for (int px = 0; px < pictureBox.Width; px++)
+            int width = pictureBox.Width;
+            int height = pictureBox.Height;
+            var pts = new PointF[width];
+            for (int px = 0; px < width; px++)
             {
-                double x = (px - oldOrigin.X - pictureBox.Width / 2 + width) / scaleX / zoomFactor;
-                double y = Calculate(x, a, b, maxN);
-                points[px] = new PointF(px, (float)(pictureBox.Height - y * scaleY - height));
+                // 1) map pixel to world X, using worldCenterX
+                double worldX = ((px - (width / 2.0)) / (scaleX * zoomFactor)) + worldCenterX;
+
+                // 2) compute Weierstrass at that X
+                double yVal = Calculate(worldX, a, b, maxN);
+
+                // 3) map back to screen Y
+                //    worldY → (pictureBox.Height/2) - (worldY*scaleY*zoomFactor)
+                float screenY = (float)((height / 2.0) - ((yVal - worldCenterY) * scaleY * zoomFactor));
+
+                pts[px] = new PointF(px, screenY);
             }
-            oldOrigin = new Point(oldOrigin.X + pictureBox.Width / 2 - width, height);
-            return points;
+
+            return pts;
         }
     }
 }
