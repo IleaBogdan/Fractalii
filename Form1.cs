@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Fractalii
@@ -16,7 +17,15 @@ namespace Fractalii
             this.Load += Form1_Load;
             //this.WindowState = FormWindowState.Maximized;
             this.DoubleBuffered = true;
-            this.Icon = new Icon("../../../fractal.ico");
+            using Stream iconStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Fractalii.fractal.ico");
+            if (iconStream != null)
+            {
+                this.Icon = new Icon(iconStream);
+            }
+            else
+            {
+                MessageBox.Show("Icon resource not found.");
+            }
         }
         public void SetText(string text)
         {
