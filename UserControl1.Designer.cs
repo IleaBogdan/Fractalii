@@ -84,9 +84,10 @@ namespace Fractalii
             dragoncurvetextbox = new System.Windows.Forms.TextBox();
             label12 = new Label();
             SierpinskiCarpet = new TabPage();
-            SierpinskiCarpetTextBox = new System.Windows.Forms.TextBox();
-            label8 = new Label();
             button7 = new System.Windows.Forms.Button();
+            label8 = new Label();
+            SierpinskiCarpetTextBox = new System.Windows.Forms.TextBox();
+            label9 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -610,6 +611,7 @@ namespace Fractalii
             // 
             // SierpinskiCarpet
             // 
+            SierpinskiCarpet.Controls.Add(label9);
             SierpinskiCarpet.Controls.Add(button7);
             SierpinskiCarpet.Controls.Add(label8);
             SierpinskiCarpet.Controls.Add(SierpinskiCarpetTextBox);
@@ -621,12 +623,15 @@ namespace Fractalii
             SierpinskiCarpet.Text = "Sierpinski Carpet";
             SierpinskiCarpet.UseVisualStyleBackColor = true;
             // 
-            // SierpinskiCarpetTextBox
+            // button7
             // 
-            SierpinskiCarpetTextBox.Location = new Point(73, 28);
-            SierpinskiCarpetTextBox.Name = "SierpinskiCarpetTextBox";
-            SierpinskiCarpetTextBox.Size = new Size(100, 23);
-            SierpinskiCarpetTextBox.TabIndex = 0;
+            button7.Location = new Point(595, 12);
+            button7.Name = "button7";
+            button7.Size = new Size(107, 53);
+            button7.TabIndex = 2;
+            button7.Text = "Generate";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += generate_sierpinskicarpet;
             // 
             // label8
             // 
@@ -637,15 +642,21 @@ namespace Fractalii
             label8.TabIndex = 1;
             label8.Text = "Levels:";
             // 
-            // button7
+            // SierpinskiCarpetTextBox
             // 
-            button7.Location = new Point(595, 12);
-            button7.Name = "button7";
-            button7.Size = new Size(107, 53);
-            button7.TabIndex = 2;
-            button7.Text = "Generate";
-            button7.UseVisualStyleBackColor = true;
-            button7.Click += generate_sierpinskicarpet;
+            SierpinskiCarpetTextBox.Location = new Point(73, 28);
+            SierpinskiCarpetTextBox.Name = "SierpinskiCarpetTextBox";
+            SierpinskiCarpetTextBox.Size = new Size(100, 23);
+            SierpinskiCarpetTextBox.TabIndex = 0;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(179, 31);
+            label9.Name = "label9";
+            label9.Size = new Size(37, 15);
+            label9.TabIndex = 3;
+            label9.Text = "<=~6";
             // 
             // UserControl1
             // 
@@ -728,5 +739,6 @@ namespace Fractalii
         private System.Windows.Forms.TextBox SierpinskiCarpetTextBox;
         private System.Windows.Forms.Button button7;
         private Label label8;
+        private Label label9;
     }
 }

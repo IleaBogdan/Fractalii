@@ -6,6 +6,10 @@
         {
             return level > 0 && level < 15;
         }
+        private static bool checker(int level, double width, int alternativeLevelMax)
+        {
+            return level > 0 && level < alternativeLevelMax;
+        }
         public static void generate_sierpinski(PictureBox pb, Point p1, Point p2, Point p3, int levels, double width)
         {
             if (checker(levels, width))
@@ -22,7 +26,7 @@
             Point p1, Point p2, Point p3, Point p4,
             int levels, double width)
         {
-            if (checker(levels, width))
+            if (checker(levels, width, 7))
             {
                 pb.Refresh();
                 //Point[] ps = [p1, p2, p3, p4, p1];

@@ -117,9 +117,10 @@ namespace Fractalii.Sierpinski
                 var curr = que.Dequeue();
                 if (currLevel < curr.level)
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(500);
                     currLevel = curr.level;
                 }
+                preDraw(currLevel, levels, width);
                 curr.draw(pb, pen);
                 int sideLenght = Math.Max(curr.p1.X - curr.p2.X,
                     Math.Max(curr.p2.X - curr.p3.X,
