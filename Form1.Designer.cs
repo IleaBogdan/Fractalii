@@ -37,7 +37,6 @@ namespace Fractalii
             initialColorSelect = new Button();
             DarkMode = new CheckBox();
             userControl11 = new UserControl1(pictureBox1);
-
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -46,7 +45,7 @@ namespace Fractalii
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.Location = new Point(12, 123);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(977, 432);
+            pictureBox1.Size = new Size(970, 432);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.DoubleClick += pictureBox1_2Click;
@@ -98,13 +97,14 @@ namespace Fractalii
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1001, 567);
+            ClientSize = new Size(994, 567);
             Controls.Add(DarkMode);
             Controls.Add(finalColorSelect);
             Controls.Add(initialColorSelect);
             Controls.Add(userControl11);
             Controls.Add(pictureBox1);
             Margin = new Padding(3, 2, 3, 2);
+            MinimumSize = new Size(1010, 606);
             Name = "HomePage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Fractal Page";

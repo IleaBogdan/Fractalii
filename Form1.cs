@@ -14,9 +14,8 @@ namespace Fractalii
             this.KeyPreview = true; // Important to capture key events
             this.TopMost=false;
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
-            this.Load += Form1_Load;
-            //this.WindowState = FormWindowState.Maximized;
-            this.DoubleBuffered = true;
+            //this.DoubleBuffered = true;
+            
             using Stream iconStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Fractalii.fractal.ico");
             if (iconStream != null)
             {
@@ -35,11 +34,11 @@ namespace Fractalii
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
+        
         [DllImport("dwmapi.dll")]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
         const int DWMWA_CAPTION_COLOR = 35;
 
-        
         
         public static Color bgC = Color.Black;
         public static String def = "Fractalii";
@@ -54,6 +53,8 @@ namespace Fractalii
             this.Location = new System.Drawing.Point(145, 160);
 
             DwmSetWindowAttribute(this.Handle, DWMWA_CAPTION_COLOR, ref TitleColor, sizeof(int));
+            Console.WriteLine(initialSize.First+" "+initialSize.Second);
+
             pictureBox1.BackColor = bgC;
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
             add_color(initialColor, initialColorSelect, "Select initial color");
