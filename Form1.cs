@@ -53,7 +53,6 @@ namespace Fractalii
             this.Location = new System.Drawing.Point(145, 160);
 
             DwmSetWindowAttribute(this.Handle, DWMWA_CAPTION_COLOR, ref TitleColor, sizeof(int));
-            Console.WriteLine(initialSize.First+" "+initialSize.Second);
 
             pictureBox1.BackColor = bgC;
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;

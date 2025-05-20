@@ -172,7 +172,7 @@ namespace Fractalii
 
         private void default_button_Click_SierpinskiCarpet(object sender, EventArgs e)
         {
-            SierpinskiCarpetTextBox.Text = "2";
+            SierpinskiCarpetTextBox.Text = "4";
         }
         private void generate_sierpinskicarpet(object sender, EventArgs e)
         {
@@ -185,6 +185,11 @@ namespace Fractalii
             p2 = new Point(15, Math.Min(pb.Width, pb.Height) - 15);
             p3 = new Point(15, 15);
             p4 = new Point(Math.Min(pb.Width, pb.Height) - 15, 15);
+            int offset=(pb.Width-(p1.X-p2.X))/2;
+            p1.X += offset;
+            p2.X += offset;
+            p3.X += offset;
+            p4.X += offset;
             SetupSierpinski.generate_sierpinskicarpet(pb, 
                 p1, p2, p3, p4, 
                 levels, width);
