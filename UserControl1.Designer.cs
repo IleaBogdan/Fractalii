@@ -91,13 +91,15 @@ namespace Fractalii
             dragoncurvetextbox = new System.Windows.Forms.TextBox();
             label12 = new Label();
             SierpinskiCarpet = new TabPage();
-            buttonSierpinskiCarpet = new System.Windows.Forms.Button();
-            label8 = new Label();
-            SierpinskiCarpetTextBox = new System.Windows.Forms.TextBox();
             label9 = new Label();
             button7 = new System.Windows.Forms.Button();
+            label8 = new Label();
+            SierpinskiCarpetTextBox = new System.Windows.Forms.TextBox();
+            buttonSierpinskiCarpet = new System.Windows.Forms.Button();
             button8 = new System.Windows.Forms.Button();
             button9 = new System.Windows.Forms.Button();
+            button10 = new System.Windows.Forms.Button();
+            button11 = new System.Windows.Forms.Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -463,35 +465,16 @@ namespace Fractalii
             label7.Location = new Point(31, 18);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(63, 25);
+            label7.Size = new Size(42, 15);
             label7.TabIndex = 6;
             label7.Text = "Levels:";
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(389, 20);
-            label9.Margin = new Padding(4, 0, 4, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(95, 25);
-            label9.TabIndex = 7;
-            label9.Text = "Reduction:";
-            /*
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(494, 15);
-            textBox2.Margin = new Padding(4, 5, 4, 5);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(60, 31);
-            textBox2.TabIndex = 6;
-            */
-            // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(button11);
+            tabPage4.Controls.Add(button10);
             tabPage4.Controls.Add(button9);
             tabPage4.Controls.Add(button8);
-            tabPage4.Controls.Add(button7);
             tabPage4.Controls.Add(WeierstrassB);
             tabPage4.Controls.Add(WeierstrassA);
             tabPage4.Controls.Add(label18);
@@ -509,37 +492,37 @@ namespace Fractalii
             // 
             // WeierstrassB
             // 
-            WeierstrassB.Location = new Point(709, 13);
+            WeierstrassB.Location = new Point(416, 15);
             WeierstrassB.Margin = new Padding(4, 5, 4, 5);
             WeierstrassB.Name = "WeierstrassB";
-            WeierstrassB.Size = new Size(141, 31);
+            WeierstrassB.Size = new Size(50, 23);
             WeierstrassB.TabIndex = 6;
             // 
             // WeierstrassA
             // 
-            WeierstrassA.Location = new Point(414, 13);
+            WeierstrassA.Location = new Point(256, 15);
             WeierstrassA.Margin = new Padding(4, 5, 4, 5);
             WeierstrassA.Name = "WeierstrassA";
-            WeierstrassA.Size = new Size(141, 31);
+            WeierstrassA.Size = new Size(50, 23);
             WeierstrassA.TabIndex = 5;
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(596, 18);
+            label18.Location = new Point(335, 18);
             label18.Margin = new Padding(4, 0, 4, 0);
             label18.Name = "label18";
-            label18.Size = new Size(110, 25);
+            label18.Size = new Size(73, 15);
             label18.TabIndex = 4;
             label18.Text = "Parameter 2:";
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(301, 18);
+            label17.Location = new Point(175, 18);
             label17.Margin = new Padding(4, 0, 4, 0);
             label17.Name = "label17";
-            label17.Size = new Size(110, 25);
+            label17.Size = new Size(73, 15);
             label17.TabIndex = 3;
             label17.Text = "Parameter 1:";
             // 
@@ -556,10 +539,10 @@ namespace Fractalii
             // 
             // WeierstrassPrecision
             // 
-            WeierstrassPrecision.Location = new Point(123, 13);
+            WeierstrassPrecision.Location = new Point(97, 15);
             WeierstrassPrecision.Margin = new Padding(4, 5, 4, 5);
             WeierstrassPrecision.Name = "WeierstrassPrecision";
-            WeierstrassPrecision.Size = new Size(141, 31);
+            WeierstrassPrecision.Size = new Size(50, 23);
             WeierstrassPrecision.TabIndex = 1;
             // 
             // label16
@@ -568,7 +551,7 @@ namespace Fractalii
             label16.Location = new Point(31, 18);
             label16.Margin = new Padding(4, 0, 4, 0);
             label16.Name = "label16";
-            label16.Size = new Size(86, 25);
+            label16.Size = new Size(58, 15);
             label16.TabIndex = 0;
             label16.Text = "Precision:";
             // 
@@ -730,6 +713,16 @@ namespace Fractalii
             SierpinskiCarpet.Text = "Sierpinski Carpet";
             SierpinskiCarpet.UseVisualStyleBackColor = true;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(179, 31);
+            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(37, 15);
+            label9.TabIndex = 3;
+            label9.Text = "<=~6";
+            // 
             // button7
             // 
             button7.Location = new Point(595, 12);
@@ -756,14 +749,52 @@ namespace Fractalii
             SierpinskiCarpetTextBox.Size = new Size(100, 23);
             SierpinskiCarpetTextBox.TabIndex = 0;
             // 
-            // label9
+            // buttonSierpinskiCarpet
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(179, 31);
-            label9.Name = "label9";
-            label9.Size = new Size(37, 15);
-            label9.TabIndex = 3;
-            label9.Text = "<=~6";
+            buttonSierpinskiCarpet.Location = new Point(0, 0);
+            buttonSierpinskiCarpet.Name = "buttonSierpinskiCarpet";
+            buttonSierpinskiCarpet.Size = new Size(75, 23);
+            buttonSierpinskiCarpet.TabIndex = 0;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(608, 15);
+            button8.Name = "button8";
+            button8.Size = new Size(100, 55);
+            button8.TabIndex = 7;
+            button8.Text = "Generate";
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += CallWeierstrass;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(53, 47);
+            button9.Name = "button9";
+            button9.Size = new Size(75, 23);
+            button9.TabIndex = 8;
+            button9.Text = "N Oscillate";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += CallNOscillate;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(202, 47);
+            button10.Name = "button10";
+            button10.Size = new Size(75, 23);
+            button10.TabIndex = 9;
+            button10.Text = "A Oscillate";
+            button10.UseVisualStyleBackColor = true;
+            button10.Click += CallAOscillate;
+            // 
+            // button11
+            // 
+            button11.Location = new Point(361, 47);
+            button11.Name = "button11";
+            button11.Size = new Size(75, 23);
+            button11.TabIndex = 10;
+            button11.Text = "B Oscillate";
+            button11.UseVisualStyleBackColor = true;
+            button11.Click += CallBOscillate;
             // 
             // UserControl1
             // 
@@ -856,6 +887,8 @@ namespace Fractalii
         private Label label18;
         private Label label17;
         private System.Windows.Forms.Button buttonSierpinskiCarpet;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
     }

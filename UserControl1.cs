@@ -135,7 +135,7 @@ namespace Fractalii
                 p1, p2, p3,
                 levels, width);
         }
-        
+
         private void default_button_Click_Weierstrass(object Sender, EventArgs e)
         {
             WeierstrassPrecision.Text = "10";
@@ -209,21 +209,21 @@ namespace Fractalii
         }
 
 
-        private void default_button_Click_DragonCurve(object sender, EventArgs e) 
+        private void default_button_Click_DragonCurve(object sender, EventArgs e)
         {
             dragoncurvetextbox.Text = "14";
             dragonSize.Text = "5";
         }
         private void generate_dragoncurve(object sender, EventArgs e)
         {
-            int levels = -1, size=-1;
+            int levels = -1, size = -1;
             double width = -1.0;
             Int32.TryParse(dragoncurvetextbox.Text, out levels);
             Int32.TryParse(dragonSize.Text, out size);
             width = 3;
             Console.WriteLine("remove hardcoded width");
             dragoncurveSetup.generate_dragoncurve(pb, levels, width, size,
-                new Point (pb.Width/2, pb.Height/2));
+                new Point(pb.Width / 2, pb.Height / 2));
         }
 
 
@@ -238,17 +238,17 @@ namespace Fractalii
             Point p1, p2, p3, p4;
             Int32.TryParse(SierpinskiCarpetTextBox.Text, out levels);
 
-            p1 = new Point(Math.Min(pb.Width, pb.Height)-15, Math.Min(pb.Width, pb.Height)-15);
+            p1 = new Point(Math.Min(pb.Width, pb.Height) - 15, Math.Min(pb.Width, pb.Height) - 15);
             p2 = new Point(15, Math.Min(pb.Width, pb.Height) - 15);
             p3 = new Point(15, 15);
             p4 = new Point(Math.Min(pb.Width, pb.Height) - 15, 15);
-            int offset=(pb.Width-(p1.X-p2.X))/2;
+            int offset = (pb.Width - (p1.X - p2.X)) / 2;
             p1.X += offset;
             p2.X += offset;
             p3.X += offset;
             p4.X += offset;
-            SetupSierpinski.generate_sierpinskicarpet(pb, 
-                p1, p2, p3, p4, 
+            SetupSierpinski.generate_sierpinskicarpet(pb,
+                p1, p2, p3, p4,
                 levels, width);
         }
 
