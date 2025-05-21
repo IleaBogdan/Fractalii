@@ -13,9 +13,8 @@ namespace Fractalii
             this.Text = "Fractalii";
             this.KeyPreview = true; // Important to capture key events
             this.TopMost=false;
-            this.KeyDown += new KeyEventHandler(Form_KeyDown);
             //this.DoubleBuffered = true;
-            
+
             using Stream iconStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Fractalii.fractal.ico");
             if (iconStream != null)
             {
@@ -52,6 +51,8 @@ namespace Fractalii
             initialSize=new Pair<int, int>(this.Size.Width, this.Size.Height);
             this.Location = new System.Drawing.Point(145, 160);
 
+            this.KeyDown += new KeyEventHandler(Form_KeyDown);
+            this.Resize += HomePage_Resize;
             DwmSetWindowAttribute(this.Handle, DWMWA_CAPTION_COLOR, ref TitleColor, sizeof(int));
 
             pictureBox1.BackColor = bgC;
@@ -134,7 +135,15 @@ namespace Fractalii
         }
 
         public static bool isFractalFullScreen=false;
-        public static Rectangle pbOriginalBounds;
+        public static Rectangle pbOriginalBounds=default(Rectangle);
+        public static void FullScreenPictureBox(ref PictureBox pb)
+        {
+            pbOriginalBounds = pb.Bounds;
+            isFractalFullScreen = true;
+            pb.BringToFront();
+            pb.Dock = DockStyle.Fill;
+            pb.SizeMode = PictureBoxSizeMode.Zoom;
+        }
         private void Form_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F11) { ToggleFullscreen(); }
@@ -160,7 +169,7 @@ namespace Fractalii
                 pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
 
                 isFractalFullScreen = false;
-                this.KeyDown -= Form_KeyDown;
+                pbOriginalBounds = default(Rectangle);
             }
         }
 
@@ -178,6 +187,7 @@ namespace Fractalii
                 this.WindowState = FormWindowState.Maximized;
                 this.TopMost = false;
             }
+            //pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         }
         private void DarkMode_CheckStateChanged(object sender, EventArgs e)
         {
@@ -208,6 +218,14 @@ namespace Fractalii
                     control.BackColor = backColor;
                 }
             }
+        }
+
+        private void HomePage_Resize(object sender, EventArgs e)
+        {
+            // Example: maintain a margin of 12 pixels around the PictureBox.
+            int margin = 12;
+            pictureBox1.Location = new Point(margin, margin + 100); // adjust Y offset as needed for other controls
+            pictureBox1.Size = new Size(this.ClientSize.Width - 2 * margin, this.ClientSize.Height - (margin + 100 + margin));
         }
     }
 }
