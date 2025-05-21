@@ -133,6 +133,8 @@ namespace Fractalii
             //Console.WriteLine("Boom");
         }
 
+        public static bool isFractalFullScreen=false;
+        public static Rectangle pbOriginalBounds;
         private void Form_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F11) { ToggleFullscreen(); }
@@ -149,6 +151,16 @@ namespace Fractalii
                 if (tab == -1) { tab += 10; }
                 //Console.WriteLine(tab.ToString());
                 userControl11.SetSelectedTab(tab);
+            }
+            if (e.KeyCode == Keys.Escape && isFractalFullScreen)
+            {
+                // Restore PictureBox
+                pictureBox1.Dock = DockStyle.None;
+                pictureBox1.Bounds = pbOriginalBounds;
+                pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
+
+                isFractalFullScreen = false;
+                this.KeyDown -= Form_KeyDown;
             }
         }
 

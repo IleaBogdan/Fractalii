@@ -3,6 +3,7 @@ using Fractalii.Sierpinski;
 using Fractalii.Weierstrass_Function;
 using Fractalii.TreeFractal;
 using Fractalii.DragonCurve;
+using System.Windows.Forms;
 
 namespace Fractalii
 {
@@ -45,6 +46,12 @@ namespace Fractalii
         }
         private void generate_treeFractal_recursive(object sender, EventArgs e)
         {
+            HomePage.pbOriginalBounds = pb.Bounds;
+            HomePage.isFractalFullScreen = true;
+            pb.BringToFront();
+            pb.Dock = DockStyle.Fill;
+            pb.SizeMode = PictureBoxSizeMode.Zoom;
+
             double start_angle_left = -1.0, start_angle_right = -1.0;
             double size = -1.0, width = -1.0;
             int levels = -1, redL = 0, redR = 0;
@@ -56,7 +63,11 @@ namespace Fractalii
             double.TryParse(textBox_width_tab1.Text, null, out width);
             Int32.TryParse(textBox_reduction_left_tab1.Text, null, out redL);
             Int32.TryParse(textBox_reduction_right_tab1.Text, null, out redR);
-            SetupTree.generate_treeFractal_recursive(pb, start_angle_left, start_angle_right, size, width, levels, redL, redR, HomePage.initialColor, HomePage.finalColor);
+            SetupTree.generate_treeFractal_recursive(
+                pb, start_angle_left, start_angle_right, 
+                size, width, levels, redL, redR, 
+                HomePage.initialColor, HomePage.finalColor
+            );
         }
 
         private void generate_treeFractal_iterative(object sender, EventArgs e)
