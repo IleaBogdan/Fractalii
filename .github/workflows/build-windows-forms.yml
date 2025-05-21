@@ -52,4 +52,6 @@ jobs:
         body: |
           Standalone executable for Fractalii.
           Just download and run the .exe file.
+          Note that this is only in Beta phase. 
+          Any issues that may occur should be announce to get fixed.
         files: ./publish/*.exe
