@@ -1,4 +1,4 @@
-# Fractalii — A Fractal Generation Project
+﻿# Fractalii — A Fractal Generation Project
 
 Welcome to **Fractalii**, a fractal generation project by **Ilea Bogdan** and **Grindean Luca**!
 
@@ -6,9 +6,9 @@ This project was created for our **physics class** using `C#` and **Windows Form
 
 ### Currently Supported Fractals
 - **Tree Fractal**
-- **Koch Line & Snowflake Fractals**
+- **Koch Fractals**
 - **Weierstrass Function Fractal**
-- **Sierpinski Triangle Fractal**
+- **Sierpinski Fractals**
 - **Dragon Curve Fractal**
 
 ---

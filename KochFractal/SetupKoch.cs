@@ -35,9 +35,9 @@
         {
             if (checker(levels, width))
             {
-                Draw.draw_line(pb, p1, p2, new Pen(Color.Red, 3));
-                Draw.draw_line(pb, p1, p3, new Pen(Color.Red, 3));
-                Draw.draw_line(pb, p2, p3, new Pen(Color.Red, 3));
+                //Draw.draw_line(pb, p1, p2, new Pen(Color.Red, 3));
+                //Draw.draw_line(pb, p1, p3, new Pen(Color.Red, 3));
+                //Draw.draw_line(pb, p2, p3, new Pen(Color.Red, 3));
 
                 pb.Refresh();
                 kochFractal.generate_snowflake(pb, p1, p2, p3, levels, width);
