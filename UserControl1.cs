@@ -3,6 +3,7 @@ using Fractalii.Sierpinski;
 using Fractalii.Weierstrass_Function;
 using Fractalii.TreeFractal;
 using Fractalii.DragonCurve;
+using System.Windows.Forms;
 
 namespace Fractalii
 {
@@ -20,6 +21,7 @@ namespace Fractalii
         {
             if (index >= 0 && index < tabControl1.TabPages.Count)
             {
+                //Console.WriteLine(index);
                 tabControl1.SelectedIndex = index;
             }
         }
@@ -63,6 +65,8 @@ namespace Fractalii
         }
         private void generate_treeFractal_recursive(object sender, EventArgs e)
         {
+            HomePage.FullScreenPictureBox(ref pb);   
+
             double start_angle_left = -1.0, start_angle_right = -1.0;
             double size = -1.0, width = -1.0;
             int levels = -1, redL = 0, redR = 0;
@@ -74,11 +78,17 @@ namespace Fractalii
             double.TryParse(textBox_width_tab1.Text, null, out width);
             Int32.TryParse(textBox_reduction_left_tab1.Text, null, out redL);
             Int32.TryParse(textBox_reduction_right_tab1.Text, null, out redR);
-            SetupTree.generate_treeFractal_recursive(pb, start_angle_left, start_angle_right, size, width, levels, redL, redR, HomePage.initialColor, HomePage.finalColor);
+            SetupTree.generate_treeFractal_recursive(
+                pb, start_angle_left, start_angle_right, 
+                size, width, levels, redL, redR, 
+                HomePage.initialColor, HomePage.finalColor
+            );
         }
 
         private void generate_treeFractal_iterative(object sender, EventArgs e)
         {
+            HomePage.FullScreenPictureBox(ref pb);
+
             double start_angle_left = -1.0, start_angle_right = -1.0;
             double size = -1.0, width = -1.0;
             int levels = -1, redL = 0, redR = 0;
@@ -103,6 +113,8 @@ namespace Fractalii
         }
         private void generate_kochLineFractal(object sender, EventArgs e)
         {
+            HomePage.FullScreenPictureBox(ref pb);
+
             int levels = -1;
             double width = -1;
             Int32.TryParse(levels_KochLine.Text, null, out levels);
@@ -123,6 +135,8 @@ namespace Fractalii
         }
         private void generate_kochSnowFractal(object sender, EventArgs e)
         {
+            HomePage.FullScreenPictureBox(ref pb);
+
             int levels = -1;
             double width = -1;
             Int32.TryParse(KochSnowLevels.Text, null, out levels);
@@ -145,6 +159,8 @@ namespace Fractalii
 
         private void CallWeierstrass(object sender, EventArgs e)
         {
+            HomePage.FullScreenPictureBox(ref pb);
+
             int precision = -1;
             double a = -1;
             int b = -1;
@@ -188,6 +204,8 @@ namespace Fractalii
         }
         private void generate_sierpinski(object sender, EventArgs e)
         {
+            HomePage.FullScreenPictureBox(ref pb);
+
             int levels = -1;
             const double width = 3;
             Int32.TryParse(SierpinskiLevels.Text, null, out levels);
@@ -216,7 +234,9 @@ namespace Fractalii
         }
         private void generate_dragoncurve(object sender, EventArgs e)
         {
-            int levels = -1, size = -1;
+            HomePage.FullScreenPictureBox(ref pb);
+
+            int levels = -1, size=-1;
             double width = -1.0;
             Int32.TryParse(dragoncurvetextbox.Text, out levels);
             Int32.TryParse(dragonSize.Text, out size);
@@ -233,6 +253,8 @@ namespace Fractalii
         }
         private void generate_sierpinskicarpet(object sender, EventArgs e)
         {
+            HomePage.FullScreenPictureBox(ref pb);
+
             int levels = -1;
             double width = 3;
             Point p1, p2, p3, p4;

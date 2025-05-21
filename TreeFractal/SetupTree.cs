@@ -14,11 +14,12 @@
             double size = -1.0, double width = -1.0,
             int levels = -1, int redL = 0, int redR = 0, Color initialColor=default(Color), Color finalColor=default(Color))
         {
-            // .Refresh erases anything on pictureBox1 if we want to redraw
-            pictureBox_treeFractal.Refresh();
             // check if all variables have been assigned
             if (Condition_treeFractal(start_angle_left, start_angle_right, size, width, levels, redL, redR))
             {
+                // .Refresh erases anything on pictureBox1 if we want to redraw
+                pictureBox_treeFractal.Refresh();
+
                 // initialaze the global variables
                 treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, initialColor, finalColor, pictureBox_treeFractal);
 
@@ -44,14 +45,13 @@
             double size = -1.0, double width = -1.0,
             int levels = -1, int redL = 0, int redR = 0, Color initialColor = default(Color), Color finalColor = default(Color))
         {
-            // .Refresh erases anything on pictureBox1 if we want to redraw
-            pictureBox_treeFractal.Refresh();
             // check if all variables have been assigned
             if (Condition_treeFractal(start_angle_left, start_angle_right, size, width, levels, redL, redR))
             {
+                // .Refresh erases anything on pictureBox1 if we want to redraw
+                pictureBox_treeFractal.Refresh();
                 treeFractal fractal = new treeFractal(start_angle_left, start_angle_right, size, initialColor, finalColor, pictureBox_treeFractal);
-
-
+                
                 // first call of the iterative function
                 fractal.Generate_fractal2(size, width, pictureBox_treeFractal.Size.Width / 2,
                     pictureBox_treeFractal.Size.Height / 2 + 150, 90, levels, (double)(redL) / 100, (double)(redR) / 100);

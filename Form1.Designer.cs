@@ -36,6 +36,7 @@ namespace Fractalii
             finalColorSelect = new Button();
             initialColorSelect = new Button();
             DarkMode = new CheckBox();
+            checkBox1 = new CheckBox();
             userControl11 = new UserControl1(pictureBox1);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -85,7 +86,7 @@ namespace Fractalii
             // 
             DarkMode.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             DarkMode.AutoSize = true;
-            DarkMode.Location = new Point(823, 14);
+            DarkMode.Location = new Point(762, 14);
             DarkMode.Margin = new Padding(3, 2, 3, 2);
             DarkMode.Name = "DarkMode";
             DarkMode.Size = new Size(84, 19);
@@ -102,11 +103,23 @@ namespace Fractalii
             userControl11.Size = new Size(741, 113);
             userControl11.TabIndex = 1;
             // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(872, 14);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(98, 19);
+            checkBox1.TabIndex = 167;
+            checkBox1.Text = "Go FullScreen";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1001, 567);
+            ClientSize = new Size(994, 567);
+            Controls.Add(checkBox1);
             Controls.Add(DarkMode);
             Controls.Add(finalColorSelect);
             Controls.Add(initialColorSelect);
@@ -129,5 +142,6 @@ namespace Fractalii
         private Button finalColorSelect;
         private Button initialColorSelect;
         private CheckBox DarkMode;
+        private CheckBox checkBox1;
     }
 }

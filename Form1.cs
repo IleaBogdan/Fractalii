@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Fractalii
@@ -15,7 +16,7 @@ namespace Fractalii
             this.TopMost = false;
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
             //this.DoubleBuffered = true;
-            
+
             using Stream iconStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Fractalii.fractal.ico");
             if (iconStream != null)
             {
@@ -34,24 +35,26 @@ namespace Fractalii
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
-        
+
         [DllImport("dwmapi.dll")]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
         const int DWMWA_CAPTION_COLOR = 35;
 
-        
+
         public static Color bgC = Color.Black;
         public static String def = "Fractalii";
-        private static int TitleColor=0x000000;
+        private static int TitleColor = 0x000000;
         private Pair<int, int> initialSize;
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //System.Drawing.Rectangle ScreenR = Screen.PrimaryScreen.WorkingArea;
             //this.Size = new System.Drawing.Size(Convert.ToInt32(.55 * ScreenR.Width), Convert.ToInt32(.7 * ScreenR.Height));
-            initialSize=new Pair<int, int>(this.Size.Width, this.Size.Height);
+            initialSize = new Pair<int, int>(this.Size.Width, this.Size.Height);
             this.Location = new System.Drawing.Point(145, 160);
 
+            this.KeyDown += new KeyEventHandler(Form_KeyDown);
+            this.Resize += HomePage_Resize;
             DwmSetWindowAttribute(this.Handle, DWMWA_CAPTION_COLOR, ref TitleColor, sizeof(int));
 
             pictureBox1.BackColor = bgC;
@@ -59,7 +62,7 @@ namespace Fractalii
             userControl11.set_pictureBox(pictureBox1);
             add_color(initialColor, initialColorSelect, "Select initial color");
             add_color(finalColor, finalColorSelect, "Select final color");
-            
+
             //userControl11.SetSelectedTab(0, this, userControl11);
 
             pictureBox1.Paint += (s, args) =>
@@ -134,6 +137,18 @@ namespace Fractalii
             //Console.WriteLine("Boom");
         }
 
+        private static bool activeFullScreenChange = false;
+        public static bool isFractalFullScreen = false;
+        public static Rectangle pbOriginalBounds = default(Rectangle);
+        public static void FullScreenPictureBox(ref PictureBox pb)
+        {
+            if (!activeFullScreenChange) return;
+            pbOriginalBounds = pb.Bounds;
+            isFractalFullScreen = true;
+            pb.BringToFront();
+            pb.Dock = DockStyle.Fill;
+            pb.SizeMode = PictureBoxSizeMode.Zoom;
+        }
         private void Form_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F11) { ToggleFullscreen(); }
@@ -151,6 +166,17 @@ namespace Fractalii
                 //Console.WriteLine(tab.ToString());
                 userControl11.SetSelectedTab(tab);
             }
+            if (e.KeyCode == Keys.Escape && isFractalFullScreen)
+            {
+                if (!activeFullScreenChange) return;
+                // Restore PictureBox
+                pictureBox1.Dock = DockStyle.None;
+                pictureBox1.Bounds = pbOriginalBounds;
+                pictureBox1.SizeMode = PictureBoxSizeMode.Normal;
+
+                isFractalFullScreen = false;
+                pbOriginalBounds = default(Rectangle);
+            }
         }
 
         private void ToggleFullscreen()
@@ -167,6 +193,7 @@ namespace Fractalii
                 this.WindowState = FormWindowState.Maximized;
                 this.TopMost = false;
             }
+            //pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         }
         private void DarkMode_CheckStateChanged(object sender, EventArgs e)
         {
@@ -205,6 +232,24 @@ namespace Fractalii
                 userControl11.getMouseRClick(e.X, e.Y);
             }
             else userControl11.getMouseLClick(e.X, e.Y);
+        }
+        private void HomePage_Resize(object sender, EventArgs e)
+        {
+            // Example: maintain a margin of 12 pixels around the PictureBox.
+            int margin = 12;
+            // Position the PictureBox 5 pixels beneath userControl11
+            int pbY = userControl11.Bottom + 5;
+            pictureBox1.Location = new Point(margin, pbY);
+            // Set PictureBox size while preserving the margins
+            pictureBox1.Size = new Size(
+                this.ClientSize.Width - 2 * margin,
+                this.ClientSize.Height - pbY - margin
+            );
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            activeFullScreenChange = !activeFullScreenChange;
         }
     }
 }
