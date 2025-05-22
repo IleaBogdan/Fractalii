@@ -14,6 +14,7 @@ namespace Fractalii
             this.Text = "Fractalii";
             this.KeyPreview = true; // Important to capture key events
             this.TopMost = false;
+            this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(Form_KeyDown);
             //this.DoubleBuffered = true;
 
