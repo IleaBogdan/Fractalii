@@ -171,6 +171,8 @@ namespace Fractalii
         }
         private void CallNOscillate(object sender, EventArgs e)
         {
+            HomePage.FullScreenPictureBox(ref pb);
+
             double a = -1;
             int b = -1;
             Double.TryParse(WeierstrassA.Text, null, out a);
@@ -179,6 +181,8 @@ namespace Fractalii
         }
         private void CallAOscillate(Object sender, EventArgs e)
         {
+            HomePage.FullScreenPictureBox(ref pb);
+
             int precision = -1;
             double a = -1;
             int b = -1;
@@ -189,6 +193,8 @@ namespace Fractalii
         }
         private void CallBOscillate(object sender, EventArgs e)
         {
+            HomePage.FullScreenPictureBox(ref pb);
+
             int precision = -1;
             double a = -1;
             int b = -1;
@@ -249,7 +255,7 @@ namespace Fractalii
 
         private void default_button_Click_SierpinskiCarpet(object sender, EventArgs e)
         {
-            SierpinskiCarpetTextBox.Text = "4";
+            SierpinskiCarpetTextBox.Text = "5";
         }
         private void generate_sierpinskicarpet(object sender, EventArgs e)
         {

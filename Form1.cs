@@ -53,7 +53,7 @@ namespace Fractalii
             initialSize = new Pair<int, int>(this.Size.Width, this.Size.Height);
             this.Location = new System.Drawing.Point(145, 160);
 
-            this.KeyDown += new KeyEventHandler(Form_KeyDown);
+            //this.KeyDown += new KeyEventHandler(Form_KeyDown);
             this.Resize += HomePage_Resize;
             DwmSetWindowAttribute(this.Handle, DWMWA_CAPTION_COLOR, ref TitleColor, sizeof(int));
 
