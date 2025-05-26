@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Formats.Asn1;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Fractalii.Weierstrass_Function
+﻿namespace Fractalii.Weierstrass_Function
 {
     internal class Weierstrass
     {

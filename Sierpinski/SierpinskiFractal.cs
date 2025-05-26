@@ -1,7 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Security.Cryptography.Pkcs;
-
-namespace Fractalii.Sierpinski
+﻿namespace Fractalii.Sierpinski
 {
     internal class SierpinskiFractal
     {
