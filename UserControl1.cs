@@ -3,7 +3,6 @@ using Fractalii.Sierpinski;
 using Fractalii.Weierstrass_Function;
 using Fractalii.TreeFractal;
 using Fractalii.DragonCurve;
-using System.Windows.Forms;
 
 namespace Fractalii
 {
