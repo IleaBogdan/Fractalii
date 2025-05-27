@@ -21,6 +21,8 @@ We plan to expand our collection and dive into **`GPU programming in C#`** to su
 In the meantime, check out our experimental **`JavaScript + WebGL`** version of the Mandelbrot fractal here:  
 🔗 https://ileabogdan.github.io/webgoodluck/
 
+---
+
 ### Contributie
 Luca : 
   - Dezvoltarea extinsa a fractalului Arbore + interfata
