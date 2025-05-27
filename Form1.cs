@@ -143,7 +143,7 @@ namespace Fractalii
         public static void FullScreenPictureBox(ref PictureBox pb)
         {
             if (!activeFullScreenChange) return;
-            pbOriginalBounds = pb.Bounds;
+            if (pbOriginalBounds==default(Rectangle)) pbOriginalBounds = pb.Bounds;
             isFractalFullScreen = true;
             pb.BringToFront();
             pb.Dock = DockStyle.Fill;
