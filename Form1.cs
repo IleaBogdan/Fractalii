@@ -166,9 +166,12 @@ namespace Fractalii
                 //Console.WriteLine(tab.ToString());
                 userControl11.SetSelectedTab(tab);
             }
+            Console.WriteLine(isFractalFullScreen);
             if (e.KeyCode == Keys.Escape && isFractalFullScreen)
             {
+                Console.WriteLine("ESC pressed");
                 if (!activeFullScreenChange) return;
+                Console.WriteLine("executing ESC");
                 // Restore PictureBox
                 pictureBox1.Dock = DockStyle.None;
                 pictureBox1.Bounds = pbOriginalBounds;

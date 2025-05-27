@@ -24,6 +24,21 @@ namespace Fractalii
                 g.DrawLine(pen, begin_point, end_point);
             }
         }
+        public static void draw_lines(PictureBox pb, Point[] points, Pen pen)
+        {
+            if (points == null) return;
+            using (Graphics g = pb.CreateGraphics())
+            {
+                g.DrawLines(pen, points);
+            }
+        }
+        public static void draw_lines(PictureBox pb, PointF[] points, Pen pen)
+        {
+            using (Graphics g = pb.CreateGraphics())
+            {
+                g.DrawLines(pen, points);
+            }
+        }
         public static void draw_line(PictureBox pb, Pair<Point, Point> ps, Pen pen)
         {
             Point begin_point = ps.First, end_point = ps.Second;
@@ -44,22 +59,6 @@ namespace Fractalii
             using (Graphics g = pb.CreateGraphics())
             {
                 g.DrawLine(new Pen(HomePage.bgC, width), begin_point, end_point);
-            }
-        }
-
-        public static void draw_lines(PictureBox pb, Point[] points, Pen pen)
-        {
-            if (points == null) return;
-            using (Graphics g = pb.CreateGraphics())
-            {
-                g.DrawLines(pen, points);
-            }
-        }
-        public static void draw_lines(PictureBox pb, PointF[] points, Pen pen)
-        {
-            using (Graphics g = pb.CreateGraphics())
-            {
-                g.DrawLines(pen, points);
             }
         }
         public static void draw_rectangle(PictureBox pb, Point p, int side, Pen pen)
