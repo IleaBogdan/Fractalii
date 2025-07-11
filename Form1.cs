@@ -163,7 +163,7 @@ namespace Fractalii
                 // switch to specific tab
                 int tab = (int)(e.KeyCode - '0') - 1;
                 if (tab == -1) { tab += 10; }
-                //Console.WriteLine(tab.ToString());
+                // Console.WriteLine(tab.ToString());
                 userControl11.SetSelectedTab(tab);
             }
             Console.WriteLine(isFractalFullScreen);
