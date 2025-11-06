@@ -23,6 +23,7 @@
         }
         public static void getMouseRClick(int x, int y)
         {
+            pen.Color=HomePage.initialColor;
             MouseRX = x;
             MouseRY = y;
 
@@ -61,6 +62,7 @@
         }
         public static void CheckWeierstrassFunction(PictureBox pb, int precision, double a, int b)
         {
+            pen.Color=HomePage.initialColor;
             if (ValidWeierstrass(precision, a, b))
             {
                 zoomFactor = 1.0;
@@ -79,6 +81,7 @@
         }
         public static void NOscillate(PictureBox pb, double a, int b)
         {
+            pen.Color=HomePage.initialColor;
             if (ValidWeierstrass(a, b))
             {
                 pb.Refresh();
@@ -103,6 +106,7 @@
         }
         public static void AOscillate(PictureBox pb, int precision, double a, int b)
         {
+            pen.Color=HomePage.initialColor;
             if (ValidWeierstrass(precision, b))
             {
                 pb.Refresh();
@@ -128,6 +132,7 @@
         }
         public static void BOscillate(PictureBox pb, int precision, double a, int b)
         {
+            pen.Color=HomePage.initialColor;
             if (ValidWeierstrass(precision, a, b))
             {
                 pb.Refresh();
@@ -163,6 +168,7 @@
 
         private static PointF[] GenerateWeierstrassPoints(double a, int b, int maxN)
         {
+            pen.Color=HomePage.initialColor;
             int width = pictureBox.Width;
             int height = pictureBox.Height;
             zoomFactor = 1;
@@ -178,16 +184,19 @@
 
         private static void DrawWeierstrassFunction(int maxN, double a, int b)
         {
+            pen.Color=HomePage.initialColor;
             PointF[] points = GenerateWeierstrassPoints(a, b, maxN);
             Draw.draw_lines(pictureBox, points, pen);
         }
         private static void DrawZoomFunction(int maxN, double a, int b)
         {
+            pen.Color=HomePage.initialColor;
             var points = GenerateZoomPoints(a, b, maxN);
             Draw.draw_lines(pictureBox, points, pen);
         }
         private static PointF[] GenerateZoomPoints(double a, int b, int maxN)
         {
+            pen.Color=HomePage.initialColor;
             int width = pictureBox.Width;
             int height = pictureBox.Height;
             var pts = new PointF[width];
